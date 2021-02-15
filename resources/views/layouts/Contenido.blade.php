@@ -1,8 +1,4 @@
-{{-- Contenido --}}
 
-@yield('content')
-{{-- Contenido --}}
-@endsection
 
 
 
@@ -12,6 +8,12 @@
 <!-- /HEADER -->
 
 @include('Layouts.Navbar')
+
+{{-- Contenido --}}
+
+@yield('content')
+{{-- Contenido --}}
+
 {{-- footer --}}
 @include('Layouts.footer')
 {{-- footer --}}
