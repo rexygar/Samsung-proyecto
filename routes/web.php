@@ -26,8 +26,9 @@ Route::get('/Categoria/{category}/{subCategory}/{other}',   [App\Http\Controller
 Route::get('/Product/{sku}',                                [App\Http\Controllers\MainController::class, 'getProduct']);
 
 // Carrito
-Route::get('/addCarrito',   [App\Http\Controllers\MainController::class, 'addCarrito'])->name('carrito.add');
-Route::get('/Carrito',      [App\Http\Controllers\MainController::class, 'getCarrito'])->name('carrito');
+Route::get('/addCarrito',           [App\Http\Controllers\MainController::class, 'addCarrito'])->name('carrito.add');
+Route::get('/Carrito',              [App\Http\Controllers\MainController::class, 'getCarrito'])->name('carrito');
+Route::get('/deleteCarrito',        [App\Http\Controllers\MainController::class, 'removeCarrito'])->name('carrito.delete');
 
 // Transbank
 Route::get('/checkout',                     [App\Http\Controllers\TransbankController::class, 'initTransaction'])->name('checkout');  

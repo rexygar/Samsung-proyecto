@@ -77,6 +77,7 @@ class MainController extends Controller
         return view('store.cart', compact('Pago'));
     }
 
+    // REQUEST =  sku - cantidad (in aJAX)
     public function addCarrito(Request $request){
         if($request->ajax()){
             try {
@@ -110,10 +111,44 @@ class MainController extends Controller
     }
 
     public function getCarrito(){
-        $idPago = session('idPago');
-        $reserva = Reserva::where('idTransaccion', $idPago)->get();
+        $idPago = 0;
+        $pago = [];
+        $this->TransbankController = new TransbankController();
+        if(session()->has('idPago')){
+            $idPago = session('idPago');
+        }else{
+            session(['idPago' => $idPago]);
+        }
 
-        return $reserva;
+        if($idPago > 0){
+            $monto = Reserva::where('idTransaccion', $idPago)->sum('monto');
+            $order = '54879644';
+            $pago = $this->TransbankController->initTransaction($monto,$order, $idPago);
+        }
+
+        $reserva = Reserva::where('idTransaccion', $idPago)->get();
+        
+        return [$reserva, $pago];        
+    }
+
+    // REQUEST =  sku (in aJAX)
+    public function removeCarrito(Request $request){
+        if($request->ajax()){
+            try {
+                $idPago = session('idPago');
+                
+                $reserva = Reserva::where('idTransaccion',$idPago)->where('sku', $request->sku)->first();
+                $reserva->delete();
+
+                $monto = Reserva::where('idTransaccion', $idPago)->sum('monto');
+                $tt = Transaccion::where('id', $idPago)->first();
+                $pago = $this->TransbankController->initTransaction($monto, $tt->order, $idPago);
+
+                return ['status' => 0, 'Pago' => $pago];
+            } catch (\Throwable $th) {
+                return ['status' => 1];
+            }
+        }
     }
 
 }
