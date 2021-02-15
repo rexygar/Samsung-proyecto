@@ -34,3 +34,46 @@ Route::get('/deleteCarrito',        [App\Http\Controllers\MainController::class,
 Route::get('/checkout',                     [App\Http\Controllers\TransbankController::class, 'initTransaction'])->name('checkout');  
 Route::post('/checkout/webpay/response',    [App\Http\Controllers\TransbankController::class, 'response'])->name('checkout.webpay.response');  
 Route::post('/checkout/webpay/finish',      [App\Http\Controllers\TransbankController::class, 'finish'])->name('checkout.webpay.finish');
+
+Route::get('/ej', function () {
+    return view('welcome');
+});
+Route::get('/pro', function () {
+    return view('Components.producto-card');
+});
+Route::get('/nav', function () {
+    return view('Components.navBar');
+});
+Route::get('/fil', function () {
+    return view('Components.filtros');
+});
+Route::get('/bread', function () {
+    return view('Components.breadcrumbs');
+});
+Route::get('/', function () {
+    return view('Vistas.index');
+});
+Route::get('/producto', function () {
+    return view('Vistas.producto');
+});
+Route::get('/carrito', function () {
+    return view('Vistas.carrito');
+});
+Route::get('/tests', function () {
+    return view('Vistas.tests');
+});
+Route::get('/categoria', function () {
+    return view('Vistas.categoria');
+});
+Route::get('/perfiles', function () {
+    return view('Vistas.perfiles');
+});
+Route::get('/busqueda', function () {
+    return view('Vistas.busqueda');
+});
+Route::get('/loMvendido', function () {
+    return view('Components.loMvendido');
+});
+Route::get('/loMvisto', function () {
+    return view('Components.loMvisto');
+});
