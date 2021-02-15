@@ -71,7 +71,7 @@ class MainController extends Controller
         return view('store.cart', compact('Pago'));
     }
 
-    public function addCarrito(){
+    public function addCarrito(Request $request){
 
     }
 
