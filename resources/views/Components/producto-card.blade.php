@@ -1,5 +1,5 @@
-@extends('Layouts.Contenido')
-@section('content')
+{{-- @extends('Layouts.Contenido')
+@section('content') --}}
 <style>
   .blue-clr{
     color: #308fcb !important; 
@@ -49,13 +49,13 @@
 
 </style>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<div class="max-w-6xl bk-hero-main mx-auto sm:px-6 lg:px-8">
-  <section class="bk-hero-int is-primary is-medium mt-8
-    overflow-hidden shadow sm:rounded-lg">
+<div class="max-w-6xl  mx-auto sm:px-6 lg:px-8">
+  <section class=" is-primary is-medium mt-8
+    overflow-hidden sm:rounded-lg">
     <!-- Hero head: will stick at the top -->
     {{-- Contenido --}}
     {{-- producto card --}}
-    <div class="mt-8 bg-white bk-hero-bread overflow-hidden shadow sm:rounded-lg">
+    <div class="mt-8 bg-white  overflow-hidden sm:rounded-lg">
       <div class="grid grid-cols-5  gap-4">
 
         <div class="mb-10 md:container md:mx-auto">
@@ -94,7 +94,7 @@
 
           <h5 class="font-bold  text-base text-center ">Waterproof Jacket</h5>
           <p class="text-sm font-bold text-center blue-clr ">$299.000</p>
-          <input type="button" class=" blue-clr-bg w-1/2 font-bold md:container md:mx-auto lowercase px-6 pm-2 text-white" value="Comprar">
+          <input type="button" class="sm:px-6 lg:px-8 w-1/2 blue-clr-bg w-1/2 font-bold md:container md:mx-auto lowercase px-6 pm-2 text-white" value="Comprar">
           
           <h6 class=" UPPERCASE mb-5 text-center " style="font-weight: 100">SSS2445542-0</h6>
         </div>
@@ -134,7 +134,7 @@
 
           <h5 class="font-bold  text-base text-center ">Waterproof Jacket</h5>
           <p class="text-sm font-bold text-center blue-clr ">$299.000</p>
-          <input type="button" class=" blue-clr-bg w-1/2 font-bold md:container md:mx-auto lowercase px-6 pm-2 text-white" value="Comprar">
+          <input type="button" class="sm:px-6 lg:px-8 w-1/2 blue-clr-bg w-1/2 font-bold md:container md:mx-auto lowercase px-6 pm-2 text-white" value="Comprar">
           
           <h6 class=" UPPERCASE mb-5 text-center " style="font-weight: 100">SSS2445542-0</h6>
         </div>
@@ -174,7 +174,7 @@
 
           <h5 class="font-bold  text-base text-center ">Waterproof Jacket</h5>
           <p class="text-sm font-bold text-center blue-clr ">$299.000</p>
-          <input type="button" class=" blue-clr-bg w-1/2 font-bold md:container md:mx-auto lowercase px-6 pm-2 text-white" value="Comprar">
+          <input type="button" class="sm:px-6 lg:px-8 w-1/2 blue-clr-bg w-1/2 font-bold md:container md:mx-auto lowercase px-6 pm-2 text-white" value="Comprar">
           
           <h6 class=" UPPERCASE mb-5 text-center " style="font-weight: 100">SSS2445542-0</h6>
         </div>
@@ -214,7 +214,7 @@
 
           <h5 class="font-bold  text-base text-center ">Waterproof Jacket</h5>
           <p class="text-sm font-bold text-center blue-clr ">$299.000</p>
-          <input type="button" class=" blue-clr-bg w-1/2 font-bold md:container md:mx-auto lowercase px-6 pm-2 text-white" value="Comprar">
+          <input type="button" class="sm:px-6 lg:px-8 w-1/2 blue-clr-bg w-1/2 font-bold md:container md:mx-auto lowercase px-6 pm-2 text-white" value="Comprar">
           
           <h6 class=" UPPERCASE mb-5 text-center " style="font-weight: 100">SSS2445542-0</h6>
         </div>
@@ -254,7 +254,7 @@
 
           <h5 class="font-bold  text-base text-center ">Waterproof Jacket</h5>
           <p class="text-sm font-bold text-center blue-clr ">$299.000</p>
-          <input type="button" class=" blue-clr-bg w-1/2 font-bold md:container md:mx-auto lowercase px-6 pm-2 text-white" value="Comprar">
+          <input type="button" class="sm:px-6 lg:px-8 w-1/2 blue-clr-bg w-1/2 font-bold md:container md:mx-auto lowercase px-6 pm-2 text-white" value="Comprar">
           
           <h6 class=" UPPERCASE mb-5 text-center " style="font-weight: 100">SSS2445542-0</h6>
         </div>

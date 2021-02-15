@@ -77,3 +77,9 @@ Route::get('/loMvendido', function () {
 Route::get('/loMvisto', function () {
     return view('Components.loMvisto');
 });
+Route::get('/carousel', function () {
+    return view('Components.carousel');
+});
+Route::get('/destacados', function () {
+    return view('Components.destacados');
+});
