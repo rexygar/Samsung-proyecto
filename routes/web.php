@@ -13,30 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\MainController::class, 'index'])->name('index');
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// MainController (Control de Paguina Principal)
-
 // Productos
-Route::get('/home', [App\Http\Controllers\MainController::class, 'getProductos1']);
-Route::get('/home', [App\Http\Controllers\MainController::class, 'getProductos2']);
-Route::get('/home', [App\Http\Controllers\MainController::class, 'getProductos3']);
+Route::get('/Categoria/{category}',                         [App\Http\Controllers\MainController::class, 'getProductos1']);
+Route::get('/Categoria/{category}/{subCategory}',           [App\Http\Controllers\MainController::class, 'getProductos2']);
+Route::get('/Categoria/{category}/{subCategory}/{other}',   [App\Http\Controllers\MainController::class, 'getProductos3']);
+Route::get('/Product/{sku}',                                [App\Http\Controllers\MainController::class, 'getProduct']);
 
 // Carrito
-Route::get('/home', [App\Http\Controllers\MainController::class, 'addCarrito']);
-Route::get('/home', [App\Http\Controllers\MainController::class, 'getCarrito']);
+Route::get('/addCarrito',   [App\Http\Controllers\MainController::class, 'addCarrito'])->name('carrito.add');
+Route::get('/Carrito',      [App\Http\Controllers\MainController::class, 'getCarrito'])->name('carrito');
 
-// ProductController
-
-
-// TransbankController
-
+// Transbank
 Route::get('/checkout',                     [App\Http\Controllers\TransbankController::class, 'initTransaction'])->name('checkout');  
 Route::post('/checkout/webpay/response',    [App\Http\Controllers\TransbankController::class, 'response'])->name('checkout.webpay.response');  
 Route::post('/checkout/webpay/finish',      [App\Http\Controllers\TransbankController::class, 'finish'])->name('checkout.webpay.finish');

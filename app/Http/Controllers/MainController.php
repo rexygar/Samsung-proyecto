@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Transaccion;
+use App\Models\Reserva;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\TransbankController;
 
 class MainController extends Controller
 {
+
+    public function index(){
+        return view('Vistas.index');
+    }
 
     public function getProductos1($category){
 
@@ -72,11 +78,42 @@ class MainController extends Controller
     }
 
     public function addCarrito(Request $request){
-
+        if($request->ajax()){
+            try {
+                $idPago = session('idPago');
+                if($idPago > 0){
+                    $reserva = new Reserva();
+                
+                    $reserva->sku = $request->sku;
+                    $reserva->reserva = $request->cantidad;
+                    $reserva->idTransaccion = $idPago;
+                
+                    $reserva->save();
+                }else{
+                    $pago = new Transaccion();
+                    $pago->save();
+                    session(['idPago' => $pago->id]);
+                
+                    $reserva = new Reserva();
+                
+                    $reserva->sku = $request->sku;
+                    $reserva->reserva = $request->cantidad;
+                    $reserva->idTransaccion = $pago->id;
+                
+                    $reserva->save();
+                }
+                return ['status' => 0];
+            } catch (\Throwable $th) {
+                return ['status' => 1];
+            }
+        }
     }
 
     public function getCarrito(){
-        
+        $idPago = session('idPago');
+        $reserva = Reserva::where('idTransaccion', $idPago)->get();
+
+        return $reserva;
     }
 
 }
