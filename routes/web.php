@@ -20,3 +20,16 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+// MainController (Control de Paguina Principal)
+
+// Productos
+Route::get('/home', [App\Http\Controllers\MainController::class, 'getProductos1']);
+Route::get('/home', [App\Http\Controllers\MainController::class, 'getProductos2']);
+Route::get('/home', [App\Http\Controllers\MainController::class, 'getProductos3']);
+
+// Carrito
+Route::get('/home', [App\Http\Controllers\MainController::class, 'addCarrito']);
+Route::get('/home', [App\Http\Controllers\MainController::class, 'getCarrito']);
+
+// ProductController
