@@ -1,47 +1,49 @@
-</style>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 @foreach($Productos as $p)
-<div class="card">
-  <a href="{{ URL('/') }}/Productos/{{ $p->SKU }}" class="title font-weight-bold">
-    <div class="card-image">
-      <figure class="image is-4by3">
-        <img src="https://pngimg.com/uploads/raincoat/raincoat_PNG53.png" alt="Placeholder image">
-      </figure>
+<!-- component -->
+<div class="container  mx-auto px-4 ">
+    <div class="flex flex-wrap  grid grid-rows-1 md:grid-rows-1">
+
+        <!-- Column -->
+        <div class="my-1 px-1 w-full  md:w-full lg:my-4 lg:px-4 lg:w-full">
+
+            <!-- Article -->
+            <article class="overflow-hidden rounded-lg shadow-lg">
+
+                <a href="{{ URL('/') }}/Productos/{{ $p->SKU }}">
+                    <img alt="Placeholder" class="block h-auto w-full" src="https://pngimg.com/uploads/raincoat/raincoat_PNG53.png">
+                </a>
+
+                <header class="flex items-center justify-between leading-tight p-2 md:p-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline text-black" href="{{ URL('/') }}/Productos/{{ $p->SKU }}">
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star-o"></i>
+                                    (1)
+                                </div>
+                          {{ $p->Descripcion }}
+                        </a>
+                    </h1>
+                </header>
+
+                <footer class="flex items-center justify-between leading-none p-2 md:p-4">
+                    <a class="flex items-center no-underline hover:underline text-black" href="{{ URL('/') }}/Productos/{{ $p->SKU }}">
+                        
+                        <p class="ml-2 text-sm">
+                          $ {{ number_format($p->Precio, 0, ',', '.') }}
+                        </p>
+                    </a>
+                </footer>
+
+            </article>
+            <!-- END Article -->
+
+        </div>
+        <!-- END Column -->
     </div>
-    <div class="card-content">
-      <img class="card-img-top" style="max-width:5%;height: auto;padding: 0 10;"
-                        src="" alt="">
-                    <br>
-                    <div class="col  col-centered">
-                        <div class="product-rating">
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star"></i>
-                            <i class="fa fa-star-o"></i>
-                            (1)
-                        </div>
-                    </div>
-  
-      <div class="content">
-        <div class="panel-heading">
-          <h4 style="display: inline;font-weight: 700;"> {{ $p->Descripcion }}
-          </h4>
-      </div>
-      <div class="card-text">
-          <div class="price-wrap">
-              <span class="price-new h3 col-centered" style="color: #0597d9;">
-                  $ {{ number_format($p->Precio, 0, ',', '.') }}
-              </span>
-              <div>
-                  <label class="btn col-centered btn-default"
-                      style="color: white;background-color: #0597d9;">Mas informacion
-                  </label>
-              </div>
-          </div>
-      </div>
-      </div>
-  </a>
-  </div>
 </div>
 @endforeach

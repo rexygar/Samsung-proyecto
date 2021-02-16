@@ -60,7 +60,14 @@
                                 <div class="justify-items-start md:justify-items-center py-4 lg:pt-4 pt-8">
 
                                     <section class="relative py-20">
-
+                                        <div class="container mx-auto  pt-48">
+                                            <div class="">
+                                                <!-- ... -->
+                                                <div class="place-self-center ">
+                                                    @include('layouts.Navbar')
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="container mx-auto lg:w-full md:w-full pt-48">
                                             <div class="">
                                                 <!-- ... -->

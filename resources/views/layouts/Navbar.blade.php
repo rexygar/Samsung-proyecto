@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
     <style>
         nav ul {
             list-style: none;
@@ -25,6 +18,8 @@
             color: #ddd;
             display: block;
             padding: 0 2.5em;
+            font-family: Arial;
+            text-align: center;
             text-decoration: none;
             transition: 0.4s;
         }
@@ -75,9 +70,7 @@
         }
         
     </style>
-</head>
 
-<body>
     <nav class="text-center">
         <ul class="menu">
             <li><h4><strong>CATEGORIA</strong></h4></li>
@@ -234,5 +227,3 @@
             </li>
         </ul>
     </nav>
-</body>
-</html>
