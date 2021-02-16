@@ -89,7 +89,7 @@
                                         
                                                 <!-- ... -->
                                                 <div class="place-self-center ">
-                                                    @include('Components.producto-card')
+                                                    @include('Components.producto-index')
                                                 </div>
                                             
                                         </div>
@@ -104,7 +104,7 @@
                                            
                                                 {{-- producto card --}}
                                                 <div class="place-self-center">
-                                                    @include('Components.producto-card')
+                                                    @include('Components.producto-index')
                                                 </div>
                                                 {{-- end producto card --}}
 
