@@ -39,7 +39,7 @@
 
 
 
-<div class="carousel relative shadow-2xl bg-white">
+<div class="carousel relative bg-white">
     <div class="carousel-inner relative overflow-hidden w-full">
         <!--Slide 1-->
         <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden=""

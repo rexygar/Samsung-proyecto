@@ -1,11 +1,11 @@
-@extends('Layouts.Contenido')
+{{-- @extends('Layouts.Contenido')
 @section('content')
 
 
+ --}}
 
-
-<div class="p-6 border-t border-gray-200 dark:border-gray-700">
-    <nav class="breadcrumb" aria-label="breadcrumbs">
+<div class="p-6 w-auto md:w-auto bg-gray-300 dark:border-gray-700 absolute" >
+    <nav class="breadcrumb" aria-label="breadcrumbs ">
       <ul>
         <li>
           <a href="#">

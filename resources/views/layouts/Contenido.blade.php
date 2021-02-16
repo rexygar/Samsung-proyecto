@@ -11,7 +11,7 @@
 @include('Layouts.Header')
 <!-- /HEADER -->
 
-@include('Layouts.Navbar')
+{{-- @include('Layouts.Navbar') --}}
 {{-- footer --}}
 @include('Layouts.footer')
 {{-- footer --}}
