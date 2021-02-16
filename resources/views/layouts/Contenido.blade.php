@@ -1,8 +1,4 @@
-{{-- Contenido --}}
 
-@yield('content')
-{{-- Contenido --}}
-@endsection
 
 
 
