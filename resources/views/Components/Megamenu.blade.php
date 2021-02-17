@@ -7,7 +7,8 @@
             <li class="hoverable hover:bg-blue-500 hover:text-white">
               <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold 
               hover:bg-blue-600 hover:text-white">TELEFONOS</a>
-              <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-blue-600">
+              <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-blue-600" style="background-image: url('https://media.discordapp.net/attachments/737850926324514828/811619872542818424/back.jpg?width=994&height=559'); background-repeat: no-repeat;
+              background-size:cover; height: 90vh;">
                   <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
                     <ul class="px-4 w-full border-gray-600 border-b sm:border-r lg:border-b-0 pb-6 pt-6 lg:pt-3">
                       <li class="submenu grid grid-cols-5">
@@ -36,6 +37,7 @@
                               </ul>
                               </li>
                           </ul>
+                          
                       </li>
                     </ul>
                   </div>
@@ -44,7 +46,8 @@
             <li class="hoverable hover:bg-blue-600 hover:text-white">
               <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold 
               hover:bg-blue-600 hover:text-white">TABLETS</a>
-              <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-blue-600">
+              <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-blue-600" style="background-image: url('https://media.discordapp.net/attachments/737850926324514828/811619872542818424/back.jpg?width=994&height=559'); background-repeat: no-repeat;
+              background-size:cover; height: 90vh;">
                   <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
                     <ul class="px-4 w-full border-gray-600 border-b sm:border-r lg:border-b-0 pb-6 pt-6 lg:pt-3">
                       <li class="submenu grid grid-cols-5">
@@ -65,7 +68,8 @@
             <li class="hoverable hover:bg-blue-600 hover:text-white">
               <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold 
               hover:bg-blue-600 hover:text-white">WEARABLES</a>
-              <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-blue-600">
+              <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-blue-600" style="background-image: url('https://media.discordapp.net/attachments/737850926324514828/811619872542818424/back.jpg?width=994&height=559'); background-repeat: no-repeat;
+              background-size:cover; height: 90vh;">
                   <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
                     <ul class="px-4 w-full border-gray-600 border-b sm:border-r lg:border-b-0 pb-6 pt-6 lg:pt-3">
                       <li class="submenu grid grid-cols-5">
@@ -99,8 +103,9 @@
             <li class="hoverable hover:bg-blue-600 hover:text-white">
               <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold 
               hover:bg-blue-600 hover:text-white">ACCESORIOS</a>
-              <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-blue-600">
-                  <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
+              <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-blue-600" style="background-image: url('https://media.discordapp.net/attachments/737850926324514828/811619872542818424/back.jpg?width=994&height=559'); background-repeat: no-repeat;
+              background-size:cover; height: 90vh;">
+                  <div class="container mx-auto w-full flex flex-wrap justify-between mx-2" >
                     <ul class="px-4 w-full border-gray-600 border-b sm:border-r lg:border-b-0 pb-6 pt-6 lg:pt-3">
                       <li class="submenu grid grid-cols-5">
                           <a href="{{ url('Categoria/AUDIFONOS') }}" class="block-inline p-3 hover:bg-blue-600 text-gray-300 hover:text-white">AUDIFONOS </a>
@@ -231,7 +236,8 @@
             <li class="hoverable hover:bg-blue-600 hover:text-white">
               <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold 
               hover:bg-blue-600 hover:text-white">COMPUTADORES</a>
-              <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-blue-600">
+              <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-blue-600" style="background-image: url('https://media.discordapp.net/attachments/737850926324514828/811619872542818424/back.jpg?width=994&height=559'); background-repeat: no-repeat;
+              background-size:cover; height: 90vh;">
                   <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
                     <ul class="px-4 w-full border-gray-600 border-b sm:border-r lg:border-b-0 pb-6 pt-6 lg:pt-3">
                       <li class="submenu grid grid-cols-5">
@@ -274,7 +280,8 @@
             <li class="hoverable hover:bg-blue-600 hover:text-white">
               <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold 
               hover:bg-blue-600 hover:text-white">CONSOLAS Y JUEGOS</a>
-              <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-blue-600">
+              <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-blue-600" style="background-image: url('https://media.discordapp.net/attachments/737850926324514828/811619872542818424/back.jpg?width=994&height=559'); background-repeat: no-repeat;
+              background-size:cover; height: 40rem;">
                   <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
                     <ul class="px-4 w-full border-gray-600 border-b sm:border-r lg:border-b-0 pb-6 pt-6 lg:pt-3">
                       <li class="submenu grid grid-cols-5">
