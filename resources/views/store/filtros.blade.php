@@ -4,13 +4,16 @@
         <div aria-label="breadcrumb">
             <ul class="breadcrumb align-right"
                 style="background-color:grey ;margin-bottom:0px;padding: 20px; margin-top: 10px;">
-                <li class="breadcrumb-item TrT0Xe grid-cols-1"><a href="{{ url('/') }}">HOME</a></li>
-                @foreach ($dir as $d)
+                <li class="breadcrumb-item TrT0Xe grid-cols-1"><a href="{{ url('/') }}">HOME</a>
+                    @foreach ($dir as $d)
+                    / &nbsp;
+                <ul class="align-right">
                     <li class="breadcrumb-item TrT0Xe" aria-current="page">
                         <a href="{{ $d['url'] }}">{{ $d['name'] }}</a>
                     </li>
+                </ul>
                 @endforeach
-
+                </li>
             </ul>
         </div>
     </div>
@@ -211,7 +214,7 @@
 
 
 
-                            <section class="relative py-16 bg-gray-300 py-0 tp-48">
+                            <section class="relative pt-36 tp-48">
                                 <div class="container mx-auto top-72">
                                     <div
                                         class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
@@ -290,3 +293,4 @@
 
     </script>
 @endsection
+

@@ -27,9 +27,7 @@
 </head>
 
 <header>
-  <nav
-  class="top-36 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg"
->
+ 
   <div
     class="container px-4 mx-auto flex flex-wrap items-center justify-between"
   >
@@ -107,6 +105,5 @@
       </ul>
     </div>
   </div>
-</nav>
 
 </header>
