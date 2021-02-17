@@ -18,7 +18,7 @@
     <link href="{{ asset('css/componentes.css') }}" rel="stylesheet">
     <link href="{{ asset('css/layouts.css') }}" rel="stylesheet">
     <link href="{{ asset('css/hero-backgrounds.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/Megamenu.css') }}" rel="stylesheet">
 
     <style>
         body {
@@ -79,6 +79,8 @@
     <!-- SECTION -->
     <!-- container -->
 
+    @include('Components.Header')
+    @include('Components.Megamenu')
     @include('Components.producto-item')
     {{-- <div class="w-full">
             <div class="relative flex-grow max-w-full flex-1 px-4">
@@ -102,33 +104,33 @@
     <!-- /container -->
     <section class="relative py-16 bg-gray-300 py-0">
         <div class="container mx-auto px-4">
-          <div
-            class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64"
-          >
-            <div class="px-6">
-              <div class="flex flex-wrap justify-center">
-              
-                <div class="w-full lg:w-full px-4 lg:order-1">
-                  <div class="justify-items-start md:justify-items-center py-4 lg:pt-4 pt-8">
-                   
-                    <section class="relative py-20">
-                        
-                        <div id="flix-inpage"></div>
-                        <script type="text/javascript" src="//media.flixfacts.com/js/loader.js" data-flix-distributor="4800"
-                            data-flix-language="cl" data-flix-brand="Samsung" data-flix-mpn="SM-N975FZWJCHO" data-flix-ean=""
-                            data-flix-sku="" data-flix-button="flix-minisite" data-flix-inpage="flix-inpage" data-flix-button-image=""
-                            data-flix-price="" data-flix-fallback-language="" async></script>
-  
-                      
-                  </section>
-                  </div>
+            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
+                <div class="px-6">
+                    <div class="flex flex-wrap justify-center">
+
+                        <div class="w-full lg:w-full px-4 lg:order-1">
+                            <div class="justify-items-start md:justify-items-center py-4 lg:pt-4 pt-8">
+
+                                <section class="relative py-20">
+
+                                    <div id="flix-inpage"></div>
+                                    <script type="text/javascript" src="//media.flixfacts.com/js/loader.js"
+                                        data-flix-distributor="4800" data-flix-language="cl" data-flix-brand="Samsung"
+                                        data-flix-mpn="SM-N975FZWJCHO" data-flix-ean="" data-flix-sku=""
+                                        data-flix-button="flix-minisite" data-flix-inpage="flix-inpage"
+                                        data-flix-button-image="" data-flix-price="" data-flix-fallback-language=""
+                                        async></script>
+
+
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-              </div>
-              
             </div>
-          </div>
         </div>
-      </section>
+    </section>
     <section class="relative py-16 bg-gray-300 py-0">
         <div class="container mx-auto px-4">
             <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
@@ -144,7 +146,7 @@
 
                                         {{-- producto card --}}
                                         <div class="place-self-center">
-                                            @include('Components.producto-card')
+                                            @include('Components.producto-index')
                                         </div>
                                         {{-- end producto card --}}
 
@@ -161,7 +163,7 @@
             </div>
         </div>
     </section>
-    <div style="height:50px;background-color:#250a0a"  ></div>
+    <div style="height:50px;background-color:#250a0a"></div>
 
     <!--JQUERY Validation-->
 

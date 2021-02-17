@@ -1,4 +1,4 @@
-
+{{-- 
     <style>
         nav ul {
             list-style: none;
@@ -226,4 +226,4 @@
                 </ul>
             </li>
         </ul>
-    </nav>
+    </nav> --}}

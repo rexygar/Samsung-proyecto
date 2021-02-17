@@ -24,21 +24,21 @@
         <div class="pt-10 max-w-screen-xl  container mx-auto lg:w-full md:w-full">
             <div class="grid grid-cols-3 lg:grid-cols-3 gap-4 lg:gap-8">
                 <!-- ... -->
-                <div class="text-bold col-start-1">
+                <div class="text-bold text-center col-start-1">
                     <span>Galaxy Note 20</span>
-                    <figure class="image is-16by9">
+                    <figure class="image is-16by9 self-center md:w-5/5 lg:w-4/5">
                         <img src="/img/note-20.jpg">
                     </figure>
                 </div>
-                <div class="text-bold">
+                <div class="text-bold text-center">
                     <span>Galaxy Tab s7</span>
-                    <figure class="image is-16by9">
+                    <figure class="image is-16by9 self-center md:w-5/5 lg:w-4/5">
                          <img src="/img/Galaxy-Tab-S7.jpg">
                     </figure>
                 </div>
-                <div class="text-bold">
+                <div class="text-bold text-center">
                     <span>Galaxy Watch Active</span>
-                    <figure class="image is-16by9">
+                    <figure class="image is-16by9 self-center md:w-5/5 lg:w-4/5">
                          <img src="/img/GalaxyWatchActive_2.jpg">
                     </figure>
                 </div>

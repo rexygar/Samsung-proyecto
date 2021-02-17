@@ -8,7 +8,7 @@
     <div class="grid grid-cols-1 gap-2 place-content-center">
       <div class="mt-8  sm:rounded-lg">
         <div class="grid grid-cols-1 gap-2 place-content-center">
-          <div class="text-center uppercase text-2xl font-bold">Lo mas vendido</div>
+          <div class="text-center uppercase text-gray-600  text-2xl font-bold">Lo mas vendido</div>
         </div>
 
         <div class="grid grid-cols-3 gap-2 place-content-center">
