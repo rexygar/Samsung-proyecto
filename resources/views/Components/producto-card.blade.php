@@ -10,13 +10,13 @@
             <!-- Article -->
             <article class="overflow-hidden rounded-lg shadow-lg">
 
-                <a href="{{ URL('/') }}/Productos/{{ $p->SKU }}">
+                <a href="{{ URL('/') }}/Product/{{ $p->SKU }}">
                     <img alt="Placeholder" class="block h-auto w-full" src="https://pngimg.com/uploads/raincoat/raincoat_PNG53.png">
                 </a>
 
                 <header class="flex items-center justify-between leading-tight p-2 md:p-4">
                     <h1 class="text-lg">
-                        <a class="no-underline hover:underline text-black" href="{{ URL('/') }}/Productos/{{ $p->SKU }}">
+                        <a class="no-underline hover:underline text-black" href="{{ URL('/') }}/Product/{{ $p->SKU }}">
                                 <div class="product-rating">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -31,7 +31,7 @@
                 </header>
 
                 <footer class="flex items-center justify-between leading-none p-2 md:p-4">
-                    <a class="flex items-center no-underline hover:underline text-black" href="{{ URL('/') }}/Productos/{{ $p->SKU }}">
+                    <a class="flex items-center no-underline hover:underline text-black" href="{{ URL('/') }}/Product/{{ $p->SKU }}">
                         
                         <p class="ml-2 text-sm">
                           $ {{ number_format($p->Precio, 0, ',', '.') }}

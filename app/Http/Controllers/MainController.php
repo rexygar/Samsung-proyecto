@@ -58,10 +58,10 @@ class MainController extends Controller
         $jsonString = json_encode($xmlObject);
         $jsonArray = json_decode($jsonString, true);
 
-        $product->StockColor = $jsonArray['row'];
+        $product->StockColor = $jsonArray;
         $StockColor = $product->StockColor;
         // dd($StockColor );
-        return view('store.product', compact('product', 'StockColor'));
+        return view('Vistas.producto', compact('product', 'StockColor'));
     }
 
     public function pruebaPago(){

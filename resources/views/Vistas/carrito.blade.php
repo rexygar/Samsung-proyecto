@@ -1,5 +1,3 @@
-@extends('Layouts.Contenido')
-@section('content')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -196,12 +194,12 @@
 
                     <h5 class="font-bold text-base ">Costo Total</h5>
                     <h2 class="flex justify-center pb-4 font-bold border-b border-gray-200">
-                        <span class="text-3xl mt-6 mr-1">$</span><span class="text-6xl">399.99</span>
+                        <span class="text-3xl mt-6 mr-1">$</span><span class="text-6xl">399.990</span>
                     </h2>
+                    <div><a class="uppercase text-center text-sm mt-12 xl:px-24 px-12 sm:px-16 py-2 rounded-md font-bold text-primary-very-light"
+                            style="background-image:linear-gradient(90deg, #a3a8f0 0%, #696fdd 100%);"
+                            href="">Pagar</a></div>
 
-                    <button
-                        class="uppercase text-center text-sm mt-12 xl:px-24 px-12 sm:px-16 py-2 rounded-md font-bold text-primary-very-light"
-                        style="background-image:linear-gradient(90deg, #a3a8f0 0%, #696fdd 100%);">
                 </article>
             </div>
 
