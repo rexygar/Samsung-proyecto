@@ -80,7 +80,7 @@ class TransbankController extends Controller
 
 		}
 
-		return view('app.transbank.response', compact('token', 'url'));
+		return view('transbank.response', compact('token', 'url'));
 
 	}
 
