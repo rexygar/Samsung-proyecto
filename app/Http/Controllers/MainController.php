@@ -21,7 +21,7 @@ class MainController extends Controller
         $productos = DB::connection('sqlsrv')->select("EXEC Ges_Eco_RescatarProducto @Category = '" . $category . "', @SubCategory = '', @SubSubCategory = ''");
         $dir = [];
 
-        array_push($dir, ['name' => $category, 'url' => URL('/') . '/CL' . '/' . $category]);
+        array_push($dir, ['name' => $category, 'url' => URL('/') . '/Categoria' . '/' . $category]);
 
         return view('store.filtros')->with(['productos' => $productos, 'dir' => $dir]);
     }
@@ -31,8 +31,8 @@ class MainController extends Controller
         $productos = DB::connection('sqlsrv')->select("EXEC Ges_Eco_RescatarProducto @Category = '" . $category . "', @SubCategory = '" . $subCategory . "', @SubSubCategory = ''");
 
         $dir = [];
-        array_push($dir, ['name' => $category, 'url' => URL('/') . '/CL' . '/' . $category]);
-        array_push($dir, ['name' => $subCategory, 'url' => URL('/') . '/CL' . '/' . $category . '/' . $subCategory]);
+        array_push($dir, ['name' => $category, 'url' => URL('/') . '/Categoria' . '/' . $category]);
+        array_push($dir, ['name' => $subCategory, 'url' => URL('/') . '/Categoria' . '/' . $category . '/' . $subCategory]);
 
         return view('store.filtros')->with(['productos' => $productos, 'dir' => $dir]);
     }
@@ -42,9 +42,9 @@ class MainController extends Controller
         $productos = DB::connection('sqlsrv')->select("EXEC Ges_Eco_RescatarProducto @Category = '" . $category . "', @SubCategory = '" . $subCategory . "', @SubSubCategory = '" . $other . "'");
 
         $dir = [];
-        array_push($dir, ['name' => $category, 'url' => URL('/') . '/CL' . '/' . $category]);
-        array_push($dir, ['name' => $subCategory, 'url' => URL('/') . '/CL' . '/' . $category . '/' . $subCategory]);
-        array_push($dir, ['name' => $other, 'url' => URL('/') . '/CL' . '/' . $category . '/' . $subCategory . '/' . $other]);
+        array_push($dir, ['name' => $category, 'url' => URL('/') . '/Categoria' . '/' . $category]);
+        array_push($dir, ['name' => $subCategory, 'url' => URL('/') . '/Categoria' . '/' . $category . '/' . $subCategory]);
+        array_push($dir, ['name' => $other, 'url' => URL('/') . '/Categoria' . '/' . $category . '/' . $subCategory . '/' . $other]);
 
         return view('store.filtros')->with(['productos' => $productos, 'dir' => $dir]);
     }

@@ -2,12 +2,11 @@
 @include('Layouts.Header')
 <!-- /HEADER -->
 
-@include('Layouts.Navbar')
+@include('Components.Megamenu')
 {{-- Contenido --}}
 @yield('content')
 {{-- Contenido --}}
 
-@endsection
 
 
 
