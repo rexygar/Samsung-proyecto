@@ -18,7 +18,7 @@
     <link href="{{ asset('css/componentes.css') }}" rel="stylesheet">
     <link href="{{ asset('css/layouts.css') }}" rel="stylesheet">
     <link href="{{ asset('css/hero-backgrounds.css') }}" rel="stylesheet">
-
+    <link href="{{ asset('css/Megamenu.css') }}" rel="stylesheet">
 
     <style>
         body {
@@ -94,152 +94,121 @@
     }
 </style>
 
-<body class="antialiased bg-primary-very-light font-sans">
-    <div class="lg:w-custom w-full rounded-lg pt-36">
-        <section class="flex flex-col lg:flex-row items-start  lg:justify-auto w-full lg:px-4">
-            <article class="bg-white w-full lg:w-custom mb-10 lg:px-4 px-6 text-center text-primary-dark rounded-lg">
-                <div class="container mx-auto sm:px-4">
-                    <!-- row -->
+@include('Components.Header')
+@include('Components.Megamenu')
 
-                    <div class="md:w-full pr-4 pl-4">
-                        <div class="md:w-full pr-4 pl-4 order-details">
-                            <div class="section-title text-center">
-                                <h3 class="title">Mi Carrito</h3>
-                            </div>
-                            <div class="rTable row-fluid">
-                                <div class="rTableRow md:w-full pr-4 pl-4" style="width: 30%;clear: none;">
-                                    <div class=""><strong>Seleccionar Todo</strong></div>
-
-                                    <div class="" id="deleteItem_">
-                                        <button type="button" id="delete_item" value=" " name="delete_item"
-                                            class="delete_item btn_bkg  "><i class="fnt_bkg fas fa-check"></i></button>
-
-                                    </div>
-                                </div>
-                                <div class="rTableRow col-md-offset-4 md:w-full pr-4 pl-4"
-                                    style="width: 30%;clear: none;">
-                                    <div class=""><strong>Borrar Todo</strong></div>
-
-                                    <div class="" id="deleteItem_">
-                                        <button type="button" id="delete_item" value=" " name="delete_item"
-                                            class="delete_item  btn_bkg "><i class="fas fa-trash fnt_bkg"></i></button>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-10 px-10">
+        <div class="flex shadow-md my-10">
+            <div class="w-3/4 bg-white px-10 py-10">
+                <div class="flex justify-between border-b pb-8">
+                    <div class="flex justify-start border-b pb-8">
+                        <h1 class="font-semibold text-2xl">Seleccionar todo</h1>
+                        <button type="button" id="select_All" value=" " name="select_All" class=""><i
+                                class="fnt_bkg fas fa-check"></i></button>
+                    </div>
+                    <div class="flex justify-end border-b pb-8">
+                        <h1 class="font-semibold text-2xl">Eliminar todo</h1>
+                        <button type="button" id="delete_item" value=" " name="delete_item"
+                            class="delete_item  btn_bkg "><i class="fas fa-trash fnt_bkg"></i></button>
                     </div>
                 </div>
-
-            </article>
-        </section>
-
-        <div class="bg-right bg-cover" style="background-image:url('bg.svg');">
-            <section class="flex flex-col lg:flex-row items-start  lg:justify-auto w-full w-full lg:px-10 px-16 ">
-                <article
-                    class="bg-white w-4/5 lg:w-custom mb-10 lg:px-4 px-6 py-10 text-center text-primary-dark rounded-lg">
-
-                    <!-- Order Details -->
-                    <div class="md:w-full pr-4 pl-4 order-details">
-                        <div class="section-title text-center">
-                            <h3 class="title">Your Order</h3>
+                <div class="flex justify-between border-b pb-8">
+                    <h1 class="font-semibold text-2xl">Carrito de compra</h1>
+                    <h2 class="font-semibold text-2xl">N Articulos</h2>
+                </div>
+                <div class="flex mt-10 mb-5">
+                    <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Detalles del producto</h3>
+                    <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Cantidad
+                    </h3>
+                    <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Precio</h3>
+                    <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
+                </div>
+                <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+                    <div class="flex w-2/5">
+                        <!-- product -->
+                        <div class="w-20">
+                            <img class="h-24" src="../uploads/products/1/1.jpg" alt="">
                         </div>
-                        <div id="order_summary" class="order-summary">
+                        <div class="flex flex-col justify-between ml-4 flex-grow">
+                            <span class="font-bold text-sm">Samsung Galaxy J6+</span>
+                            <span class="text-red-500 text-xs">10 en stock</span>
+                            <div style="height:25px;width:25px;
+                            margin:5px;display:inline-block;border-width: 1px;
+                                         border-style: solid;
+                                         border-color: black;
+                            background-color:gray">
 
-
-
-
-                            <div class="rTable border-collapse border border-green-800">
-                                <div class="rTableRow">
-                                    <div class="rTableHead border border-blue-600"><strong>REMOVE</strong></div>
-                                    <div class="rTableHead border border-blue-600"><strong>PRODUCT</strong></div>
-                                    <div class="rTableHead border border-blue-600"><strong>QUANTITY</strong></div>
-                                    <div class="rTableHead border border-blue-600"><strong>COLOR</strong></div>
-                                    <div class="rTableHead border border-blue-600"><strong>PRICE</strong></div>
-
-                                </div>
-
-                                {{-- @foreach ($product as $producto) --}}
-                                <div class="rTableRow" id="deleteItem_">
-
-                                    <div class="rTableCell"> <button type="button" id="delete_item" value=" "
-                                            name="delete_item" class="delete_item btn_bkg  "><i
-                                                class="fnt_bkg fas fa-trash"></i></button></div>
-                                    <div class="rTableCell"><img src="../uploads/products/1/1.jpg" height="50px"
-                                            width="50px">
-                                        {{--   {{$producto->Descripcion}} --}}
-                                    </div>
-
-                                    <!--quantity-->
-                                    <!--c[1] is pid and c[3] is order serial-->
-                                    <div class="rTableCell">
-                                        <button type="button" id="sub" value=" data-rel= " -rel2=""
-                                            class=" btn_bkg sub"><i class=" fnt_bkg fas fa-minus-square"></i></button>
-                                        <input type="number" id="quantity" style="width:30%" name="" value="1" max="100"
-                                            readonly />
-                                        <button type="button" id="add" value=" " data-rel="" -rel2=""
-                                            class="add  btn_bkg "><i class="fas fa-plus-square fnt_bkg"></i></button>
-                                    </div>
-
-                                    <!--                            -->
-                                    <div class="rTableCell">
-                                        <div style="height:25px;width:25px;display:inline-block;background-color:">
-                                        </div>
-                                    </div>
-                                    {{-- {{$carrito->color}} --}}
-
-                                    <div class="rTableCell">
-                                        <div id="individualPrice_">
-                                            {{-- {{$producto->Precio}} --}}
-                                        </div>
-                                    </div>
-
-                                </div>
 
                             </div>
-
-
-
-                        </div>
-                        <div class="payment-method">
-                            <div class="input-radio">
-                                <input type="radio" name="payment" id="payment-2" checked>
-                                <label for="payment-2">
-                                    <span></span>
-                                    Los productos estaran en su carrito solo por 60mins
-                                </label>
-
-                            </div>
+                            <a href="#" class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
                         </div>
                     </div>
-                </article>
-                <article class="lg:w-custom w-1/5 mb-10 px-6 py-16 lg:-mt-6 text-white text-center rounded-lg"
+                    <div class="flex justify-center w-1/5">
+                        <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
+                            <path
+                                d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
+                        </svg>
+                        <button type="button" id="sub" value="" data-rel="" -rel2=""
+                            class="mx-2 border text-center w-8"><i class=" fnt_bkg fas fa-minus-square"></i></button>
+                        <input type="number" id="quantity" style="width:30%" name="" value="1" max="100" readonly />
+                        <button type="button" id="add" value=" " data-rel="" -rel2=""
+                            class="mx-2 border text-center w-8"><i class="fas fa-plus-square fnt_bkg"></i></button>
+
+                        <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
+                            <path
+                                d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
+                        </svg>
+                    </div>
+                    <span class="text-center w-1/5 font-semibold text-sm">$400.00</span>
+                    <span class="text-center w-1/5 font-semibold text-sm">$400.00</span>
+                </div>
+
+
+                <a href="#" class="flex font-semibold text-indigo-600 text-sm mt-10">
+
+                    <svg class="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512">
+                        <path
+                            d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" />
+                    </svg>
+                    Continue Shopping
+                </a>
+            </div>
+
+            <div id="summary" class="w-1/4 px-8 py-6">
+
+                <article class="mb-10 px-6 py-16 lg:-mt-6 text-white text-center rounded-lg"
                     style="background-image:linear-gradient(90deg, #a3a8f0 0%, #696fdd 100%);">
 
                     <h5 class="font-bold text-base ">Sub-Total</h5>
                     <h3 class="font-bold pb-4 mt-2 border-b border-gray-100 flex justify-center">
                         <span class="text-3xl ">$300.500CLP</span>
                     </h3>
-                    <h6 class="font-bold text-base ">Costo De Envio</h6>
-                    <h4 class="font-bold pb-4 mt-2 border-b border-gray-100 flex justify-center">
-                        <span class="text-3xl mt-6 mr-1">$20.500CLP</span>
-                    </h4>
+                    <h3 class="font-bold text-xl ">Despacho</h3>
                     <ul class=" text-sm font-bold">
                         <li class="pt-4 pb-4 border-b border-gray-200">Despacho protegido</li>
                         <li class="pt-4 pb-4 border-b border-gray-200">Despacho en menos de 48 Horas</li>
                     </ul>
+                    <h4 class="font-bold pb-4 mt-2 border-b border-gray-100 flex justify-center">
+                        costo de Despacho
+                        <span class="text-3xl mt-6 mr-1">$20.500CLP</span>
+                    </h4>
+
                     <h5 class="font-bold text-base ">Costo Total</h5>
                     <h2 class="flex justify-center pb-4 font-bold border-b border-gray-200">
                         <span class="text-3xl mt-6 mr-1">$</span><span class="text-6xl">399.99</span>
                     </h2>
+
                     <button
                         class="uppercase text-center text-sm mt-12 xl:px-24 px-12 sm:px-16 py-2 rounded-md font-bold text-primary-very-light"
                         style="background-image:linear-gradient(90deg, #a3a8f0 0%, #696fdd 100%);">
                 </article>
-            </section>
+            </div>
+
         </div>
     </div>
 </body>
+
 
 
 

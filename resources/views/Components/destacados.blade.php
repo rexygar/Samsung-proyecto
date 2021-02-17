@@ -26,19 +26,19 @@
                 <!-- ... -->
                 <div class="text-bold text-center col-start-1">
                     <span>Galaxy Note 20</span>
-                    <figure class="image is-16by9 self-center md:w-5/5 lg:w-4/5">
+                    <figure class="image is-16by9 flex flex-wrap justify-center md:w-5/5 lg:w-4/5">
                         <img src="/img/note-20.jpg">
                     </figure>
                 </div>
                 <div class="text-bold text-center">
                     <span>Galaxy Tab s7</span>
-                    <figure class="image is-16by9 self-center md:w-5/5 lg:w-4/5">
+                    <figure class="image is-16by9 flex flex-wrap justify-center md:w-5/5 lg:w-4/5">
                          <img src="/img/Galaxy-Tab-S7.jpg">
                     </figure>
                 </div>
                 <div class="text-bold text-center">
                     <span>Galaxy Watch Active</span>
-                    <figure class="image is-16by9 self-center md:w-5/5 lg:w-4/5">
+                    <figure class="image is-16by9 flex flex-wrap justify-center md:w-5/5 lg:w-4/5">
                          <img src="/img/GalaxyWatchActive_2.jpg">
                     </figure>
                 </div>
