@@ -1,6 +1,3 @@
-@extends('Layouts.Contenido')
-@section('content')
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -53,12 +50,12 @@
     <main class="relative py-16">
 
         <section class="">
-            <div class="container mx-auto px-4">
+            <div class="md:container md:mx-auto container mx-auto px-6 md:px-0">
                 <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6  rounded-lg -mt-64">
-                    <div class="lg:px-6">
+                    <div class="lg:px-6 ">
                         <div class="flex flex-wrap justify-center">
 
-                            <div class="w-full lg:w-full px-4 lg:order-1">
+                            <div class="w-full lg:w-full lg:px-6  lg:order-1">
                                 <div class="justify-items-start md:justify-items-center py-4 lg:pt-4 pt-8">
                                     <div class="container mx-auto lg:w-full md:w-full pt-48">
                                         <div class="">
@@ -83,7 +80,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="container mx-auto">
+                                    <div class="container mx-auto md:px-0">
 
                                         {{-- producto card --}}
                                         <div class="place-self-center">
@@ -101,7 +98,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="container mx-auto">
+                                    <div class="container mx-auto md:px-0">
 
                                         <!-- ... -->
                                         <div class="place-self-center ">
@@ -132,4 +129,4 @@
 
     </main>
 </body>
- 
+@include('Layouts.footer')

@@ -49,7 +49,7 @@
 
 </style>
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<div class="max-w-6xl   mx-auto sm:px-6 lg:px-8">
+<div class="max-w-6xl   mx-auto sm:px-0 lg:px-4">
   <section class=" is-primary is-medium mt-8
     overflow-hidden  sm:rounded-lg">
     <!-- Hero head: will stick at the top -->
@@ -68,7 +68,7 @@
                     <img src="https://pngimg.com/uploads/raincoat/raincoat_PNG53.png"
                       class="w-full h-auto relative z-10 " alt="">
 
-                    <div class="panel-header z-15 tp-50  md:container  md:mx-auto text-center  bg:white" style="z-index: 99;background: transparent;">
+                    <div class="panel-header z-15 tp-50  md:container  md:mx-auto container mx-auto text-center w-full inline-block bg:white" style="z-index: 99;background: transparent;">
                       <span
                         class="material-icons text-xl text-yellow-300">
                         grade
