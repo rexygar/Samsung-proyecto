@@ -13,7 +13,9 @@ class MainController extends Controller
 {
 
     public function index(){
-        return view('Vistas.index');
+        $destacados = DB::connection('sqlsrv')->select("EXEC Ges_Eco_rescatarDestacados");
+        $oferta = DB::connection('sqlsrv')->select("EXEC Ges_Eco_rescatarOferta");
+        return view('Vistas.index')->with(['oferta' => $oferta, 'destacados' => $destacados]);
     }
 
     public function getProductos1($category){
