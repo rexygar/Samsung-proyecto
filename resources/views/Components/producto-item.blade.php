@@ -266,12 +266,9 @@
                                                     <div class="flex flex-wrap">
                                                         <div class="md:w-1/2 px-6 py-6">
                                                             <div class="w-1/2">
-                                                                <a style="display:inline-block;border-width: 1px;
-                                                                    border-style: solid;
-                                                                    border-color: #2473b6;
-                                                       /* background-color: #2473b6" href="{{route('carrito')}}"></a>
+                                                                <button id="carrito" type="button" class="uppercase px-2 py-1 bg-blue-500 text-white max-w-max shadow-sm hover:shadow-lg">Agregar a Carrito</button>
                                                             </div>
-
+                                                            
                                                         </div>
                                                         <div class="md:w-1/2 px-6 py-6">
 
