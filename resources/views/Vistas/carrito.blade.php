@@ -122,6 +122,7 @@
                     <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Precio</h3>
                     <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
                 </div>
+                @foreach ($reserva as $res)
                 <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
                     <div class="flex w-2/5">
                         <!-- product -->
@@ -129,8 +130,9 @@
                             <img class="h-24" src="../uploads/products/1/1.jpg" alt="">
                         </div>
                         <div class="flex flex-col justify-between ml-4 flex-grow">
-                            <span class="font-bold text-sm">Samsung Galaxy J6+</span>
-                            <span class="text-red-500 text-xs">10 en stock</span>
+                            <input type="hidden" id="sku" value="{{ $res->sku }}">
+                            <span class="font-bold text-sm">{{ $res->descripcion }}</span>
+                            <span class="text-red-500 text-xs">{{ $res->reserva }} en stock</span>
                             <div style="height:25px;width:25px;
                             margin:5px;display:inline-block;border-width: 1px;
                                          border-style: solid;
@@ -139,31 +141,33 @@
 
 
                             </div>
-                            <a href="#" class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</a>
+                            <input type="hidden" id="urlQuitar" value="{{ route('carrito.delete') }}">
+                            <a type="button" id="borrar" class="btn font-semibold hover:text-red-500 text-gray-500 text-xs" onclick="eliminar()">Quitar</a>
                         </div>
                     </div>
                     <div class="flex justify-center w-1/5">
-                        <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
-                            <path
-                                d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
-                        </svg>
-                        <button type="button" id="sub" value="" data-rel="" -rel2=""
-                            class="mx-2 border text-center w-8"><i class=" fnt_bkg fas fa-minus-square"></i></button>
-                        <input type="number" id="quantity" style="width:30%" name="" value="1" max="100" readonly />
+                        {{--<button type="button" id="sub" value="" data-rel="" -rel2=""
+                            class="mx-2 border text-center w-8"><svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
+                                <path
+                                    d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
+                            </svg></button>--}}
+                        <input type="number" id="quantity" style="width:30%" name="" min="1" value="1" max="100" disabled />
+                        {{--  
                         <button type="button" id="add" value=" " data-rel="" -rel2=""
-                            class="mx-2 border text-center w-8"><i class="fas fa-plus-square fnt_bkg"></i></button>
+                            class="mx-2 border text-center w-8"><svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
+                                <path
+                                    d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
+                            </svg></button>--}}
 
-                        <svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
-                            <path
-                                d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
-                        </svg>
+                        
                     </div>
-                    <span class="text-center w-1/5 font-semibold text-sm">$400.00</span>
-                    <span class="text-center w-1/5 font-semibold text-sm">$400.00</span>
+                    <span class="text-center w-1/5 font-semibold text-sm" name="precio[]">{{ $res->monto }}</span>
+                    <span class="text-center w-1/5 font-semibold text-sm">{{ $res->monto }}</span>
+                    
                 </div>
+                @endforeach
 
-
-                <a href="#" class="flex font-semibold text-indigo-600 text-sm mt-10">
+                <a href="/" class="flex font-semibold text-indigo-600 text-sm mt-10">
 
                     <svg class="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512">
                         <path
@@ -180,7 +184,7 @@
 
                     <h5 class="font-bold text-base ">Sub-Total</h5>
                     <h3 class="font-bold pb-4 mt-2 border-b border-gray-100 flex justify-center">
-                        <span class="text-3xl ">$300.500CLP</span>
+                        <span class="text-3xl" id="subtotal"></span>
                     </h3>
                     <h3 class="font-bold text-xl ">Despacho</h3>
                     <ul class=" text-sm font-bold">
@@ -189,16 +193,16 @@
                     </ul>
                     <h4 class="font-bold pb-4 mt-2 border-b border-gray-100 flex justify-center">
                         costo de Despacho
-                        <span class="text-3xl mt-6 mr-1">$20.500CLP</span>
                     </h4>
+                    <span class="text-3xl mt-6 mr-1">$20.500CLP</span>
 
                     <h5 class="font-bold text-base ">Costo Total</h5>
                     <h2 class="flex justify-center pb-4 font-bold border-b border-gray-200">
-                        <span class="text-3xl mt-6 mr-1">$</span><span class="text-6xl">399.990</span>
+                        <span class="text-3xl mt-6 mr-1">$</span><span class="text-6xl" id="total">399.990</span>
                     </h2>
-                    <div><a class="uppercase text-center text-sm mt-12 xl:px-24 px-12 sm:px-16 py-2 rounded-md font-bold text-primary-very-light"
-                            style="background-image:linear-gradient(90deg, #a3a8f0 0%, #696fdd 100%);"
-                            href="">Pagar</a></div>
+                        <a class="uppercase text-center text-sm mt-12 xl:px-24 px-12 sm:px-16 py-2 rounded-md font-bold text-primary-very-light"
+                        style="background-image:linear-gradient(90deg, #a3a8f0 0%, #696fdd 100%);"
+                        href="">Pagar</a>
 
                 </article>
             </div>
@@ -413,3 +417,7 @@
     }
 
 </script>
+
+<script src="{{ asset('js/carrito.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('js/toastr/toastr.min.css') }}">
+<script src="{{ asset('js/toastr/toastr.js') }}"></script>

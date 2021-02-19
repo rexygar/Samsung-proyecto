@@ -8,16 +8,16 @@
     <div class="grid grid-cols-1 gap-2 place-content-center ">
       <div class="mt-8   sm:rounded-lg">
         <div class="grid grid-cols-1 gap-2 place-content-center">
-          <div class="text-center text-gray-600  uppercase text-2xl font-bold">Lo mas visto</div>
+          <div class="text-center  uppercase text-2xl tracking-wide text-black font-bold  pb-2">Lo mas visto</div>
         </div>
 
         <div class="grid grid-cols-3 gap-2 place-content-center">
           <div class="">
-            <hr class="border-2 border-blue-300 bg-blue-300">
+            <hr class="border-hr border-blue-300 bg-blue-300">
           </div>
-          <div class="px-4">TecnoStore</div>
+          <div class="px-4">TecnoBuy</div>
           <div class="">
-            <hr class="border-2 border-blue-300 bg-blue-300">
+            <hr class="border-hr border-blue-300 bg-blue-300">
           </div>
 
         </div>

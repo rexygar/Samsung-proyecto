@@ -8,16 +8,16 @@
     <div class="grid grid-cols-1 gap-2 place-content-center">
       <div class="mt-8  sm:rounded-lg">
         <div class="grid grid-cols-1 gap-2 place-content-center">
-          <div class="text-center uppercase text-gray-600  text-2xl font-bold">Lo mas vendido</div>
+          <div class="text-center uppercase tracking-wide text-2xl text-black font-bold   pb-2">Lo mas vendido</div>
         </div>
 
         <div class="grid grid-cols-3 gap-2 place-content-center">
-          <div class="">
-            <hr class="border-2 border-blue-300 bg-blue-300">
+          <div class="col-span-1">
+            <hr class="border-hr border-blue-300 bg-blue-300">
           </div>
-          <div class="px-4">TecnoStore</div>
-          <div class="">
-            <hr class="border-2 border-blue-300 bg-blue-300">
+          <div class="px-4 col-span-1">TecnoBuy</div>
+          <div class=" col-span-1">
+            <hr class="border-hr border-blue-300 bg-blue-300">
           </div>
 
         </div>

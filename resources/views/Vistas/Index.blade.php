@@ -21,6 +21,9 @@
         body {
             font-family: 'Nunito';
         }
+        .border-hr {
+    border-width: 1.1px;
+}
     </style>
 </head>
 
@@ -28,7 +31,7 @@
 @include('Components.Megamenu')
 
 <body class="leading-normal tracking-normal text-gray-900 antialiased"
-    style="font-family: 'Source Sans Pro', sans-serif; ">
+    style="font-family: 'Source Sans Pro', sans-serif; background-color: #F8F1F1">
     {{-- <div
         class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
         @if (Route::has('login'))
@@ -47,85 +50,86 @@
     {{-- inicio pag  --}}
 
     <!--Nav-->
-    <main class="relative py-16">
+    <main class="relative -mt-64">
 
-        <section class="">
-            <div class="md:container md:mx-auto container mx-auto px-6 md:px-0">
-                <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6  rounded-lg -mt-64">
-                    <div class="lg:px-6 ">
-                        <div class="flex flex-wrap justify-center">
+        <div class="md:px-0 lg:px-0">
+            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6  rounded-lg -mt-65">
+                <div class="flex flex-wrap justify-center">
 
-                            <div class="w-full lg:w-full lg:px-6  lg:order-1">
-                                <div class="justify-items-start md:justify-items-center py-4 lg:pt-4 pt-8">
-                                    <div class="container mx-auto lg:w-full md:w-full pt-48">
-                                        <div class="">
-                                            <!-- ... -->
-                                            <div class="place-self-center ">
-                                                @include('Components.carousel')
-                                            </div>
-                                        </div>
+                    <div class="md:w-full lg:w-full">
+                        <div class="justify-items-start md:justify-items-center lg:pt-4 pt-4">
+                            <div class="lg:w-full md:w-full pt-48">
+                                <div class="">
+                                    <!-- ... -->
+                                    <div class="place-self-center ">
+                                        @include('Components.carousel')
                                     </div>
-                                    <div class="container mx-auto lg:w-full md:w-full">
-                                        <div class="">
-                                            <!-- ... -->
-                                            <div class="place-self-center ">
-                                                @include('Components.destacados')
-                                            </div>
-                                        </div>
+                                </div>
+                            </div>
+                            <div class="lg:w-full md:w-full lg:-mt-10   md:pr-0">
+                                <div class="">
+                                    <!-- ... -->
+                                    <div class="place-self-center ">
+                                        @include('Components.destacados')
                                     </div>
-                                    <div class="container mx-auto">
-                                        <div class="grid grid-cols-1 lg:grid-cols-1 gap-4 lg:gap-8">
-                                            <div class="place-self-center ">
-                                                @include('Components.loMvendido')
-                                            </div>
-                                        </div>
+                                </div>
+                            </div>
+                            <div class="container mx-auto">
+                                <div class="grid grid-cols-1 lg:grid-cols-1 gap-4 lg:gap-8">
+                                    <div class="place-self-center ">
+                                        @include('Components.loMvendido')
                                     </div>
-                                    <div class="container mx-auto md:px-0">
+                                </div>
+                            </div>
+                            <div class="container mx-auto md:px-0">
 
-                                        {{-- producto card --}}
-                                        <div class="place-self-center">
-                                            @include('Components.producto-index')
-                                        </div>
-                                        {{-- end producto card --}}
+                                {{-- producto card --}}
+                                <div class="place-self-center">
+                                    @include('Components.producto-index')
+                                </div>
+                                {{-- end producto card --}}
 
 
+                            </div>
+                            <div class="container mx-auto lg:w-full md:w-full">
+                                <div class="grid grid-cols-1 lg:grid-cols-1 gap-4 lg:gap-8">
+                                    <!-- ... -->
+                                    <div class="place-self-center ">
+                                        @include('Components.loMvisto')
                                     </div>
-                                    <div class="container mx-auto lg:w-full md:w-full">
-                                        <div class="grid grid-cols-1 lg:grid-cols-1 gap-4 lg:gap-8">
-                                            <!-- ... -->
-                                            <div class="place-self-center ">
-                                                @include('Components.loMvisto')
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="container mx-auto md:px-0">
+                                </div>
+                            </div>
+                            <div class="container mx-auto md:px-0">
 
-                                        <!-- ... -->
-                                        <div class="place-self-center ">
-                                            @include('Components.producto-index')
-                                        </div>
+                                <!-- ... -->
+                                <div class="place-self-center ">
+                                    @include('Components.producto-index')
+                                </div>
 
-                                    </div>
+                            </div>
 
 
-                                    <div class="container mx-auto px-36 py-16">
+                            <div class=" px-16 py-16">
 
-                                        <hr class="self-center border-2 border-gray-600 bg-gray-600 w-5/5">
+                                <hr class="self-center border-hr border-gray-600 bg-gray-600 w-5/5">
 
-                                    </div>
-                                    <div class="container mx-auto">
+                            </div>
+                            <div class="">
 
-                                        {{-- producto card --}}
-                                        <div class="place-self-center">
-                                            @include('Components.trade-in')
-                                        </div>
-                                        {{-- end producto card --}}
-
-
-                                    </div>
+                                {{-- producto card --}}
+                                <div class="place-self-center">
+                                    @include('Components.trade-in')
+                                </div>
+                                {{-- end producto card --}}
 
 
-        </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
 
     </main>
 </body>

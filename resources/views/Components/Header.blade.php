@@ -23,10 +23,10 @@
 
         </a>
         <div class="w-full">
-          <ul class="flex justify-end">
+          <ul class="flex lg:justify-end md:justify-start">
             <li class="mr-6">
               <a class="text-blue-500 hover:text-blue-800" href="/">
-                <img src="{{ asset('img/logo_tecno.png') }}" class="w-48">
+                <img src="{{ asset('img/logo_tecno.png') }}" class="w-48 md:w-24 ">
               </a>
             </li>
             <!-- <li class="mr-6">

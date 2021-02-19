@@ -1,17 +1,17 @@
 
 @foreach($Productos as $p)
 <!-- component -->
-<div class="container  mx-auto px-4 ">
+<div class="container  mx-auto px-4 " >
     <div class="flex flex-wrap  grid grid-rows-1 md:grid-rows-1">
 
         <!-- Column -->
-        <div class="my-1 px-1 w-full  md:w-full lg:my-4 lg:px-4 lg:w-full">
+        <div class="my-1 px-1 w-full  md:w-full lg:my-4 lg:px-4 lg:w-full ">
 
             <!-- Article -->
             <article class="overflow-hidden rounded-lg shadow-lg">
 
                 <a href="{{ URL('/') }}/Product/{{ $p->SKU }}">
-                    <img alt="Placeholder" class="block h-auto w-full" src="https://pngimg.com/uploads/raincoat/raincoat_PNG53.png">
+                    <img alt="Placeholder" class="block h-auto w-full" src="https://via.placeholder.com/360x360?text=Tecnobuy.cl">
                 </a>
 
                 <header class="flex items-center justify-between leading-tight p-2 md:p-4">
@@ -22,7 +22,7 @@
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
-                                    <i class="fa fa-star-o"></i>
+                                    <i class="fa fa-star"></i>
                                     (1)
                                 </div>
                           {{ $p->Descripcion }}

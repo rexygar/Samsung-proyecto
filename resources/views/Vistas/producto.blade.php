@@ -1,5 +1,3 @@
-@extends('Layouts.Contenido')
-@section('content')
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
@@ -19,17 +17,44 @@
     <link href="{{ asset('css/layouts.css') }}" rel="stylesheet">
     <link href="{{ asset('css/hero-backgrounds.css') }}" rel="stylesheet">
     <link href="{{ asset('css/Megamenu.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/swiper-bundle.min.css') }}" rel="stylesheet">
+    {{-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" /> --}}
 
     <style>
         body {
             font-family: 'Nunito';
         }
     </style>
+    <style>
+        .swiper-container {
+            width: 100%;
+            height: auto;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .swiper-slide {
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gallery-thumbs {
+            height: 20%;
+            box-sizing: border-box;
+            padding: 10px 0;
+        }
+
+        .gallery-thumbs .swiper-slide {
+            height: 100%;
+            opacity: 0.4;
+        }
+
+        .gallery-thumbs .swiper-slide-thumb-active {
+            opacity: 1;
+        }
+    </style>
 </head>
-<script src="{{ asset('js/lib/jquery.js') }}"></script>
-<script src="{{ asset('js/dist/jquery.validate.js') }}"></script>
-<script data-require="jquery@3.1.1" data-semver="3.1.1"
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
 
 <link type="text/css" rel="stylesheet" href="{{ asset('css/style_for_quantity.css') }}" />
 
@@ -102,9 +127,9 @@
     <!-- /row -->
 
     <!-- /container -->
-    <section class="relative py-16 bg-gray-300 py-0">
-        <div class="container mx-auto px-4">
-            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
+    <section class="relative bg-gray-300">
+        <div class="container mx-auto">
+            <div class="relative flex flex-col min-w-0 break-words bg-white w-full ">
                 <div class="px-6">
                     <div class="flex flex-wrap justify-center">
 
@@ -130,15 +155,14 @@
                 </div>
             </div>
         </div>
-    </section>
-    <section class="relative py-16 bg-gray-300 py-0">
-        <div class="container mx-auto px-4">
-            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg -mt-64">
+
+        <div class="container mx-auto">
+            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 ">
                 <div class="px-6">
                     <div class="flex flex-wrap justify-center">
 
                         <div class="w-full lg:w-full px-4 lg:order-1">
-                            <div class="justify-items-start md:justify-items-center py-4 lg:pt-4 pt-8">
+                            <div class="justify-items-start md:justify-items-center  lg:pt-4 pt-8">
 
                                 <section class="relative py-20">
 
@@ -166,7 +190,52 @@
     <div style="height:50px;background-color:#250a0a"></div>
 
     <!--JQUERY Validation-->
+    <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('js/swiper-bundle.min.js') }}"></script>
+    {{-- <script src="{{ asset('js/lib/jquery.js') }}"></script>
+<script src="{{ asset('js/dist/jquery.validate.js') }}"></script>
 
+
+<script data-require="jquery@3.1.1" data-semver="3.1.1"
+    src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> --}}
+    {{-- <script src="{{ asset('js/swiper-bundle.min.js') }}"></script> --}}
+    {{-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> --}}
+
+    <script>
+        //initialize swiper when document ready 
+        $(document).ready(function () {
+            var galleryThumbs = new Swiper('.gallery-thumbs', {
+      slidesPerView: 2,
+      spaceBetween:10,
+      loopedSlides: 3,
+      loop: true,
+      direction: 'vertical',
+      clickable: true,
+      freeMode: true,
+      watchSlidesVisibility: true,
+      watchSlidesProgress: true,
+    });
+        //initialize swiper when document ready
+        var mySwiper = new Swiper ('.swiper-container', {
+        // Optional parameters
+        spaceBetween: 10,
+        clickable: true,
+        slidesPerView: 1,
+      loopedSlides: 3,
+        direction: 'horizontal',
+        // centeredSlides: true
+        mousewheel: true,     navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+        loop: true,
+      thumbs: {
+        swiper: galleryThumbs,
+      },
+
+    })
+});
+    </script>
 
     <script>
         //////////////////////////////////////
@@ -190,6 +259,7 @@
 
     });
 
+   
     $('.add').click(function () {
 
         $(this).prev().val(+$(this).prev().val() + 1);
@@ -202,7 +272,6 @@
     });
 
     </script>
-
 
     <!--/JQUERY Validation-->
     <!-- /SECTION -->
