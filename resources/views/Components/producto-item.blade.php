@@ -287,3 +287,6 @@
     </section>
     <script src="https://use.fontawesome.com/5a91d57253.js"></script>
 </main>
+<script src="{{ asset('js/producto.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('js/toastr/toastr.min.css') }}">
+<script src="{{ asset('js/toastr/toastr.js') }}"></script>
