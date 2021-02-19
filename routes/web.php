@@ -50,9 +50,6 @@ Route::get('/fil', function () {
 Route::get('/bread', function () {
     return view('Components.breadcrumbs');
 });
-Route::get('/', function () {
-    return view('Vistas.index');
-});
 Route::get('/producto', function () {
     return view('Vistas.producto');
 });

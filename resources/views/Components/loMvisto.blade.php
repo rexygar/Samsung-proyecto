@@ -8,7 +8,7 @@
     <div class="grid grid-cols-1 gap-2 place-content-center ">
       <div class="mt-8   sm:rounded-lg">
         <div class="grid grid-cols-1 gap-2 place-content-center">
-          <div class="text-center  uppercase text-2xl tracking-wide text-black font-bold  pb-2">Lo mas visto</div>
+          <div class="text-center  uppercase text-2xl tracking-wide text-black font-bold  pb-2">Productos en oferta</div>
         </div>
 
         <div class="grid grid-cols-3 gap-2 place-content-center">
