@@ -1,9 +1,23 @@
 $(document).ready(function(){
+    
+    $("#cantidad").on("change", function () {
+        cantidad = parseInt($("#cantidad").val());
+        stock = parseInt($("#stock").val());
+
+        if (cantidad <= 0) {
+            $("#cantidad").val("1");
+        }
+
+        if (cantidad > stock) {
+            $("#cantidad").val($("#stock").val());
+        }
+    });
+    
     $('#carrito').on('click', function(){
         var url = $('#urlCarrito').val();
         var urlRed = $('#urlRedireccion').val();
         var sku = $('#id_producto').val();
-        var cant = $('#stock').val();
+        var cant = $('#cantidad').val();
         var col = $('input:radio[name=color_group]:checked').val();
         var monto = $('#precio').val();
         var descripcion = $('#descripcion').val();

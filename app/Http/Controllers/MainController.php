@@ -158,20 +158,23 @@ class MainController extends Controller
         if($request->ajax()){
             try {
                 $idPago = session('idPago');
+                
                 $sku = (isset($request->sku) && $request->sku != null) ? $request->sku : '';
+                
                 $reserva = Reserva::where('idTransaccion',$idPago)->where('sku', $sku)->first();
                 $reserva->delete();
-
+                /*
                 $monto = Reserva::where('idTransaccion', $idPago)->sum('monto');
-
+                
                 $tt = Transaccion::where('id', $idPago)->first();
                 if($monto > 0){
                     $pago = $this->TransbankController->initTransaction($monto, $tt->order, $idPago);
                 }else{
                     $pago = null;
                 }
+                */
                 
-                return ['status' => 0, 'Pago' => $pago];
+            return ['status' => 0 /*, 'Pago' => $pago*/];
             } catch (\Throwable $th) {
                 return ['status' => 1];
             }

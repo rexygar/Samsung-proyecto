@@ -207,6 +207,18 @@
                                                                     COLORES DISPONIBLES
                                                                 </p>
                                                             </div>
+                                                            <div class="md:w-1/2 lg:w-1/3 md:px-6 px-6 flex py-6 justify-center"
+                                                                style="background: white;">
+                                                                <input type="number" id="cantidad"
+                                                                    style="outline:none;appearance: none;"
+                                                                    value="">
+                                                            </div>
+                                                            <div class="md:w-1/2 lg:w-1/2 lg:px-6 md:px-0 py-6">
+                                                                <p
+                                                                    class=" md:pl-2 text-base md:text-sm leading-relaxed md:w-full md:pb-4 text-black">
+                                                                    CANTIDAD
+                                                                </p>
+                                                            </div>
                                                         </div>
                                                         <div class="flex flex-wrap py-12">
                                                             <div class="md:w-auto lg:w-1/2 ">
