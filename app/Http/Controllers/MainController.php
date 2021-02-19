@@ -83,14 +83,27 @@ class MainController extends Controller
     public function addCarrito(Request $request){
         if($request->ajax()){
             try {
-                $idPago = session('idPago');
+                $idPago = 0;
+                if(session()->has('idPago')){
+                    $idPago = session('idPago');
+                } 
+
+                $sku = (isset($request->sku) && $request->sku != null) ? $request->sku : '';
+                $cant = (isset($request->cant) && $request->cant != null) ? $request->cant : 0;
+                $color = (isset($request->col) && $request->col != null) ? $request->col : '';
+                $monto = (isset($request->monto) && $request->monto != null) ? $request->monto : 0;
+                $descripcion = (isset($request->descripcion) && $request->descripcion != null) ? $request->descripcion : '';
+
                 if($idPago > 0){
                     $reserva = new Reserva();
-                
-                    $reserva->sku = $request->sku;
-                    $reserva->reserva = $request->cantidad;
+                    
+                    $reserva->sku = $sku;
+                    $reserva->reserva = $cant;
+                    $reserva->Cod_EstiloColor = $color;
+                    $reserva->monto = $monto;
+                    $reserva->descripcion = $descripcion;
                     $reserva->idTransaccion = $idPago;
-                
+
                     $reserva->save();
                 }else{
                     $pago = new Transaccion();
@@ -99,8 +112,11 @@ class MainController extends Controller
                 
                     $reserva = new Reserva();
                 
-                    $reserva->sku = $request->sku;
-                    $reserva->reserva = $request->cantidad;
+                    $reserva->sku = $sku;
+                    $reserva->reserva = $cant;
+                    $reserva->Cod_EstiloColor = $color;
+                    $reserva->monto = $monto;
+                    $reserva->descripcion = $descripcion;
                     $reserva->idTransaccion = $pago->id;
                 
                     $reserva->save();
@@ -130,7 +146,7 @@ class MainController extends Controller
 
         $reserva = Reserva::where('idTransaccion', $idPago)->get();
         
-        return [$reserva, $pago];        
+        return view('Vistas.carrito', ['reserva' => $reserva, 'pago' => $pago]);        
     }
 
     // REQUEST =  sku (in aJAX)
