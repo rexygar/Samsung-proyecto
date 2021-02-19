@@ -9,67 +9,72 @@
   <div class="">
     <div class="grid grid-cols-3">
 
-      <div class="lg:w-full col-span-2  px-0">
-        <div class="lg:w-full md:px-1">
-          <span class="block uppercase text-gray-700 md:w-1/6 text-sm font-semibold mb-2">Categorias</span>
-          <ul class="list-unstyled w-1/6" style="border-right: black solid 1px;">
-            <li>
-              <a class="text-gray-500 hover:text-gray-900 md:w-1/6 font-semibold pb-2 text-sm"
-                href="https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md">Samrtphone</a>
-            </li>
-            <li>
-              <a class="text-gray-500 hover:text-gray-900 md:w-1/6 font-semibold pb-2 text-sm"
-                href="https://creative-tim.com/terms">Smartwatches</a>
-            </li>
-            <li>
-              <a class="text-gray-500 hover:text-gray-900 md:w-1/6 font-semibold pb-2 text-sm"
-                href="https://creative-tim.com/privacy">Tablets</a>
-            </li>
-            <li>
-              <a class="text-gray-500 hover:text-gray-900 md:w-1/6 font-semibold pb-2 text-sm"
-                href="https://creative-tim.com/contact-us">Audio</a>
-            </li>
-            <li>
-              <a class="text-gray-500 hover:text-gray-900 md:w-1/6 font-semibold pb-2 text-sm"
-                href="https://creative-tim.com/contact-us">Promociones</a>
-            </li>
-          </ul>
-        </div>
-        <div class="lg:w-full md:px-1">
-          <span class="block uppercase text-gray-700 md:w-1/6 text-sm font-semibold mb-2">Trade In</span>
-          <ul class="list-unstyled w-1/6" style="border-right: black solid 1px;">
-            <li>
-              <a class="text-gray-500 hover:text-gray-900 md:w-1/6 font-semibold pb-2 text-sm"
-                href="https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md">¿Cómo
-                Funciona?</a>
-            </li>
-            <li>
-              <a class="text-gray-500 hover:text-gray-900 md:w-1/6 font-semibold pb-2 text-sm"
-                href="https://creative-tim.com/terms">¿Qué Equipo?</a>
-            </li>
-            <li>
-              <a class="text-gray-500 hover:text-gray-900 md:w-1/6 font-semibold pb-2 text-sm"
-                href="https://creative-tim.com/privacy">Requisitos</a>
-            </li>
-          </ul>
-        </div>
-        <div class="lg:w-full md:px-1">
-          <span class="block uppercase text-gray-700 md:w-1/6 text-sm font-semibold mb-2">Soporte</span>
-          <ul class="list-unstyled w-1/6" style="border-right: black solid 1px;">
-            <li>
-              <a class="text-gray-500 hover:text-gray-900 md:w-1/6 font-semibold pb-2 text-sm"
-                href="https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md">Chat de
-                Soporte</a>
-            </li>
-            <li>
-              <a class="text-gray-500 hover:text-gray-900 md:w-1/6 font-semibold pb-2 text-sm"
-                href="https://creative-tim.com/terms">Email de Soporte</a>
-            </li>
-            <li>
-              <a class="text-gray-500 hover:text-gray-900 md:w-1/6 font-semibold pb-2 text-sm"
-                href="https://creative-tim.com/privacy">Telefono de Soporte</a>
-            </li>
-          </ul>
+      <div class="lg:w-full col-span-2  ld:px-16">
+        <div class="grid grid-cols-3">
+          <div class="lg:w-full md:px-1 grid-cols-1 md:w-full">
+            <span class="block uppercase text-gray-700 md:w-5/6 text-sm pl-5 font-semibold mb-2 "
+              style="border-right: black solid 1px;">Categorias</span>
+            <ul class="list-unstyled w-5/6 pl-5" style="border-right: black solid 1px;">
+              <li>
+                <a class="text-gray-500 hover:text-gray-900 md:w-3/6 font-semibold pb-2 text-sm"
+                  href="https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md">Smartphone</a>
+              </li>
+              <li>
+                <a class="text-gray-500 hover:text-gray-900 md:w-3/6 font-semibold pb-2 text-sm"
+                  href="https://creative-tim.com/terms">Smartwatches</a>
+              </li>
+              <li>
+                <a class="text-gray-500 hover:text-gray-900 md:w-3/6 font-semibold pb-2 text-sm"
+                  href="https://creative-tim.com/privacy">Tablets</a>
+              </li>
+              <li>
+                <a class="text-gray-500 hover:text-gray-900 md:w-3/6 font-semibold pb-2 text-sm"
+                  href="https://creative-tim.com/contact-us">Audio</a>
+              </li>
+              <li>
+                <a class="text-gray-500 hover:text-gray-900 md:w-3/6 font-semibold pb-2 text-sm"
+                  href="https://creative-tim.com/contact-us">Promociones</a>
+              </li>
+            </ul>
+          </div>
+          <div class="lg:w-full md:px-1 grid-cols-1 md:w-full">
+            <span class="block uppercase text-gray-700 md:w-5/6 text-sm pl-5 font-semibold mb-2 "
+              style="border-right: black solid 1px;">Trade In</span>
+            <ul class="list-unstyled w-5/6 pl-5" style="border-right: black solid 1px;">
+              <li>
+                <a class="text-gray-500 hover:text-gray-900 md:w-3/6 font-semibold pb-2 text-sm"
+                  href="https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md">¿Cómo
+                  Funciona?</a>
+              </li>
+              <li>
+                <a class="text-gray-500 hover:text-gray-900 md:w-3/6 font-semibold pb-2 text-sm"
+                  href="https://creative-tim.com/terms">¿Qué Equipo?</a>
+              </li>
+              <li>
+                <a class="text-gray-500 hover:text-gray-900 md:w-3/6 font-semibold pb-2 text-sm"
+                  href="https://creative-tim.com/privacy">Requisitos</a>
+              </li>
+            </ul>
+          </div>
+          <div class="lg:w-full md:px-1 grid-cols-1 md:w-full">
+            <span class="block uppercase text-gray-700 md:w-5/6 text-sm pl-5 font-semibold mb-2 "
+              style="border-right: black solid 1px;">Soporte</span>
+            <ul class="list-unstyled w-5/6 pl-5" style="border-right: black solid 1px;">
+              <li>
+                <a class="text-gray-500 hover:text-gray-900 md:w-3/6 font-semibold pb-2 text-sm"
+                  href="https://github.com/creativetimofficial/argon-design-system/blob/master/LICENSE.md">Chat de
+                  Soporte</a>
+              </li>
+              <li>
+                <a class="text-gray-500 hover:text-gray-900 md:w-3/6 font-semibold pb-2 text-sm"
+                  href="https://creative-tim.com/terms">Email de Soporte</a>
+              </li>
+              <li>
+                <a class="text-gray-500 hover:text-gray-900 md:w-3/6 font-semibold pb-2 text-sm"
+                  href="https://creative-tim.com/privacy">Telefono de Soporte</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
       <div class="lg:w-full col-span-1 px-4">

@@ -25,10 +25,10 @@
                                             </polygon>
                                         </svg> --}}
                                     </div>
-                                    @for ($i = 0; $i < 1; $i++) <div class="container lg:mx-auto">
-                                        <div class="grid grid-cols-7 md:grid-cols-7  gap-4 ">
-                                            <div class="grid-rows-1 row-span-2 col-span-1 w-1/2">
-                                                <div class="swiper-container gallery-thumbs">
+                                    @for ($i = 0; $i < 1; $i++) <div class="lg:container lg:mx-auto">
+                                        <div class="grid grid-cols-7 md:grid-cols-7">
+                                            <div class="grid-rows-1 row-span-2  md:w-5/6 col-span-1 w-1/2">
+                                                <div class="swiper-container  md:w-5/6 gallery-thumbs">
                                                     <div class="swiper-wrapper">
                                                         <div class="swiper-slide" style="height: auto;width: auto;">
                                                             <img alt="..." class="pb-12"
@@ -54,28 +54,28 @@
                                                 </div>
                                             </div>
 
-                                            <div class="w-full md:w-full col-span-3 ml-auto mr-auto lg:px-4 md:pr-36">
-                                                <div class="swiper-container row-span-full">
+                                            <div class="w-full md:w-full col-span-3 ml-auto mr-auto lg:px-4 ">
+                                                <div class="swiper-container  md:w-5/6 row-span-full">
                                                     <!-- Additional required wrapper -->
                                                     <div class="swiper-wrapper">
                                                         <!-- Slides -->
                                                         <div class="swiper-slide align-middle"> <img alt="..."
-                                                                class="lg:max-w-full align-middle md:max-w-md"
+                                                                class="lg:max-w-full align-middle "
                                                                 src="../uploads/products/1/1.jpg" /></div>
                                                         <div class="swiper-slide align-middle"> <img alt="..."
-                                                                class="lg:max-w-full align-middle md:max-w-md"
+                                                                class="lg:max-w-full align-middle "
                                                                 src="../uploads/products/3/1.jpg" /></div>
                                                         <div class="swiper-slide align-middle"> <img alt="..."
-                                                                class="lg:max-w-full align-middle md:max-w-md"
+                                                                class="lg:max-w-full align-middle "
                                                                 src="../uploads/products/1/1.jpg" /></div>
                                                         <div class="swiper-slide align-middle"> <img alt="..."
-                                                                class="lg:max-w-full align-middle md:max-w-md"
+                                                                class="lg:max-w-full align-middle "
                                                                 src="../uploads/products/2/1.jpg" /></div>
                                                         <div class="swiper-slide align-middle"> <img alt="..."
-                                                                class="lg:max-w-full align-middle md:max-w-md"
+                                                                class="lg:max-w-full align-middle "
                                                                 src="../uploads/products/2/1.jpg" /></div>
                                                         <div class="swiper-slide align-middle"> <img alt="..."
-                                                                class="lg:max-w-full align-middle md:max-w-md"
+                                                                class="lg:max-w-full align-middle "
                                                                 src="../uploads/products/3/1.jpg" /></div>
                                                     </div>
                                                     <!-- If we need pagination -->
@@ -98,7 +98,7 @@
 
                                                 <div
                                                     class="w-full md:min-w-full ml-auto mr-auto col-span-2  lg:px-4 md:px-0">
-                                                    <div class="md:pr-6 md:-mr-16 lg:pr-16">
+                                                    <div class="md:pr-6 lg:pr-16">
                                                         <h3 class="text-5xl md:text-4xl font-bold text-gray-50">
                                                             {{$product->Descripcion}}</h3>
                                                         <p class=" text-lg leading-relaxed  text-gray-50">
@@ -267,7 +267,7 @@
                                                     </div>
                                                     <div class="flex flex-wrap">
                                                         <div class="md:w-1/2 px-6 py-6">
-                                                            <div class="w-1/2">
+                                                            <div class="w-1/2 md:w-full">
                                                                 <button id="carrito" type="button" class="uppercase px-2 py-1 bg-blue-500 text-white max-w-max shadow-sm hover:shadow-lg">Agregar a Carrito</button>
                                                             </div>
                                                             
