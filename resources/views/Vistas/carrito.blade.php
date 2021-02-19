@@ -199,10 +199,11 @@
                     <h2 class="flex justify-center pb-4 font-bold border-b border-gray-200">
                         <span class="text-3xl mt-6 mr-1">$</span><span class="text-6xl" id="total">399.990</span>
                     </h2>
-                        <a id="pay" class="uppercase text-center text-sm mt-12 xl:px-24 px-12 sm:px-16 py-2 rounded-md font-bold text-primary-very-light"
-                        style="background-image:linear-gradient(90deg, #a3a8f0 0%, #696fdd 100%);"
-                        href="">Pagar</a>
-
+                    <form action="{{ $pago['url'] }}" method="POST">
+                        <input type="hidden" name="token_ws" id="token_ws" value="{{ $pago['token'] }}">
+                        <button type="submit" id="pay" class="uppercase text-center text-sm mt-12 xl:px-24 px-12 sm:px-16 py-2 rounded-md font-bold text-primary-very-light"
+                        style="background-image:linear-gradient(90deg, #a3a8f0 0%, #696fdd 100%);">Pagar</button>
+                    </form>
                 </article>
             </div>
 

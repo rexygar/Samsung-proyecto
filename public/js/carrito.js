@@ -35,7 +35,7 @@ $(document).ready(function(){
     if ($('#product').length) {
         // si existe
       } else {
-        document.getElementById("pay").removeAttribute("href");
+        $('#pay').attr('disabled', true);
       }
 
 })
