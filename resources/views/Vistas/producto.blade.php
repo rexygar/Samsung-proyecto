@@ -137,7 +137,7 @@
                         <div class="w-full lg:w-full px-4 lg:order-1">
                             <div class="justify-items-start md:justify-items-center py-4 lg:pt-4 pt-8">
 
-                                <section class="relative py-20  lg:mx-auto lg:container">
+                                <section class="relative">
 
                                     <div id="flix-inpage"></div>
                                     <script type="text/javascript" src="//media.flixfacts.com/js/loader.js"

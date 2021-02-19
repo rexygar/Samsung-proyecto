@@ -15,7 +15,7 @@
                             <div class="justify-items-start md:justify-items-center py-4 lg:pt-4 pt-8">
 
 
-                                <section class="relative py-20 ">
+                                <section class="relative py-20 pb-16 ">
                                     <div class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                                         style="height: 80px; transform: translateZ(0px);">
                                         {{-- <svg class="absolute bottom-0 overflow-hidden"
@@ -174,7 +174,7 @@
                                                             </li>
                                                         </ul>
                                                         <h3 class="text-5xl font-extrabold text-gray-50 pb-4">
-                                                            ${{$product->Precio}}</h3>
+                                                            ${{ number_format($product->Precio, 0, ',', '.') }}</h3>
                                                         <input type="hidden" id="precio" value="{{ $product->Precio }}">
                                                         <div class="flex flex-wrap">
                                                             {{ csrf_field() }}
@@ -207,18 +207,7 @@
                                                                     COLORES DISPONIBLES
                                                                 </p>
                                                             </div>
-                                                            <div class="md:w-1/2 lg:w-1/3 md:px-6 px-6 flex py-6 justify-center"
-                                                                style="background: white;">
-                                                                <input type="number" id="cantidad"
-                                                                    style="outline:none;appearance: none;"
-                                                                    value="">
-                                                            </div>
-                                                            <div class="md:w-1/2 lg:w-1/2 lg:px-6 md:px-0 py-6">
-                                                                <p
-                                                                    class=" md:pl-2 text-base md:text-sm leading-relaxed md:w-full md:pb-4 text-black">
-                                                                    CANTIDAD
-                                                                </p>
-                                                            </div>
+
                                                         </div>
                                                         <div class="flex flex-wrap py-12">
                                                             <div class="md:w-auto lg:w-1/2 ">
@@ -280,11 +269,20 @@
                                                     <div class="flex flex-wrap">
                                                         <div class="md:w-1/2 px-6 py-6">
                                                             <div class="w-1/2 md:w-full">
-                                                                <button id="carrito" type="button" class="uppercase px-2 py-1 bg-blue-500 text-white max-w-max shadow-sm hover:shadow-lg">Agregar a Carrito</button>
+                                                                <button id="carrito" type="button"
+                                                                    class="uppercase px-2 py-1 bg-blue-500 text-white max-w-max shadow-sm hover:shadow-lg">Agregar
+                                                                    a Carrito</button>
                                                             </div>
-                                                            
+
                                                         </div>
                                                         <div class="md:w-1/2 px-6 py-6">
+
+                                                            <input type="number" id="cantidad"
+                                                                style="outline:none;appearance: none;" min="1" value="">
+                                                            <p
+                                                                class=" md:pl-2 text-base md:text-sm leading-relaxed md:w-full md:pb-4 text-black">
+                                                                CANTIDAD
+                                                            </p>
 
                                                         </div>
                                                     </div>
@@ -294,10 +292,15 @@
 
                                         </form>
 
+                                        @endfor
+                                </section>
 
                             </div>
                         </div>
-                        @endfor
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <script src="https://use.fontawesome.com/5a91d57253.js"></script>
 </main>
