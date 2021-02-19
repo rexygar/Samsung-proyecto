@@ -93,6 +93,8 @@
                                             <form method="get" action="" class="col-span-3 ">
                                                 <input type="hidden" id="urlCarrito" value="{{ route('carrito.add') }}">
                                                 <input type="hidden" id="urlRedireccion" value="{{ route('carrito') }}">
+                                                <input type="hidden" id="descripcion" name="descripcion"
+                                                    value="{{$product->Descripcion}}">
 
                                                 <div
                                                     class="w-full md:min-w-full ml-auto mr-auto col-span-2  lg:px-4 md:px-0">
