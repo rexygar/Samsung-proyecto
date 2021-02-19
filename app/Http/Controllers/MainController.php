@@ -137,14 +137,18 @@ class MainController extends Controller
         }else{
             session(['idPago' => $idPago]);
         }
-
-        if($idPago > 0){
-            $monto = Reserva::where('idTransaccion', $idPago)->sum('monto');
-            $order = '54879644';
-            $pago = $this->TransbankController->initTransaction($monto,$order, $idPago);
+        $reserva = Reserva::where('idTransaccion', $idPago)->get();
+        if(count($reserva) > 0){
+            if($idPago > 0){
+                $monto = Reserva::where('idTransaccion', $idPago)->sum('monto');
+                $order = '54879644';
+                $pago = $this->TransbankController->initTransaction($monto,$order, $idPago);
+            }
+        }else{
+            $pago = null;
         }
 
-        $reserva = Reserva::where('idTransaccion', $idPago)->get();
+        
         
         return view('Vistas.carrito', ['reserva' => $reserva, 'pago' => $pago]);        
     }
@@ -154,14 +158,19 @@ class MainController extends Controller
         if($request->ajax()){
             try {
                 $idPago = session('idPago');
-                
-                $reserva = Reserva::where('idTransaccion',$idPago)->where('sku', $request->sku)->first();
+                $sku = (isset($request->sku) && $request->sku != null) ? $request->sku : '';
+                $reserva = Reserva::where('idTransaccion',$idPago)->where('sku', $sku)->first();
                 $reserva->delete();
 
                 $monto = Reserva::where('idTransaccion', $idPago)->sum('monto');
-                $tt = Transaccion::where('id', $idPago)->first();
-                $pago = $this->TransbankController->initTransaction($monto, $tt->order, $idPago);
 
+                $tt = Transaccion::where('id', $idPago)->first();
+                if($monto > 0){
+                    $pago = $this->TransbankController->initTransaction($monto, $tt->order, $idPago);
+                }else{
+                    $pago = null;
+                }
+                
                 return ['status' => 0, 'Pago' => $pago];
             } catch (\Throwable $th) {
                 return ['status' => 1];
