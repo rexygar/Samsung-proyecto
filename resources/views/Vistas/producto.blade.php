@@ -128,7 +128,7 @@
     <!-- /row -->
 
     <!-- /container -->
-    <section class="relative bg-gray-300">
+    <section class="relative bg-gray-300 lg:-mb-32 ">
         <div class="container mx-auto">
             <div class="relative flex flex-col min-w-0 break-words bg-white w-full ">
                 <div class="px-6">
