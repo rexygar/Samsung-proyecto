@@ -37,7 +37,7 @@
                               </ul>
                               </li>
                           </ul>
-                          <img class="col-start-4" src="../uploads/products/5/1.png">
+                          <img class="col-start-4" src="/uploads/products/5/1.png">
                       </li>
                     </ul>
                   </div>

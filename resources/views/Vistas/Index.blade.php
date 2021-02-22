@@ -21,9 +21,10 @@
         body {
             font-family: 'Nunito';
         }
+
         .border-hr {
-    border-width: 1.1px;
-}
+            border-width: 1.1px;
+        }
     </style>
 </head>
 
@@ -77,15 +78,15 @@
                             <div class="container mx-auto">
                                 <div class="grid grid-cols-1 lg:grid-cols-1 gap-4 lg:gap-8">
                                     <div class="place-self-center ">
-                                        @include('Components.loMvendido')
+                                        @include('Components.loMvisto')
                                     </div>
                                 </div>
                             </div>
                             <div class="container mx-auto md:px-0">
 
                                 {{-- producto card --}}
-                                <div class="place-self-center">
-                                    @include('Components.producto-index')
+                                <div class="place-self-center ">
+                                    @include('Components.producto-oferta', ['oferta' => $oferta])
                                 </div>
                                 {{-- end producto card --}}
 
@@ -95,7 +96,7 @@
                                 <div class="grid grid-cols-1 lg:grid-cols-1 gap-4 lg:gap-8">
                                     <!-- ... -->
                                     <div class="place-self-center ">
-                                        @include('Components.loMvisto')
+                                        @include('Components.loMvendido')
                                     </div>
                                 </div>
                             </div>
@@ -103,7 +104,7 @@
 
                                 <!-- ... -->
                                 <div class="place-self-center ">
-                                    @include('Components.producto-index')
+                                    @include('Components.producto-Destacados', ['oferta' => $oferta])
                                 </div>
 
                             </div>

@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,65 +20,53 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+
 <body background="{{ asset('img/login.gif') }}">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-black shadow-sm" style="background-color: #2473b6 ">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    <img class="branding__logo img-fluid" src="{{ asset('img/logo_ok.png') }}" width="75" alt="">
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <nav
+            class="font-sans flex flex-col text-center content-center sm:flex-row sm:text-left sm:justify-between py-2 px-6 bg-black shadow sm:items-baseline w-full">
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}"><strong>{{ __('Iniciar Sesión') }}</strong></a>
-                                </li>
-                            @endif
-                            
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}"><strong>{{ __('Registrarse') }}</strong></a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
+            <div class="mb-2 sm:mb-0 flex flex-row">
+                <div class="">
+                    <a class="navbar-brand" href="{{ url('/') }}">
+                        <img class="branding__logo img-fluid" src="{{ asset('img/logo_ok.png') }}" width="75" alt="">
+                    </a>
                 </div>
             </div>
-        </nav>
 
+            <div class="sm:mb-0 self-center">
+                <!-- <div class="h-10" style="display: table-cell, vertical-align: middle;"> -->
+                @guest
+                    @if (Route::has('login'))
+                        <a href="{{ route('login') }}"
+                            class="text-md no-underline text-white hover:text-yellow-300 ml-2 px-1"><strong>{{ __('Iniciar Sesión') }}</strong></a>
+                    @endif
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}"
+                            class="text-md no-underline text-white hover:text-yellow-300 ml-2 px-1"><strong>{{ __('Registrarse') }}</strong></a>
+                    @endif
+                @else
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                @endguest
+            </div>
+        </nav>
         <main class="py-4">
             @yield('content')
         </main>
     </div>
 </body>
+
 </html>

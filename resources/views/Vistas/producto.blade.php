@@ -18,6 +18,7 @@
     <link href="{{ asset('css/hero-backgrounds.css') }}" rel="stylesheet">
     <link href="{{ asset('css/Megamenu.css') }}" rel="stylesheet">
     <link href="{{ asset('css/swiper-bundle.min.css') }}" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     {{-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" /> --}}
 
     <style>
@@ -136,7 +137,7 @@
                         <div class="w-full lg:w-full px-4 lg:order-1">
                             <div class="justify-items-start md:justify-items-center py-4 lg:pt-4 pt-8">
 
-                                <section class="relative py-20">
+                                <section class="relative">
 
                                     <div id="flix-inpage"></div>
                                     <script type="text/javascript" src="//media.flixfacts.com/js/loader.js"
@@ -158,7 +159,7 @@
 
         <div class="container mx-auto">
             <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 ">
-                <div class="px-6">
+                <div class="lg:px-6">
                     <div class="flex flex-wrap justify-center">
 
                         <div class="w-full lg:w-full px-4 lg:order-1">
@@ -276,3 +277,4 @@
     <!--/JQUERY Validation-->
     <!-- /SECTION -->
 </body>
+@include('Layouts.footer')

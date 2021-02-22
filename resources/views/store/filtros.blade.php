@@ -270,6 +270,8 @@
 
 </div>
 
+@include('Components.trade-in-cat')
+
 <script data-require="jquery@3.1.1" data-semver="3.1.1"
     src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
@@ -307,4 +309,6 @@
         });
 
 </script>
+
+
 @endsection

@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
@@ -16,6 +17,7 @@
     <link href="{{ asset('css/layouts.css') }}" rel="stylesheet">
     <link href="{{ asset('css/hero-backgrounds.css') }}" rel="stylesheet">
     <link href="{{ asset('css/Megamenu.css') }}" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <style>
         body {
             font-family: 'Nunito';

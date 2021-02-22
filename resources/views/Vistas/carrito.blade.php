@@ -26,8 +26,7 @@
 </head>
 <script src="{{ asset('js/lib/jquery.js') }}"></script>
 <script src="{{ asset('js/dist/jquery.validate.js') }}"></script>
-<script data-require="jquery@3.1.1" data-semver="3.1.1"
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <link type="text/css" rel="stylesheet" href="{{ asset('css/style_for_quantity.css') }}" />
 <style>
@@ -123,7 +122,7 @@
                     <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
                 </div>
                 @foreach ($reserva as $res)
-                <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+                <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5" id="product">
                     <div class="flex w-2/5">
                         <!-- product -->
                         <div class="w-20">
@@ -132,7 +131,7 @@
                         <div class="flex flex-col justify-between ml-4 flex-grow">
                             <input type="hidden" id="sku" value="{{ $res->sku }}">
                             <span class="font-bold text-sm">{{ $res->descripcion }}</span>
-                            <span class="text-red-500 text-xs">{{ $res->reserva }} en stock</span>
+                            <span class="text-red-500 text-xs"></span>
                             <div style="height:25px;width:25px;
                             margin:5px;display:inline-block;border-width: 1px;
                                          border-style: solid;
@@ -142,7 +141,7 @@
 
                             </div>
                             <input type="hidden" id="urlQuitar" value="{{ route('carrito.delete') }}">
-                            <a type="button" id="borrar" class="btn font-semibold hover:text-red-500 text-gray-500 text-xs" onclick="eliminar()">Quitar</a>
+                            <a type="button" id="borrar" class="btn font-semibold hover:text-red-500 text-gray-500 text-xs" onclick="eliminar({{ $res->sku }})">Quitar</a>
                         </div>
                     </div>
                     <div class="flex justify-center w-1/5">
@@ -151,7 +150,7 @@
                                 <path
                                     d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
                             </svg></button>--}}
-                        <input type="number" id="quantity" style="width:30%" name="" min="1" value="1" max="100" disabled />
+                        <input type="number" id="quantity" style="width:30%" name="" min="1" value="{{ $res->reserva }}" max="100" disabled />
                         {{--  
                         <button type="button" id="add" value=" " data-rel="" -rel2=""
                             class="mx-2 border text-center w-8"><svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
@@ -200,10 +199,11 @@
                     <h2 class="flex justify-center pb-4 font-bold border-b border-gray-200">
                         <span class="text-3xl mt-6 mr-1">$</span><span class="text-6xl" id="total">399.990</span>
                     </h2>
-                        <a class="uppercase text-center text-sm mt-12 xl:px-24 px-12 sm:px-16 py-2 rounded-md font-bold text-primary-very-light"
-                        style="background-image:linear-gradient(90deg, #a3a8f0 0%, #696fdd 100%);"
-                        href="">Pagar</a>
-
+                    <form action="{{ $pago['url'] }}" method="POST">
+                        <input type="hidden" name="token_ws" id="token_ws" value="{{ $pago['token'] }}">
+                        <button type="submit" id="pay" class="uppercase text-center text-sm mt-12 xl:px-24 px-12 sm:px-16 py-2 rounded-md font-bold text-primary-very-light"
+                        style="background-image:linear-gradient(90deg, #a3a8f0 0%, #696fdd 100%);">Pagar</button>
+                    </form>
                 </article>
             </div>
 
@@ -323,60 +323,7 @@
         //$("#commentForm").validate();
 
         // validate signup form on keyup and submit
-        $("#signupForm").validate({
-            rules: {
-                name: "required",
-                email: {
-                    required: true,
-                    email: true
-                },
-                address: "required",
-                city: "required",
-                zip: {
-                    required: true,
-                    number: true
-                },
-                tel: "required",
-                pass: {
-                    required: true,
-                    minlength: 5
-                },
-                confirm_password: {
-                    required: true,
-                    minlength: 5,
-                    equalTo: "#pass"
-                }
-
-
-
-            },
-            messages: {
-                name: "Please enter your Fullname",
-                email: "Please enter a valid email address",
-                address: "Please enter your Address",
-                city: "Please enter your City",
-                address: "Please enter your Address",
-                zip: {
-                    required: "Please enter Zipcode",
-                    number: "Invalid Zipcode"
-                },
-                tel: "Please enter your Phone number",
-                pass: {
-                    required: "Please provide a password",
-                    minlength: "Your password must be at least 5 characters long"
-                },
-                confirm_password: {
-                    required: "Please provide a password",
-                    minlength: "Your password must be at least 5 characters long",
-                    equalTo: "Please enter the same password as above"
-                }
-
-
-            }
-
-
-
-        });
+        
 
 
     });
