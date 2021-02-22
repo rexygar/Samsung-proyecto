@@ -95,16 +95,22 @@ class MainController extends Controller
                 $descripcion = (isset($request->descripcion) && $request->descripcion != null) ? $request->descripcion : '';
 
                 if($idPago > 0){
-                    $reserva = new Reserva();
+                    $reserva = Reserva::where('sku',$sku)->where('Cod_EstiloColor',$color)->first();
                     
-                    $reserva->sku = $sku;
-                    $reserva->reserva = $cant;
-                    $reserva->Cod_EstiloColor = $color;
-                    $reserva->monto = $monto;
-                    $reserva->descripcion = $descripcion;
-                    $reserva->idTransaccion = $idPago;
-
-                    $reserva->save();
+                    if($reserva == null){
+                        $reserva->monto += $monto;
+                        $reserva->reserva += $cant;
+                    }else{
+                        $reserva = new Reserva();
+                        $reserva->sku = $sku;
+                        $reserva->reserva = $cant;
+                        $reserva->Cod_EstiloColor = $color;
+                        $reserva->monto = $monto;
+                        $reserva->descripcion = $descripcion;
+                        $reserva->idTransaccion = $idPago;
+                        $reserva->save();                        
+                    }
+                    
                 }else{
                     $pago = new Transaccion();
                     $pago->save();
