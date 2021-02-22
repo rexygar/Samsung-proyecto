@@ -160,8 +160,8 @@
 
                         
                     </div>
-                    <span class="text-center w-1/5 font-semibold text-sm" name="precio[]">{{ $res->monto }}</span>
-                    <span class="text-center w-1/5 font-semibold text-sm">{{ $res->monto }}</span>
+                    <span class="text-center w-1/5 font-semibold text-sm" name="precio[]">${{ number_format($res->monto, 0,'','.') }}</span>
+                    <span class="text-center w-1/5 font-semibold text-sm">${{ number_format($res->monto, 0,'','.') }}</span>
                     
                 </div>
                 @endforeach

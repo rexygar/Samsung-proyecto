@@ -188,7 +188,7 @@
                                                                                  border-color: black;
                                                                     background-color: {{$colorstock['color']}}">
                                                                 </div>
-                                                                <input type="radio" name="color_group"
+                                                                <input type="radio" id="color_group" name="color_group"
                                                                     style="outline:none;appearance: none;"
                                                                     value="{{$colorstock['color']}}">
                                                                 <input type="hidden" id="stock" name="stock"
@@ -267,22 +267,38 @@
 
                                                     </div>
                                                     <div class="flex flex-wrap">
-                                                        <div class="md:w-1/2 px-6 py-6">
-                                                            <div class="w-1/2 md:w-full">
-                                                                <button id="carrito" type="button"
-                                                                    class="uppercase px-2 py-1 bg-blue-500 text-white max-w-max shadow-sm hover:shadow-lg">Agregar
-                                                                    a Carrito</button>
+
+                                                        <div class="md:w-1/2 bg-gray-300 mb-36 ">
+                                                            <div class=" px-6 py-6  ">
+
+                                                                <div class="grid grid-cols-2 col-span-2 ">
+
+                                                                    <div class="">
+                                                                        <p
+                                                                            class="   lg:text-base font-bold md:text-sm leading-relaxed    text-black">
+                                                                            CANTIDAD
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="">
+                                                                        <input type="number" id="cantidad"
+                                                                            style="outline:none;appearance: none;"
+                                                                            min="1" value=""
+                                                                            class="text-md rounded-lg md:p-2 
+                                                               bg-white border-2 border-gray-300 md:w-1/2 lg:w-1/2  placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">
+                                                                    </div>
+                                                                </div>
                                                             </div>
 
                                                         </div>
                                                         <div class="md:w-1/2 px-6 py-6">
-
-                                                            <input type="number" id="cantidad"
-                                                                style="outline:none;appearance: none;" min="1" value="">
-                                                            <p
-                                                                class=" md:pl-2 text-base md:text-sm leading-relaxed md:w-full md:pb-4 text-black">
-                                                                CANTIDAD
-                                                            </p>
+                                                            <div class="w-1/2 md:w-full py-12 -mt-16">
+                                                                <button id="carrito" type="button"
+                                                                    style="background: rgb(19,124,117);
+                                                                background: linear-gradient(90deg, rgba(19,124,117,1) 14%, rgba(10,82,109,1) 54%, rgba(14,69,114,1) 100%);"
+                                                                    class="uppercase px-2 py-5 bg-blue-500 font-bold text-white max-w-max shadow-sm hover:shadow-lg"><i
+                                                                        class="fas fa-shopping-cart"></i> AGREGAR A MIS
+                                                                    COMPRAS</button>
+                                                            </div>
 
                                                         </div>
                                                     </div>

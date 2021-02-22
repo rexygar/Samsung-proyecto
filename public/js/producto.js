@@ -12,7 +12,14 @@ $(document).ready(function() {
         }
     });
 
-    if ($('#stock').val() <= 0) {
+    var checkbox = document.getElementById('color_group');
+    checkbox.addEventListener( 'change', function() {
+        if(this.checked) {
+            $("#cantidad").val(1);
+        }
+    });
+
+    if ($('#stock').val() == '') {
         $('#carrito').attr('disabled', true);
     }
 
