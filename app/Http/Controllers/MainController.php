@@ -93,7 +93,6 @@ class MainController extends Controller
                 $color = (isset($request->col) && $request->col != null) ? $request->col : '';
                 $monto = (isset($request->monto) && $request->monto != null) ? $request->monto : 0;
                 $descripcion = (isset($request->descripcion) && $request->descripcion != null) ? $request->descripcion : '';
-
                 if($idPago > 0){
                     $reserva = Reserva::where('sku',$sku)->where('Cod_EstiloColor',$color)->first();
                     
@@ -102,6 +101,7 @@ class MainController extends Controller
                         $reserva->monto = $monto;
                         $reserva->Total = ($monto * $reserva->reserva);
                         $reserva->save(); 
+                        return 'algo';
                     }else{
                         $reserva = new Reserva();
                         $reserva->sku = $sku;

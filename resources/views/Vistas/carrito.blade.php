@@ -118,7 +118,7 @@
                     <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Detalles del producto</h3>
                     <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Cantidad
                     </h3>
-                    <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Precio</h3>
+                    <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Precio Unitario</h3>
                     <h3 class="font-semibold text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
                 </div>
                 @foreach ($reserva as $res)
@@ -150,7 +150,7 @@
                                 <path
                                     d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
                             </svg></button>--}}
-                        <input type="number" id="quantity" style="width:30%" name="" min="1" value="{{ $res->reserva }}" max="100" disabled />
+                        <input type="number" name="quantity[]" style="width:30%" name="" min="1" value="{{ $res->reserva }}" max="100" disabled />
                         {{--  
                         <button type="button" id="add" value=" " data-rel="" -rel2=""
                             class="mx-2 border text-center w-8"><svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
@@ -160,8 +160,8 @@
 
                         
                     </div>
-                    <span class="text-center w-1/5 font-semibold text-sm" name="precio[]">${{ number_format($res->monto, 0,'','.') }}</span>
                     <span class="text-center w-1/5 font-semibold text-sm">${{ number_format($res->monto, 0,'','.') }}</span>
+                    <span class="text-center w-1/5 font-semibold text-sm" name="precio[]">${{ number_format($res->Total, 0,'','.') }}</span>
                     
                 </div>
                 @endforeach
@@ -197,7 +197,7 @@
 
                     <h5 class="font-bold text-base ">Costo Total</h5>
                     <h2 class="flex justify-center pb-4 font-bold border-b border-gray-200">
-                        <span class="text-3xl mt-6 mr-1">$</span><span class="text-6xl" id="total"></span>
+                        <span class="text-3xl mt-6 mr-1"></span><span class="text-6xl" id="total"></span>
                     </h2>
                     <form action="@if(isset($pago['url'])){{$pago['url']}}@endif" method="POST">
                         <input type="hidden" name="token_ws" id="token_ws" value="@if(isset($pago['token'])){{$pago['token']}}@endif">

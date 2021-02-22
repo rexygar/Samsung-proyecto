@@ -23,14 +23,24 @@ function eliminar(sku){
 $(document).ready(function(){
 
     var numero = $("span[name='precio[]']"), 
-    suma = 0
+    suma = 0;
+
     for(i = 0; i < numero.length; i++){
-        suma += parseInt($(numero[i]).text())
+        n = $(numero[i]).text()
+        suma += parseInt(n.replace(/[$.]/g,''))
     }
-    document.getElementById('subtotal').innerHTML = suma;
+
+
+    const formatterPeso = new Intl.NumberFormat('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        minimumFractionDigits: 0
+    })
+
+    document.getElementById('subtotal').innerHTML = formatterPeso.format(suma);
 
     total = suma
-    document.getElementById('total').innerHTML = total;
+    document.getElementById('total').innerHTML = formatterPeso.format(total);;
     
     if ($('#product').length) {
         // si existe
