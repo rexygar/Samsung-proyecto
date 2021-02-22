@@ -23,9 +23,8 @@
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
-                                    (1)
                                 </div>
-                          {{ $p->Descripcion }}
+                          <span class="font-semibold leading-tight text-gray-800 hover:text-gray-800"></span>{{ $p->Descripcion }}
                         </a>
                     </h1>
                 </header>

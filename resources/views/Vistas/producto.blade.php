@@ -194,11 +194,11 @@
     <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('js/swiper-bundle.min.js') }}"></script>
     {{-- <script src="{{ asset('js/lib/jquery.js') }}"></script>
-<script src="{{ asset('js/dist/jquery.validate.js') }}"></script>
+    <script src="{{ asset('js/dist/jquery.validate.js') }}"></script>
 
 
-<script data-require="jquery@3.1.1" data-semver="3.1.1"
-    src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> --}}
+    <script data-require="jquery@3.1.1" data-semver="3.1.1"
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> --}}
     {{-- <script src="{{ asset('js/swiper-bundle.min.js') }}"></script> --}}
     {{-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> --}}
 
@@ -229,11 +229,7 @@
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       },
-        loop: true,
-      thumbs: {
-        swiper: galleryThumbs,
-      },
-
+        loop: true, 
     })
 });
     </script>

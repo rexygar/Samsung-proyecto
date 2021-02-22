@@ -97,7 +97,7 @@
 
           <h5 class="font-bold  text-base text-center overflow-auto ">{{ $p->Descripcion }}</h5>
           <p class="text-sm font-bold text-center blue-clr ">$ {{ number_format($p->Precio, 0, ',', '.') }}</p>
-          <a href="" class="blue-clr-bg font-bold lowercase md:flex md:justify-center md:mx-6 lg:mx-10 text-white">Comprar</a>
+          <a href="{{ URL('/') }}/Product/{{ $p->SKU }}" class="blue-clr-bg font-bold lowercase md:flex md:justify-center md:mx-6 lg:mx-10 text-white">Comprar</a>
 
           <h6 class=" UPPERCASE mb-5 text-center " style="font-weight: 100">{{ $p->SKU }}</h6>
         </div>

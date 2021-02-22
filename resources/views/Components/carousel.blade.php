@@ -45,7 +45,8 @@
         <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden=""
             checked="checked">
         <div class="carousel-item absolute opacity-0">
-            <div class="block h-full w-full py-36 bg-indigo-500 text-white text-5xl text-center">Slide 1</div>
+            <div class="block h-full w-full py-36   text-white text-5xl text-center"
+                style="background-image: url({{url('../uploads/products/6/1366_521.jpg')}});"> </div>
         </div>
         <label for="carousel-3"
             class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
@@ -55,7 +56,8 @@
         <!--Slide 2-->
         <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
         <div class="carousel-item absolute opacity-0">
-            <div class="block h-full w-full py-36 bg-orange-500 text-white text-5xl text-center">Slide 2</div>
+            <div class="block h-full w-full py-36  text-white text-5xl text-center"
+                style="background-image: url({{url('../uploads/products/6/evoluciona a galaxy.png.jpg')}});"> </div>
         </div>
         <label for="carousel-1"
             class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
@@ -65,7 +67,8 @@
         <!--Slide 3-->
         <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
         <div class="carousel-item absolute opacity-0">
-            <div class="block h-full w-full py-36 bg-green-500 text-white text-5xl text-center">Slide 3</div>
+            <div class="block h-full w-full py-36  text-white text-5xl text-center"
+                style="background-image: url({{url('../uploads/products/6/earbuds.jpg')}});"></div>
         </div>
         <label for="carousel-2"
             class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>

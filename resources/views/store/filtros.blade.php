@@ -227,7 +227,7 @@
                 </div>
             </div>
             <div class="lg:col-span-3  md:col-span-5 px-6">
-                <div class="grid col-rows-1">
+                <div class="grid col-rows-1 mb-60">
                     <section class="relative ">
                         <div class="container mx-auto ">
                             <div
@@ -239,18 +239,12 @@
                                             <div class="justify-items-start md:justify-items-center py-4 lg:pt-4 pt-8">
 
                                                 <section class="relative">
-
                                                     <div
                                                         class="grid grid-cols-3 gaps-4  w-full  md:w-full md:grid-cols-3 pb-60">
 
                                                         @include('Components.producto-card', ['Productos' =>
                                                         $productos])
-                                                        @include('Components.producto-card', ['Productos' =>
-                                                        $productos])
-
                                                     </div>
-
-
                                                 </section>
                                             </div>
                                         </div>

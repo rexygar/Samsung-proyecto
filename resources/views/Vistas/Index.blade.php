@@ -4,8 +4,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Laravel</title>
+    <link rel="icon" href="/public/img/logo icon.png">
+    <title>Tecnobuy</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -27,8 +27,10 @@
         }
     </style>
 </head>
-
+<div  class=" w-full py-auto relative" style="z-index: 99999">
+    
 @include('Components.Header')
+</div>
 @include('Components.Megamenu')
 
 <body class="leading-normal tracking-normal text-gray-900 antialiased"
@@ -53,11 +55,11 @@
     <!--Nav-->
     <main class="relative -mt-64">
 
-        <div class="md:px-0 lg:px-0">
+        <div class="md:px-0 lg:px-0 sm:px-0">
             <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6  rounded-lg -mt-65">
                 <div class="flex flex-wrap justify-center">
 
-                    <div class="md:w-full lg:w-full">
+                    <div class="md:w-full lg:w-full sm:w-full">
                         <div class="justify-items-start md:justify-items-center lg:pt-4 pt-4">
                             <div class="lg:w-full md:w-full pt-48">
                                 <div class="">
@@ -82,10 +84,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="container mx-auto md:px-0">
+                            <div class="container mx-auto md:px-0 sm:px-6">
 
                                 {{-- producto card --}}
-                                <div class="place-self-center ">
+                                <div class="place-self-center  sm:grid sm:grid-cols-1 ">
                                     @include('Components.producto-oferta', ['oferta' => $oferta])
                                 </div>
                                 {{-- end producto card --}}
@@ -100,10 +102,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="container mx-auto md:px-0">
+                            <div class="container mx-auto sm:container sm:mx-auto md:px-0 sm:px-6">
 
                                 <!-- ... -->
-                                <div class="place-self-center ">
+                                <div class="place-self-center  sm:grid sm:grid-cols-1  ">
                                     @include('Components.producto-Destacados', ['oferta' => $oferta])
                                 </div>
 
