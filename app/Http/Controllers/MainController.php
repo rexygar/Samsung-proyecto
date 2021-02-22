@@ -99,14 +99,16 @@ class MainController extends Controller
                     
                     if($reserva !== null){
                         $reserva->reserva = $cant + $reserva->reserva;
-                        $reserva->monto = ($monto * $reserva->reserva) + $reserva->monto;
+                        $reserva->monto = $monto;
+                        $reserva->Total = ($monto * $reserva->reserva);
                         $reserva->save(); 
                     }else{
                         $reserva = new Reserva();
                         $reserva->sku = $sku;
                         $reserva->reserva = $cant;
                         $reserva->Cod_EstiloColor = $color;
-                        $reserva->monto += ($monto* $reserva->reserva);
+                        $reserva->monto = $monto;
+                        $reserva->Total = ($monto * $reserva->reserva);
                         $reserva->descripcion = $descripcion;
                         $reserva->idTransaccion = $idPago;
                         $reserva->save();                        
@@ -123,6 +125,7 @@ class MainController extends Controller
                     $reserva->reserva = $cant;
                     $reserva->Cod_EstiloColor = $color;
                     $reserva->monto = $monto;
+                    $reserva->Total = ($monto * $reserva->reserva);
                     $reserva->descripcion = $descripcion;
                     $reserva->idTransaccion = $pago->id;
                 
@@ -147,7 +150,7 @@ class MainController extends Controller
         $reserva = Reserva::where('idTransaccion', $idPago)->get();
         if(count($reserva) > 0){
             if($idPago > 0){
-                $monto = Reserva::where('idTransaccion', $idPago)->sum('monto');
+                $monto = Reserva::where('idTransaccion', $idPago)->sum('Total');
                 $order = '54879644';
                 $pago = $this->TransbankController->initTransaction($monto,$order, $idPago);
             }
