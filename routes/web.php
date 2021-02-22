@@ -35,6 +35,9 @@ Route::get('/checkout',                     [App\Http\Controllers\TransbankContr
 Route::post('/checkout/webpay/response',    [App\Http\Controllers\TransbankController::class, 'response'])->name('checkout.webpay.response');  
 Route::post('/checkout/webpay/finish',      [App\Http\Controllers\TransbankController::class, 'finish'])->name('checkout.webpay.finish');
 
+Route::get('/perfiles', [App\Http\Controllers\UsuarioController::class, 'perfil'])->name('perfiles');
+Route::post('/perfileditar', [App\Http\Controllers\UsuarioController::class, 'update_perfil'])->name('perfil.update');
+
 Route::get('/ej', function () {
     return view('welcome');
 });
@@ -62,9 +65,7 @@ Route::get('/tests', function () {
 Route::get('/categoria', function () {
     return view('Vistas.categoria');
 });
-Route::get('/perfiles', function () {
-    return view('Vistas.perfiles');
-});
+
 Route::get('/busqueda', function () {
     return view('Vistas.busqueda');
 });

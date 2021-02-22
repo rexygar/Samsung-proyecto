@@ -32,11 +32,6 @@
                         <img class="branding__logo img-fluid" src="{{ asset('img/logo_ok.png') }}" width="75" alt="">
                     </a>
                 </div>
-                <div>
-                    <a href="/home"
-                        class="text-2xl no-underline text-grey-darkest hover:text-blue-dark font-sans font-bold">LogoText</a><br>
-                    <span class="text-xs text-grey-dark">Beautiful New Tagline</span>
-                </div>
             </div>
 
             <div class="sm:mb-0 self-center">

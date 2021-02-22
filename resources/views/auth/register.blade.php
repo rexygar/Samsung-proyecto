@@ -15,54 +15,41 @@
                         <form class="mt-8" method="POST" action="{{ route('register') }}">
                             @csrf
                             <div class="mx-auto max-w-lg">
+                                <span class="px-1 text-sm text-gray-600">{{ __('Nombre') }}</span>
                                 <div class="py-2">
-                                    <span class="px-1 text-sm text-gray-600">{{ __('Nombre') }}</span>
-                                    <input name="name" placeholder="" type="text"
-                                        class="text-md block px-3 py-2  rounded-lg w-full 
-                                                                        bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">
+                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
                                 </div>
+                                <span class="px-1 text-sm text-gray-600">{{ __('Correo Electronico') }}</span>
                                 <div class="py-2">
-                                    <span class="px-1 text-sm text-gray-600">{{ __('Correo Electronico') }}</span>
-                                    <input name="email" placeholder="" type="text"
-                                        class="text-md block px-3 py-2  rounded-lg w-full 
-                                                                        bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">
+                                    
+                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
                                 </div>
+                                <span class="px-1 text-sm text-gray-600">{{ __('Contraseña') }}</span>
                                 <div class="py-2">
-                                    <span class="px-1 text-sm text-gray-600">{{ __('Contraseña') }}</span>
-                                    <input id="password" placeholder="" type="password"
-                                        class="text-md block px-3 py-2  rounded-lg w-full 
-                                        bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">
-                                    @error('email')
+                                    
+                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                    @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                     @enderror
                                 </div>
+                                <span class="px-1 text-sm text-gray-600">{{ __('Confirmar
+                                    Contraseña') }}</span>
                                 <div class="py-2" x-data="{ show: true }">
-                                    <span class="px-1 text-sm text-gray-600">{{ __('Confirmar
-                                        Contraseña') }}</span>
+                                    
                                     <div class="relative">
-                                        <input id="password-confirm" placeholder="" type="password" class="text-md block px-3 py-2 rounded-lg w-full 
-                                        bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
-                                        focus:placeholder-gray-500
-                                        focus:bg-white 
-                                        focus:border-gray-600  
-                                            focus:outline-none">
-                                        @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                        @enderror
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                                     </div>
                                 </div>
                                 <div class="flex justify-between"><label
