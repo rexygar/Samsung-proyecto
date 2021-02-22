@@ -25,71 +25,12 @@
                                             </polygon>
                                         </svg> --}}
                                     </div>
-                                    @for ($i = 0; $i < 1; $i++) <div class="lg:container lg:mx-auto">
-                                        <div class="grid grid-cols-7 md:grid-cols-7">
-                                            <div class="grid-rows-1 row-span-2  md:w-5/6 col-span-1 w-1/2">
-                                                <div class="swiper-container  md:w-5/6 gallery-thumbs">
-                                                    <div class="swiper-wrapper">
-                                                        <div class="swiper-slide" style="height: auto;width: auto;">
-                                                            <img alt="..." class="pb-12"
-                                                                src="../uploads/products/1/1.jpg" />
-                                                        </div>
-                                                        <div class="swiper-slide" style="height: auto;width: auto;">
-                                                            <img alt="..." class="" src="../uploads/products/3/1.jpg" />
-                                                        </div>
-                                                        <div class="swiper-slide" style="height: auto;width: auto;">
-                                                            <img alt="..." class="pb-12"
-                                                                src="../uploads/products/1/1.jpg" />
-                                                        </div>
-                                                        <div class="swiper-slide" style="height: auto;width: auto;">
-                                                            <img alt="..." class="" src="../uploads/products/2/1.jpg" />
-                                                        </div>
-                                                        <div class="swiper-slide" style="height: auto;width: auto;">
-                                                            <img alt="..." class="" src="../uploads/products/2/1.jpg" />
-                                                        </div>
-                                                        <div class="swiper-slide" style="height: auto;width: auto;">
-                                                            <img alt="..." class="" src="../uploads/products/3/1.jpg" />
-                                                        </div>
-                                                    </div>
+                                    @for ($i = 0; $i < 1; $i++) <div class="container mx-auto">
+                                        <div class="grid grid-cols-6 md:grid-cols-6  gap-4 ">
+                                            <div class="w-full md:w-full ml-auto col-span-3 mr-auto px-4">
+                                                <img alt="..." class="max-w-full rounded-lg"
+                                                    src="../uploads/products/1/1.jpg" />
                                                 </div>
-                                            </div>
-
-                                            <div class="w-full md:w-full col-span-3 ml-auto mr-auto lg:px-4 ">
-                                                <div class="swiper-container  md:w-5/6 row-span-full">
-                                                    <!-- Additional required wrapper -->
-                                                    <div class="swiper-wrapper">
-                                                        <!-- Slides -->
-                                                        <div class="swiper-slide align-middle"> <img alt="..."
-                                                                class="lg:max-w-full align-middle "
-                                                                src="../uploads/products/1/1.jpg" /></div>
-                                                        <div class="swiper-slide align-middle"> <img alt="..."
-                                                                class="lg:max-w-full align-middle "
-                                                                src="../uploads/products/3/1.jpg" /></div>
-                                                        <div class="swiper-slide align-middle"> <img alt="..."
-                                                                class="lg:max-w-full align-middle "
-                                                                src="../uploads/products/1/1.jpg" /></div>
-                                                        <div class="swiper-slide align-middle"> <img alt="..."
-                                                                class="lg:max-w-full align-middle "
-                                                                src="../uploads/products/2/1.jpg" /></div>
-                                                        <div class="swiper-slide align-middle"> <img alt="..."
-                                                                class="lg:max-w-full align-middle "
-                                                                src="../uploads/products/2/1.jpg" /></div>
-                                                        <div class="swiper-slide align-middle"> <img alt="..."
-                                                                class="lg:max-w-full align-middle "
-                                                                src="../uploads/products/3/1.jpg" /></div>
-                                                    </div>
-                                                    <!-- If we need pagination -->
-                                                    <div class="swiper-pagination"></div>
-
-                                                    <!-- If we need navigation buttons -->
-                                                    <div class="swiper-button-prev"></div>
-                                                    <div class="swiper-button-next"></div>
-
-                                                    <!-- If we need scrollbar -->
-                                                    <div class="swiper-scrollbar"></div>
-                                                </div>
-
-                                            </div>
                                             <form method="get" action="" class="col-span-3 ">
                                                 <input type="hidden" id="urlCarrito" value="{{ route('carrito.add') }}">
                                                 <input type="hidden" id="urlRedireccion" value="{{ route('carrito') }}">
