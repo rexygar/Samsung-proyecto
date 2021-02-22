@@ -29,7 +29,7 @@ $(document).ready(function(){
     }
     document.getElementById('subtotal').innerHTML = suma;
 
-    total = suma + 20500
+    total = suma
     document.getElementById('total').innerHTML = total;
     
     if ($('#product').length) {
