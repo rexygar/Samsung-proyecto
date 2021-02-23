@@ -12,10 +12,26 @@ use App\Http\Controllers\TransbankController;
 class MainController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('bloqueo');
+    }
+
     public function index(){
         $destacados = DB::connection('sqlsrv')->select("EXEC Ges_Eco_rescatarDestacados");
         $oferta = DB::connection('sqlsrv')->select("EXEC Ges_Eco_rescatarOferta");
         return view('Vistas.index')->with(['oferta' => $oferta, 'destacados' => $destacados]);
+    }
+
+    public function index2(){
+        if(session()->has('idPago')){
+            $idPago = session('idPago');
+            if($idPago > 0){
+                return redirect()->route('carrito');
+            }
+        }else{
+            return redirect('/');
+        }
     }
 
     public function getProductos1($category){

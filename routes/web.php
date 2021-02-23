@@ -13,11 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [App\Http\Controllers\MainController::class, 'index'])->name('index');
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\MainController::class, 'index'])->name('index');
+Route::get('/home', [App\Http\Controllers\MainController::class, 'index2'])->name('home');
 
 // Productos
 Route::get('/Categoria/{category}',                         [App\Http\Controllers\MainController::class, 'getProductos1']);
@@ -25,10 +24,13 @@ Route::get('/Categoria/{category}/{subCategory}',           [App\Http\Controller
 Route::get('/Categoria/{category}/{subCategory}/{other}',   [App\Http\Controllers\MainController::class, 'getProductos3']);
 Route::get('/Product/{sku}',                                [App\Http\Controllers\MainController::class, 'getProduct']);
 
+
+
 // Carrito
 Route::get('/addCarrito',           [App\Http\Controllers\MainController::class, 'addCarrito'])->name('carrito.add');
-Route::get('/Carrito',              [App\Http\Controllers\MainController::class, 'getCarrito'])->name('carrito');
 Route::get('/deleteCarrito',        [App\Http\Controllers\MainController::class, 'removeCarrito'])->name('carrito.delete');
+Route::get('/Carrito',              [App\Http\Controllers\MainController::class, 'getCarrito'])->name('carrito');
+
 
 // Transbank
 Route::get('/checkout',                     [App\Http\Controllers\TransbankController::class, 'initTransaction'])->name('checkout');  
@@ -37,6 +39,8 @@ Route::post('/checkout/webpay/finish',      [App\Http\Controllers\TransbankContr
 
 Route::get('/perfiles', [App\Http\Controllers\UsuarioController::class, 'perfil'])->name('perfiles');
 Route::post('/perfileditar', [App\Http\Controllers\UsuarioController::class, 'update_perfil'])->name('perfil.update');
+
+Route::get('/Paguina-Mantencion',  [App\Http\Controllers\ApiController::class, 'Mantencion'])->name('Mantencion');
 
 Route::get('/ej', function () {
     return view('welcome');
