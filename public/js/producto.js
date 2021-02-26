@@ -1,25 +1,34 @@
 $(document).ready(function() {
-    $("#cantidad").on("change", function() {
-        cantidad = parseInt($("#cantidad").val());
-        stock = parseInt($("#stock").val());
+    
 
-        if (cantidad <= 0) {
-            $("#cantidad").val("1");
+    if($('#radio').length > 0){
+        
+        $('[name="color_group"]').on('change', function() {
+            if(this.checked){
+                $("#cantidad").val(1);
+                $("#stock").val($(this).attr('data-stock'))
+
+                $("#cantidad").on("change", function() {
+                    cantidad = parseInt($("#cantidad").val());
+                    stock = parseInt($("input:radio[name=color_group]:checked").attr('data-stock'));
+
+                    console.log($("#stock").val());
+                    if (cantidad <= 0) {
+                        $("#cantidad").val("1");
+                    }
+            
+                    if (cantidad > stock) {
+                        $("#cantidad").val(stock);
+                    }
+                });
+            }
+        })
+
+        if ($('#cantidad').val() == '') {
+            $('#carrito').attr('disabled', true);
         }
-
-        if (cantidad > stock) {
-            $("#cantidad").val($("#stock").val());
-        }
-    });
-
-    var checkbox = document.getElementById('color_group');
-    checkbox.addEventListener( 'change', function() {
-        if(this.checked) {
-            $("#cantidad").val(1);
-        }
-    });
-
-    if ($('#stock').val() == '') {
+    }else{
+        document.getElementById('stockdisponible').innerHTML = 'SIN STOCK'
         $('#carrito').attr('disabled', true);
     }
 

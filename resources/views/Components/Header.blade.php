@@ -29,6 +29,7 @@
                                            document.getElementById('logout-form').submit();">
                       {{ __('Logout') }}
                   </a>
+                <a href="{{ route('carrito') }}" class="text-md no-underline text-white hover:text-yellow-300 ml-2 px-1"><i class="fas fa-shopping-cart"></i></a>
 
                   <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                       @csrf

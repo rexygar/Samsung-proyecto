@@ -6,8 +6,8 @@
                 @include('Components.breadcrumbs-producto')
                 {{-- <div class="lg:px-6 md:px-0" style='background-color:#464646;
                 background-size:cover auto ;z-index:0;'> --}}
-                <div class="lg:px-6 md:px-0" style='background-image: url({{url('../uploads/products/5/bg.jpg')}});background-repeat: no-repeat;
-                background-size: auto 500px;z-index:0;'>
+                <div class="lg:px-6 md:px-0" style="background-image: url({{ url('../uploads/products/5/bg.jpg') }});background-repeat: no-repeat; background-size: auto
+                        500px;z-index:0;">
                     <div class="flex flex-wrap justify-center">
 
                         <div class="w-full lg:w-full lg:order-1"
@@ -19,132 +19,158 @@
                                     <div class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                                         style="height: 80px; transform: translateZ(0px);">
                                         {{-- <svg class="absolute bottom-0 overflow-hidden"
-                                            xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1"
-                                            viewBox="0 0 2560 100" x="0" y="0">
-                                            <polygon class="text-white fill-current" points="2560 0 2560 100 0 100">
-                                            </polygon>
-                                        </svg> --}}
+                                                xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
+                                                version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+                                                <polygon class="text-white fill-current" points="2560 0 2560 100 0 100">
+                                                </polygon>
+                                            </svg> --}}
                                     </div>
-                                    @for ($i = 0; $i < 1; $i++) <div class="container mx-auto">
-                                        <div class="grid grid-cols-6 md:grid-cols-6  gap-4 ">
-                                            <div class="w-full md:w-full ml-auto col-span-3 mr-auto px-4">
-                                                <img alt="..." class="max-w-full rounded-lg"
-                                                    src="../uploads/products/1/1.jpg" />
+                                    @for ($i = 0; $i < 1; $i++)
+                                        <div class="container mx-auto">
+                                            <div class="grid grid-cols-6 md:grid-cols-6  gap-4 ">
+                                                <div class="w-full md:w-full ml-auto col-span-3 mr-auto px-4">
+                                                    <img alt="..." class="max-w-full rounded-lg"
+                                                        src="../uploads/products/1/1.jpg" />
                                                 </div>
-                                            <form method="get" action="" class="col-span-3 ">
-                                                <input type="hidden" id="urlCarrito" value="{{ route('carrito.add') }}">
-                                                <input type="hidden" id="urlRedireccion" value="{{ route('carrito') }}">
-                                                <input type="hidden" id="descripcion" name="descripcion"
-                                                    value="{{$product->Descripcion}}">
+                                                <form method="get" action="" class="col-span-3 ">
+                                                    <input type="hidden" id="urlCarrito"
+                                                        value="{{ route('carrito.add') }}">
+                                                    <input type="hidden" id="urlRedireccion"
+                                                        value="{{ route('carrito') }}">
+                                                    <input type="hidden" id="descripcion" name="descripcion"
+                                                        value="{{ $product->Descripcion }}">
 
-                                                <div
-                                                    class="w-full md:min-w-full ml-auto mr-auto col-span-2  lg:px-4 md:px-0">
-                                                    <div class="md:pr-6 lg:pr-16">
-                                                        <h3 class="text-5xl md:text-4xl font-bold text-gray-50">
-                                                            {{$product->Descripcion}}</h3>
-                                                        <p class=" text-lg leading-relaxed  text-gray-50">
-                                                            {{$product->SKU}}
-                                                        </p>
-                                                        <p class=" text-sm leading-relaxed font-light text-blue-500">
-                                                            STOCK
-                                                            DISPONIBLE
-                                                        </p>
-                                                        <div class="panel-header md:container md:mx-auto"
-                                                            style="z-index: 99;background: transparent;">
-                                                            <span class="material-icons text-xl text-yellow-300">
-                                                                grade
-                                                            </span>
-                                                            <span class="material-icons text-xl text-yellow-300">
-                                                                grade
-                                                            </span>
-                                                            <span class="material-icons text-xl text-yellow-300">
-                                                                grade
-                                                            </span>
-                                                            <span class="material-icons text-xl text-yellow-300">
-                                                                grade
-                                                            </span>
-                                                            <span class="material-icons text-xl text-gray-600">
-                                                                grade
-                                                            </span>
-                                                            <span class="text-gray-50 font-light">
-                                                                5.0 (1)
-                                                            </span>
-                                                        </div>
+                                                    <div
+                                                        class="w-full md:min-w-full ml-auto mr-auto col-span-2  lg:px-4 md:px-0">
+                                                        <div class="md:pr-6 lg:pr-16">
+                                                            <h3 class="text-5xl md:text-4xl font-bold text-gray-50">
+                                                                {{ $product->Descripcion }}</h3>
+                                                            <p class=" text-lg leading-relaxed  text-gray-50">
+                                                                {{ $product->SKU }}
+                                                            </p>
+                                                            <p id="stockdisponible"
+                                                                class=" text-xl text-center leading-relaxed w-1/4 font-bold bg-yellow-500 text-white">
+                                                                STOCK
+                                                                DISPONIBLE
+                                                            </p>
+                                                            <div class="panel-header md:container md:mx-auto"
+                                                                style="z-index: 99;background: transparent;">
+                                                                <span class="material-icons text-xl text-yellow-300">
+                                                                    grade
+                                                                </span>
+                                                                <span class="material-icons text-xl text-yellow-300">
+                                                                    grade
+                                                                </span>
+                                                                <span class="material-icons text-xl text-yellow-300">
+                                                                    grade
+                                                                </span>
+                                                                <span class="material-icons text-xl text-yellow-300">
+                                                                    grade
+                                                                </span>
+                                                                <span class="material-icons text-xl text-gray-600">
+                                                                    grade
+                                                                </span>
+                                                                <span class="text-gray-50 font-light">
+                                                                    5.0 (1)
+                                                                </span>
+                                                            </div>
 
-                                                        <ul class="list-none lg:mt-6 -md:mt-2">
-                                                            <li class="py-2">
-                                                                <div class="flex items-center">
-                                                                    <div>
-                                                                        <span
-                                                                            class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"><i
-                                                                                class="fas fa-fingerprint"></i></span>
+                                                            <ul class="list-none lg:mt-6 -md:mt-2">
+                                                                <li class="py-2">
+                                                                    <div class="flex items-center">
+                                                                        <div>
+                                                                            <span
+                                                                                class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"><i
+                                                                                    class="fas fa-fingerprint"></i></span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <h4 class="text-gray-200 font-light">
+                                                                                LCD de silicio policristalino a baja
+                                                                                temperatura
+                                                                            </h4>
+                                                                        </div>
                                                                     </div>
-                                                                    <div>
-                                                                        <h4 class="text-gray-200 font-light">
-                                                                            LCD de silicio policristalino a baja
-                                                                            temperatura
-                                                                        </h4>
+                                                                </li>
+                                                                <li class="py-2">
+                                                                    <div class="flex items-center">
+                                                                        <div>
+                                                                            <span
+                                                                                class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"><i
+                                                                                    class="fas fa-fingerprint"></i></span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <h4 class="text-gray-200 font-light">S Pen
+                                                                                con
+                                                                                latencia ultrabaja</h4>
+                                                                        </div>
                                                                     </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="py-2">
-                                                                <div class="flex items-center">
-                                                                    <div>
-                                                                        <span
-                                                                            class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"><i
-                                                                                class="fas fa-fingerprint"></i></span>
+                                                                </li>
+                                                                <li class="py-2">
+                                                                    <div class="flex items-center">
+                                                                        <div>
+                                                                            <span
+                                                                                class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"><i
+                                                                                    class="fas fa-fingerprint"></i></span>
+                                                                        </div>
+                                                                        <div>
+                                                                            <h4 class="text-gray-200 font-light">Batería
+                                                                                inteligente de 8000 mAh</h4>
+                                                                        </div>
                                                                     </div>
-                                                                    <div>
-                                                                        <h4 class="text-gray-200 font-light">S Pen con
-                                                                            latencia ultrabaja</h4>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li class="py-2">
-                                                                <div class="flex items-center">
-                                                                    <div>
-                                                                        <span
-                                                                            class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"><i
-                                                                                class="fas fa-fingerprint"></i></span>
-                                                                    </div>
-                                                                    <div>
-                                                                        <h4 class="text-gray-200 font-light">Batería
-                                                                            inteligente de 8000 mAh</h4>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                        <h3 class="text-5xl font-extrabold text-gray-50 pb-4">
-                                                            ${{ number_format($product->Precio, 0, ',', '.') }}</h3>
-                                                        <input type="hidden" id="precio" value="{{ $product->Precio }}">
-                                                        <div class="flex flex-wrap">
-                                                            {{ csrf_field() }}
-                                                            <div class="md:w-1/2 lg:w-1/3 md:px-6 px-6 flex py-6 justify-center"
-                                                                style="background: white;">
+                                                                </li>
+                                                            </ul>
+                                                            <h3 class="text-5xl font-extrabold text-gray-50 pb-4">
+                                                                ${{ number_format($product->Precio, 0, ',', '.') }}
+                                                            </h3>
+                                                            <input type="hidden" id="precio"
+                                                                value="{{ $product->Precio }}">
+                                                            <div class="flex flex-wrap">
+                                                                {{ csrf_field() }}
+                                                                <div class="md:w-1/2 lg:w-1/3 md:px-6 px-6 flex py-6 justify-center"
+                                                                    style="background: white;">
+                                                                    @php
+                                                                        $ff = 0;
+                                                                    @endphp
+                                                                    @foreach ($StockColor as $colorstock)
 
-                                                                @foreach ($StockColor as $colorstock)
-                                                                <div class="justify-items-auto md:w-full md:px-3" style="height:25px;width:25px;
-                                                                    margin:5px;display:inline-block;border-width: 1px;
+
+                                                                        @if ($colorstock->stock > 0)
+                                                                            <div id="radio" class="justify-items-auto md:w-full md:px-3 px-6 "
+                                                                                style="height:25px;width:25px;
+                                                                        margin:5px;display:inline-block;border-width: 1px;
                                                                                  border-style: solid;
                                                                                  border-color: black;
-                                                                    background-color: {{$colorstock['color']}}">
-                                                                </div>
-                                                                <input type="radio" id="color_group" name="color_group"
-                                                                    style="outline:none;appearance: none;"
-                                                                    value="{{$colorstock['color']}}">
-                                                                <input type="hidden" id="stock" name="stock"
-                                                                    value="{{$colorstock['stock']}}">
+                                                                                 background-color: {{ $colorstock->color }}">
+                                                                                <input type="radio"
+                                                                                    id="color_group{{ $ff++ }}"
+                                                                                    name="color_group"
+                                                                                    style="outline:none;appearance: none;"
+                                                                                    value="{{ $colorstock->color }}"
+                                                                                    data-stock="{{ $colorstock->stock }}">
+                                                                                    <label
+                                                                                    class="text-base py-4 absolute text-center"
+                                                                                    style="z-index: 9999"
+                                                                                    for="color_group{{ $ff }}">
+                                                                                    {{ $colorstock->stock }}</label>
 
-                                                                @endforeach
+                                                                            </div>
+                                                                        @endif
+                                                                        {{-- <input type="text" class=" " id="stock"
+                                                                            name="stock"
+                                                                            value="{{ $colorstock->stock }}" disabled> --}}
+
+
+                                                                    @endforeach
+                                                                </div>
                                                                 <!-- /// -->
 
 
                                                             </div>
                                                             <input type="hidden" id="id_producto" name="id_producto"
-                                                                value="{{$product->SKU}}">
+                                                                value="{{ $product->SKU }}">
                                                             <div class="md:w-1/2 lg:w-1/2 lg:px-6 md:px-0 py-6">
                                                                 <p
-                                                                    class=" md:pl-2 text-base md:text-sm leading-relaxed md:w-full md:pb-4 text-gray-50">
+                                                                    class=" md:pl-2 text-base md:text-sm leading-relaxed md:w-full md:pb-4 text-black">
                                                                     COLORES DISPONIBLES
                                                                 </p>
                                                             </div>
@@ -156,9 +182,9 @@
                                                                 {{-- <img class="absolute"
                                                                     src="/public/img/despacho a domicilio.PNG" alt=""> --}}
                                                                 {{-- <div class="absolute image is-128x128 ">
-                                                                <img class=" is-rounded"
-                                                                    src="https://bulma.io/images/placeholders/128x128.png">
-                                                            </div> --}}
+                                                                    <img class=" is-rounded"
+                                                                        src="https://bulma.io/images/placeholders/128x128.png">
+                                                                </div> --}}
                                                                 {{-- <div style="display:inline-block;border-width: 1px;
                                                                  border-style: solid;
                                                                  border-color: #2473b6;
@@ -186,9 +212,9 @@
                                                                 {{-- <img class="absolute"
                                                                     src="/public/img/despacho a domicilio.PNG" alt=""> --}}
                                                                 {{-- <div class="absolute image is-128x128 ">
-                                                                <img class=" is-rounded"
-                                                                    src="https://bulma.io/images/placeholders/128x128.png">
-                                                            </div> --}}
+                                                                    <img class=" is-rounded"
+                                                                        src="https://bulma.io/images/placeholders/128x128.png">
+                                                                </div> --}}
                                                                 {{-- <div style="display:inline-block;border-width: 1px;
                                                                  border-style: solid;
                                                                  border-color: #2473b6;
@@ -244,12 +270,12 @@
                                                         </div>
                                                     </div>
 
-                                                </div>
+                                            </div>
                                         </div>
 
                                         </form>
 
-                                        @endfor
+                                    @endfor
                                 </section>
 
                             </div>

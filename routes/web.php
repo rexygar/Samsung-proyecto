@@ -83,3 +83,9 @@ Route::get('/carousel', function () {
 Route::get('/destacados', function () {
     return view('Components.destacados');
 });
+
+Route::get('/adminPanel', function(){
+    return view('dashboard.dashboard');
+});
+
+Route::get('/ListaProductos', [App\Http\Controllers\MainController::class, 'listProduct'])->name('product.list');

@@ -189,4 +189,25 @@ class MainController extends Controller
         }
     }
 
+    public function listProduct(Request $request){
+        if($request->ajax()){
+            $product = DB::select("CALL Ges_Eco_AllProducts()");
+            
+            return Datatables::of($product)->addIndexColumn()
+            ->addColumn('action', function ($row) {
+                $url = route('venta.editar');
+                $pdf = url('/venta/pdf/' . $row->id);
+                $btn = '<form action="' . $url . '" method="GET">
+                        <input type="hidden" name="id" value="' . $row->id . '">
+                        <button type="submit" class="btn btn-primary">Ver</button>
+                        <button type="button" id="' . $row->id . '" class="btn btn-danger" onclick="modales(' . $row->id . ')">Eliminar</button>
+                        <a href="' . $pdf . '" class="btn btn-secondary">Imprimir</a>
+                    </form>';
+                return $btn;
+            });
+        
+        }
+        return view('dashboard.lista_Producto');
+    }
+
 }
