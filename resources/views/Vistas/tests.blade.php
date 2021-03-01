@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+
+@include('Components.Errores.Mantencion')
+
+{{-- <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
@@ -347,6 +350,7 @@
       </div>
 
       {{-- producto card --}}
+      {{--
       <div class="mt-8 bg-white bk-hero-bread overflow-hidden shadow sm:rounded-lg">
         <div class="grid grid-cols-4  gap-4">
           <div class="card ">
@@ -418,8 +422,9 @@
             </footer>
           </div>
         </div>
-      </div>
+      </div>--}}
       {{-- end producto card --}}
+      {{--
       <section class="hero is-medium is-link mt-8 
       overflow-hidden shadow sm:rounded-lg">
         <div class="hero-body">
@@ -503,4 +508,4 @@
   </div>
 </body>
 
-</html>
+</html> --}}

@@ -8,19 +8,12 @@
     <div class="grid grid-cols-1 gap-2 place-content-center">
       <div class="mt-8  sm:rounded-lg">
         <div class="grid grid-cols-1 gap-2 place-content-center">
-          <div class="text-center uppercase tracking-wide text-2xl text-black font-bold   pb-2">Productos Destacados</div>
+          <div class="text-center uppercase tracking-wide text-2xl font-bold bg-black pb-6 px-6"
+            style="color: #FAFAFA">
+            <span class="inline-block align-middle"> Productos Destacados</span>
+          </div>
         </div>
 
-        <div class="grid grid-cols-3 gap-2 place-content-center">
-          <div class="col-span-1">
-            <hr class="border-hr border-blue-300 bg-blue-300">
-          </div>
-          <div class="px-4 col-span-1">TecnoBuy</div>
-          <div class=" col-span-1">
-            <hr class="border-hr border-blue-300 bg-blue-300">
-          </div>
-
-        </div>
       </div>
 
 

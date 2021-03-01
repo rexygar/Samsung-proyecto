@@ -88,7 +88,7 @@
                             <div class="container mx-auto md:px-0 sm:px-6">
 
                                 {{-- producto card --}}
-                                <div class="place-self-center  sm:grid sm:grid-cols-1 ">
+                                <div class="place-self-center ">
                                     @include('Components.producto-oferta', ['oferta' => $oferta])
                                 </div>
                                 {{-- end producto card --}}
@@ -106,8 +106,8 @@
                             <div class="container mx-auto sm:container sm:mx-auto md:px-0 sm:px-6">
 
                                 <!-- ... -->
-                                <div class="place-self-center  sm:grid sm:grid-cols-1  ">
-                                    @include('Components.producto-Destacados', ['oferta' => $oferta])
+                                <div class="place-self-center  ">
+                                    @include('Components.producto-Destacados', ['destacados' => $destacados])
                                 </div>
 
                             </div>
@@ -122,7 +122,7 @@
 
                                 {{-- producto card --}}
                                 <div class="place-self-center">
-                                    @include('Components.trade-in')
+                                    @include('Components.trade-in-redux')
                                 </div>
                                 {{-- end producto card --}}
 

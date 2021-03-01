@@ -39,14 +39,14 @@
 
 
 
-<div class="carousel relative bg-white">
-    <div class="carousel-inner relative overflow-hidden w-full">
+<div class="carousel relative bg-white ">
+    <div class="carousel-inner relative overflow-hidden w-full ">
         <!--Slide 1-->
         <input class="carousel-open" type="radio" id="carousel-1" name="carousel" aria-hidden="true" hidden=""
             checked="checked">
-        <div class="carousel-item absolute opacity-0">
-            <div class="block h-full w-full py-36   text-white text-5xl text-center"
-                style="background-image: url({{url('../uploads/products/6/1366_521.jpg')}});"> </div>
+        <div class="carousel-item absolute md:pt-10 lg:pt-0 pt-10 opacity-0 border-t-2 border-black">
+            <div class="block h-full w-full py-20 lg:py-60 md:py-36   bg-contain  bg-center  text-white text-5xl text-center"
+                style=" background-repeat: no-repeat;;background-image: url({{url('../uploads/products/6/1366_521.jpg')}});"> </div>
         </div>
         <label for="carousel-3"
             class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
@@ -55,9 +55,9 @@
 
         <!--Slide 2-->
         <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
-        <div class="carousel-item absolute opacity-0">
-            <div class="block h-full w-full py-36  text-white text-5xl text-center"
-                style="background-image: url({{url('../uploads/products/6/evoluciona a galaxy.png.jpg')}});"> </div>
+        <div class="carousel-item absolute md:pt-10 lg:pt-0 pt-10 opacity-0 border-t-2 border-black">
+            <div class="block h-full w-full py-20 lg:py-60 md:py-36 bg-contain bg-center text-white text-5xl text-center"
+                style=" background-repeat: no-repeat;;background-image: url({{url('../uploads/products/6/evoluciona a galaxy.png.jpg')}});"> </div>
         </div>
         <label for="carousel-1"
             class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
@@ -66,9 +66,9 @@
 
         <!--Slide 3-->
         <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
-        <div class="carousel-item absolute opacity-0">
-            <div class="block h-full w-full py-36  text-white text-5xl text-center"
-                style="background-image: url({{url('../uploads/products/6/earbuds.jpg')}});"></div>
+        <div class="carousel-item absolute md:pt-10 lg:pt-0 pt-10 opacity-0 border-t-2 border-black">
+            <div class="block h-full w-full py-20 lg:py-60 md:py-36   bg-contain bg-center text-white text-5xl text-center"
+                style= "background-repeat: no-repeat;;background-image: url({{url('../uploads/products/6/earbuds.jpg')}});"></div>
         </div>
         <label for="carousel-2"
             class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>

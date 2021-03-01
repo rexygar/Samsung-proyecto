@@ -5,22 +5,15 @@
     <!-- Hero head: will stick at the top -->
     {{-- Contenido --}}
     {{-- producto card --}}
-    <div class="grid grid-cols-1 gap-2 place-content-center ">
-      <div class="mt-8   sm:rounded-lg">
+    <div class="grid grid-cols-1 gap-2 place-content-center">
+      <div class="mt-8  sm:rounded-lg">
         <div class="grid grid-cols-1 gap-2 place-content-center">
-          <div class="text-center  uppercase text-2xl tracking-wide text-black font-bold  pb-2">Productos en oferta</div>
+          <div class="text-center uppercase tracking-wide text-2xl font-bold bg-yellow-300 pb-6 px-6"
+            style="color: #FAFAFA">
+            <span class="inline-block align-middle">Ofertas de la semana</span>
+          </div>
         </div>
 
-        <div class="grid grid-cols-3 gap-2 place-content-center">
-          <div class="">
-            <hr class="border-hr border-blue-300 bg-blue-300">
-          </div>
-          <div class="px-4">TecnoBuy</div>
-          <div class="">
-            <hr class="border-hr border-blue-300 bg-blue-300">
-          </div>
-
-        </div>
       </div>
 
 
