@@ -273,4 +273,4 @@
     <!--/JQUERY Validation-->
     <!-- /SECTION -->
 </body>
-@include('Layouts.footer')
+@include('layouts.Footer')

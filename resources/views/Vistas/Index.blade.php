@@ -137,4 +137,4 @@
 
     </main>
 </body>
-@include('Layouts.footer')
+@include('layouts.Footer')

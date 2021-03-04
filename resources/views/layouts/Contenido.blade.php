@@ -39,7 +39,7 @@
 
 
 {{-- footer --}}
-@include('Layouts.footer')
+@include('layouts.Footer')
 {{-- footer --}}
 </body>
 </html>

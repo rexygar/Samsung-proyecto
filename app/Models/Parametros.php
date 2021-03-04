@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Parametros extends Model
 {
     use HasFactory;
-    public $table = "Parametros";
+    public $table = "parametros";
     protected $connection = 'mysql';
 }
