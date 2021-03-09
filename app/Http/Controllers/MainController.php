@@ -20,7 +20,7 @@ class MainController extends Controller
     public function index(){
         $destacados = DB::select("CALL Ges_Eco_rescatarDestacados()");
         $oferta = DB::select("CALL Ges_Eco_rescatarOferta()");
-        return view('vistas.Index')->with(['oferta' => $oferta, 'destacados' => $destacados]);
+        return view('Vistas.Index')->with(['oferta' => $oferta, 'destacados' => $destacados]);
     }
 
     public function index2(){
@@ -34,37 +34,51 @@ class MainController extends Controller
         }
     }
 
-    public function getProductos1($category){
+    public function getProductos1($superCategory){
 
-        $productos = DB::select("CALL Ges_Eco_rescatarProducto('" . $category . "','','')");
+        $productos = DB::select("CALL Ges_Eco_rescatarProducto('".$superCategory."','','','')");
         $dir = [];
 
-        array_push($dir, ['name' => $category, 'url' => URL('/') . '/Categoria' . '/' . $category]);
+        array_push($dir, ['name' => $superCategory, 'url' => URL('/') . '/Categoria' . '/' . $superCategory]);
 
         return view('store.filtros')->with(['productos' => $productos, 'dir' => $dir]);
     }
 
-    public function getProductos2($category, $subCategory){
+    public function getProductos2($superCategory, $category){
 
-        $productos = DB::select("CALL Ges_Eco_rescatarProducto('" . $category . "','" . $subCategory . "','')");
+        $productos = DB::select("CALL Ges_Eco_rescatarProducto('" . $superCategory . "','" . $category . "','','')");
 
         $dir = [];
-        array_push($dir, ['name' => $category, 'url' => URL('/') . '/Categoria' . '/' . $category]);
-        array_push($dir, ['name' => $subCategory, 'url' => URL('/') . '/Categoria' . '/' . $category . '/' . $subCategory]);
+        array_push($dir, ['name' => $superCategory, 'url' => URL('/') . '/Categoria' . '/' . $superCategory]);
+        array_push($dir, ['name' => $category, 'url' => URL('/') . '/Categoria' . '/' . $superCategory . '/' . $category]);
 
         return view('store.filtros')->with(['productos' => $productos, 'dir' => $dir]);
     }
 
-    public function getProductos3($category, $subCategory, $other){
+    public function getProductos3($superCategory, $category, $subCategory){
 
-        $productos = DB::select("CALL Ges_Eco_rescatarProducto('" . $category . "','" . $subCategory . "','".$other."')");
+        $productos = DB::select("CALL Ges_Eco_rescatarProducto('".$superCategory."', '" . $category . "','" . $subCategory . "','')");
 
         $dir = [];
-        array_push($dir, ['name' => $category, 'url' => URL('/') . '/Categoria' . '/' . $category]);
-        array_push($dir, ['name' => $subCategory, 'url' => URL('/') . '/Categoria' . '/' . $category . '/' . $subCategory]);
-        array_push($dir, ['name' => $other, 'url' => URL('/') . '/Categoria' . '/' . $category . '/' . $subCategory . '/' . $other]);
+        array_push($dir, ['name' => $superCategory, 'url' => URL('/') . '/Categoria' . '/' . $superCategory]);
+        array_push($dir, ['name' => $category, 'url' => URL('/') . '/Categoria' . '/' . $superCategory . '/' . $category]);
+        array_push($dir, ['name' => $subCategory, 'url' => URL('/') . '/Categoria' . '/' . $superCategory . '/' . $category . '/' . $subCategory]);
 
         return view('store.filtros')->with(['productos' => $productos, 'dir' => $dir]);
+    }
+
+    public function getProductos4($superCategory, $category, $subCategory, $other){
+
+        $productos = DB::select("CALL Ges_Eco_rescatarProducto('".$superCategory."', '" . $category . "','" . $subCategory . "','".$other."')");
+
+        $dir = [];
+        array_push($dir, ['name' => $superCategory, 'url' => URL('/') . '/Categoria' . '/' . $superCategory]);
+        array_push($dir, ['name' => $category, 'url' => URL('/') . '/Categoria' . '/' . $superCategory . '/' . $category]);
+        array_push($dir, ['name' => $subCategory, 'url' => URL('/') . '/Categoria' . '/' . $superCategory . '/' . $category . '/' . $subCategory]);
+        array_push($dir, ['name' => $other, 'url' => URL('/') . '/Categoria' . '/' . $superCategory . '/' . $category . '/' . $subCategory. '/' . $other]);
+
+        return view('store.filtros')->with(['productos' => $productos, 'dir' => $dir]);
+
     }
 
     public function getProduct($sku){
