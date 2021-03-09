@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\StockProducto;
 use App\Models\Parametros;
+use Illuminate\Support\Facades\DB;
 
 class ApiController extends Controller
 {
@@ -68,67 +69,42 @@ class ApiController extends Controller
     }
 
     public function Subir(Request $request){
-        $sku = '';
+        $id = '';
         $success = [];
-        $fail = [];
         try {
             $content = $request->getContent();
             $content =  json_decode($content, true);
 
-            if(isset($content[0]['Codigo_Barra'])){
+            if(isset($content[0]['Id_PrdStock'])){
                 for ($i=0; $i < count($content); $i++) { 
                     $stock = $content[$i];
-                    $sku = $stock['Codigo_Barra'];
-                    $stockProducto = StockProducto::where('Codigo_Barra',$stock['Codigo_Barra'])
-                                        ->where('Cod_EstiloColor', $stock['Cod_EstiloColor'])
-                                        ->where('Cod_Producto',$stock['Cod_Producto'] )
-                                        ->first();
-                    if($stockProducto == null){
-                        $stockProducto = new StockProducto();
-                        $stockProducto->Codigo_Barra = $stock['Codigo_Barra'];
-                        $stockProducto->Cod_Producto = $stock['Cod_Producto'];
-                        $stockProducto->Cod_EstiloColor = $stock['Cod_EstiloColor'];
-                        $stockProducto->Color = $stock['Color'];
-                        $stockProducto->Principal = $stock['Principal'];
-                        $stockProducto->Comprometido = $stock['Comprometido'];
-                        $stockProducto->Procesado = $stock['Procesado'];
-                    }else{
-                        $stockProducto->Color = $stock['Color'];
-                        $stockProducto->Principal = $stock['Principal'];
-                        //$stockProducto->Comprometido = $stock['Comprometido'];
-                        //$stockProducto->Procesado = $stock['Procesado'];
-                    }
-                    if($stockProducto->save()){
-                        array_push($success,['SKU' => $sku]);
-                        
-                    }else{
-                        array_push($fail,['SKU' => $sku]);
-                    }
+                    $id = $stock['Id_PrdStock'];
+                    $SQL = DB::select("CALL Ges_Eco_addStock('".$stock['Id_PrdStock']."', '".$stock['Cod_Producto']."', '".$stock['Cod_EstiloColor']."', ".$stock['addPrincipal'].");");                    
+                    array_push($success, ['Id_PrdStock' => $id]);
                 }
                 return json_encode(['Mesagge' => 'Registros Actualizados', 
                                     'status' => '0',
-                                    'Actualizados' => $success,
-                                    'Fallidos' => $fail]);
+                                    'Actualizados' => $success ]);
             }else{
                 return json_encode(['Mesagge' => 'Error al leer los Registros', 
                                     'status' => '1']);
             }
         } catch (\Throwable $th) {
-            if($sku !== ''){
-                return json_encode(['Mesagge' => 'Error al Guardar o Actualizar Stock del SKU: '.$sku, 
+            if($id !== ''){
+                return json_encode(['Mesagge' => 'Error al Guardar o Actualizar Stock del SKU: '.$id, 
                                     'status' => '1',
                                     'Actualizados' => $success,
-                                    'Fallidos' => $fail]);
+                                    'Fallidos' => ['Id_PrdStock' => $id]]);
             }
             return json_encode(['Mesagge' => 'Error del Servidor', 
                                 'status' => '1',
                                 'Actualizados' => $success,
-                                'Fallidos' => $fail]);
+                                'Fallidos' => ['Id_PrdStock' => $id]]);
         }
     }
 
     public function Descargar(){
-        return json_encode(StockProducto::all(),true);
+        return json_encode( DB::select("CALL Ges_Eco_getAllStock()"),true);
     }
 
 }
