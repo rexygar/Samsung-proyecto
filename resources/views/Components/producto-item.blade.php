@@ -188,9 +188,9 @@
                                             </div>
                                         </div>
 
-                                        <div class="grid grid-cols-6 md:grid-cols-6 lg:-mb-72 gap-4 lg:-mt-5 md:-mt-2">
+                                        <div class="grid grid-cols-6 md:grid-cols-6 lg:-mb-20 gap-4 lg:-mt-5 md:-mt-2">
                                             <div
-                                                class=" col-span-6 md:col-span-3  lg:col-span-6   lg:col-start-2  md:col-start-4 py-8 lg:py-0 md:py-0">
+                                                class=" col-span-6 md:col-span-3  lg:col-span-6   lg:col-start-4  md:col-start-4 py-8 lg:py-0 md:py-0">
                                                 <div class="md:flex md:flex-wrap  flex flex-wrap">
 
                                                     <div class="md:w-1/2 lg:w-1/3 w-full ">
@@ -205,40 +205,30 @@
                                                 </div>
                                             </div>
 
-                                            <div class=" col-span-6 md:col-span-3 md:col-start-4 lg:col-start-2">
+                                            <div class=" col-span-6 md:col-span-3 md:col-start-4 lg:col-start-4">
 
-                                                <div class="md:flex md:flex-wrap  flex flex-wrap">
-                                                    <div class="md:w-1/2 w-full bg-gray-300 ">
-                                                        <div
-                                                            class="md:px-0 md:py-0 px-6 py-6 grid grid-flow-col grid-cols-2  ">
-                                                            <div class="inline-block align-middle ">
-                                                                <p
-                                                                    class="inline-block align-middle lg:text-base font-bold md:text-sm leading-relaxed    text-black">
-                                                                    CANTIDAD
-                                                                </p>
-                                                            </div>
-                                                            <div class="inline-block align-middle ">
-                                                                <input type="number" id="cantidad"
-                                                                    style="outline:none;appearance: none;" min="1"
-                                                                    value=""
-                                                                    class="text-md w-5/6 inline-block align-middle  rounded-lg md:p-2 bg-white border-2 border-gray-300  placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">
-                                                            </div>
-
+                                                <div class="grid grid-cols-2">
+                                                    <div
+                                                        class="md:px-0 md:py-0 col-span-1 lg:px-2 bg-gray-300 lg:py-2 px-6 py-6 grid grid-cols-2  ">
+                                                        <div class="inline-block align-middle ">
+                                                            <p
+                                                                class="inline-block align-middle lg:text-base font-bold md:text-sm leading-relaxed    text-black">
+                                                                CANTIDAD
+                                                            </p>
+                                                        </div>
+                                                        <div class="inline-block align-middle ">
+                                                            <input type="number" id="cantidad"
+                                                                style="outline:none;appearance: none;" min="1" value=""
+                                                                class="text-md w-5/6 inline-block align-middle  rounded-lg md:p-2 bg-white border-2 border-gray-300  placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">
                                                         </div>
                                                     </div>
-                                                    <div class="lg:w-1/6">
-
-                                                    </div>
-                                                    <div class="md:w-1/2 px-6 md:px-0 lg:px-6 lg:py-6 pt-20">
-                                                        <div class="w-full  md:w-full  lg:py-12 -mt-16">
-                                                            <button id="carrito" type="button"
-                                                                style="background: rgb(19,124,117);
+                                                    <div class="">
+                                                        <button id="carrito" type="button"
+                                                            style="background: rgb(19,124,117);
                                                                                                     background: linear-gradient(90deg, rgba(19,124,117,1) 14%, rgba(10,82,109,1) 54%, rgba(14,69,114,1) 100%);"
-                                                                class="uppercase px-2 py-5 bg-blue-500 font-bold text-white max-w-max shadow-sm hover:shadow-lg"><i
-                                                                    class="fas fa-shopping-cart"></i> AGREGAR A MIS
-                                                                COMPRAS</button>
-                                                        </div>
-
+                                                            class="uppercase px-2 py-5 bg-blue-500 font-bold text-white max-w-max shadow-sm hover:shadow-lg"><i
+                                                                class="fas fa-shopping-cart"></i> AGREGAR A MIS
+                                                            COMPRAS</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -257,6 +247,6 @@
     <script src="https://use.fontawesome.com/5a91d57253.js"></script>
     </main>
     @endfor
-    <script src="{{ asset('js/producto.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('js/toastr/toastr.min.css') }}">
     <script src="{{ asset('js/toastr/toastr.js') }}"></script>
+    <script src="{{ asset('js/producto.js') }}"></script>

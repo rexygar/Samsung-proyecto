@@ -21,6 +21,8 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     {{-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" /> --}}
 
+ 
+
     <style>
         body {
             font-family: 'Nunito';
@@ -55,10 +57,6 @@
         }
     </style>
 </head>
-
-
-<link type="text/css" rel="stylesheet" href="{{ asset('css/style_for_quantity.css') }}" />
-
 <style>
     label.error {
         color: #a94442;

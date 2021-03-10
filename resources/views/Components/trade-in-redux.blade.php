@@ -38,7 +38,7 @@
 @include('Components.Megamenu') --}}
 
 <div class="leading-normal tracking-normal antialiased ">
-  <main class="h-full flex items-center px-6 lg:px-32   relative" style="background-color: #06A77D">
+  <main class="h-full flex items-center px-6 lg:px-32   relative" style="background-color: #2F4858">
     <header class="w-full absolute left-0 top-0 p-6 lg:p-32 md:visible lg:visible invisible">
       <div class="flex justify-between">
         <div>

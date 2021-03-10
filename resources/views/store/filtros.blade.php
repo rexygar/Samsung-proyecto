@@ -337,13 +337,13 @@
             </div>
         </div>
     </div>
-    <div class="lg:col-span-9  md:col-span-9 col-span-10 md:px-6 lg:px-6 px-0">
+    <div class="lg:col-span-9  md:col-span-9 col-span-10 md:px-6 lg:px-6 px-0 ">
         <div class=" grid md:col-rows-1 lg:col-rows-1 grid-cols-1 mb-60 ">
             <section class="relative ">
                 <div class="container mx-auto ">
                     <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg ">
                         <div class="md:px-6">
-                            <div class="flex flex-wrap justify-center">
+                            <div class="flex flex-wrap justify-center animate__fadeInUp animate__animated wow">
 
                                 <div
                                     class="w-full lg:w-full lg:order-1  border-opacity-25 border-t border-dotted border-1">

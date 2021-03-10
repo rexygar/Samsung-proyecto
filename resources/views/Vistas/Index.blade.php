@@ -80,7 +80,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="lg:w-full md:w-full lg:-mt-10   md:pr-0">
+                            <div class="lg:w-full md:w-full lg:-mt-10   md:pr-0 animate__fadeInUp animate__animated wow">
                                 <div class="">
                                     <!-- ... -->
                                     <div class="place-self-center ">
@@ -88,14 +88,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="container mx-auto">
+                            <div class="container mx-auto animate__fadeInUp animate__animated wow">
                                 <div class="grid grid-cols-1 lg:grid-cols-1 gap-4 lg:gap-8">
                                     <div class="place-self-center ">
                                         @include('Components.loMvisto')
                                     </div>
                                 </div>
                             </div>
-                            <div class="container mx-auto md:px-0 sm:px-6">
+                            <div class="container mx-auto md:px-0 sm:px-6 animate__fadeInUp animate__animated wow">
 
                                 {{-- producto card --}}
                                 <div class="place-self-center ">
@@ -105,7 +105,7 @@
 
 
                             </div>
-                            <div class="container mx-auto lg:w-full md:w-full">
+                            <div class="container mx-auto lg:w-full md:w-full animate__fadeInUp animate__animated wow">
                                 <div class="grid grid-cols-1 lg:grid-cols-1 gap-4 lg:gap-8">
                                     <!-- ... -->
                                     <div class="place-self-center ">
@@ -113,7 +113,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="container mx-auto sm:container sm:mx-auto md:px-0 sm:px-6">
+                            <div class="container mx-auto sm:container sm:mx-auto md:px-0 sm:px-6 animate__fadeInUp animate__animated wow">
 
                                 <!-- ... -->
                                 <div class="place-self-center  ">
@@ -128,7 +128,7 @@
                                 <hr class="self-center border-hr border-gray-600 bg-gray-600 w-5/5">
 
                             </div>
-                            <div class="">
+                            <div class="animate__fadeInUp animate__animated wow">
 
                                 {{-- producto card --}}
                                 <div class="place-self-center">

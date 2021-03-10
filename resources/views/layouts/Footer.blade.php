@@ -91,14 +91,7 @@
     </div>
   </div>
 </footer>
-
-<script>
-  let hamburger = document.getElementById('hamburgerbtn');
-
-  let mobileMenu = document.getElementById('mobileMenu');
-
-  hamburger.addEventListener('click', function(){
-      mobileMenu.classList.toggle('active');
-  });
-</script>
 <script src="{{ asset('js/wow.min.js') }} "></script>
+<script>
+  new WOW().init();
+</script>
