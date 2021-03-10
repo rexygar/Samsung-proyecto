@@ -29,22 +29,22 @@
   <nav class="breadcrumb" aria-label="breadcrumbs ">
     <ul>
       <li>
-        <a href="#">
-          <span class="text-gray-500"><a href="#">Home</a></span>
+        <a href="{{ url('/') }}">
+          <span class="text-gray-500 text-xs lg:text-base"><a href="{{ url('/') }}">Inicio</a></span>
         </a>
       </li>
       <li>
-        <a href="{{ $product->SupCategoria }}">
-          <span class="text-gray-500">{{$product->SupCategoria}}</span>
+        <a href="/Categoria/{{ $product->SupCategoria }}">
+          <span class="text-gray-500 text-xs lg:text-base">{{$product->SupCategoria}}</span>
         </a>
       </li>
       <li>
-        <a href="{{ $product->Categoria }}">
-          <span class="text-gray-500">{{$product->Categoria}}</span>
+        <a href="/Categoria/{{ $product->SupCategoria }}/{{ $product->Categoria }}">
+          <span class="text-gray-500 text-xs lg:text-base">{{$product->Categoria}}</span>
         </a>
       </li>
       <li>
-        <a href="{{ $product->SubCategoria }}">
+        <a href="/Categoria/{{ $product->SupCategoria }}/{{ $product->Categoria }}/{{ $product->SubCategoria }}">
           <span class="text-gray-50">{{$product->SubCategoria}}</span>
         </a>
       </li>

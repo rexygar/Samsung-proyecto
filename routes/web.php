@@ -21,8 +21,8 @@ Route::get('/home', [App\Http\Controllers\MainController::class, 'index2'])->nam
 // Productos
 Route::get('/Categoria/{superCategory}',                                    [App\Http\Controllers\MainController::class, 'getProductos1']);
 Route::get('/Categoria/{superCategory}/{category}',                         [App\Http\Controllers\MainController::class, 'getProductos2']);
-Route::get('/Categoria/{superCategory}{category}/{subCategory}',            [App\Http\Controllers\MainController::class, 'getProductos3']);
-Route::get('/Categoria/{superCategory}{category}/{subCategory}/{other}',    [App\Http\Controllers\MainController::class, 'getProductos4']);
+Route::get('/Categoria/{superCategory}/{category}/{subCategory}',            [App\Http\Controllers\MainController::class, 'getProductos3']);
+Route::get('/Categoria/{superCategory}/{category}/{subCategory}/{other}',    [App\Http\Controllers\MainController::class, 'getProductos4']);
 Route::get('/Product/{sku}',                                [App\Http\Controllers\MainController::class, 'getProduct']);
 
 // Carrito

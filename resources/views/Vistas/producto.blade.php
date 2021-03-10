@@ -129,62 +129,52 @@
 
     <!-- /container -->
     <section class="relative bg-gray-300 lg:-mb-32 ">
-        <div class="container mx-auto">
-            <div class="relative flex flex-col min-w-0 break-words bg-white w-full ">
-                <div class="px-6">
-                    <div class="flex flex-wrap justify-center">
+        <div class="relative flex flex-col min-w-0 break-words bg-white w-full ">
+            <div class="px-6">
+                <div class="flex flex-wrap justify-center">
 
-                        <div class="w-full lg:w-full px-4 lg:order-1">
-                            <div class="justify-items-start md:justify-items-center py-4 lg:pt-4 pt-8">
+                    <div class="w-full lg:w-full px-4 lg:order-1">
+                        <div class="justify-items-start md:justify-items-center py-4 lg:pt-4 pt-8">
 
-                                <section class="relative">
+                            <section class="relative">
 
-                                    <div id="flix-inpage"></div>
-                                    <script type="text/javascript" src="//media.flixfacts.com/js/loader.js"
-                                        data-flix-distributor="4800" data-flix-language="cl" data-flix-brand="Samsung"
-                                        data-flix-mpn="SM-N975FZWJCHO" data-flix-ean="" data-flix-sku=""
-                                        data-flix-button="flix-minisite" data-flix-inpage="flix-inpage"
-                                        data-flix-button-image="" data-flix-price="" data-flix-fallback-language=""
-                                        async></script>
+                                <div id="flix-inpage"></div>
+                                <script type="text/javascript" src="//media.flixfacts.com/js/loader.js"
+                                    data-flix-distributor="4800" data-flix-language="cl" data-flix-brand="Samsung"
+                                    data-flix-mpn="SM-N975FZWJCHO" data-flix-ean="" data-flix-sku=""
+                                    data-flix-button="flix-minisite" data-flix-inpage="flix-inpage"
+                                    data-flix-button-image="" data-flix-price="" data-flix-fallback-language="" async>
+                                </script>
 
 
-                                </section>
-                            </div>
+                            </section>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
+        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 ">
+            <div class="lg:px-6">
+                <div class="flex flex-wrap justify-center">
 
-        <div class="container mx-auto">
-            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 ">
-                <div class="lg:px-6">
-                    <div class="flex flex-wrap justify-center">
+                    <div class="w-full lg:w-full px-4 lg:order-1">
+                        <div class="justify-items-start md:justify-items-center  lg:pt-4 pt-8">
 
-                        <div class="w-full lg:w-full px-4 lg:order-1">
-                            <div class="justify-items-start md:justify-items-center  lg:pt-4 pt-8">
-
-                                <section class="relative py-20">
-
-                                    <div class="container mx-auto">
-
-                                        {{-- producto card --}}
-                                        <div class="place-self-center">
-                                            @include('Components.producto-index')
-                                        </div>
-                                        {{-- end producto card --}}
+                            <section class="relative py-20">
+                                {{-- producto card --}}
+                                <div class="place-self-center">
+                                    @include('Components.producto-index')
+                                </div>
+                                {{-- end producto card --}}
 
 
-                                    </div>
 
-
-                                </section>
-                            </div>
+                            </section>
                         </div>
                     </div>
-
                 </div>
+
             </div>
         </div>
     </section>
@@ -192,7 +182,7 @@
 
     <!--JQUERY Validation-->
     <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('js/swiper-bundle.min.js') }}"></script>
+    {{-- <script type="text/javascript" src="{{ URL::asset('js/swiper-bundle.min.js') }}"></script> --}}
     {{-- <script src="{{ asset('js/lib/jquery.js') }}"></script>
     <script src="{{ asset('js/dist/jquery.validate.js') }}"></script>
 
@@ -201,7 +191,7 @@
         src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> --}}
     {{-- <script src="{{ asset('js/swiper-bundle.min.js') }}"></script> --}}
     {{-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> --}}
-
+    {{-- 
     <script>
         //initialize swiper when document ready 
         $(document).ready(function () {
@@ -232,8 +222,8 @@
         loop: true, 
     })
 });
-    </script>
-
+    </script> --}}
+    {{-- 
     <script>
         //////////////////////////////////////
     $(document).ready(function () {
@@ -268,7 +258,7 @@
         }
     });
 
-    </script>
+    </script> --}}
 
     <!--/JQUERY Validation-->
     <!-- /SECTION -->

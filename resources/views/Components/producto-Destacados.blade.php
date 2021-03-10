@@ -58,41 +58,45 @@
     <!-- Hero head: will stick at the top -->
     {{-- Contenido --}}
     {{-- producto card --}}
-      <div class="overflow-hidden  sm:rounded-lg">
-        <div class="grid md:grid-cols-5 grid-cols-2 md:gap-4 gap-1">
+    <div class="overflow-hidden  sm:rounded-lg">
+      <div class="grid md:grid-cols-5 grid-cols-2 md:gap-4 gap-1">
         @foreach($destacados as $d)
         <div class="mb-10 md:container md:mx-auto px-4 md:px-0">
           <div class="">
-            <div class="content">
+            <a href="{{ URL('/') }}/Product/{{ $d->SKU }}">
+              <div class="content">
 
-              <div class="w-full max-w-6xl rounded md:mb-0  ">
-                <div class="relative panel-wrapper">
-                  <div class=" ">
-                    <figure class="image is-3by4">
-                      <img src="https://via.placeholder.com/360x360?text=Tecnobuy.cl" class=" absolute z-10 " alt="">
+                <div class="w-full max-w-6xl rounded md:mb-0  ">
+                  <div class="relative panel-wrapper">
+                    <div class=" ">
+                      <figure class="image is-3by4">
+                        <img src="https://via.placeholder.com/360x360?text=Tecnobuy.cl" class=" absolute z-10 " alt="">
 
-                    </figure>
+                      </figure>
 
-                    <h5 style="font-weight: 700;
+                      <h5 style="font-weight: 700;
                     font-size: 16px;" class="font-bold text-black text-base text-center overflow-auto">
-                      {{ $d->Descripcion }}</h5>
+                        {{ $d->Descripcion }}</h5>
                       <p style="font-weight: 700;
                       font-size: 18px;" class=" text-center text-black ">$ {{ number_format($d->Precio, 0, ',', '.') }}
-                    </p>
-                    <h6 class=" UPPERCASE text-center text-black" style="font-weight: 100">{{ $d->SKU }}</h6>
-                    {{-- <a href="{{ URL('/') }}/Product/{{ $d->SKU }}"
-                    class="bg-black font-bold transform skew-x-6 lowercase md:flex md:justify-center md:mx-6 lg:mx-10
-                    text-white">Comprar</a> --}}
+                      </p>
+                      <h6 class=" UPPERCASE text-center text-black" style="font-weight: 100">{{ $d->SKU }}</h6>
+                      {{-- <a href="{{ URL('/') }}/Product/{{ $d->SKU }}"
+                      class="bg-black font-bold transform skew-x-6 lowercase md:flex md:justify-center md:mx-6 lg:mx-10
+                      text-white">Comprar
+            </a> --}}
 
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
-
         </div>
-        @endforeach
       </div>
     </div>
-    {{-- end producto card --}} </section>
+    </a>
+
+</div>
+
+</div>
+@endforeach
+</div>
+</div>
+{{-- end producto card --}} </section>
 </div>

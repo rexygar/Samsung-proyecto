@@ -63,36 +63,42 @@
         @foreach($oferta as $d)
         <div class="mb-10 md:container md:mx-auto px-4 md:px-0">
           <div class="">
-            <div class="content">
 
-              <div class="w-full max-w-6xl rounded md:mb-0  ">
-                <div class="relative panel-wrapper">
-                  <div class=" ">
-                    <figure class="image is-3by4">
-<img src="https://via.placeholder.com/360x360?text=Tecnobuy.cl"
-                      class=" absolute z-10 " alt="">
+            <a href="{{ URL('/') }}/Product/{{ $d->SKU }}">
+              <div class="content">
 
-                    </figure>
-                    
-                    <h5 style="font-weight: 700;
+                <div class="w-full max-w-6xl rounded md:mb-0  ">
+                  <div class="relative panel-wrapper">
+                    <div class=" ">
+                      <figure class="image is-3by4">
+                        <img src="https://via.placeholder.com/360x360?text=Tecnobuy.cl" class=" absolute z-10 " alt="">
+
+                      </figure>
+
+                      <h5 style="font-weight: 700;
                     font-size: 14px;" class="font-bold  text-base text-center overflow-auto">{{ $d->Descripcion }}</h5>
-                    <p class="text-sm font-bold text-center text-black ">$ {{ number_format($d->Precio, 0, ',', '.') }}</p>
-                    {{-- <a href="{{ URL('/') }}/Product/{{ $d->SKU }}"
-                      class="bg-black font-bold transform  skew-x-6 lowercase md:flex md:justify-center md:mx-6 lg:mx-10 text-white">Comprar</a> --}}
-                      
-                    <h6 class=" UPPERCASE text-center" style="font-weight: 100">{{ $d->SKU }}</h6>
+                      <p class="text-sm font-bold text-center text-black ">$
+                        {{ number_format($d->Precio, 0, ',', '.') }}</p>
+                      {{-- <a href="{{ URL('/') }}/Product/{{ $d->SKU }}"
+                      class="bg-black font-bold transform skew-x-6 lowercase md:flex md:justify-center md:mx-6 lg:mx-10
+                      text-white">Comprar
+            </a> --}}
+
+            <h6 class=" UPPERCASE text-center" style="font-weight: 100">{{ $d->SKU }}</h6>
 
 
 
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
-
         </div>
-        @endforeach
       </div>
     </div>
-    {{-- end producto card --}} </section>
+    </a>
+
+</div>
+
+</div>
+@endforeach
+</div>
+</div>
+{{-- end producto card --}} </section>
 </div>

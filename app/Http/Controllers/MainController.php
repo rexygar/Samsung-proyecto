@@ -49,6 +49,7 @@ class MainController extends Controller
         $productos = DB::select("CALL Ges_Eco_rescatarProducto('" . $superCategory . "','" . $category . "','','')");
 
         $dir = [];
+        
         array_push($dir, ['name' => $superCategory, 'url' => URL('/') . '/Categoria' . '/' . $superCategory]);
         array_push($dir, ['name' => $category, 'url' => URL('/') . '/Categoria' . '/' . $superCategory . '/' . $category]);
 
@@ -63,12 +64,12 @@ class MainController extends Controller
         array_push($dir, ['name' => $superCategory, 'url' => URL('/') . '/Categoria' . '/' . $superCategory]);
         array_push($dir, ['name' => $category, 'url' => URL('/') . '/Categoria' . '/' . $superCategory . '/' . $category]);
         array_push($dir, ['name' => $subCategory, 'url' => URL('/') . '/Categoria' . '/' . $superCategory . '/' . $category . '/' . $subCategory]);
-
+        
         return view('store.filtros')->with(['productos' => $productos, 'dir' => $dir]);
     }
 
     public function getProductos4($superCategory, $category, $subCategory, $other){
-
+        
         $productos = DB::select("CALL Ges_Eco_rescatarProducto('".$superCategory."', '" . $category . "','" . $subCategory . "','".$other."')");
 
         $dir = [];
