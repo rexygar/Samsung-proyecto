@@ -1,6 +1,6 @@
 @extends('layouts_admin.master')
 @section('parentPageTitle', 'Dashboard')
-@section('title', 'Index')
+@section('title', 'Lista de Producto')
 
 
 @section('content')
@@ -28,7 +28,6 @@
                         <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Sub. Categoria</th>
                         <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Sub. Sub. Categoria</th>
                         <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Precio</th>
-                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Precio de Oferta</th>
                       </tr>
                     </thead>
                     <tbody class="text-gray-500 text-xs divide-y divide-gray-200">
@@ -45,10 +44,10 @@
 
 @section('page-styles')
 <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-        <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-        <link href="https://nightly.datatables.net/searchpanes/css/searchPanes.dataTables.min.css" rel="stylesheet">
-        <link href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css" rel="stylesheet">
-        <link href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="https://nightly.datatables.net/searchpanes/css/searchPanes.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{{ asset('js/toastr/toastr.min.css') }}">
 @endsection
 

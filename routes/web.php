@@ -85,8 +85,9 @@ Route::get('/destacados', function () {
     return view('Components.destacados');
 });
 
-Route::get('/adminPanel', function(){
-    return view('dashboard.dashboard');
+Route::get('/adminPanel', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
+Route::get('/ListaProductos', [App\Http\Controllers\AdminController::class, 'listProduct'])->name('product.list');
+Route::get('/editarSlider', function(){
+    return view('dashboard.edit_slider');
 });
-
-Route::get('/ListaProductos', [App\Http\Controllers\MainController::class, 'listProduct'])->name('product.list');
+Route::POST('/slider_editado', [App\Http\Controllers\AdminController::class, 'upload_slider'])->name('slider.upload');
