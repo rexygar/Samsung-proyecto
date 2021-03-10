@@ -31,11 +31,10 @@ $(document).ready(function(){
             {data: 'SubCategoria', name: 'SubCategoria'},
             {data: 'SubSubCategoria', name: 'SubSubCategoria'},
             {data: 'Precio', name: 'Precio'},
-            {data: 'PrecioOferta', name: 'PrecioOferta'},
         ],
         columnDefs: [
             { searchPanes: { show: true }, targets: [1] },
-            { searchPanes: { show: false }, targets: [0, 2, 3,4,5, 6, 7] }
+            { searchPanes: { show: false }, targets: [0, 2, 3, 4, 5, 6] }
         ]
     })
 })

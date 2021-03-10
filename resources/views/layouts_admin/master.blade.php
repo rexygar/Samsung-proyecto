@@ -8,12 +8,13 @@
 <title>@yield('title') - {{ config('app.name') }}</title>
 <meta name="description" content="@yield('meta_description', config('app.name'))">
 <meta name="author" content="@yield('meta_author', config('app.name'))">
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 @yield('meta')
 @stack('before-styles')
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/Style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/componentes.css') }}" rel="stylesheet">
     <link href="{{ asset('css/layouts.css') }}" rel="stylesheet">
     <link href="{{ asset('css/hero-backgrounds.css') }}" rel="stylesheet">
@@ -36,7 +37,7 @@
         
         <!-- main page header -->
         @include('layouts_admin.navbar')
-        <div class="grid grid-cols-9">
+        <div class="grid grid-cols-12">
         <!-- project main left menubar -->
         @include('layouts_admin.sidebar')
 
