@@ -18,10 +18,16 @@
     <link href="{{ asset('css/hero-backgrounds.css') }}" rel="stylesheet">
     <link href="{{ asset('css/Megamenu.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <style>
         body {
             font-family: 'Nunito';
+        }
+
+        .bnr-fnt {
+            @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap');
+            font-family: 'Lato', sans-serif !important;
         }
 
         .border-hr {
@@ -29,10 +35,10 @@
         }
     </style>
 </head>
-<div  class=" w-full py-auto relative" style="z-index: 99999">
-    
-@include('Components.brandHeader')
-@include('Components.Header')
+<div class=" w-full py-auto relative" style="z-index: 99999">
+
+    @include('Components.brandHeader')
+    @include('Components.Header')
 </div>
 @include('Components.Megamenu')
 
@@ -76,11 +82,20 @@
                                 <div class="">
                                     <!-- ... -->
                                     <div class="place-self-center ">
+                                        @include('Components.CTA')
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="lg:w-full md:w-full lg:-mt-10   md:pr-0">
+                                <div class="">
+                                    <!-- ... -->
+                                    <div class="place-self-center ">
                                         @include('Components.categorias')
                                     </div>
                                 </div>
                             </div>
-                            <div class="lg:w-full md:w-full lg:-mt-10   md:pr-0 animate__fadeInUp animate__animated wow">
+                            <div
+                                class="lg:w-full md:w-full lg:-mt-10   md:pr-0 animate__fadeInUp animate__animated wow">
                                 <div class="">
                                     <!-- ... -->
                                     <div class="place-self-center ">
@@ -113,7 +128,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="container mx-auto sm:container sm:mx-auto md:px-0 sm:px-6 animate__fadeInUp animate__animated wow">
+                            <div
+                                class="container mx-auto sm:container sm:mx-auto md:px-0 sm:px-6 animate__fadeInUp animate__animated wow">
 
                                 <!-- ... -->
                                 <div class="place-self-center  ">

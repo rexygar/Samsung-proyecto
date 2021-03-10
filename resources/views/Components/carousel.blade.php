@@ -49,11 +49,11 @@
                 style=" background-color: #434343">
                 <div class="lg:w-full md:w-full overflow-hidden pr-10">
                     <figure class="image flex justify-center absolute  mx-auto" style="z-index: 0">
-                        <li class=" text-green-50  inline-block lg:w-full md:w-3/3">
+                        <li class=" text-green-50  inline-block lg:w-full md:w-3/3 lg:px-16">
                             <img src="/img/logo_ok.png" class="py-2 mx-auto" style="max-height: 150px;width: auto">
-                            <span
-                                class="inline-block sm:text-5xl md:text-5xl lg:text-5xl text-base  font-extrabold tracking-widest "
-                                style="color: #2F4858">Cientos de productos esperando por ti</span>
+                            <span class="inline-block md:text-5xl lg:text-7xl bnr-fnt text-base  " style="-webkit-text-stroke: 2px black;
+  color: black; line-height: 200%;-webkit-text-stroke: 2px black;
+  color: white;  ">Cientos de productos esperando por ti</span>
                         </li>
                     </figure>
                 </div>
@@ -71,11 +71,11 @@
                 style=" background-repeat: no-repeat;;background-image: url({{url('../img/watch.png')}});">
                 <div class="lg:w-full md:w-full overflow-hidden pr-10">
                     <figure class="image flex justify-center absolute  mx-auto" style="z-index: 0">
-                        <li class=" text-green-50  inline-block lg:w-full md:w-3/3">
+                        <li class=" text-green-50  inline-block lg:w-full md:w-3/3 lg:px-16 text-center">
                             <img src="/img/logo_ok.png" class="py-2 mx-auto" style="max-height: 150px;width: auto">
-                            <span
-                                class="inline-block sm:text-5xl md:text-5xl lg:text-5xl text-base  font-extrabold tracking-widest "
-                                style="color: #2F4858">Cientos de productos esperando por ti</span>
+                            <span class="inline-block md:text-5xl lg:text-7xl bnr-fnt text-base  " style="-webkit-text-stroke: 2px black;
+  color: black; line-height: 200%;-webkit-text-stroke: 2px black;
+  color: white;  ">Cientos de productos esperando por ti</span>
                         </li>
                     </figure>
                 </div>
@@ -93,11 +93,11 @@
                 style=" background-repeat: no-repeat;;background-image: url({{url('../img/galaxy.png')}});">
                 <div class="lg:w-full md:w-full overflow-hidden pr-10">
                     <figure class="image flex justify-center absolute  mx-auto" style="z-index: 0">
-                        <li class=" text-green-50  inline-block lg:w-full md:w-3/3">
+                        <li class=" text-green-50  inline-block lg:w-full md:w-3/3 lg:px-16">
                             <img src="/img/logo_ok.png" class="py-2 mx-auto" style="max-height: 150px;width: auto">
-                            <span
-                                class="inline-block sm:text-5xl md:text-5xl lg:text-5xl text-base  font-extrabold tracking-widest "
-                                style="color: #2F4858">Cientos de productos esperando por ti</span>
+                            <span class="inline-block md:text-5xl lg:text-7xl bnr-fnt text-base  " style="-webkit-text-stroke: 2px black;
+  color: black; line-height: 200%;-webkit-text-stroke: 2px black;
+  color: white;  ">Cientos de productos esperando por ti</span>
                         </li>
                     </figure>
                 </div>

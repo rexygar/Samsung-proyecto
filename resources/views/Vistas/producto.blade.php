@@ -127,7 +127,9 @@
 
     <!-- /container -->
     <section class="relative bg-gray-300 lg:-mb-32 ">
-        <div class="relative flex flex-col min-w-0 break-words bg-white w-full ">
+        {{-- {{ html_entity_decode() }} --}}
+        {!! html_entity_decode($product->FlixMedia) !!}
+        {{-- <div class="relative flex flex-col min-w-0 break-words bg-white w-full ">
             <div class="px-6">
                 <div class="flex flex-wrap justify-center">
 
@@ -151,7 +153,7 @@
                 </div>
 
             </div>
-        </div>
+        </div> --}}
         <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 ">
             <div class="lg:px-6">
                 <div class="flex flex-wrap justify-center">

@@ -26,7 +26,7 @@
             <div class="grid md:grid-cols-9 grid-cols-12 lg:grid-cols-9 md:gap-4 lg:gap-3">
                 <!-- ... -->
                 <div class="col-span-1 col-start-1"></div>
-                <div class="md:py-6 lg:col-span-7 md:col-span-8 col-span-10   lg:px-20">
+                <div class="md:py-6 lg:col-span-7 md:col-span-8 col-span-10   lg:px-0 lg:-mx-10">
 
                     <div class="grid grid-cols-12 gap-4 lg:gap-4 ">
                         <div class="w-full h-full col-start-1 relative lg:col-span-4 col-span-12 md:col-span-4 "

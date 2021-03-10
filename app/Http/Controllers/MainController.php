@@ -83,12 +83,13 @@ class MainController extends Controller
     }
 
     public function getProduct($sku){
-        $product = DB::select("CALL `Ges_Eco_getProducto`('".$sku."')");
+        $product = DB::select("CALL Ges_Eco_getProducto('".$sku."')");
 
+        // dd($product);
         $product = $product[0];
 
         $StockColor = DB::select("CALL `Ges_Eco_getStock`('".$sku."')");
-
+        
         return view('Vistas.producto', compact('product', 'StockColor'));
     }
 
