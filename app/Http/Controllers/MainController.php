@@ -151,6 +151,7 @@ class MainController extends Controller
                 
                     $reserva->save();
                 }
+                $d = DB::select("CALL Ges_Eco_addCarrito('".$reserva->sku."','".$reserva->Cod_EstiloColor."',".$reserva->reserva.")");
                 return ['status' => 0];
             } catch (\Throwable $th) {
                 return ['status' => 1];
@@ -192,6 +193,8 @@ class MainController extends Controller
                 $sku = (isset($request->sku) && $request->sku != null) ? $request->sku : '';
                 
                 $reserva = Reserva::where('idTransaccion',$idPago)->where('sku', $sku)->first();
+                $estiloColor = $reserva->Cod_EstiloColor;
+                $cant = $reserva->reserva;
                 $reserva->delete();
                 /*
                 $monto = Reserva::where('idTransaccion', $idPago)->sum('monto');
@@ -203,8 +206,8 @@ class MainController extends Controller
                     $pago = null;
                 }
                 */
-                
-            return ['status' => 0 /*, 'Pago' => $pago*/];
+                $d = DB::select("CALL Ges_Eco_restCarrito('".$request->sku."','".$estiloColor."',".$cant.")");               
+                return ['status' => 0 /*, 'Pago' => $pago*/];
             } catch (\Throwable $th) {
                 return ['status' => 1];
             }
