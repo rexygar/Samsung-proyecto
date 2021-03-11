@@ -24,6 +24,7 @@ Route::get('/Categoria/{superCategory}/{category}',                         [App
 Route::get('/Categoria/{superCategory}/{category}/{subCategory}',            [App\Http\Controllers\MainController::class, 'getProductos3']);
 Route::get('/Categoria/{superCategory}/{category}/{subCategory}/{other}',    [App\Http\Controllers\MainController::class, 'getProductos4']);
 Route::get('/Product/{sku}',                                [App\Http\Controllers\MainController::class, 'getProduct']);
+Route::get('/Search',                                                          [App\Http\Controllers\MainController::class, 'search'])->name('search');
 
 // Carrito
 Route::get('/addCarrito',           [App\Http\Controllers\MainController::class, 'addCarrito'])->name('carrito.add');

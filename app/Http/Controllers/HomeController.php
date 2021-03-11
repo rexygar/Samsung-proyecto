@@ -26,6 +26,6 @@ class HomeController extends Controller
     {
         $destacados = DB::select("CALL Ges_Eco_rescatarDestacados");
         $oferta = DB::select("CALL Ges_Eco_rescatarOferta");
-        return view('vistas.Index')->with(['oferta' => $oferta, 'destacados' => $destacados]);
+        return view('Vistas.Index')->with(['oferta' => $oferta, 'destacados' => $destacados]);
     }
 }

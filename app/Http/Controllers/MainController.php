@@ -23,6 +23,12 @@ class MainController extends Controller
         return view('Vistas.Index')->with(['oferta' => $oferta, 'destacados' => $destacados]);
     }
 
+    public function search(Request $request){        
+        $search = preg_replace('([^A-Za-z0-9 ])', '', trim($request->search));
+        $productos = DB::select("CALL Ges_Eco_search('%".$search."%')");
+        return view('store.filtros')->with(['productos' => $productos, 'dir' => []]);
+    }
+
     public function index2(){
         if(session()->has('idPago')){
             $idPago = session('idPago');
