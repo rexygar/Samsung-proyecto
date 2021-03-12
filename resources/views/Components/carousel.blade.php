@@ -46,14 +46,11 @@
             checked="checked">
         <div class="carousel-item absolute md:pt-10 lg:pt-11 pt-10 opacity-0 border-t-2 border-black">
             <div class="block h-full w-full py-20 lg:py-60 md:py-36   bg-cover  bg-center  text-white text-5xl text-center"
-                style=" background-color: #434343">
+                style=" background-color: #8e8e8e">
                 <div class="lg:w-full md:w-full overflow-hidden pr-10">
                     <figure class="image flex justify-center absolute  mx-auto" style="z-index: 0">
                         <li class=" text-green-50  inline-block lg:w-full md:w-3/3 lg:px-16">
                             <img src="/img/logo_ok.png" class="py-2 mx-auto" style="max-height: 150px;width: auto">
-                            <span class="inline-block md:text-5xl lg:text-7xl bnr-fnt text-base  " style="-webkit-text-stroke: 2px black;
-  color: black; line-height: 200%;-webkit-text-stroke: 2px black;
-  color: white;  ">Cientos de productos esperando por ti</span>
                         </li>
                     </figure>
                 </div>
@@ -68,14 +65,11 @@
         <input class="carousel-open" type="radio" id="carousel-2" name="carousel" aria-hidden="true" hidden="">
         <div class="carousel-item absolute md:pt-10 lg:pt-11 pt-10 opacity-0 border-t-2 border-black">
             <div class="block h-full w-full py-20 lg:py-60 md:py-36   bg-cover  bg-center  text-white text-5xl text-center"
-                style=" background-repeat: no-repeat;;background-image: url({{url('../img/watch.png')}});">
+            style=" background-color: #6ab7ff">
                 <div class="lg:w-full md:w-full overflow-hidden pr-10">
                     <figure class="image flex justify-center absolute  mx-auto" style="z-index: 0">
                         <li class=" text-green-50  inline-block lg:w-full md:w-3/3 lg:px-16 text-center">
                             <img src="/img/logo_ok.png" class="py-2 mx-auto" style="max-height: 150px;width: auto">
-                            <span class="inline-block md:text-5xl lg:text-7xl bnr-fnt text-base  " style="-webkit-text-stroke: 2px black;
-  color: black; line-height: 200%;-webkit-text-stroke: 2px black;
-  color: white;  ">Cientos de productos esperando por ti</span>
                         </li>
                     </figure>
                 </div>
@@ -89,15 +83,11 @@
         <!--Slide 3-->
         <input class="carousel-open" type="radio" id="carousel-3" name="carousel" aria-hidden="true" hidden="">
         <div class="carousel-item absolute md:pt-10 lg:pt-11 pt-10 opacity-0 border-t-2 border-black">
-            <div class="block h-full w-full py-20 lg:py-60 md:py-36   bg-cover  bg-center  text-white text-5xl text-center"
-                style=" background-repeat: no-repeat;;background-image: url({{url('../img/galaxy.png')}});">
+            <div class="block h-full w-full py-20 lg:py-60 md:py-36   bg-cover  bg-center  text-white text-5xl text-center" style=" background-color: #ff8a50">
                 <div class="lg:w-full md:w-full overflow-hidden pr-10">
                     <figure class="image flex justify-center absolute  mx-auto" style="z-index: 0">
                         <li class=" text-green-50  inline-block lg:w-full md:w-3/3 lg:px-16">
                             <img src="/img/logo_ok.png" class="py-2 mx-auto" style="max-height: 150px;width: auto">
-                            <span class="inline-block md:text-5xl lg:text-7xl bnr-fnt text-base  " style="-webkit-text-stroke: 2px black;
-  color: black; line-height: 200%;-webkit-text-stroke: 2px black;
-  color: white;  ">Cientos de productos esperando por ti</span>
                         </li>
                     </figure>
                 </div>

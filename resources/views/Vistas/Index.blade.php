@@ -38,7 +38,8 @@
 <div class=" w-full py-auto relative" style="z-index: 99999">
 
     @include('Components.brandHeader')
-    @include('Components.Header')
+    @include('Components.indx_bsqueda')
+    {{-- @include('Components.Header') --}}
 </div>
 @include('Components.Megamenu')
 
@@ -78,22 +79,22 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="lg:w-full md:w-full lg:-mt-10   md:pr-0">
+                            {{-- <div class="lg:w-full md:w-full lg:-mt-10   md:pr-0">
                                 <div class="">
                                     <!-- ... -->
                                     <div class="place-self-center ">
                                         @include('Components.CTA')
                                     </div>
                                 </div>
-                            </div>
-                            <div class="lg:w-full md:w-full lg:-mt-10   md:pr-0">
+                            </div> --}}
+                            {{-- <div class="lg:w-full md:w-full lg:-mt-10   md:pr-0">
                                 <div class="">
                                     <!-- ... -->
                                     <div class="place-self-center ">
                                         @include('Components.categorias')
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div
                                 class="lg:w-full md:w-full lg:-mt-10   md:pr-0 animate__fadeInUp animate__animated wow">
                                 <div class="">

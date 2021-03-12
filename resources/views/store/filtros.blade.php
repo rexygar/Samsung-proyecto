@@ -161,6 +161,25 @@
 
 
                 </article>
+                <article style="background-color: aliceblue" class="panel is-primary col-start-1 col-end-3 ">
+                    <div class="px-6">
+                        <p class=" tracking-normal py-1 border-b-2 border-opacity-25 
+                        border-dotted" style="background-color: aliceblue">
+                            Ordenar Por
+                        </p>
+                    </div>
+
+                    <div class="panel-block" style="background-color: aliceblue">
+                        <select style="max-width: fit-content;" class="form-control" id="Ordenar">
+                            <option>Mas Nuevo</option>
+                            <option>Mas Viejo</option>
+                            <option>Mas Economico</option>
+                            <option>Mas Caro</option>
+                        </select>
+                    </div>
+
+
+                </article>
                 <article style="background-color: aliceblue" class="panel is-primary col-start-1 col-end-3">
 
                     <div class="px-6">
