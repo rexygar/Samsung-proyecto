@@ -23,8 +23,14 @@ class MainController extends Controller
         return view('Vistas.Index')->with(['oferta' => $oferta, 'destacados' => $destacados]);
     }
 
-    public function search(Request $request){        
+    public function search(Request $request){
+             
         $search = preg_replace('([^A-Za-z0-9 ])', '', trim($request->search));
+        return redirect('/Search'.'/'.$search);
+    }
+
+    public function search2($search){
+        
         $productos = DB::select("CALL Ges_Eco_search('%".$search."%')");
         return view('store.filtros')->with(['productos' => $productos, 'dir' => []]);
     }
