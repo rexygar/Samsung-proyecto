@@ -54,6 +54,7 @@ $(document).ready(function() {
                     toastr["warning"](
                         "Ha ocurrido un problema, por favor vuelva a intentarlo"
                     );
+                    console.log(data);
                 }
             }
         });

@@ -157,8 +157,7 @@
                                                                                 background-color: {{ $colorstock->color }}">
                                                                 <input type="radio" id="color_group{{ $ff++ }}"
                                                                     name="color_group"
-                                                                    style="outline:none;appearance: none;"
-                                                                    value="{{ $colorstock->color }}"
+                                                                    value="{{ $colorstock->Cod_EstiloColor }}"
                                                                     data-stock="{{ $colorstock->stock }}">
                                                                 <label class="text-base py-4 absolute text-center"
                                                                     style="z-index: 9999" for="color_group{{ $ff }}">
