@@ -3,10 +3,9 @@
   @import url(https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css);
 </style>
 <nav class="relative border-gray-300 text-gray-900 sm:block hidden" style="z-index: 999; background-color:#ffa726">
-  <div class="container mx-auto grid grid-cols-12 divide-x-2 border-black" style="border-color: black !important;">
-    <div class="md:relative md:block flex p-4 lg:p-6 text-xl md:text-xs lg:text-xl  text-white font-bold md:col-span-2 lg:col-span-1">
-      Categorias</div>
-    <ul class="md:flex lg:flex md:col-span-8 lg:col-span-8  divide-x-2 border-black" style="border-color: black !important;">
+  <div class="container mx-auto flex justify-between">
+    <div class="md:relative md:block flex p-4 lg:p-6 text-xl text-white font-bold">Categorias</div>
+    <ul class="md:flex lg:flex">
       <!--Hoverable Link-->
       <li class="hoverable hover:bg-black hover:text-white">
         <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base md:text-xs font-bold 
@@ -375,24 +374,6 @@
           </div>
         </div>
       </li>
-      <li class="hoverable hover:bg-black hover:text-white">
-        <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base md:text-xs font-bold 
-            hover:bg-black hover:text-white">PROMOCIONES <i class="fas fa-shopping-cart"></i></a>
-        <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black" style="background-color: #eceff1">
-          <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
-            <ul class="px-4 w-full   pb-6 pt-6 lg:pt-3">
-              <li class="submenu grid grid-cols-5">
-                <a href="{{ url('Categoria/CONSOLAS Y JUEGOS/CONSOLAS') }}"
-                  class="block-inline p-3 hover:bg-black opacity-30 text-black hover:text-white tracking-wide">CONSOLAS</a>
-              </li>
-              <li class="submenu grid grid-cols-5">
-                <a href="{{ url('Categoria/CONSOLAS Y JUEGOS/JUEGOS') }}"
-                  class="block-inline p-3 hover:bg-black opacity-30 text-black hover:text-white tracking-wide">JUEGOS</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </li>
 
       <!-- ## Hoverable Link Template ##
       
@@ -402,6 +383,7 @@
           
           -->
     </ul>
+    
   </div>
 </nav>
 @include('Components.nav-mobile')

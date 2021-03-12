@@ -121,6 +121,15 @@
 
 
                             </div>
+                            <div class="lg:w-full md:w-full pt-48">
+                                <div class="">
+                                    <!-- ... -->
+                                    <div class="place-self-center ">
+                                        @include('Components.carouselCTA')
+                                        
+                                    </div>
+                                </div>
+                            </div>
                             <div class="container mx-auto lg:w-full md:w-full animate__fadeInUp animate__animated wow">
                                 <div class="grid grid-cols-1 lg:grid-cols-1 gap-4 lg:gap-8">
                                     <!-- ... -->
@@ -138,8 +147,8 @@
                                 </div>
 
                             </div>
-
-
+                            <!-- ... -->
+                            
                             <div class=" px-16 py-16">
 
                                 <hr class="self-center border-hr border-gray-600 bg-gray-600 w-5/5">

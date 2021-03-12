@@ -15,7 +15,7 @@
                                         class="h-14 w-96 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none"
                                         placeholder="Buscar Cualquier cosa..." name="search">
                                     <div class="absolute top-2 right-3 ">
-                                        <button type="submit" name="search"
+                                        <button type="submit"
                                             class="border-gray-50 rounded-sm hover:text-gray-500 hover:border-gray-500 border-2 lg:px-4 lg:py-2 ">
                                             <i class="fa fa-search text-gray-50 z-20 "></i>
                                         </button>
@@ -39,11 +39,11 @@
             </div>
             <div class="md:col-span-4 lg:col-span-5 lg:mx-auto">
                 <span class="text-base text-gray-50 inline-block relative font-bold py-3">
-                    <i class="lg:text-3xl border-l-2 lg:px-6 border-white fab fa-twitter-square"></i>
-                    <i class="lg:text-3xl border-l-2 lg:px-6 border-white fab fa-facebook-f"></i>
-                    <i class="lg:text-3xl border-l-2 lg:px-6 border-white fab fa-instagram"></i>
-                    <i class="lg:text-3xl border-l-2 lg:px-6 border-white fab fa-facebook-f"></i>
-                    <i class="lg:text-3xl border-l-2 lg:px-6 border-white fab fa-instagram"></i>
+                    <i class="lg:text-3xl border-l-2 lg:px-6 border-white fas fa-envelope"></i>
+                    <i class="lg:text-3xl border-l-2 lg:px-6 border-white fas fa-user"></i>
+                    <i class="lg:text-3xl border-l-2 lg:px-6 border-white fab fas fa-heart"></i>
+                    <i class="lg:text-3xl border-l-2 lg:px-6 border-white fas fa-shopping-cart"></i>
+                    <i class="lg:text-3xl border-l-2 lg:px-6 border-white fas fa-users"></i>
                 </span>
             </div>
 
