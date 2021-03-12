@@ -4,7 +4,7 @@
 
 
 @section('content')
-<main class="col-span-7 col-start-3 px-6 bg-gray-200">
+<main class="col-span-10 col-start-3 px-6 bg-gray-200">
     <div class="container mx-auto px-6 py-8">
         <h3 class="text-gray-700 text-3xl font-medium">Dashboard</h3>
 

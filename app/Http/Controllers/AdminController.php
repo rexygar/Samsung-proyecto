@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use DataTables;
 use Faker\Provider\Image;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -25,21 +26,43 @@ class AdminController extends Controller
         return view('dashboard.lista_Producto');
     }
 
-    public function upload_slider(Request $request){
-        if ($request->ajax()) {
-            try {
-                if (isset($request->id) && $request->id != '') {
-                    $imagen = Images::where('id', $request->id)->first();
-                } else {
-                    $imagen = new Images();
-                }
-                $formData = (isset($request->formData) && $request->formData != null) ? $request->formData : '';
-                $slider = (isset($request->slider) && $request->slider != null) ? $request->slider : '';
-                return ['message' => "Successful"];
-
-            } catch (\Throwable $th) {
-                //throw $th;
-            }
-        }
+    public function edit_slider(){
+        return view('dashboard.edit_slider');
     }
+
+    public function edit(){
+        return view('dashboard.edit_index');
+    }
+
+    public function upload_slider(Request $request){
+        
+        $file = $request->file('slide');
+        //obtenemos el nombre del archivo
+        $nombre = time()."_".$file->getClientOriginalName();
+        //indicamos que queremos guardar un nuevo archivo en el disco local
+        \Storage::disk('local')->put($nombre, \File::get($file));
+        
+        $imagen = new Images;
+        $imagen->imagen = $nombre;
+        $imagen->tipo = $request->tipo;
+        $imagen->save();
+        return view('dashboard.edit_slider');
+    }
+
+    public function upload_images(Request $request){
+        
+        $file = $request->file('slide');
+        //obtenemos el nombre del archivo
+        $nombre = time()."_".$file->getClientOriginalName();
+        //indicamos que queremos guardar un nuevo archivo en el disco local
+        \Storage::disk('local')->put($nombre, \File::get($file));
+        
+        $imagen = new Images;
+        $imagen->imagen = $nombre;
+        $imagen->tipo = $request->tipo;
+        $imagen->save();
+        return view('dashboard.edit_slider');
+    }
+
+    
 }

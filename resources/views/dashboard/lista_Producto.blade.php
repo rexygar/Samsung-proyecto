@@ -4,7 +4,7 @@
 
 
 @section('content')
-    <div class="col-span-7 col-start-3 px-6 ">
+    <div class="col-span-10 col-start-3 px-6 ">
         <div class="mx-auto container">
             <div class=" border-b flex px-6 py-2 items-center">
               <input type="hidden" id="rutaListar" value="{{ route('product.list') }}">

@@ -91,3 +91,4 @@ Route::get('/adminPanel', [App\Http\Controllers\AdminController::class, 'index']
 Route::get('/ListaProductos', [App\Http\Controllers\AdminController::class, 'listProduct'])->name('product.list');
 Route::get('/editarSlider', [App\Http\Controllers\AdminController::class, 'edit_slider'])->name('admin.slider');
 Route::POST('/slider_editado', [App\Http\Controllers\AdminController::class, 'upload_slider'])->name('slider.upload');
+Route::get('/editarImagenes', [App\Http\Controllers\AdminController::class, 'edit'])->name('edit.image');

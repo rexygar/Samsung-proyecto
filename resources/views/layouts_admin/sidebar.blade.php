@@ -1,7 +1,9 @@
       <nav class="col-span-2 col-start-1 bg-black  h-screen px-4 text-gray-900 border border-yellow-500">
         <div class="flex flex-wrap mt-4">
             <div class="w-4/6 mx-auto">
+              <a href="{{ route('admin.index') }}">
                 <img src="{{ asset('img/logo_tecno.png') }}" alt="">
+              </a>
             </div>
         </div>
         <div class="flex flex-wrap mt-8">
@@ -48,9 +50,9 @@
                   ></path>
                 </svg>
               </span>
-              <a href="#">
+              <a href="{{ route('admin.slider') }}">
                
-                <span class="ml-2 font-bold">Milestones</span>
+                <span class="ml-2 font-bold">Editar Slider</span>
               </a>
             </li>
             <li class="mb-2 px-4 py-4 text-gray-100 flex flex-row  border-gray-300 hover:text-white   hover:bg-yellow-500  hover:font-bold rounded rounded-lg">
@@ -63,8 +65,8 @@
                   ></path>
                 </svg>
               </span>
-              <a href="#">
-                <span class="ml-2 font-bold">Team</span>
+              <a href="{{ route('edit.image') }}">
+                <span class="ml-2 font-bold">Editar Imagenes</span>
               </a>
             </li>
             <li class="mb-2 px-4 py-4 text-gray-100 flex flex-row  border-gray-300 hover:text-white   hover:bg-yellow-500  hover:font-bold rounded rounded-lg">
