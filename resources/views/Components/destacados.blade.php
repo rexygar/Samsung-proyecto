@@ -8,7 +8,7 @@
             <div class="grid grid-cols-12">
 
                 <div
-                    class="lg:pl-10 h-full w-full bg-white tracking-wide lg:text-4xl  md:text-3xl col-start-1  col-span-5 lg:col-span-4 text-2xl  text-left">
+                    class="lg:pl-10 h-full w-full bg-white tracking-wide lg:text-4xl  md:text-2xl col-start-1  col-span-5 lg:col-span-4 text-2xl  text-left">
                     <h2 class="sm:pt-8 pt-2 pb-5 font-bold opacity-100 "
                         style="color: black;text-decoration-color: #F8AF22;text-decoration-thickness: 15px">
                         PRODUCTOS DESTACADOS</h2>
@@ -32,7 +32,7 @@
     <div class=" lg:w-full md:w-full">
         <div class="grid md:grid-cols-9 grid-cols-4 lg:grid-cols-9 gap-4 lg:gap-3">
             <!-- ... -->
-            <div class="py-6 col-span-7 md:col-span-8 lg:pl-24"
+            <div class="py-6 col-span-10 md:col-span-10 lg:pl-24"
                 style="border-color: gray">
 
                 <div class="grid grid-cols-12 gap-4 lg:gap-4 ">

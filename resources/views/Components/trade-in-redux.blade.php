@@ -37,7 +37,7 @@
 </div>
 @include('Components.Megamenu') --}}
 
-<div class="leading-normal tracking-normal antialiased ">
+<div class="leading-normal tracking-normal antialiased block ">
   <main class="grid grid-cols-12 md:grid-cols-12 lg:grid-cols-12 gap-4 lg:py-40 lg:px-32   relative"
     style="background-image: url({{url('../uploads/products/8/slide-3.jpg')}});">
     {{-- div  --}}

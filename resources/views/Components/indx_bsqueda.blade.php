@@ -6,9 +6,9 @@
                     <img class="branding__logo img-fluid" src="{{ asset('img/logo.png') }}" max-width="95px" alt="">
                 </a>
             </div>
-            <div class="md:col-span-5">
+            <div class="md:col-span-4 lg:col-span-5">
                 <form action="{{ route('search') }}" method="GET">
-                    <div class="grid grid-cols-1 gap-6" style="z-index: 9999999">
+                    <div class="grid grid-cols-1 gap-6">
                         <div class="">
                             <div class="container  items-center px-4 sm:px-6 lg:px-8">
                                 <div class="relative"> <input type="text"
@@ -39,11 +39,11 @@
             </div>
             <div class="md:col-span-4 lg:col-span-5 lg:mx-auto">
                 <span class="text-base text-gray-50 inline-block relative font-bold py-3">
-                    <i class="lg:text-3xl border-l-2 lg:px-6 border-white fas fa-envelope"></i>
-                    <i class="lg:text-3xl border-l-2 lg:px-6 border-white fas fa-user"></i>
-                    <i class="lg:text-3xl border-l-2 lg:px-6 border-white fab fas fa-heart"></i>
-                    <i class="lg:text-3xl border-l-2 lg:px-6 border-white fas fa-shopping-cart"></i>
-                    <i class="lg:text-3xl border-l-2 lg:px-6 border-white fas fa-users"></i>
+                    <i class="lg:text-3xl md:text-2xl px-0 border-l-2 lg:px-6 border-white fas fa-envelope"></i>
+                    <i class="lg:text-3xl md:text-2xl px-0 border-l-2 lg:px-6 border-white fas fa-user"></i>
+                    <i class="lg:text-3xl md:text-2xl px-0 border-l-2 lg:px-6 border-white fab fas fa-heart"></i>
+                    <i class="lg:text-3xl md:text-2xl px-0 border-l-2 lg:px-6 border-white fas fa-shopping-cart"></i>
+                    <i class="lg:text-3xl md:text-2xl px-0 border-l-2  border-r-2 lg:px-6 border-white fas fa-users"></i>
                 </span>
             </div>
 
