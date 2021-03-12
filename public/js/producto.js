@@ -23,10 +23,6 @@ $(document).ready(function() {
                 });
             }
         })
-
-        if ($('#cantidad').val() == '') {
-            $('#carrito').attr('disabled', true);
-        }
     }else{
         document.getElementById('stockdisponible').innerHTML = 'SIN STOCK'
         $('#carrito').attr('disabled', true);
