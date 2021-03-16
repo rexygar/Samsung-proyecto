@@ -97,10 +97,32 @@ class MainController extends Controller
     public function getProduct($sku){
         $product = DB::select("CALL Ges_Eco_getProducto('".$sku."')");
 
-        // dd($product);
         $product = $product[0];
+       
+        $super =    str_replace(' ','_',    ($product->SupCategoria     !== "SIN DEFINIR") ? $product->SupCategoria     : '_');
+        $cate =     str_replace(' ','_',    ($product->Categoria        !== "SIN DEFINIR") ? $product->Categoria        : '_');
+        $subCate =  str_replace(' ','_',    ($product->SubCategoria     !== "SIN DEFINIR") ? $product->SubCategoria     : '_');
+        $subsub =   str_replace(' ','_',    ($product->SubSubCategoria  !== "SIN DEFINIR") ? $product->SubSubCategoria  : '_');
+        $name =     str_replace(' ','_',    ($product->Descripcion      !== "SIN DEFINIR") ? $product->Descripcion      : '_');
 
-        $StockColor = DB::select("CALL `Ges_Eco_getStock`('".$sku."')");
+        return redirect('/'.'Categoria/'.$super.'/'.$cate.'/'.$subCate.'/'.$subsub.'/'.$name);
+        
+    }
+    
+    public function getProductOther($superCategory, $category, $subCategory, $other, $name){
+
+        $super =    str_replace('_',' ',    ($superCategory !== "_") ? $superCategory     : 'SIN DEFINIR');
+        $cate =     str_replace('_',' ',    ($category      !== "_") ? $category          : 'SIN DEFINIR');
+        $subCate =  str_replace('_',' ',    ($subCategory   !== "_") ? $subCategory       : 'SIN DEFINIR');
+        $subsub =   str_replace('_',' ',    ($other         !== "_") ? $other             : 'SIN DEFINIR');
+        $nom =      str_replace('_',' ',    ($name          !== "_") ? $name              : 'SIN DEFINIR');
+
+        $product = DB::select("CALL Ges_Eco_getProducto2('".$super."', '".$cate."', '".$subCate."', '".$subsub."', '".$nom."')");
+
+       
+        $product = $product[0];
+        
+        $StockColor = DB::select("CALL `Ges_Eco_getStock`('".$product->SKU."')");
         return view('Vistas.producto', compact('product', 'StockColor'));
     }
 

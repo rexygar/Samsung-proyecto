@@ -19,13 +19,14 @@ Route::get('/', [App\Http\Controllers\MainController::class, 'index'])->name('in
 Route::get('/home', [App\Http\Controllers\MainController::class, 'index2'])->name('home');
 
 // Productos
-Route::get('/Categoria/{superCategory}',                                    [App\Http\Controllers\MainController::class, 'getProductos1']);
-Route::get('/Categoria/{superCategory}/{category}',                         [App\Http\Controllers\MainController::class, 'getProductos2']);
-Route::get('/Categoria/{superCategory}/{category}/{subCategory}',            [App\Http\Controllers\MainController::class, 'getProductos3']);
-Route::get('/Categoria/{superCategory}/{category}/{subCategory}/{other}',    [App\Http\Controllers\MainController::class, 'getProductos4']);
-Route::get('/Product/{sku}',                                [App\Http\Controllers\MainController::class, 'getProduct']);
-Route::get('/Search',                                                          [App\Http\Controllers\MainController::class, 'search'])->name('search');
-Route::get('/Search/{search}',                                                          [App\Http\Controllers\MainController::class, 'search2']);
+Route::get('/Categoria/{superCategory}',                                        [App\Http\Controllers\MainController::class, 'getProductos1']);
+Route::get('/Categoria/{superCategory}/{category}',                             [App\Http\Controllers\MainController::class, 'getProductos2']);
+Route::get('/Categoria/{superCategory}/{category}/{subCategory}',               [App\Http\Controllers\MainController::class, 'getProductos3']);
+Route::get('/Categoria/{superCategory}/{category}/{subCategory}/{other}',       [App\Http\Controllers\MainController::class, 'getProductos4']);
+Route::get('/Product/{sku}',                                                    [App\Http\Controllers\MainController::class, 'getProduct']);
+Route::get('/Categoria/{superCategory}/{category}/{subCategory}/{other}/{name}',[App\Http\Controllers\MainController::class, 'getProductOther']);
+Route::get('/Search',                                                           [App\Http\Controllers\MainController::class, 'search'])->name('search');
+Route::get('/Search/{search}',                                                  [App\Http\Controllers\MainController::class, 'search2']);
 
 // Carrito
 Route::get('/addCarrito',           [App\Http\Controllers\MainController::class, 'addCarrito'])->name('carrito.add');
