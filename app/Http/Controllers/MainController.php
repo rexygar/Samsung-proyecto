@@ -8,6 +8,8 @@ use App\Models\Transaccion;
 use App\Models\Reserva;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\TransbankController;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Direccion;
 
 class MainController extends Controller
 {
@@ -206,10 +208,14 @@ class MainController extends Controller
         }else{
             $pago = null;
         }
+        $tiendas = DB::select("CALL Ges_getTiendas()");
+        $direccion = null;
+        if (Auth::check()) {
+            $id = Auth::id();
+            $direccion = Direccion::where('user_id', $id)->get();
+        }
 
-        
-        
-        return view('Vistas.carrito', ['reserva' => $reserva, 'pago' => $pago]);        
+        return view('Vistas.carrito', ['reserva' => $reserva, 'pago' => $pago, 'tiendas' => $tiendas, 'direccion' => $direccion]);        
     }
 
     // REQUEST =  sku (in aJAX)
