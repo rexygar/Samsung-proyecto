@@ -48,6 +48,8 @@ class MainController extends Controller
             $idPago = session('idPago');
             if($idPago > 0){
                 return redirect()->route('carrito');
+            }else{
+                return redirect('/');
             }
         }else{
             return redirect('/');

@@ -14,7 +14,7 @@ class AdminController extends Controller
 {
 
     public function index(){
-        if(Auth::user()->rol_id = 2){
+        if(Auth::user()->rol_id == '2'){
             return view('dashboard.dashboard');
         }else{
             return view('vistas.index');

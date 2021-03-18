@@ -1,7 +1,7 @@
  
     @foreach($Productos as $p) 
     <div class="mb-10 md:container md:mx-auto lg:container lg:mx-auto ">
-<a href="{{ URL('/') }}/Product/{{ $p['SKU'] }}">
+<a href="{{ URL('/') }}/Product/{{ $p->SKU}}">
         <div class="content">
             <div class="w-full max-w-6xl rounded md:mb-0  ">
                 <div class="relative panel-wrapper">
