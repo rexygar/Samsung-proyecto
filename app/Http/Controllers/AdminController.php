@@ -7,12 +7,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use DataTables;
 use Faker\Provider\Image;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
+
     public function index(){
-        return view('dashboard.dashboard');
+        if(Auth::user()->rol_id = 2){
+            return view('dashboard.dashboard');
+        }else{
+            return view('vistas.index');
+        }
     }
 
     public function listProduct(Request $request){
@@ -39,6 +45,8 @@ class AdminController extends Controller
         $file = $request->file('slide');
         //obtenemos el nombre del archivo
         $nombre = time()."_".$file->getClientOriginalName();
+        //eliminamos los espacios
+        $nombre = str_replace(' ', '', $nombre);
         //indicamos que queremos guardar un nuevo archivo en el disco local
         \Storage::disk('local')->put($nombre, \File::get($file));
         
@@ -54,14 +62,22 @@ class AdminController extends Controller
         $file = $request->file('slide');
         //obtenemos el nombre del archivo
         $nombre = time()."_".$file->getClientOriginalName();
+        //eliminamos los espacios
+        $nombre = str_replace(' ', '', $nombre);
         //indicamos que queremos guardar un nuevo archivo en el disco local
         \Storage::disk('local')->put($nombre, \File::get($file));
         
         $imagen = new Images;
         $imagen->imagen = $nombre;
         $imagen->tipo = $request->tipo;
+        if($request->tipo == "megaMenu"){
+            $imagen->subTipo = $request->mega;
+        }
+        if($request->tipo == "header"){
+            $imagen->subTipo = $request->headerCat;
+        }
         $imagen->save();
-        return view('dashboard.edit_slider');
+        return view('dashboard.edit_index');
     }
 
     

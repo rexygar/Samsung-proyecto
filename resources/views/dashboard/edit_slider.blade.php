@@ -19,8 +19,13 @@
                       <div class="flex flex-col">
                         <form action="{{ route('slider.upload') }}" method="POST" enctype="multipart/form-data">
                           @csrf
-                          <input type="hidden" name="tipo" value="slider">
                           <label class="leading-loose">Imagen nueva para el slider</label>
+                          <select name="tipo">
+                            <option disabled selected>Seleccione</option>
+                            <option value="sliderSup">Slider Superior</option>
+                            <option value="sliderInf">Slider Inferior</option>
+                          </select>
+                          <br><br>
                           <input type="file" name="slide" accept="image/" multiple class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Event title">
                           <div class="pt-4 flex items-center space-x-4">
                             <button id="crear" type="submit" class="bg-blue-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Crear</button>

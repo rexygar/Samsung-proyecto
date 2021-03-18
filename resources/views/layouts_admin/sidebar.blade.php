@@ -8,10 +8,7 @@
         </div>
         <div class="flex flex-wrap mt-8">
           <div class="w-1/2">
-            <span class="font-semibold text-white">Administrador</span>
-            <button class="bg-green-500 text-white px-4 py-2 rounded-md border border-blue-500 hover:bg-white hover:text-green-500">
-              Premium
-            </button>
+            <a href=""><span class="font-semibold text-white">Administrador</span></a>
           </div>
         </div>
         <div class="mt-10 mb-4">

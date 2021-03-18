@@ -41,52 +41,40 @@
 
 <div class="carousel relative bg-white  block">
     <div class="carousel-inner relative overflow-hidden w-full ">
-        <!--Slide 1-->
-        <input class="carouselCTA-open" type="radio" id="carouselCTA-1" name="carouselCTA" aria-hidden="true" hidden=""
-            checked="checked">
-        <div class="carouselCTA-item absolute md:pt-10 lg:pt-11 pt-10 opacity-0 ">
-            <div class="block h-full w-full py-20 lg:py-60 md:py-36   bg-cover  bg-center  text-white text-5xl text-center"
-                style="background-image: url({{url('../uploads/products/8/slide-2.jpg')}});">
-                <div class="lg:w-full md:w-full overflow-hidden pr-10">
+        @php
+            $y = 0;
+        @endphp
+        @foreach ($imageInf as $img)
+            @if ($img->tipo == "sliderInf")
+                <input class="carouselCTA-open" type="radio" id="carouselCTA-{{ $y = $y + 1 }}" name="carouselCTA" aria-hidden="true" hidden=""
+                checked="checked">
+                <div class="carouselCTA-item absolute md:pt-10 lg:pt-11 pt-10 opacity-0 ">
+                    <div class="block h-full w-full py-20 lg:py-60 md:py-36   bg-cover  bg-center  text-white text-5xl text-center"
+                        style="background-image: url({{asset('storage/'.$img->imagen)}});">
+                        <div class="lg:w-full md:w-full overflow-hidden pr-10">
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <label for="carouselCTA-3"
-            class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
-        <label for="carouselCTA-2"
-            class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
-
-        <!--Slide 2-->
-        <input class="carouselCTA-open" type="radio" id="carouselCTA-2" name="carouselCTA" aria-hidden="true" hidden="">
-        <div class="carouselCTA-item absolute md:pt-10 lg:pt-11 pt-10 opacity-0 ">
-            <div class="block h-full w-full py-20 lg:py-60 md:py-36   bg-cover  bg-center  text-white text-5xl text-center"
-                style="background-image: url({{url('../uploads/products/8/slide-2.jpg')}});">
-                <div class="lg:w-full md:w-full overflow-hidden pr-10">
-
-                </div>
-            </div>
-        </div>
-        <label for="carouselCTA-1"
-            class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
-        <label for="carouselCTA-3"
-            class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
-
-        <!--Slide 3-->
-        <input class="carouselCTA-open" type="radio" id="carouselCTA-3" name="carouselCTA" aria-hidden="true" hidden="">
-        <div class="carouselCTA-item absolute md:pt-10 lg:pt-11 pt-10 opacity-0 ">
-            <div class="block h-full w-full py-20 lg:py-60 md:py-36   bg-cover  bg-center  text-white text-5xl text-center"
-                style="background-image: url({{url('../uploads/products/8/slide-3.jpg')}});">
-                <div class="lg:w-full md:w-full overflow-hidden pr-10">
-
-                </div>
-            </div>
-        </div>
-        <label for="carouselCTA-2"
-            class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
-        <label for="carouselCTA-1"
-            class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
-
-
+                @if ($y == 1)
+                    <label for="carouselCTA-3"
+                    class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+                    <label for="carouselCTA-2"
+                    class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+                @endif
+                @if ($y == 2)
+                    <label for="carouselCTA-1"
+                    class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+                    <label for="carouselCTA-3"
+                    class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>    
+                @endif
+                @if ($y == 3)
+                    <label for="carouselCTA-2"
+                    class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+                    <label for="carouselCTA-1"
+                    class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+                @endif
+            @endif
+        @endforeach
         <ol class="carousel-indicators">
             <li class="inline-block mr-3">
                 <label for="carouselCTA-1"
