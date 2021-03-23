@@ -38,7 +38,8 @@
 <div class=" w-full py-auto relative" style="z-index: 99999">
 
     @include('Components.brandHeader')
-    @include('Components.indx_bsqueda')
+    @include('Components.nav-mobile')
+    @include('Components.Header')
     {{-- @include('Components.Header') --}}
 </div>
 @include('Components.Megamenu')
@@ -126,7 +127,7 @@
                                     <!-- ... -->
                                     <div class="place-self-center ">
                                         @include('Components.carouselCTA')
-                                        
+
                                     </div>
                                 </div>
                             </div>
@@ -148,7 +149,7 @@
 
                             </div>
                             <!-- ... -->
-                            
+
                             <div class=" px-16 py-16">
 
                                 <hr class="self-center border-hr border-gray-600 bg-gray-600 w-5/5">

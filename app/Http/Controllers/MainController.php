@@ -35,9 +35,11 @@ class MainController extends Controller
     }
 
     public function search2($search){
-        
+        $dir = [];
         $productos = DB::select("CALL Ges_Eco_search('%".$search."%')");
-        return view('store.filtros')->with(['productos' => $productos, 'dir' => []]);
+        // return view('store.filtros')->with(['productos' => $productos, 'dir' => []]);
+        array_push($dir, ['name' => $search, 'url' => URL('/') . '/Search' . '/' . $search]);
+        return view('store.filtros')->with(['productos' => $productos, 'dir' => $dir]);
     }
 
     public function index2(){

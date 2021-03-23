@@ -49,7 +49,7 @@
                 <input class="carouselCTA-open" type="radio" id="carouselCTA-{{ $y = $y + 1 }}" name="carouselCTA" aria-hidden="true" hidden=""
                 checked="checked">
                 <div class="carouselCTA-item absolute md:pt-10 lg:pt-11 pt-10 opacity-0 ">
-                    <div class="block h-full w-full py-20 lg:py-60 md:py-36   bg-cover  bg-center  text-white text-5xl text-center"
+                    <div class="block h-full w-full py-36 lg:py-60 md:py-36   bg-cover  bg-center  text-white text-5xl text-center"
                         style="background-image: url({{asset('storage/'.$img->imagen)}});">
                         <div class="lg:w-full md:w-full overflow-hidden pr-10">
                         </div>

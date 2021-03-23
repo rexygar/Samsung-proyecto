@@ -76,7 +76,7 @@
                       </figure>
 
                       <h5 style="font-weight: 700;
-                    font-size: 14px;" class="font-bold  text-base text-center overflow-auto">{{ $d->Descripcion }}</h5>
+                    font-size: 14px;" class="font-bold text-black text-base text-center overflow-auto">{{ $d->Descripcion }}</h5>
                       <p class="text-sm font-bold text-center text-black ">$
                         {{ number_format($d->Precio, 0, ',', '.') }}</p>
                       {{-- <a href="{{ URL('/') }}/Product/{{ $d->SKU }}"

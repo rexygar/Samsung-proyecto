@@ -1,16 +1,39 @@
 <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet">
+
 <style>
   @import url(https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css);
+
+  [x-cloak] {
+    display: none !important;
+}
+  @import url('https://rsms.me/inter/inter-ui.css');
+
+  html {
+    font-family: 'Inter UI', sans-serif !important;
+  }
+
+  @media screen and (min-width: 0px) and (max-width: 650px) {
+  .no_mostrar { display: none !important; }  /* show it on small screens */
+}
+
+
+  @supports (font-variation-settings: normal) {
+    html {
+      font-family: 'Inter UI var alt', sans-serif !important;
+    }
+  }
 </style>
-<nav class="relative border-gray-300 text-gray-900 sm:block hidden" style="z-index: 999; background-color:#ffa726">
-  <div class="container mx-auto flex justify-between">
-    <div class="md:relative md:block flex p-4 lg:p-6 text-xl text-white font-bold">Categorias</div>
-    <ul class="md:flex lg:flex">
+<nav class="relative border-gray-300 text-gray-900 no_mostrar sm:hidden md:block" style="z-index: 999; background-color:#F5DF4D">
+  <div class="container mx-auto flex justify-between" style="color:#black !important;">
+    <div class="md:relative md:block flex px-2 pt-2 pb-1 text-xl text-white font-bold lg:pl-12 xl:pl-12 2xl:pl-12">
+      Categorias</div>
+    <ul class="md:flex lg:flex lg:pr -12 xl:pr-12 2xl:pr-12">
       <!--Hoverable Link-->
-      <li class="hoverable hover:bg-black hover:text-white">
-        <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base md:text-xs font-bold 
-            hover:bg-black hover:text-white">TELEFONOS</a>
-        <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black" style="background-color: #eceff1">
+      <li class="hoverable hover:bg-black text-black hover:text-white lg:px-6 xl:px-6 2xl:px-6">
+        <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
+            hover:bg-black hover:text-white text-black">TELEFONOS</a>
+        <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
+          style="background-color: #eceff1;background-size:cover; height: calc(50vh - 30%);">
           <div class="container w-full flex flex-wrap justify-between mx-2">
             <ul class="px-4 w-full   pb-6 pt-6 lg:pt-3">
               <li class="submenu grid grid-cols-5">
@@ -51,16 +74,16 @@
                     </ul>
                   </li>
                 </ul>
-                <img class="col-start-4" src="/uploads/products/5/1.png">
               </li>
             </ul>
           </div>
         </div>
       </li>
-      <li class="hoverable hover:bg-black hover:text-white">
-        <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base md:text-xs font-bold 
-            hover:bg-black hover:text-white">TABLETS</a>
-        <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black" style="background-color: #eceff1">
+      <li class="hoverable hover:bg-black text-black hover:text-white lg:px-6 xl:px-6 2xl:px-6">
+        <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
+            hover:bg-black hover:text-white text-black">TABLETS</a>
+        <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
+          style="background-color: #eceff1;background-size:cover; height: calc(50vh - 30%);">
           <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
             <ul class="px-4 w-full   pb-6 pt-6 lg:pt-3">
               <li class="submenu grid grid-cols-5">
@@ -78,18 +101,19 @@
                       Tab S</a>
                   </li>
                 </ul>
-                <img class="col-start-4" src="/uploads/products/5/1.png">
               </li>
             </ul>
           </div>
         </div>
       </li>
-      <li class="hoverable hover:bg-black hover:text-white">
-        <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base md:text-xs font-bold 
-            hover:bg-black hover:text-white">WEARABLES</a>
-        <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black" style="background-color: #eceff1">
+      <li class="hoverable hover:bg-black text-black hover:text-white lg:px-6 xl:px-6 2xl:px-6">
+        <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
+            hover:bg-black hover:text-white text-black">WEARABLES</a>
+        <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
+          style="background-color: #eceff1;background-size:cover; height: calc(50vh - 30%);">
           <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
             <ul class="px-4 w-full   pb-6 pt-6 lg:pt-3">
+
               <li class="submenu grid grid-cols-5">
                 <a href="{{ url('Categoria/WEARABLES/EARABLES') }}"
                   class="block-inline p-3 hover:bg-black opacity-30 text-black hover:text-white tracking-wide">EARABLES</a>
@@ -121,15 +145,18 @@
                   </li>
                 </ul>
               </li>
+              <li class="submenu grid grid-cols-5">
+              </li>
             </ul>
 
           </div>
         </div>
       </li>
-      <li class="hoverable hover:bg-black hover:text-white">
-        <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base md:text-xs font-bold 
-            hover:bg-black hover:text-white">ACCESORIOS</a>
-        <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black" style="background-color: #eceff1">
+      <li class="hoverable hover:bg-black text-black hover:text-white lg:px-6 xl:px-6 2xl:px-6">
+        <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
+            hover:bg-black hover:text-white text-black">ACCESORIOS</a>
+        <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
+          style="background-color: #eceff1;background-size:cover; height: calc(85vh - 30%);">
           <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
             <ul class="px-4 w-full   pb-6 pt-6 lg:pt-3">
               <li class="submenu grid grid-cols-5">
@@ -148,6 +175,7 @@
                       ear</a>
                   </li>
                 </ul>
+
               </li>
               <li class="submenu grid grid-cols-5">
                 <a href="{{ url('Categoria/ACCESORIOS/PARLANTES') }}"
@@ -302,64 +330,68 @@
           </div>
         </div>
       </li>
-      <li class="hoverable hover:bg-black hover:text-white">
-        <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base md:text-xs font-bold 
-            hover:bg-black hover:text-white">COMPUTADORES</a>
-        <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black" style="background-color: #eceff1">
+      <li class="hoverable hover:bg-black text-black hover:text-white lg:px-6 xl:px-6 2xl:px-6">
+        <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
+            hover:bg-black hover:text-white text-black">COMPUTADORES</a>
+        <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
+          style="background-color: #eceff1;background-size:cover; height: calc(50vh - 30%);">
           <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
             <ul class="px-4 w-full   pb-6 pt-6 lg:pt-3">
               <li class="submenu grid grid-cols-5">
-                <a href="{{ url('Categoria/ACCESORIOS/DESKTOP') }}"
+                <a href="{{ url('Categoria/DESKTOP') }}"
                   class="block-inline p-3 hover:bg-black opacity-30 text-black hover:text-white tracking-wide">DESKTOP</a>
                 <ul class="px-4 w-full   pb-6 pt-6 lg:pt-3">
                   <li>
-                    <a href="{{ url('Categoria/ACCESORIOS/DESKTOP/ALL IN ONE') }}"
+                    <a href="{{ url('Categoria/DESKTOP/ALL IN ONE') }}"
                       class="block p-3 hover:bg-black opacity-30 text-black hover:text-white tracking-wide">ALL IN
                       ONE</a>
                   </li>
                   <li>
-                    <a href="{{ url('Categoria/ACCESORIOS/DESKTOP/DESKTOP') }}"
+                    <a href="{{ url('Categoria/DESKTOP/DESKTOP') }}"
                       class="block p-3 hover:bg-black opacity-30 text-black hover:text-white tracking-wide">DESKTOP</a>
                   </li>
                 </ul>
               </li>
+
               <li class="submenu grid grid-cols-5">
-                <a href="{{ url('Categoria/ACCESORIOS/PORTABLES') }}"
+                <a href="{{ url('Categoria/DESKTOP/PORTABLES') }}"
                   class="block-inline p-3 hover:bg-black opacity-30 text-black hover:text-white tracking-wide">PORTABLES</a>
                 <ul class="px-4 w-full   pb-6 pt-6 lg:pt-3">
                   <li>
-                    <a href="{{ url('Categoria/ACCESORIOS/PORTABLES/GAMING') }}"
+                    <a href="{{ url('Categoria/DESKTOP/PORTABLES/GAMING') }}"
                       class="block p-3 hover:bg-black opacity-30 text-black hover:text-white tracking-wide">GAMING</a>
                   </li>
                   <li>
-                    <a href="{{ url('Categoria/ACCESORIOS/PORTABLES/ULTRABOOK') }}"
+                    <a href="{{ url('Categoria/DESKTOP/PORTABLES/ULTRABOOK') }}"
                       class="block p-3 hover:bg-black opacity-30 text-black hover:text-white tracking-wide">ULTRABOOK</a>
                   </li>
                 </ul>
               </li>
+
               <li class="submenu grid grid-cols-5">
-                <a href="{{ url('Categoria/ACCESORIOS/MONITORES') }}"
+                <a href="{{ url('Categoria/DESKTOP/MONITORES') }}"
                   class="block-inline p-3 hover:bg-black opacity-30 text-black hover:text-white tracking-wide">MONITORES</a>
                 <ul class="px-4 w-full   pb-6 pt-6 lg:pt-3">
                   <li>
-                    <a href="{{ url('Categoria/ACCESORIOS/MONITORES/GAMING') }}"
+                    <a href="{{ url('Categoria/DESKTOP/MONITORES/GAMING') }}"
                       class="block p-3 hover:bg-black opacity-30 text-black hover:text-white tracking-wide">GAMING</a>
                   </li>
                   <li>
-                    <a href="{{ url('Categoria/ACCESORIOS/MONITORES/OFFICE') }}"
+                    <a href="{{ url('Categoria/DESKTOP/MONITORES/OFFICE') }}"
                       class="block p-3 hover:bg-black opacity-30 text-black hover:text-white tracking-wide">OFFICE</a>
                   </li>
                 </ul>
               </li>
+
             </ul>
-            <img class="col-start-4" src="/uploads/products/5/1.png">
           </div>
         </div>
       </li>
-      <li class="hoverable hover:bg-black hover:text-white">
-        <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base md:text-xs font-bold 
-            hover:bg-black hover:text-white">CONSOLAS Y JUEGOS</a>
-        <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black" style="background-color: #eceff1">
+      <li class="hoverable hover:bg-black text-black hover:text-white lg:px-6 xl:px-6 2xl:px-6">
+        <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
+            hover:bg-black hover:text-white text-black">CONSOLAS Y JUEGOS</a>
+        <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
+          style="background-color: #eceff1;background-size:cover; height: calc(75vh - 30%);">
           <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
             <ul class="px-4 w-full   pb-6 pt-6 lg:pt-3">
               <li class="submenu grid grid-cols-5">
@@ -369,7 +401,9 @@
               <li class="submenu grid grid-cols-5">
                 <a href="{{ url('Categoria/CONSOLAS Y JUEGOS/JUEGOS') }}"
                   class="block-inline p-3 hover:bg-black opacity-30 text-black hover:text-white tracking-wide">JUEGOS</a>
+
               </li>
+
             </ul>
           </div>
         </div>
@@ -383,7 +417,6 @@
           
           -->
     </ul>
-    
+
   </div>
 </nav>
-@include('Components.nav-mobile')

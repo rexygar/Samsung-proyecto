@@ -8,9 +8,9 @@
     <div class="grid grid-cols-1 gap-2 place-content-center">
       <div class="mt-8  sm:rounded-lg">
         <div class="grid grid-cols-1 gap-2 place-content-center">
-          <div class="text-center uppercase tracking-wide text-2xl font-bold bg-black pb-6 px-6"
+          <div class="text-center uppercase tracking-wide text-2xl font-bold bg-yellow-300 pb-6 px-6"
             style="color: #FAFAFA">
-            <span class="inline-block align-middle"> Productos Destacados</span>
+            <span class="inline-block align-middle"> Productos en Oferta</span>
           </div>
         </div>
 

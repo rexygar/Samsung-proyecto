@@ -1,9 +1,156 @@
-<nav class="relative border-gray-300 text-gray-900 block md:hidden"
-  style="z-index: 999; background-color: #F5DF4D" x-data="{ isOpen : true}">
-  <div class="container mx-auto  flex flex-wrap justify-between grid grid-cols-2">
-    <div class="md:relative   p-4 lg:p-6 text-xl text-white font-bold col-span-1">Categorias</div>
-    <div @click="isOpen = !isOpen" :class="{' block': isOpen, 'hidden': !isOpen}"
+<style>
+  .stepper {
+    .nav-tabs {
+      position: relative;
+    }
+
+    .nav-tabs>li {
+      width: 25%;
+      position: relative;
+
+      &:after {
+        content: '';
+        position: absolute;
+        background: #f1f1f1;
+        display: block;
+        width: 100%;
+        height: 5px;
+        top: 30px;
+        left: 50%;
+        z-index: 1;
+      }
+
+      &.completed {
+        &::after {
+          background: #34bc9b;
+        }
+      }
+
+      &:last-child {
+        &::after {
+          background: transparent;
+        }
+      }
+
+      &.active:last-child {
+        .round-tab {
+          background: #34bc9b;
+
+          &::after {
+            content: '✔';
+            color: #fff;
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            top: 0;
+            display: block;
+          }
+        }
+      }
+    }
+
+    .nav-tabs [data-toggle='tab'] {
+      width: 25px;
+      height: 25px;
+      margin: 20px auto;
+      border-radius: 100%;
+      border: none;
+      padding: 0;
+      color: #f1f1f1;
+    }
+
+    .nav-tabs [data-toggle='tab']:hover {
+      background: transparent;
+      border: none;
+    }
+
+    .nav-tabs>.active>[data-toggle='tab'],
+    .nav-tabs>.active>[data-toggle='tab']:hover,
+    .nav-tabs>.active>[data-toggle='tab']:focus {
+      color: #34bc9b;
+      cursor: default;
+      border: none;
+    }
+
+    .tab-pane {
+      position: relative;
+      padding-top: 50px;
+    }
+
+    .round-tab {
+      width: 25px;
+      height: 25px;
+      line-height: 22px;
+      display: inline-block;
+      border-radius: 25px;
+      background: #fff;
+      border: 2px solid #34bc9b;
+      color: #34bc9b;
+      z-index: 2;
+      position: absolute;
+      left: 0;
+      text-align: center;
+      font-size: 14px;
+
+    }
+
+    .completed .round-tab {
+      background: #34bc9b;
+
+      &::after {
+        content: '✔';
+        color: #fff;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        top: 0;
+        display: block;
+      }
+    }
+
+    .active .round-tab {
+      background: #fff;
+      border: 2px solid #34bc9b;
+
+      &:hover {
+        background: #fff;
+        border: 2px solid #34bc9b;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+
+    .disabled .round-tab {
+      background: #fff;
+      color: #f1f1f1;
+      border-color: #f1f1f1;
+
+      &:hover {
+        color: #4dd3b6;
+        border: 2px solid #a6dfd3;
+      }
+
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  [x-cloak] {
+    display: none;
+  }
+</style>
+<nav class="relative border-gray-300 text-gray-900 lg:hidden md:block sm:hidden xl:hidden 2xl:hidden"
+  style="z-index: 999; background-color: rgb(248, 175, 34)" x-data="{ isOpenTab : true}">
+  <div class="container mx-auto  flex flex-wrap justify-between grid grid-cols-3">
+    <div class="md:relative   p-4 lg:p-6 text-xl text-white font-bold col-span-2">Categorias</div>
+    <div @click="isOpenTab = !isOpenTab" :class="{' block': isOpenTab, 'hidden': !isOpenTab}"
       class="  p-4 lg:p-6 col-span-1 mx-auto">
+   
       <button type="button"
         class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none px-10 focus:text-gray-600 dark:focus:text-gray-400"
         aria-label="toggle menu">
@@ -14,7 +161,7 @@
         </svg>
       </button>
     </div>
-    <div @click="isOpen = !isOpen" :class="{' hidden': isOpen, 'block': !isOpen}"
+    <div @click="isOpenTab = !isOpenTab" :class="{' hidden': isOpenTab, 'block': !isOpenTab}"
       class="  p-4 lg:p-6 col-span-1 mx-auto">
       <button type="button"
         class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none px-10 focus:text-gray-600 dark:focus:text-gray-400"
@@ -22,7 +169,7 @@
         <i class="fas fa-times text-2xl"></i>
       </button>
     </div>
-    <div :class="{' hidden': isOpen, 'block': !isOpen}" class="col-span-2">
+    <div :class="{' hidden': isOpenTab, 'block': !isOpenTab}" class="col-span-2">
       <ul>
         <!--Hoverable Link-->
         <li class="block text-white" x-data="{ isTELEFONOS : true}">
@@ -598,3 +745,46 @@
   </div>
 </nav>
 <script src="{{ asset('js/alpine.js') }} "></script>
+
+
+<script>
+  var openmodal = document.querySelectorAll('.modal-open')
+  for (var i = 0; i < openmodal.length; i++) {
+    openmodal[i].addEventListener('click', function(event){
+    event.preventDefault()
+    toggleModal()
+    })
+  }
+  
+  const overlay = document.querySelector('.modal-overlay')
+  overlay.addEventListener('click', toggleModal)
+  
+  var closemodal = document.querySelectorAll('.modal-close')
+  for (var i = 0; i < closemodal.length; i++) {
+    closemodal[i].addEventListener('click', toggleModal)
+  }
+  
+  document.onkeydown = function(evt) {
+    evt = evt || window.event
+    var isEscape = false
+    if ("key" in evt) {
+    isEscape = (evt.key === "Escape" || evt.key === "Esc")
+    } else {
+    isEscape = (evt.keyCode === 27)
+    }
+    if (isEscape && document.body.classList.contains('modal-active')) {
+    toggleModal()
+    }
+  };
+  
+  
+  function toggleModal () {
+    const body = document.querySelector('body')
+    const modal = document.querySelector('.modal')
+    modal.classList.toggle('opacity-0')
+    modal.classList.toggle('pointer-events-none')
+    body.classList.toggle('modal-active')
+  }
+  
+   
+</script>

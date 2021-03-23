@@ -65,6 +65,12 @@ Route::get('/producto', function () {
 Route::get('/carrito', function () {
     return view('Vistas.carrito');
 });
+Route::get('/carritov2', function () {
+    return view('Vistas.carritov2');
+});
+Route::get('/step', function () {
+    return view('Vistas.carritoStepper');
+});
 Route::get('/tests', function () {
     return view('Vistas.tests');
 });

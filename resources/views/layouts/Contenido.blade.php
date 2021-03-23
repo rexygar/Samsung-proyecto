@@ -30,6 +30,7 @@
 <!-- /HEADER -->
 
 @include('Components.Megamenu')
+@include('Components.nav-mobile')
 {{-- Contenido --}}
 @yield('content')
 {{-- Contenido --}}
