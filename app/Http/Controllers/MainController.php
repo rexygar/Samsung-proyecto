@@ -47,7 +47,7 @@ class MainController extends Controller
 
     public function index2()
     {
-        if (Auth::user()->rol_id == '2') {
+        if (Auth::user()->rol_id == '2' || Auth::user()->rol_id == '3') {
             return view('dashboard.dashboard');
         }
         if (session()->has('idPago')) {
@@ -67,7 +67,7 @@ class MainController extends Controller
 
         $productos = DB::select("CALL Ges_Eco_rescatarProducto('" . $superCategory . "','','','')");
         $dir = [];
-        $image = DB::table('images')->where('tipo', 'header')->take(1)->get();
+        $image = DB::table('images')->where('subTipo' ,$superCategory)->take(1)->get();
         array_push($dir, ['name' => $superCategory, 'url' => URL('/') . '/Categoria' . '/' . $superCategory]);
 
         return view('store.filtros')->with(['productos' => $productos, 'dir' => $dir, 'image' => $image]);
@@ -77,7 +77,7 @@ class MainController extends Controller
     {
 
         $productos = DB::select("CALL Ges_Eco_rescatarProducto('" . $superCategory . "','" . $category . "','','')");
-        $image = DB::table('images')->where('tipo', 'header')->take(1)->get();
+        $image = DB::table('images')->where('subTipo' ,$superCategory)->take(1)->get();
         $dir = [];
 
         array_push($dir, ['name' => $superCategory, 'url' => URL('/') . '/Categoria' . '/' . $superCategory]);
@@ -90,7 +90,7 @@ class MainController extends Controller
     {
 
         $productos = DB::select("CALL Ges_Eco_rescatarProducto('" . $superCategory . "', '" . $category . "','" . $subCategory . "','')");
-        $image = DB::table('images')->where('tipo', 'header')->take(1)->get();
+        $image = DB::table('images')->where('subTipo' ,$superCategory)->take(1)->get();
 
         $dir = [];
         array_push($dir, ['name' => $superCategory, 'url' => URL('/') . '/Categoria' . '/' . $superCategory]);
@@ -104,7 +104,7 @@ class MainController extends Controller
     {
 
         $productos = DB::select("CALL Ges_Eco_rescatarProducto('" . $superCategory . "', '" . $category . "','" . $subCategory . "','" . $other . "')");
-        $image = DB::table('images')->where('tipo', 'header')->take(1)->get();
+        $image = DB::table('images')->where('subTipo' ,$superCategory)->take(1)->get();
 
         $dir = [];
         array_push($dir, ['name' => $superCategory, 'url' => URL('/') . '/Categoria' . '/' . $superCategory]);

@@ -28,23 +28,29 @@
                       </select>
                       <br><br>
                       <select name="mega" id="mega" hidden>
-                          <option value="telefonos">telefonos</option>
-                          <option value="tablets">tablets</option>
-                          <option value="wearables">wearables</option>
-                          <option value="accesorios">accesorios</option>
-                          <option value="computadores">computadores</option>
-                          <option value="consolas y juegos">consolas y juegos</option>
-                          <option value="promociones">promociones</option>
+                        <option value="SMARTPHONES">telefonos</option>
+                        <option value="TABLETS">tablets</option>
+                        <option value="WEARABLES">wearables</option>
+                        <option value="ACCESORIOS">accesorios</option>
+                        <option value="COMPUTADORES">computadores</option>
+                        <option value="CONSOLAS Y JUEGOS">consolas y juegos</option>
                       </select>
                       <select name="headerCat" id="headerCat" hidden>
-                        <option value="telefonos">telefonos</option>
-                        <option value="tablets">tablets</option>
-                        <option value="wearables">wearables</option>
-                        <option value="accesorios">accesorios</option>
-                        <option value="computadores">computadores</option>
-                        <option value="consolas y juegos">consolas y juegos</option>
-                        <option value="promociones">promociones</option>
-                    </select>
+                        <option value="SMARTPHONES">telefonos</option>
+                        <option value="TABLETS">tablets</option>
+                        <option value="WEARABLES">wearables</option>
+                        <option value="ACCESORIOS">accesorios</option>
+                        <option value="COMPUTADORES">computadores</option>
+                        <option value="CONSOLAS Y JUEGOS">consolas y juegos</option>
+                      </select>
+                      <select name="fondoEq" id="fondoEq" hidden>
+                        <option value="SMARTPHONES">telefonos</option>
+                        <option value="TABLETS">tablets</option>
+                        <option value="WEARABLES">wearables</option>
+                        <option value="ACCESORIOS">accesorios</option>
+                        <option value="COMPUTADORES">computadores</option>
+                        <option value="CONSOLAS Y JUEGOS">consolas y juegos</option>
+                      </select>
                       <br>
                       <label class="leading-loose">Imagen nueva para el slider</label>
                       <input type="file" name="slide" accept="image/" multiple class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Event title">

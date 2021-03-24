@@ -33,7 +33,7 @@
                                                 class="  md:col-span-3 lg:col-span-3 md:row-span-1 lg:row-span-1  col-span-6 float-right md:col-start-4  lg:col-start-4 lg:px-4 md:px-0">
 
                                                 <h3
-                                                    class="lg:text-5xl md:text-4xl text-2xl font-bold text-center sm:text-left text-gray-50 py-16 md:py-0 lg:py-0">
+                                                    class="lg:text-2xl md:text-2xl text-2xl font-bold text-center sm:text-left text-gray-50 py-16 md:py-0 lg:py-0">
                                                     {{ $product->Descripcion }}</h3>
 
                                             </div>
@@ -77,53 +77,6 @@
                                                             5.0 (1)
                                                         </span>
                                                     </div>
-
-                                                    <ul
-                                                        class="list-none lg:mt-0 mt-10 md:-mt-2  md:bg-transparent lg:bg-transparent bg-gray-400">
-                                                        <li class="py-2  ">
-                                                            <div class="flex items-center">
-                                                                <div>
-                                                                    <span
-                                                                        class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"><i
-                                                                            class="fas fa-fingerprint"></i></span>
-                                                                </div>
-                                                                <div>
-                                                                    <h4 class="text-gray-50 font-bold text-sm">
-                                                                        LCD de silicio policristalino a baja
-                                                                        temperatura
-                                                                    </h4>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="py-2  ">
-                                                            <div class="flex items-center">
-                                                                <div>
-                                                                    <span
-                                                                        class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"><i
-                                                                            class="fas fa-fingerprint"></i></span>
-                                                                </div>
-                                                                <div>
-                                                                    <h4 class="text-gray-50 font-bold text-sm">S Pen
-                                                                        con
-                                                                        latencia ultrabaja</h4>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="py-2  ">
-                                                            <div class="flex items-center">
-                                                                <div>
-                                                                    <span
-                                                                        class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-pink-600 bg-pink-200 mr-3"><i
-                                                                            class="fas fa-fingerprint"></i></span>
-                                                                </div>
-                                                                <div>
-                                                                    <h4 class="text-gray-50 font-bold text-sm">
-                                                                        Batería
-                                                                        inteligente de 8000 mAh</h4>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                    </ul>
                                                     <h3
                                                         class="md:text-5xl lg:text-5xl  text-3xl font-extrabold text-gray-50 pb-4  md:bg-transparent lg:bg-transparent bg-gray-400  text-center sm:text-left">
                                                         ${{ number_format($product->Precio, 0, ',', '.') }}
@@ -139,7 +92,7 @@
                                                     <input type="hidden" id="descripcion" name="descripcion"
                                                         value="{{ $product->Descripcion }}">
                                                     <input type="hidden" id="precio" value="{{ $product->Precio }}">
-                                                    <div class="flex flex-wrap">
+                                                    <div class="flex flex-wrap md:pt-44 lg:pt-44 xl:pt-44">
                                                         {{ csrf_field() }}
                                                         <div class="md:w-1/2 lg:w-1/3 w-full md:px-6 px-6 flex py-6 justify-center "
                                                             style="background: white;">
@@ -207,11 +160,9 @@
                                             <div class=" col-span-6 md:col-span-3 md:col-start-4 lg:col-start-4">
 
                                                 <div class="grid grid-cols-2">
-                                                    <div
-                                                        class="md:px-0 md:py-0 col-span-1 lg:px-2 bg-gray-300 lg:py-2 px-6 py-6 grid grid-cols-2  ">
+                                                    <div class="md:px-0 md:py-0 col-span-1 lg:px-2 bg-gray-300 lg:py-2 px-6 py-6 grid grid-cols-2  ">
                                                         <div class="inline-block align-middle ">
-                                                            <p
-                                                                class="inline-block align-middle lg:text-base font-bold md:text-sm leading-relaxed    text-black">
+                                                            <p class="pt-3 inline-block align-middle lg:text-base font-bold md:text-sm leading-relaxed    text-black">
                                                                 CANTIDAD
                                                             </p>
                                                         </div>

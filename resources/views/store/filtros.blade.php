@@ -39,28 +39,30 @@
                 <div class="border-opacity-100 border-t border-dotted border-1" style="border-color: black">
 
                     <section class="relative block  md:h-1/2 lg:h-1/5   w-full" style="height: 290px;width: 100%">
-                        <div class="absolute top-0 w-full h-full bg-center bg-cover"
-                            style='background-image: url("/img/trade-in_banner.jpg");'>
-                            <span id="blackOverlay" class="w-full h-full absolute opacity-75 object-cover "
-                                style="background-color: #0a0a0a">
-                                <div class="md:w-full md:container mx-auto lg:pt-36 md:pt-0">
-                                    <div class="grid grid-cols-4 lg:grid-cols-4 gap-4">
-                                        <div class="lg:w-full col-span-4  md:w-full">
-                                            @foreach ($dir as $d)
-                                            @if ($loop->last)
-
-                                            <h2
-                                                class="pt-16 md:pt-8 pb-5 font-bold opacity-100 banner-font text-5xl lg:text-9xl md:text-9xl uppercase tracking-wider text-center">{{ $d['name']
-                                                }}
-                                            </h2>
-                                            @endif
-                                            @endforeach
-
+                        @foreach ($image as $img)
+                            <div class="absolute top-0 w-full h-full bg-center bg-cover"
+                            style="background-image: url({{ asset('/storage/'.$img->imagen) }});">
+                                <span id="blackOverlay" class="w-full h-full absolute opacity-75 object-cover "
+                                    style="background-color: #0a0a0a">
+                                    <div class="md:w-full md:container mx-auto lg:pt-36 md:pt-0">
+                                        <div class="grid grid-cols-4 lg:grid-cols-4 gap-4">
+                                            <div class="lg:w-full col-span-4  md:w-full">
+                                                @foreach ($dir as $d)
+                                                @if ($loop->last)
+                                            
+                                                <h2
+                                                    class="pt-16 md:pt-8 pb-5 font-bold opacity-100 banner-font text-5xl lg:text-9xl md:text-9xl uppercase tracking-wider text-center">{{ $d['name']
+                                                    }}
+                                                </h2>
+                                                @endif
+                                                @endforeach
+                                            
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </span>
-                        </div>
+                                </span>
+                            </div>
+                        @endforeach
 
                     </section>
                 </div>

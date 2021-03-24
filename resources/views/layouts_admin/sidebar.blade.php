@@ -60,6 +60,16 @@
                 <span class="ml-2 font-bold">Editar Imagenes</span>
               </a>
             </li>
+            <li class="mb-2 px-4 py-4 text-gray-100 flex flex-row  border-gray-300 hover:text-white   hover:bg-yellow-500  hover:font-bold rounded rounded-lg">
+              <a href="{{ route('list.price') }}"><i class="fas fa-tag"></i><span class="ml-2 font-bold">listar precio direcciones</span>
+              </a>
+            </li>
+            @if (Auth::user()->rol_id == '2')
+              <li class="mb-2 px-4 py-4 text-gray-100 flex flex-row  border-gray-300 hover:text-white   hover:bg-yellow-500  hover:font-bold rounded rounded-lg">
+                <a href="#"><i class="fas fa-user"></i><span class="ml-2 font-bold">Creación de Usuarios</span>
+                </a>
+              </li>
+            @endif
           </ul>
         </div>
       </nav>

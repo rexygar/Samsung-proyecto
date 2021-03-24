@@ -102,3 +102,7 @@ Route::get('/editarSlider', [App\Http\Controllers\AdminController::class, 'edit_
 Route::POST('/slider_editado', [App\Http\Controllers\AdminController::class, 'upload_slider'])->name('slider.upload');
 Route::get('/editarImagenes', [App\Http\Controllers\AdminController::class, 'edit'])->name('edit.image');
 Route::POST('/Imanes_editadas', [App\Http\Controllers\AdminController::class, 'upload_images'])->name('image.edit');
+Route::get('/agregarPrecio', [App\Http\Controllers\AdminController::class, 'price'])->name('add.price');
+Route::get('/editarPrecio', [App\Http\Controllers\AdminController::class, 'price'])->name('edit.price');
+Route::post('/precioAgregado', [App\Http\Controllers\AdminController::class, 'upload_price'])->name('upload.price');
+Route::get('/listarPrecios', [App\Http\Controllers\AdminController::class, 'list_price'])->name('list.price');

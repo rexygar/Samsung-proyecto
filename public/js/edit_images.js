@@ -13,5 +13,11 @@ $(document).ready(function(){
         }else {
             $('#headerCat').attr('hidden', true);
         }
+
+        if (mega.val() == 'fondoEquipos') {
+            $('#fondoEq').attr('hidden', false);
+        }else {
+            $('#fondoEq').attr('hidden', true);
+        }
     })
 })
