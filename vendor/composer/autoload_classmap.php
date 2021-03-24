@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
     'App\\Http\\Controllers\\ApiController' => $baseDir . '/app/Http/Controllers/ApiController.php',
     'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -32,8 +33,10 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Models\\Direccion' => $baseDir . '/app/Models/Direccion.php',
+    'App\\Models\\Images' => $baseDir . '/app/Models/Images.php',
     'App\\Models\\Parametros' => $baseDir . '/app/Models/Parametros.php',
     'App\\Models\\Perfil' => $baseDir . '/app/Models/Perfil.php',
+    'App\\Models\\Productos' => $baseDir . '/app/Models/Productos.php',
     'App\\Models\\Reserva' => $baseDir . '/app/Models/Reserva.php',
     'App\\Models\\Roles' => $baseDir . '/app/Models/Roles.php',
     'App\\Models\\StockProducto' => $baseDir . '/app/Models/StockProducto.php',

@@ -248,8 +248,6 @@
 
                     <span class="form-check-label">El costo de entrega se calculará al añadir la dirección</span>
                 </div>
-
-
             </article>
             <article style="background-color: aliceblue" class="panel is-primary  ">
                 <div class="px-6">
@@ -270,13 +268,7 @@
         </div>
 
     </div>
-</body>
-
-
-
-
-
-<!-- /SECTION -->
+</body><!-- /SECTION -->
 
 <script>
     //TO DO: ajax will take place

@@ -534,6 +534,7 @@ class ComposerStaticInitf0076d3146355353cd1a3b11eb52654a
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\ApiController' => __DIR__ . '/../..' . '/app/Http/Controllers/ApiController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
@@ -558,8 +559,10 @@ class ComposerStaticInitf0076d3146355353cd1a3b11eb52654a
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Direccion' => __DIR__ . '/../..' . '/app/Models/Direccion.php',
+        'App\\Models\\Images' => __DIR__ . '/../..' . '/app/Models/Images.php',
         'App\\Models\\Parametros' => __DIR__ . '/../..' . '/app/Models/Parametros.php',
         'App\\Models\\Perfil' => __DIR__ . '/../..' . '/app/Models/Perfil.php',
+        'App\\Models\\Productos' => __DIR__ . '/../..' . '/app/Models/Productos.php',
         'App\\Models\\Reserva' => __DIR__ . '/../..' . '/app/Models/Reserva.php',
         'App\\Models\\Roles' => __DIR__ . '/../..' . '/app/Models/Roles.php',
         'App\\Models\\StockProducto' => __DIR__ . '/../..' . '/app/Models/StockProducto.php',

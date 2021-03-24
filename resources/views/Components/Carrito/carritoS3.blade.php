@@ -233,6 +233,10 @@
                                         PARA SMARTPHONE SMARTWATCH Y AUDFONOS DUSTED NEGRO</div>
                                     <a type="button" id="borrar"
                                         class="btn font-semibold hover:text-red-500 text-gray-500 text-xs">Quitar</a>
+                                    {{-- <input type="hidden" id="urlQuitar" value="{{ route('carrito.delete') }}">
+                                    <a type="button" id="borrar"
+                                        class="btn font-semibold hover:text-red-500 text-gray-500 text-xs"
+                                        onclick="eliminar({{ $res->sku }})">Quitar</a> --}}
                                 </div>
 
                             </div>
@@ -294,147 +298,178 @@
                     <!--Card 1-->
                     <div class=" w-full lg:max-w-full lg:flex">
                         <div class="grid grid-cols-12 md:pt-6 xl:pt-6 2xl:pt-6 lg:pt-6">
-                          
-                                <article style="background-color: aliceblue"
-                                    class="lg:py-6 xl:py-6 2xl:py-6 hover:border-2 hover:border-gray-700  col-span-12">
-                                    <div class="px-6">
 
-                                        <label class="form-check-label" >
-                                            Retiro en tienda Costo:
-                                            $0
-                                            <input type="radio"  x-on:click="Entrega = 'true'"   value="1">
+                            <article style="background-color: aliceblue"
+                                class="lg:py-6 xl:py-6 2xl:py-6 hover:border-2 hover:border-gray-700  col-span-12"
+                                x-data="{ Retiro: false }">
+                                <div class="px-6">
+                                    <a href="#" @click="Retiro = true">
+                                        Retiro en tienda Costo:
+                                        $0
+                                        <input type="radio" value="1">
 
-                                        </label>
-                                        <label for="plan-monthly">
-                                            <input x-on:click="selected = 'opt2'" id="plan-monthly" type="radio" name="plan" value="premium-monthly">
-                                            Monthly - <strong></strong> / month
-                                        </label>
+                                    </a>
 
-                                        <div :class="{' hidden': selected, 'block': !selected}" x-cloak>
-                                            <label :class="{' hidden': selected, 'block': !selected}" x-cloak for="card-element">
-                                                Credit or debit card
-                                            </label>
-                                            <div :class="{' hidden': selected, 'block': !selected}" x-cloak id="card-element">
-                                                <!-- A Stripe Element will be inserted here. -->
-                                            </div>
-                                        </div>
+                                    <!-- modal div -->
+                                    <div class="mt-6" :class="{' block': Retiro, 'hidden': !Retiro}">
 
-                                        <!-- modal div -->
-                                        <div class="mt-6" x-show="Entrega !== 'false'" x-cloak  x-data="{ Entrega: false }">
+                                        <!-- Button (blue), duh! -->
+                                        <!-- Dialog (full screen) -->
+                                        <div class="absolute top-0 left-0 flex items-center justify-center w-full h-full"
+                                            style="z-index: 99999;background-color: rgba(0, 0, 0, 0.5);">
 
-                                            <!-- Button (blue), duh! -->
-                                            <!-- Dialog (full screen) -->
-                                            <div class="absolute top-0 left-0 flex items-center justify-center w-full h-full"
-                                                style="z-index: 99999;background-color: rgba(0, 0, 0, 0.5);"
-                                                x-show="Entrega">
-
-                                                <!-- A basic modal dialog with title, body and one button to close -->
-                                                <div class="h-auto p-4 mx-2 text-left bg-white rounded shadow-xl md:max-w-xl md:p-6 lg:p-8 md:mx-0 w-full md:py-12 xl:py-12 2xl:py-12 lg:py-12"
-                                                    @click.away="Entrega = false"  style="
+                                            <!-- A basic modal dialog with title, body and one button to close -->
+                                            <div class="h-auto p-4 mx-2 text-left bg-white rounded shadow-xl md:max-w-xl md:p-6 lg:p-8 md:mx-0 w-full md:py-12 xl:py-12 2xl:py-12 lg:py-12"
+                                                @click.away="Retiro = false" style="
 z-index: 9999;
 ">
-                                                    {{-- modal body --}}
-                                                    <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                                                        <article style="background-color: aliceblue"
-                                                            class="panel is-primary col-start-1 col-end-3">
-                                                            <div class="px-6">
-                                                                <p class=" tracking-normal py-1 border-b-2 border-opacity-25 
-                            border-dotted" style="background-color: aliceblue">
-                                                                    Completa tu dirección de entrega
-                                                                </p>
+                                                {{-- modal body --}}
+                                                <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                                    <article style="background-color: aliceblue"
+                                                        class="panel is-primary col-start-1 col-end-3">
+                                                        <div class="px-6">
+
+                                                            @foreach ($tiendas as $tienda)
+                                                            <div class="bg-white border-yellow-300 box">
+                                                                <h1>{{$tienda->Direccion}}</h1>
+                                                                <h1>{{$tienda->Region}}</h1>
+                                                                <h1>{{$tienda->Ciudad}}</h1>
+                                                                <h1>{{$tienda->Comuna}}</h1>
                                                             </div>
+                                                            @endforeach
 
-                                                            <div class="panel-block"
-                                                                style="background-color: aliceblue">
-                                                                <div>
-                                                                    <p class=" tracking-normal py-1 border-b-2 border-opacity-25 
-                        border-dotted" style="background-color: aliceblue">
-                                                                        Nombre y apellido de quien recibe la compra:
-                                                                    </p>
-                                                                </div>
-                                                                <div><input type="text" name="NuevoNombre"
-                                                                        class="form-check-input" id="16GB">
-                                                                    <label class="form-check-label"
-                                                                        for="NuevoNombre">Nombre:</label>
-                                                                    <input type="text" name="NuevoApellido"
-                                                                        class="form-check-input" id="16GB">
-                                                                    <label class="form-check-label"
-                                                                        for="NuevoApellido">Apellido</label>
-                                                                </div>
-                                                            </div>
-                                                            <div class="panel-block"
-                                                                style="background-color: aliceblue">
-                                                                <div>
-                                                                    <h3>Dirección</h3>
-                                                                    <p class=" tracking-normal py-1 border-b-2 border-opacity-25 
-                            border-dotted" style="background-color: aliceblue">
-                                                                        Ejemplo: Avenida Kennedy 9001, Las Condes
-                                                                    </p>
-                                                                </div>
-                                                                <div><input type="text" name="NuevaDireccion"
-                                                                        class="form-check-input" id="16GB">
-                                                                    <label class="form-check-label"
-                                                                        for="NuevaDireccion">Direccion:</label>
-                                                                </div>
+                                                        </div>
 
-                                                            </div>
-                                                            <div class="panel-block"
-                                                                style="background-color: aliceblue">
-                                                                <div>
-                                                                    <p class=" tracking-normal py-1 border-b-2 border-opacity-25 
-border-dotted" style="background-color: aliceblue">
-                                                                        Casa/depto:
-                                                                    </p>
-                                                                </div>
-                                                                <div>
-                                                                    <input type="text" name="NuevaCasa"
-                                                                        class="form-check-input" id="16GB">
-                                                                    <label class="form-check-label"
-                                                                        for="NuevaCasa">Casa:</label></div>
-
-                                                            </div>
-                                                        </article>
-                                                    </div>
-
-                                                    <!-- One big close button.  --->
-                                                    <div class="mt-5 sm:mt-6">
-                                                        <span class="flex w-full rounded-md shadow-sm">
-                                                            <button @click="Entrega = false"
-                                                                class="inline-flex justify-center w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700">
-                                                                Close this modal!
-                                                            </button>
-                                                        </span>
-                                                    </div>
-
+                                                    </article>
                                                 </div>
+
+                                                <!-- One big close button.  --->
+                                                <div class="mt-5 sm:mt-6">
+                                                    <span class="flex w-full rounded-md shadow-sm">
+                                                        <button @click="Retiro = false"
+                                                            class="inline-flex justify-center w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700">
+                                                            Close this Retiro modal!
+                                                        </button>
+                                                    </span>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
-                                    <div class="panel-block" style="background-color: aliceblue">
+                                <div class="panel-block" style="background-color: aliceblue">
 
+                                </div>
+
+
+                            </article>
+                            <article style="background-color: aliceblue"
+                                class="lg:py-6 xl:py-6 2xl:py-6 hover:border-2 col-span-12"
+                                x-data="{ despacho: false }">
+                                <div class="px-6">
+                                    <a href="#" @click="despacho = true">
+                                        Despacho programado Costo:
+                                        $7.990
+                                        <input type="radio" value="2">
+
+                                    </a>
+
+                                </div>
+                                <div class="mt-6">
+
+                                    <!-- Button (blue), duh! -->
+                                    <!-- Dialog (full screen) -->
+                                    <div class="absolute top-0 left-0 flex items-center justify-center w-full h-full"
+                                        style="z-index: 99999;background-color: rgba(0, 0, 0, 0.5);"
+                                        :class="{' block': despacho, 'hidden': !despacho}">
+
+                                        <!-- A basic modal dialog with title, body and one button to close -->
+                                        <div class="h-auto p-4 mx-2 text-left bg-white rounded shadow-xl md:max-w-xl md:p-6 lg:p-8 md:mx-0 w-full md:py-12 xl:py-12 2xl:py-12 lg:py-12"
+                                            @click.away="despacho = false" style="
+z-index: 9999;
+">
+                                            {{-- modal body --}}
+                                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                                                <article style="background-color: aliceblue"
+                                                    class="panel is-primary col-start-1 col-end-3">
+                                                    <div class="px-6">
+                                                        <p class=" tracking-normal py-1 border-b-2 border-opacity-25 
+                        border-dotted" style="background-color: aliceblue">
+                                                            Completa tu dirección de despacho
+                                                        </p>
+                                                    </div>
+
+                                                    <div class="panel-block" style="background-color: aliceblue">
+                                                        <div>
+                                                            <p class=" tracking-normal py-1 border-b-2 border-opacity-25 
+                    border-dotted" style="background-color: aliceblue">
+                                                                Nombre y apellido de quien recibe la compra:
+                                                            </p>
+                                                        </div>
+                                                        <div><input type="text" name="NuevoNombre"
+                                                                class="form-check-input" id="16GB">
+                                                            <label class="form-check-label"
+                                                                for="NuevoNombre">Nombre:</label>
+                                                            <input type="text" name="NuevoApellido"
+                                                                class="form-check-input" id="16GB">
+                                                            <label class="form-check-label"
+                                                                for="NuevoApellido">Apellido</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="panel-block" style="background-color: aliceblue">
+                                                        <div>
+                                                            <h3>Dirección</h3>
+                                                            <p class=" tracking-normal py-1 border-b-2 border-opacity-25 
+                        border-dotted" style="background-color: aliceblue">
+                                                                Ejemplo: Avenida Kennedy 9001, Las Condes
+                                                            </p>
+                                                        </div>
+                                                        <div><input type="text" name="NuevaDireccion"
+                                                                class="form-check-input" id="16GB">
+                                                            <label class="form-check-label"
+                                                                for="NuevaDireccion">Direccion:</label>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="panel-block" style="background-color: aliceblue">
+                                                        <div>
+                                                            <p class=" tracking-normal py-1 border-b-2 border-opacity-25 
+border-dotted" style="background-color: aliceblue">
+                                                                Casa/depto:
+                                                            </p>
+                                                        </div>
+                                                        <div>
+                                                            <input type="text" name="NuevaCasa" class="form-check-input"
+                                                                id="16GB">
+                                                            <label class="form-check-label"
+                                                                for="NuevaCasa">Casa:</label></div>
+
+                                                    </div>
+                                                </article>
+                                            </div>
+
+                                            <!-- One big close button.  --->
+                                            <div class="mt-5 sm:mt-6">
+                                                <span class="flex w-full rounded-md shadow-sm">
+                                                    <button @click="despacho = false"
+                                                        class="inline-flex justify-center w-full px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-700">
+                                                        Close this despacho modal!
+                                                    </button>
+                                                </span>
+                                            </div>
+
+                                        </div>
                                     </div>
+                                </div>
+                                <div class="panel-block" style="background-color: aliceblue">
+                                    Fecha de retiro desde el 23 de marzo de 2021
+                                    Que otra persona retire por mi
+                                </div>
 
 
-                                </article>
-                                <article style="background-color: aliceblue"
-                                    class="lg:py-6 xl:py-6 2xl:py-6 hover:border-2 col-span-12">
-                                    <div class="px-6">
-                                        <label class="form-check-label"> Despacho programado Costo:
-                                            $7.990
-                                            <input type="radio"  value="2">
-                                        </label>
+                            </article>
 
-                                    </div>
-
-                                    <div class="panel-block" style="background-color: aliceblue">
-                                        Fecha de retiro desde el 23 de marzo de 2021
-                                        Que otra persona retire por mi
-                                    </div>
-
-
-                                </article>
-                             
                         </div>
                     </div>
                 </div>

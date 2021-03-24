@@ -11,7 +11,7 @@
             <div class="px-6">
                 <p class=" tracking-normal py-1 " style="background-color: aliceblue">
                     <h3 class="font-bold pb-4 mt-2 border-b border-gray-100 flex justify-center">
-                        <span class="text-3xl"> javier, ingresa tu región y comuna</span>
+                        <span class="text-3xl"> Por favor, ingresa tu región y comuna</span>
                     </h3>
                 </p>
             </div>
@@ -113,49 +113,11 @@
                                 <!---->
                                 <!---->
                             </select>
-
-                            <div> <label>
-                                    Plan <a href=" ">see features</a>
-                                </label>
-
-                                <label for="plan-free">
-                                    <input x-on:click="selected = 'opt1'" id="plan-free" type="radio" name="plan"
-                                        value="standard-free" checked>
-                                    Free
-                                </label>
-
-                                <label for="plan-monthly">
-                                    <input x-on:click="selected = 'opt2'" id="plan-monthly" type="radio" name="plan"
-                                        value="premium-monthly">
-                                    Monthly - <strong> </strong> / month
-                                </label>
-
-                                <label for="plan-yearly">
-                                    <input x-on:click="selected = 'opt3'" id="plan-yearly" type="radio" name="plan"
-                                        value="premium-yearly">
-                                    Yearly - <strong> </strong> / year <span>- save
-                                        <strong>$25</strong> per year</span>
-                                </label>
-
-                                <div x-show="selected !== 'opt1'" x-cloak>
-                                    <label x-show="selected !== 'opt1'" x-cloak for="card-element">
-                                        Credit or debit card
-                                    </label>
-                                    <div x-show="selected !== 'opt1'" x-cloak id="card-element">
-                                        <!-- A Stripe Element will be inserted here. -->
-                                    </div>
-                                </div>
-
-                                <div x-show="selected !== 'opt1'" x-cloak>
-                                    <!-- Stripe: used to display form errors. -->
-                                </div>
-                            </div>
-
-
                             <div class="toolbar toolbar-bottom" role="toolbar" style="text-align: right;"><button
                                     class="btn sw-btn-prev disabled" type="button">Volver al paso
                                     anterior</button><button class="btn sw-btn-next" type="button">siguiente
-                                    Paso</button></div>
+                                    Paso</button>
+                            </div>
                         </div>
 
                     </div>

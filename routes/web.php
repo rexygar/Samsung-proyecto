@@ -31,7 +31,9 @@ Route::get('/Search/{search}',                                                  
 // Carrito
 Route::get('/addCarrito',           [App\Http\Controllers\MainController::class, 'addCarrito'])->name('carrito.add');
 Route::get('/deleteCarrito',        [App\Http\Controllers\MainController::class, 'removeCarrito'])->name('carrito.delete');
+Route::get('/addDireccion',        [App\Http\Controllers\MainController::class, 'addDireccion'])->name('stepper.add');
 Route::get('/Carrito',              [App\Http\Controllers\MainController::class, 'getCarrito'])->name('carrito');
+Route::get('/Stepp',              [App\Http\Controllers\MainController::class, 'getStepper'])->name('Stepp');
 
 
 // Transbank
