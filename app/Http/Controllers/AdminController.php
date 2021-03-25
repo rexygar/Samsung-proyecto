@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Despacho;
 use App\Models\Images;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use DataTables;
 use Faker\Provider\Image;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
@@ -128,6 +130,56 @@ class AdminController extends Controller
                 $precio->save();
 
                 return ['message' => "Successful", 'id' => $precio->id];
+            }
+        } catch (\Throwable $th) {
+            return "Error " + $th;
+        }
+    }
+
+    public function list_user(Request $request){
+        if($request->ajax()){
+            $user = User::latest()->get();
+            
+            return DataTables::of($user)->addIndexColumn()
+            ->addColumn('action', function ($row) {
+                $url = route('edit.user');
+                $btn = '<form action="' . $url . '" method="GET">
+                        <input type="hidden" name="id" value="' . $row->id . '">
+                        <button type="submit" class="bg-yellow-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Ver</button>
+                    </form>';
+                return $btn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+        
+        }
+        return view('dashboard.list_user');
+    }
+
+    public function user(Request $request){
+        $user = User::where('id', $request->id)->first();
+        return view ('dashboard.user_admin')->with(['user' => $user]);
+    }
+
+    public function upload_user(Request $request){
+        try {
+            if($request->ajax()){
+
+                $nom = (isset($request->nom) && $request->nom != null) ? $request->nom : '';
+                $cor = (isset($request->cor) && $request->cor != null) ? $request->cor : '';
+
+                $user = User::where('name', $nom)->where('email',$cor)->first();
+                if ($user == null || !isset($user->id)) {
+                    $user = new User();
+                }
+                
+                $user->name = $nom;
+                $user->email = $cor;
+                $user->password = Hash::make($nom.'123');
+                $user->rol_id = 3;
+                $user->save();
+
+                return ['message' => "Successful", 'id' => $user->id];
             }
         } catch (\Throwable $th) {
             return "Error " + $th;

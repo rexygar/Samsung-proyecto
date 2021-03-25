@@ -1,21 +1,21 @@
 @extends('layouts_admin.master')
 @section('parentPageTitle', 'Dashboard')
-@section('title', 'Lista de Precios')
+@section('title', 'Lista de Usuarios')
 
 
 @section('content')
     <div class="col-span-10 col-start-3 px-6 ">
         <div class="mx-auto container">
             <div class=" border-b flex px-6 py-2 items-center">
-              <input type="hidden" id="rutaListar" value="{{ route('list.price') }}">
+              <input type="hidden" id="rutaListar" value="{{ route('list.user') }}">
                 <div>
                     <div class="flex flex-col max-w-full shadow-md m-6">
                   <!-- Header -->
                   <div class="flex justify-between items-center bg-gray-100 border-b px-6 py-4">
-                    <p class="text-5xl text-gray-800 font-semibold">Precios de los Despachos</p>
+                    <p class="text-5xl text-gray-800 font-semibold">Lista de Todos los Usuarios</p>
 
                     <div class="flex justify-between items-center bg-gray-100 border-b px-6 py-4">
-                      <a href="{{ route('add.price') }}" type="submit" class="bg-blue-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Crear Precio</a>
+                      <a href="{{ route('create.user') }}" type="submit" class="bg-blue-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Crear Usuario</a>
                     </div>
                   </div>
                   <!-- End Header -->
@@ -25,9 +25,8 @@
                     <thead class="bg-gray-50 text-gray-800 text-sm">
                       <tr class="divide-x divide-gray-300">
                         <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">ID</th>
-                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Región</th>
-                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Comuna</th>
-                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Precio</th>
+                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Nombre</th>
+                        <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Correo</th>
                         <th class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase">Acciones</th>
                       </tr>
                     </thead>
@@ -64,5 +63,5 @@
 @endsection
 
 @section('page-script')
-<script src="{{ asset('js/tablaPrecios.js') }}"></script>
+<script src="{{ asset('js/tablaUser.js') }}"></script>
 @stop

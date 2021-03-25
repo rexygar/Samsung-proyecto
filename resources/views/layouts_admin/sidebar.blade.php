@@ -66,7 +66,7 @@
             </li>
             @if (Auth::user()->rol_id == '2')
               <li class="mb-2 px-4 py-4 text-gray-100 flex flex-row  border-gray-300 hover:text-white   hover:bg-yellow-500  hover:font-bold rounded rounded-lg">
-                <a href="#"><i class="fas fa-user"></i><span class="ml-2 font-bold">Creación de Usuarios</span>
+                <a href="{{ route('list.user') }}"><i class="fas fa-user"></i><span class="ml-2 font-bold">Creación de Usuarios</span>
                 </a>
               </li>
             @endif

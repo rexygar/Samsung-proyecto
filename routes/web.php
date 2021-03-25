@@ -96,8 +96,10 @@ Route::get('/destacados', function () {
     return view('Components.destacados');
 });
 
+//ADMIN
+
 Route::get('/adminPanel', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
-Route::get('/ListaProductos', [App\Http\Controllers\AdminController::class, 'listProduct'])->name('product.list');
+Route::get('/listaProductos', [App\Http\Controllers\AdminController::class, 'listProduct'])->name('product.list');
 Route::get('/editarSlider', [App\Http\Controllers\AdminController::class, 'edit_slider'])->name('admin.slider');
 Route::POST('/slider_editado', [App\Http\Controllers\AdminController::class, 'upload_slider'])->name('slider.upload');
 Route::get('/editarImagenes', [App\Http\Controllers\AdminController::class, 'edit'])->name('edit.image');
@@ -106,3 +108,7 @@ Route::get('/agregarPrecio', [App\Http\Controllers\AdminController::class, 'pric
 Route::get('/editarPrecio', [App\Http\Controllers\AdminController::class, 'price'])->name('edit.price');
 Route::post('/precioAgregado', [App\Http\Controllers\AdminController::class, 'upload_price'])->name('upload.price');
 Route::get('/listarPrecios', [App\Http\Controllers\AdminController::class, 'list_price'])->name('list.price');
+Route::get('/listaUsuarios', [App\Http\Controllers\AdminController::class, 'list_user'])->name('list.user');
+Route::get('/crearUsuario', [App\Http\Controllers\AdminController::class, 'user'])->name('create.user');
+Route::get('/editarUsuario', [App\Http\Controllers\AdminController::class, 'user'])->name('edit.user');
+Route::Post('/usuarioCreado', [App\Http\Controllers\AdminController::class, 'upload_user'])->name('upload.user');
