@@ -8,7 +8,14 @@
         </div>
         <div class="flex flex-wrap mt-8">
           <div class="w-1/2">
-            <a href=""><span class="font-semibold text-white">Administrador</span></a>
+            <span class="font-semibold text-white">{{ Auth::user()->name }}</span>
+          </div>
+          <div class="left-4">
+            <a href="{{ route('logout') }}" onclick="event.preventDefault();
+            document.getElementById('logout-form').submit();" class="bg-blue-500 text-white hover:bg-red-600 p-2 rounded-md focus:outline-none"><span class="font-semibold text-white">cerrar sesión</span></a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+              @csrf
+          </form>
           </div>
         </div>
         <div class="mt-10 mb-4">

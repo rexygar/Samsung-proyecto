@@ -138,15 +138,24 @@ class AdminController extends Controller
 
     public function list_user(Request $request){
         if($request->ajax()){
-            $user = User::latest()->get();
+            $user = User::latest()->where('rol_id', 3)->get();
             
             return DataTables::of($user)->addIndexColumn()
             ->addColumn('action', function ($row) {
                 $url = route('edit.user');
                 $btn = '<form action="' . $url . '" method="GET">
                         <input type="hidden" name="id" value="' . $row->id . '">
-                        <button type="submit" class="bg-yellow-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Ver</button>
-                    </form>';
+                        <div class="grid grid-cols-12">
+                            <div class="col-span-6"><button type="submit" 
+                                    class="bg-yellow-500 flex justify-center items-center w-full text-white rounded-md focus:outline-none">
+                                    Ver</button> </div>
+                            <div class="col-span-6">
+                                <button type="button" id="' . $row->id . '"
+                                class="bg-red-700 flex justify-center items-center w-full text-white rounded-md focus:outline-none"
+                                onclick="openModal(' . $row->id . ')">Eliminar</button> </div>
+                        </div>
+                         
+                        </form>';
                 return $btn;
             })
             ->rawColumns(['action'])
@@ -184,5 +193,13 @@ class AdminController extends Controller
         } catch (\Throwable $th) {
             return "Error " + $th;
         }
+    }
+
+    public function delete_user(Request $request)
+    {
+        $users = User::findOrFail($request->id);
+        
+        $users->delete();
+        return back()->with('alert-danger', 'Usuario eliminado exitosamente');
     }
 }

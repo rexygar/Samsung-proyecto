@@ -112,3 +112,4 @@ Route::get('/listaUsuarios', [App\Http\Controllers\AdminController::class, 'list
 Route::get('/crearUsuario', [App\Http\Controllers\AdminController::class, 'user'])->name('create.user');
 Route::get('/editarUsuario', [App\Http\Controllers\AdminController::class, 'user'])->name('edit.user');
 Route::Post('/usuarioCreado', [App\Http\Controllers\AdminController::class, 'upload_user'])->name('upload.user');
+Route::get('/eliminarUsuario', [App\Http\Controllers\AdminController::class, 'delete_user'])->name('delete.user');

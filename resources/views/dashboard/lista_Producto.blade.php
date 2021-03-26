@@ -6,9 +6,9 @@
 @section('content')
     <div class="col-span-10 col-start-3 px-6 ">
         <div class="mx-auto container">
-            <div class=" border-b flex px-6 py-2 items-center">
+            <div class=" border-b px-6 py-2 items-center grid grid-cols-12">
               <input type="hidden" id="rutaListar" value="{{ route('product.list') }}">
-                <div>
+                <div class="col-span-12">
                     <div class="flex flex-col max-w-full shadow-md m-6">
                   <!-- Header -->
                   <div class="flex justify-between items-center bg-gray-100 border-b px-6 py-4">
