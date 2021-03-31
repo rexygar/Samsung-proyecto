@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\TransbankController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Direccion;
+use App\Models\EstadoCompra;
 use App\Models\Images;
+use App\Models\User;
+use DataTables;
 
 class MainController extends Controller
 {
@@ -45,10 +48,25 @@ class MainController extends Controller
         return view('store.filtros')->with(['productos' => $productos, 'dir' => $dir]);
     }
 
-    public function index2()
+    public function index2(Request $request)
     {
         if (Auth::user()->rol_id == '2' || Auth::user()->rol_id == '3') {
-            return view('dashboard.dashboard');
+            $users = User::where('rol_id', 1)->count();
+            if($request->ajax()){
+                $estado = EstadoCompra::latest()->get();
+                return DataTables::of($estado)->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                $url = route('edit.estado');
+                $btn = '<form action="'. $url .'" method="GET">
+                        <input type="hidden" name="id" value="' . $row->id . '">
+                        <button type="submit" class="bg-yellow-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Ver</button>
+                    </form>';
+                return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+                }
+            return view('dashboard.dashboard', ['users' => $users]);
         }
         if (session()->has('idPago')) {
             $idPago = session('idPago');

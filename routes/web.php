@@ -113,3 +113,6 @@ Route::get('/crearUsuario', [App\Http\Controllers\AdminController::class, 'user'
 Route::get('/editarUsuario', [App\Http\Controllers\AdminController::class, 'user'])->name('edit.user');
 Route::Post('/usuarioCreado', [App\Http\Controllers\AdminController::class, 'upload_user'])->name('upload.user');
 Route::get('/eliminarUsuario', [App\Http\Controllers\AdminController::class, 'delete_user'])->name('delete.user');
+Route::get('/editarEstado', [App\Http\Controllers\AdminController::class, 'edit_estado'])->name('edit.estado');
+Route::POST('/estadoEditado', [App\Http\Controllers\AdminController::class, 'update_estado'])->name('update.estado');
+Route::get('/listaEstado', [App\Http\Controllers\AdminController::class, 'list_estado'])->name('list.estado');

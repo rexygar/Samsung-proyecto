@@ -69,9 +69,12 @@ class TransbankController extends Controller
 			$pago->authorizationCode = $output->authorizationCode;
 			$pago->paymentTypeCode = $output->paymentTypeCode;
 			$pago->commerceCode = $output->commerceCode;
-			$pago->estado = 'Aporbado';
+			$pago->estado = 'Aprobado';
 
 			$pago->save();
+
+			// Insertar Detalle
+			// Insertar Estado
 			
 		}else{
 			$pago = Transaccion::where('id', $result->sessionId)->first();

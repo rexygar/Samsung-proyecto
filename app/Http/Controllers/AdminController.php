@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Despacho;
+use App\Models\EstadoCompra;
 use App\Models\Images;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -16,11 +17,79 @@ use Illuminate\Support\Facades\Storage;
 class AdminController extends Controller
 {
 
-    public function index(){
+    public function index(Request $request){
         if(Auth::user()->rol_id == '2'){
-            return view('dashboard.dashboard');
+            $users = User::where('rol_id', 1)->count();
+            
+            if($request->ajax()){
+                $estado = EstadoCompra::latest()->orderBy('created_at', 'ASC')->take(5)->get();
+                return DataTables::of($estado)->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                $url = route('edit.estado');
+                $btn = '<form action="'. $url .'" method="GET">
+                        <input type="hidden" name="id" value="' . $row->id . '">
+                        <button type="submit" class="bg-yellow-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Ver</button>
+                    </form>';
+                return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+                }
+            return view('dashboard.dashboard', ['users' => $users]);
         }else{
             return view('vistas.index');
+        }
+    }
+
+    public function list_estado(Request $request){
+        if($request->ajax()){
+            $estado = EstadoCompra::latest()->get();
+            return DataTables::of($estado)->addIndexColumn()
+            ->addColumn('action', function ($row) {
+            $url = route('edit.estado');
+            $btn = '<form action="'. $url .'" method="GET">
+                    <input type="hidden" name="id" value="' . $row->id . '">
+                    <button type="submit" class="bg-yellow-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Ver</button>
+                </form>';
+            return $btn;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+            }
+        return view('dashboard.list_estado');
+    }
+
+    public function edit_estado(Request $request){
+        $estado = EstadoCompra::where('id', $request->id)->first();
+
+        return view('dashboard.edit_estado', ['estado' => $estado]);
+    }
+
+    public function update_estado(Request $request){
+        try {
+            if($request->ajax()){
+                
+                $id = (isset($request->id) && $request->id != null) ? $request->id : '';
+                $obs = (isset($request->obs) && $request->obs != null) ? $request->obs : '';
+                $ord = (isset($request->ord) && $request->ord != null) ? $request->ord : '';
+                $est = (isset($request->est) && $request->est != null) ? $request->est : '';
+                $idt =  (isset($request->idt) && $request->idt != null) ? $request->idt : '';
+
+                $estado = EstadoCompra::where('id', $id)->first();
+                if ($estado == null || !isset($estado->id)) {
+                    $estado = new EstadoCompra();
+                }
+
+                $estado->observacion = $obs;
+                $estado->ordenTransporte = $ord;
+                $estado->estado = $est;
+                $estado->idTransaccion = $idt;
+                $estado->save();
+
+                return ['message' => "Successful", 'id' => $estado->id];
+            }
+        } catch (\Throwable $th) {
+            return "Error " + $th;
         }
     }
 
