@@ -109,7 +109,7 @@
 
             </ul>
 
-            <div class="sw-container tab-content col-span-12 grid grid-cols-12">
+            <div class="sw-container tab-content col-span-12 grid grid-cols-12 h-full">
                 <div id="step-1" class="tab-pane step-content col-span-12" style="display: block;">
                     @include('Components.Carrito.carritoS2')
                 </div>
@@ -137,7 +137,7 @@
                         </small></a></li>
             </ul>
 
-            <div class="sw-container tab-content col-span-12 grid grid-cols-12">
+            <div class="sw-container tab-content col-span-12 grid grid-cols-12 h-full">
                 <div id="step-1" class="tab-pane step-content col-span-12" style="display: block;">
                     @include('Components.Carrito.carritoS1')
                 </div>

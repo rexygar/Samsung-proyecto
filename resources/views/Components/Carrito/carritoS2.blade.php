@@ -6,7 +6,8 @@
 
 <div class="grid grid-cols-12  lg:px-6 xl:px-6 2xl:px-6 md:px-2  px-2 2xl:py-8 xl:py-8 lg:py-8 py-8">
     <div class="col-span-1"></div>
-    <div class="col-span-6 lx:pr-6 md:pr-4 xl:pr-6 2xl:pr-6" style="background-color: white">
+    <div class="lg:col-span-6 md:col-span-6 xl:col-span-6 2xl:col-span-6 col-span-12 lx:pr-6 md:pr-4 xl:pr-6 2xl:pr-6"
+        style="background-color: white">
         <article style="background-color: aliceblue" class="panel is-primary  ">
             <div class="px-6">
                 <p class=" tracking-normal py-1 " style="background-color: aliceblue">
@@ -113,11 +114,22 @@
                                 <!---->
                                 <!---->
                             </select>
-                            <div class="toolbar toolbar-bottom" role="toolbar" style="text-align: right;"><button
-                                    class="btn sw-btn-prev disabled" type="button">Volver al paso
-                                    anterior</button><button class="btn sw-btn-next" type="button">siguiente
+                            <div class="py-5"></div>
+                            <button id="editar" class="text-lg font-semibold 
+                                bg-green-500 w-full text-white rounded-lg px-6 py-3 
+                                 block shadow-xl hover:text-white hover:bg-black" type="button">Guardar
+                                cambios</button>
+                            <div class="toolbar toolbar-bottom grid grid-cols-12 grid-flow-row auto-rows-max" role="toolbar"
+                                style="text-align: right;">
+
+                                <button class="btn col-span-6 sw-btn-prev disabled" type=" button">Volver
+                                    al Paso
+                                    anterior</button>
+                                <button class="btn col-span-6 sw-btn-next " type=" button">Ir al
+                                    siguiente
                                     Paso</button>
                             </div>
+
                         </div>
 
                     </div>
@@ -127,7 +139,7 @@
         </article>
 
     </div>
-    <div class="col-span-5 lx:px-8 lg:pl-12 xl:pl-12 2xl:pl-12 md:px-4 xl:px-10 2xl:px-16"
+    <div class="lg:col-span-5 md:col-span-5 xl:col-span-5 2xl:col-span-5 col-span-12 lx:px-8 lg:pl-12 xl:pl-12 2xl:pl-12 md:px-4 xl:px-10 2xl:px-16"
         style="background-color: white">
         <article style="background-color: aliceblue" class="panel is-primary  ">
             <div class="px-6">

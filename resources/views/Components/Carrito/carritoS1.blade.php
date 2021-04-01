@@ -1,6 +1,6 @@
 <div class="grid grid-cols-12  lg:px-6 xl:px-6 2xl:px-6 md:px-2  px-2 2xl:py-8 xl:py-8 lg:py-8 py-8">
     <div class="col-span-1"></div>
-    <div class="col-span-6 lx:pr-6 md:pr-4 xl:pr-6 2xl:pr-6" style="background-color: white">
+    <div class="lg:col-span-6 md:col-span-6 xl:col-span-6 2xl:col-span-6 col-span-12 lx:pr-6 md:pr-4 xl:pr-6 2xl:pr-6" style="background-color: white">
 
         <article style="background-color: aliceblue" class="panel is-primary  ">
             <div class="px-6">
@@ -179,7 +179,7 @@
                 <div class=" w-full lg:max-w-full lg:flex" x-cloak :class="{' hidden': isOpen, 'block': !isOpen}">
                     <div class="grid grid-cols-12 w-full lg:max-w-full" style="background-color: aliceblue">
                         <div class="col-span-12 grid grid-cols-12 px-6">
-                            <div class="col-span-6">
+                            <div class="xl:col-span-6 2xl:col-span-6 lg:col-span-6 col-span-6 md:col-span-12">
                                 <label class="form-check-label" for="NuevoNombre">Nombre de quien recibe la compra:
                                 </label>
                                 <input type="text" required name="NuevoNombre" id="NuevoNombre" class="text-md w-full block px-3 py-2 rounded-lg 
@@ -189,7 +189,7 @@
                                                         focus:border-gray-600  
                                                         focus:outline-none">
                             </div>
-                            <div class="col-span-6">
+                            <div class="xl:col-span-6 2xl:col-span-6 lg:col-span-6 col-span-6 md:col-span-12">
                                 <label class="form-check-label" for="NuevoApellido">Apellido de quien recibe la compra:
                                 </label>
                                 <input type="text" required name="NuevoApellido" id="NuevoApellido" class="text-md w-full block px-3 py-2 rounded-lg 
@@ -202,7 +202,7 @@
 
                         </div>
                         <div class="col-span-12 grid grid-cols-12 px-6">
-                            <div class="col-span-6">
+                            <div class="xl:col-span-6 2xl:col-span-6 lg:col-span-6 col-span-6 md:col-span-12">
                                 <label class="form-check-label" for="NuevoEmail">Email:
 
                                 </label>
@@ -214,7 +214,7 @@
                           focus:border-gray-600  
                           focus:outline-none">
                             </div>
-                            <div class="col-span-6">
+                            <div class="xl:col-span-6 2xl:col-span-6 lg:col-span-6 col-span-6 md:col-span-12">
                                 <label class="form-check-label" for="NuevoRut">Rut:
                                     <p class="text-info" id="msgerror"></p>
                                 </label>
@@ -227,8 +227,8 @@
                             </div>
 
                         </div>
-                        <div class="col-span-12 grid grid-cols-12 px-6">
-                            <div class="col-span-2">
+                        <div class="col-span-12 grid grid-cols-12 px-6 md:grid-flow-row md:auto-rows-max">
+                            <div class="xl:col-span-2 2xl:col-span-2 lg:col-span-2 col-span-4 md:col-span-4">
                                 <label class="form-check-label" for="codigo_nmro">Codigo:
                                 </label>
                                 <select class="text-md block px-3 py-2 rounded-lg  
@@ -243,7 +243,7 @@
                                     <option class="select-option" label="+54" value="+54">+54</option>
                                 </select>
                             </div>
-                            <div class="col-span-5">
+                            <div class="xl:col-span-5 2xl:col-span-5 lg:col-span-5 col-span-8 md:col-span-8">
                                 <label class="form-check-label" for="Nuevo_nmro">Numero de telefono:
                                 </label>
                                 <input type="number" requiredname="Nuevo_nmro" id="Nuevo_nmro" id="Nuevo_nmro" class="  text-md block px-3 py-2 rounded-lg 
@@ -253,22 +253,21 @@
                                       focus:border-gray-600  
                                       focus:outline-none">
                             </div>
-                            <div class="col-span-5 px-6 pt-3">
+                            <div class="xl:col-span-5 2xl:col-span-5 lg:col-span-5 col-span-12 md:col-span-12 px-6 pt-3">
                                 <button id="editar" class="text-lg font-semibold 
                                 bg-green-500 w-full text-white rounded-lg px-6 py-3 
                                  block shadow-xl hover:text-white hover:bg-black" type="button">Guardar
                                     cambios</button>
-                                <input type="hidden" id="url" value="{{ route('usr.create') }}">
+                                 <input type="hidden" id="url" value="{{ route('usr.create') }}">
                                 @csrf
 
                             </div>
 
                         </div>
 
-                        <div class="col-span-12 grid grid-cols-12 px-6">
+                        <div class="col-span-12 grid grid-cols-12 px-6 md:mx-auto">
                             <div class="toolbar col-span-12 toolbar-bottom" role="toolbar" style="text-align: right;">
-                                <button class="btn sw-btn-prev disabled" type="button">Volver al paso
-                                    anterior</button><button class="btn sw-btn-next" type="button">siguiente
+                                <button class="btn sw-btn-next w-full" type="button">ir al siguiente
                                     Paso</button>
                             </div>
                         </div>
@@ -284,7 +283,7 @@
 
 
     </div>
-    <div class="col-span-5 lx:px-8 lg:pl-12 xl:pl-12 2xl:pl-12 md:px-4 xl:px-10 2xl:px-16"
+    <div class="lg:col-span-5 md:col-span-5 xl:col-span-5 2xl:col-span-5 col-span-12  lx:px-8 lg:pl-12 xl:pl-12 2xl:pl-12 md:px-4 xl:px-10 2xl:px-16"
         style="background-color: white">
         <article style="background-color: aliceblue" class="panel is-primary  ">
             <div class="px-6">

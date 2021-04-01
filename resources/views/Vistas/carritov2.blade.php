@@ -99,7 +99,7 @@
     @if ($pago != null )
     <div class="grid grid-cols-12  lg:px-6 xl:px-6 2xl:px-6 md:px-2  px-2 2xl:py-8 xl:py-8 lg:py-8 py-8">
         <div class="col-span-1"></div>
-        <div class="col-span-6 lx:pr-6 md:pr-4 xl:pr-6 2xl:pr-6" style="background-color: white">
+        <div class="lg:col-span-6 md:col-span-6 xl:col-span-6 2xl:col-span-6 col-span-12 lx:pr-6 md:pr-4 xl:pr-6 2xl:pr-6" style="background-color: white">
 
             <article style="background-color: aliceblue" class="panel is-primary  ">
                 <div class="px-6">
@@ -156,7 +156,7 @@
 
             @endforeach
         </div>
-        <div class="col-span-5 lx:px-8 lg:pl-12 xl:pl-12 2xl:pl-12 md:px-4 xl:px-10 2xl:px-16"
+        <div class="lg:col-span-5 md:col-span-5 xl:col-span-5 2xl:col-span-5 col-span-12 lx:px-8 lg:pl-12 xl:pl-12 2xl:pl-12 md:px-4 xl:px-10 2xl:px-16"
             style="background-color: white">
             <article style="background-color: aliceblue" class="panel is-primary  ">
                 <div class="px-6">
@@ -168,15 +168,12 @@
 
 
                 <div class="panel-block grid grid-cols-12" style="background-color: aliceblue">
-                    <div class="grid grid-cols-12 mx-auto">
-                        <div class="col-span-6 ">
-                            <a href="/Stepper" class="mt-3 text-lg font-semibold 
+                    <div class="col-span-12 mx-auto">
+                        <a href="/Stepper" class="mt-3 text-lg font-semibold 
                bg-gray-800 w-full text-white rounded-lg
                px-6 py-3 block shadow-xl hover:text-white hover:bg-black">Continuar con la compra</a></div>
-                    </div>
+
                 </div>
-
-
             </article>
             <article style="background-color: aliceblue" class="panel is-primary  ">
                 <div class="px-6">
