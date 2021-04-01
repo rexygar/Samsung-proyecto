@@ -182,7 +182,7 @@
                             <div class="col-span-6">
                                 <label class="form-check-label" for="NuevoNombre">Nombre de quien recibe la compra:
                                 </label>
-                                <input type="text" name="NuevoNombre" id="NuevoNombre" class="text-md w-full block px-3 py-2 rounded-lg 
+                                <input type="text" required name="NuevoNombre" id="NuevoNombre" class="text-md w-full block px-3 py-2 rounded-lg 
                                                         bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
                                                         focus:placeholder-gray-500
                                                         focus:bg-white 
@@ -192,7 +192,7 @@
                             <div class="col-span-6">
                                 <label class="form-check-label" for="NuevoApellido">Apellido de quien recibe la compra:
                                 </label>
-                                <input type="text" name="NuevoApellido" id="NuevoApellido" class="text-md w-full block px-3 py-2 rounded-lg 
+                                <input type="text" required name="NuevoApellido" id="NuevoApellido" class="text-md w-full block px-3 py-2 rounded-lg 
                                                         bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
                                                         focus:placeholder-gray-500
                                                         focus:bg-white 
@@ -206,8 +206,8 @@
                                 <label class="form-check-label" for="NuevoEmail">Email:
 
                                 </label>
-                                <input type="email" name="NuevoEmail" id="NuevoEmail" placeholder="Tucorreo@dominio.cl"
-                                    class="text-md block w-full px-3 py-2 rounded-lg 
+                                <input type="email" requiredname="NuevoEmail" id="NuevoEmail"
+                                    placeholder="Tucorreo@dominio.cl" class="text-md block w-full px-3 py-2 rounded-lg 
                           bg-white border-2 border-gray-300 placeholder-gray-600   shadow-md
                           focus:placeholder-gray-500
                           focus:bg-white 
@@ -216,8 +216,9 @@
                             </div>
                             <div class="col-span-6">
                                 <label class="form-check-label" for="NuevoRut">Rut:
+                                    <p class="text-info" id="msgerror"></p>
                                 </label>
-                                <input type="text" name="NuevoRut" id="NuevoRut" class=" text-md block w-full px-3 py-2 rounded-lg 
+                                <input type="text" requiredname="NuevoRut" id="NuevoRut" class=" text-md block w-full px-3 py-2 rounded-lg 
                                   bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
                                   focus:placeholder-gray-500
                                   focus:bg-white 
@@ -235,7 +236,7 @@
                                 focus:placeholder-gray-500
                                 focus:bg-white 
                                 focus:border-gray-600  
-                                focus:outline-none" id="codigo_nmro" name="codigo_nmro" naidcodigo_nmro">
+                                focus:outline-none" id="codigo_nmro" name="codigo_nmro">
                                     <option class="select-option" label="+569" value="+569" selected="selected">+569
                                     </option>
                                     <option class="select-option" label="+562" value="+562">+562</option>
@@ -245,7 +246,7 @@
                             <div class="col-span-5">
                                 <label class="form-check-label" for="Nuevo_nmro">Numero de telefono:
                                 </label>
-                                <input type="number" name="Nuevo_nmro" id="Nuevo_nmro" id="Nuevo_nmro" class="  text-md block px-3 py-2 rounded-lg 
+                                <input type="number" requiredname="Nuevo_nmro" id="Nuevo_nmro" id="Nuevo_nmro" class="  text-md block px-3 py-2 rounded-lg 
                                       bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
                                       focus:placeholder-gray-500
                                       focus:bg-white 
@@ -253,10 +254,13 @@
                                       focus:outline-none">
                             </div>
                             <div class="col-span-5 px-6 pt-3">
-                                <button class="text-lg font-semibold 
-                                bg-green-500 w-full text-white rounded-lg px-6 py-3
+                                <button id="editar" class="text-lg font-semibold 
+                                bg-green-500 w-full text-white rounded-lg px-6 py-3 
                                  block shadow-xl hover:text-white hover:bg-black" type="button">Guardar
                                     cambios</button>
+                                <input type="hidden" id="url" value="{{ route('usr.create') }}">
+                                @csrf
+
                             </div>
 
                         </div>
@@ -292,8 +296,10 @@
 
             <div class="panel-block" style="background-color: aliceblue">
                 <h3 class="font-bold pb-4 mt-2 border-b border-gray-100 flex justify-center">
-                    <span class="text-3xl">$410.000</span>
-                </h3>
+                    @foreach ($reserva as $res)
+
+                    <span class="text-3xl">${{number_format($res->Total, 0,'','.')}}</span>
+                    @endforeach</h3>
             </div>
 
 
@@ -306,7 +312,7 @@
                     tecnobuy.cl
                 </p>
             </div>
-
+            @foreach ($reserva as $res)
             <div class="panel-block" style="background-color: aliceblue">
 
                 <!--Card 1-->
@@ -317,38 +323,21 @@
                     <div class=" rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
                         style="background-color: aliceblue">
                         <div class="mb-8">
-                            <div class="text-gray-900 font-bold text-xl mb-2">GALAXY BUDS+</div>
                             <p class="text-sm text-gray-600 flex items-center">
-                                $149.990
+                                ${{ number_format($res->monto, 0,'','.') }}
                             </p>
-
+                            <div class="text-gray-900 font-bold text-xl mb-2">{{ $res->descripcion }}</div>
+                            <input type="hidden" id="urlQuitar" value="{{ route('carrito.delete') }}">
+                            <a type="button" id="borrar"
+                                class="btn font-semibold hover:text-red-500 text-gray-500 text-xs"
+                                onclick="eliminar({{ $res->sku }})">Quitar</a>
                         </div>
 
                     </div>
                 </div>
 
             </div>
-            <div class="panel-block" style="background-color: aliceblue">
-
-                <!--Card 1-->
-                <div class=" w-full lg:max-w-full lg:flex">
-                    <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover bg-center  rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-                        style="background-image: url({{ url('../uploads/products/1/46mm.jpg') }});">
-                    </div>
-                    <div class=" rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
-                        style="background-color: aliceblue">
-                        <div class="mb-8">
-                            <div class="text-gray-900 font-bold text-xl mb-2">GALAXY WATCH 46 MM</div>
-                            <p class="text-sm text-gray-600 flex items-center">
-                                $259.990
-                            </p>
-
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
+            @endforeach
         </article>
 
         <article style="background-color: aliceblue" class="panel is-primary col-start-1 col-end-3">
@@ -376,3 +365,5 @@
     </div>
 
 </div>
+
+<script src="{{ asset('js/compra_usr.js') }}"></script>

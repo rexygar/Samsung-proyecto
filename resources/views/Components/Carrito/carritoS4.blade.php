@@ -165,18 +165,7 @@
 
 
         </article>
-        <article style="background-color: aliceblue" class="panel is-primary  ">
-            <div class="px-6">
-                <p class=" tracking-normal py-1 border-b-2 border-opacity-25 
-        border-dotted" style="background-color: aliceblue">
-                    Metodos de pago
-                </p>
-            </div>
 
-            <div class="panel-block" style="background-color: aliceblue">
-                <img src="../img/Metodos_Pago.PNG" alt="">
-            </div>
-        </article>
         <article style="background-color: aliceblue" class="panel is-primary  ">
             <div class="px-6">
                 <p class=" tracking-normal py-1 border-b-2 border-opacity-25 
@@ -191,6 +180,22 @@
                     Puedes cambiar tus productos en cualquier tienda Paris hasta 30 días después de la fecha de
                     compra.
                 </p>
+            </div>
+        </article>
+        <article style="background-color: aliceblue" class="panel is-primary  ">
+            <div class="px-6">
+                <p class=" tracking-normal py-1 border-b-2 border-opacity-25 
+        border-dotted" style="background-color: aliceblue">
+                    pasar a:
+                </p>
+            </div>
+
+            <div class="panel-block" style="background-color: aliceblue">
+                <div class="px-6">
+                    <div class="toolbar toolbar-bottom" role="toolbar" style="text-align: right;"><button
+                            class="btn sw-btn-prev disabled w-full" type="button">Volver al paso
+                            anterior</button><button class="btn sw-btn-next w-full" type="button">Next</button></div>
+                </div>
             </div>
         </article>
     </div>

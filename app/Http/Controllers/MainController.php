@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Direccion;
 use App\Models\EstadoCompra;
 use App\Models\Images;
+use App\Models\Detalle;
+use App\Models\retiro_local;
 use App\Models\User;
 use DataTables;
 
@@ -52,20 +54,20 @@ class MainController extends Controller
     {
         if (Auth::user()->rol_id == '2' || Auth::user()->rol_id == '3') {
             $users = User::where('rol_id', 1)->count();
-            if($request->ajax()){
+            if ($request->ajax()) {
                 $estado = EstadoCompra::latest()->get();
                 return DataTables::of($estado)->addIndexColumn()
-                ->addColumn('action', function ($row) {
-                $url = route('edit.estado');
-                $btn = '<form action="'. $url .'" method="GET">
+                    ->addColumn('action', function ($row) {
+                        $url = route('edit.estado');
+                        $btn = '<form action="' . $url . '" method="GET">
                         <input type="hidden" name="id" value="' . $row->id . '">
                         <button type="submit" class="bg-yellow-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none">Ver</button>
                     </form>';
-                return $btn;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-                }
+                        return $btn;
+                    })
+                    ->rawColumns(['action'])
+                    ->make(true);
+            }
             return view('dashboard.dashboard', ['users' => $users]);
         }
         if (session()->has('idPago')) {
@@ -85,7 +87,7 @@ class MainController extends Controller
 
         $productos = DB::select("CALL Ges_Eco_rescatarProducto('" . $superCategory . "','','','')");
         $dir = [];
-        $image = DB::table('images')->where('subTipo' ,$superCategory)->take(1)->get();
+        $image = DB::table('images')->where('subTipo', $superCategory)->take(1)->get();
         array_push($dir, ['name' => $superCategory, 'url' => URL('/') . '/Categoria' . '/' . $superCategory]);
 
         return view('store.filtros')->with(['productos' => $productos, 'dir' => $dir, 'image' => $image]);
@@ -95,7 +97,7 @@ class MainController extends Controller
     {
 
         $productos = DB::select("CALL Ges_Eco_rescatarProducto('" . $superCategory . "','" . $category . "','','')");
-        $image = DB::table('images')->where('subTipo' ,$superCategory)->take(1)->get();
+        $image = DB::table('images')->where('subTipo', $superCategory)->take(1)->get();
         $dir = [];
 
         array_push($dir, ['name' => $superCategory, 'url' => URL('/') . '/Categoria' . '/' . $superCategory]);
@@ -108,7 +110,7 @@ class MainController extends Controller
     {
 
         $productos = DB::select("CALL Ges_Eco_rescatarProducto('" . $superCategory . "', '" . $category . "','" . $subCategory . "','')");
-        $image = DB::table('images')->where('subTipo' ,$superCategory)->take(1)->get();
+        $image = DB::table('images')->where('subTipo', $superCategory)->take(1)->get();
 
         $dir = [];
         array_push($dir, ['name' => $superCategory, 'url' => URL('/') . '/Categoria' . '/' . $superCategory]);
@@ -122,7 +124,7 @@ class MainController extends Controller
     {
 
         $productos = DB::select("CALL Ges_Eco_rescatarProducto('" . $superCategory . "', '" . $category . "','" . $subCategory . "','" . $other . "')");
-        $image = DB::table('images')->where('subTipo' ,$superCategory)->take(1)->get();
+        $image = DB::table('images')->where('subTipo', $superCategory)->take(1)->get();
 
         $dir = [];
         array_push($dir, ['name' => $superCategory, 'url' => URL('/') . '/Categoria' . '/' . $superCategory]);
@@ -241,6 +243,7 @@ class MainController extends Controller
         if (count($reserva) > 0) {
             if ($idPago > 0) {
                 $monto = Reserva::where('idTransaccion', $idPago)->sum('Total');
+
                 $order = '54879644';
                 $pago = $this->TransbankController->initTransaction($monto, $order, $idPago);
             }
@@ -253,8 +256,46 @@ class MainController extends Controller
             $id = Auth::id();
             $direccion = Direccion::where('user_id', $id)->get();
         }
+        $tipo_entrega = 0;
+        if (session()->has('tipo_entrega')) {
+        } else {
+            session(['tipo_entrega' => $tipo_entrega]);
+        }
+        return view('Vistas.carritov2', ['reserva' => $reserva, 'pago' => $pago]);
+    }
+    public function getCarritoStepper()
+    {
+        $idPago = 0;
+        $pago = [];
+        $this->TransbankController = new TransbankController();
+        if (session()->has('idPago')) {
+            $idPago = session('idPago');
+        } else {
+            session(['idPago' => $idPago]);
+        }
+        $reserva = Reserva::where('idTransaccion', $idPago)->get();
+        if (count($reserva) > 0) {
+            if ($idPago > 0) {
+                $monto = Reserva::where('idTransaccion', $idPago)->sum('Total');
+                $order = '54879644';
+                $pago = $this->TransbankController->initTransaction($monto, $order, $idPago);
+            }
+        } else {
+            $pago = null;
+        }
+        $tiendas = DB::select("CALL Ges_getTiendas()");
+        $direccion = null;
+        if (Auth::check()) {
+            $id = Auth::id();
+            $direccion = Direccion::where('user_id', $id)->get();
+        }
+        $tipo_entrega = 0;
+        if (session()->has('tipo_entrega')) {
+        } else {
+            session(['tipo_entrega' => $tipo_entrega]);
+        }
 
-        return view('Vistas.carrito', ['reserva' => $reserva, 'pago' => $pago, 'tiendas' => $tiendas, 'direccion' => $direccion]);
+        return view('Vistas.carritoStepper', ['reserva' => $reserva, 'pago' => $pago, 'tiendas' => $tiendas, 'direccion' => $direccion, 'tipo_entrega' => $tipo_entrega]);
     }
     public static function getStepper()
     {
@@ -322,13 +363,145 @@ class MainController extends Controller
     {
         if ($request->ajax()) {
             try {
+
                 $idPago = session('idPago');
 
-                $sku = (isset($request->sku) && $request->sku != null) ? $request->sku : '';
+                if (Auth::check()) {
+                    $id = Auth::id();
+                    // $get_dir = Direccion::where('user_id', $id)->first();
 
-                return ['status' => 0];
+                    $dir = new Direccion();
+                    $direccion = (isset($request->direccion) && $request->direccion != null) ? $request->direccion : '';
+                    $nom = (isset($request->nom) && $request->nom != null) ? $request->nom : '';
+                    $apel = (isset($request->apel) && $request->apel != null) ? $request->apel : '';
+                    $detalle_1 = $request->detalle_1;
+                    $detalle_2 = $request->detalle_2;
+
+                    $dir->calle = $direccion;
+                    $dir->numero = $detalle_1;
+                    $dir->depto = $detalle_2;
+                    $dir->user_id = $id;
+
+                    $dir->nombre_despacho = $nom;
+                    $dir->apellido_despacho = $apel;
+                    $dir->save();
+                    $tipo_entrega = 1;
+                    if (session()->has('tipo_entrega')) {
+                        session(['tipo_entrega' => $tipo_entrega]);
+                    } else {
+                        session(['tipo_entrega' => $tipo_entrega]);
+                    }
+                } else {
+                    $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
+                    if ($usr_no_logeado == null) {
+                        /////
+
+                        $direccion = (isset($request->direccion) && $request->direccion != null) ? $request->direccion : '';
+                        $nom = (isset($request->nom) && $request->nom != null) ? $request->nom : '';
+                        $apel = (isset($request->apel) && $request->apel != null) ? $request->apel : '';
+                        $detalle_1 = $request->detalle_1;
+                        $detalle_2 = $request->detalle_2;
+                        $usr_no_logeado = new no_usr();
+                        $usr_no_logeado->direccion = $direccion;
+                        $usr_no_logeado->numero = $detalle_1;
+                        $usr_no_logeado->detalle = $detalle_2;
+                        $usr_no_logeado->nombre_despacho = $nom;
+                        $usr_no_logeado->apellido_despacho = $apel;
+                        $usr_no_logeado->tipo_entrega = "Despacho a domicilio";
+                        $tipo_entrega = 1;
+                        if (session()->has('tipo_entrega')) {
+                            session(['tipo_entrega' => $tipo_entrega]);
+                        } else {
+                            session(['tipo_entrega' => $tipo_entrega]);
+                        }
+
+                        $usr_no_logeado->save();
+                        //
+
+                    } else {
+
+                        $direccion = (isset($request->direccion) && $request->direccion != null) ? $request->direccion : '';
+                        $nom = (isset($request->nom) && $request->nom != null) ? $request->nom : '';
+                        $apel = (isset($request->apel) && $request->apel != null) ? $request->apel : '';
+                        $detalle_1 = $request->detalle_1;
+                        $detalle_2 = $request->detalle_2;
+                        $usr_no_logeado->direccion = $direccion;
+                        $usr_no_logeado->numero = $detalle_1;
+                        $usr_no_logeado->detalle = $detalle_2;
+                        $usr_no_logeado->nombre_despacho = $nom;
+                        $usr_no_logeado->apellido_despacho = $apel;
+                        $usr_no_logeado->tipo_entrega = "Despacho a domicilio";
+                        $tipo_entrega = 1;
+                        if (session()->has('tipo_entrega')) {
+                            session(['tipo_entrega' => $tipo_entrega]);
+                        } else {
+                            session(['tipo_entrega' => $tipo_entrega]);
+                        }
+                        $usr_no_logeado->save();
+                    }
+                }
+                $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
+                // $get_detalle = no_usr::where('id_Usuario', $id)->first();
+
+
+                return ['message' => session('tipo_entrega'), 'status' => 0];
             } catch (\Throwable $th) {
-                return ['status' => 1];
+                return ['status' => $th];
+            }
+        }
+    }
+    public function cmbr_tienda(Request $request)
+    {
+        if ($request->ajax()) {
+            try {
+                $idPago = session('idPago');
+                // return "estado 0";
+                //crear
+
+                $get_tienda = retiro_local::where('idTransaccion_FK', $idPago)->first();
+
+                if ($get_tienda == null) {
+                    /////
+                    $id_tienda = (isset($request->tienda) && $request->tienda != null) ? $request->tienda : '';
+                    $Cmbio_tienda = new retiro_local();
+                    $Cmbio_tienda->idTransaccion_FK = $idPago;
+                    $Cmbio_tienda->Cod_tienda_FK = $id_tienda;
+                    $Cmbio_tienda->save();
+
+                    //buscar si la id pertenece a un usuario sin registrar
+                    $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
+                    //buscar si la id pertenece a un usuario logeado
+                    if (Auth::check()) {
+                        $id = Auth::id();
+                        $Cmbio_tienda->idUsuario_FK = $id;
+                        $Cmbio_tienda->save();
+                    }
+                    if ($usr_no_logeado  != null) {
+                        $id = $usr_no_logeado->id;
+                        $Cmbio_tienda->idComprasinlogin_FK = $id;
+                        $Cmbio_tienda->save();
+                    }
+                    $Cmbio_tienda->save();
+
+                    //
+
+                } else {
+                    $id_tienda = (isset($request->tienda) && $request->tienda != null) ? $request->tienda : '';
+                    $get_tienda->Cod_tienda_FK = $id_tienda;
+                    $get_tienda->save();
+                    return response()->json(['success' => 'Se ha actualizado correctamente']);
+                }
+                $tipo_entrega = 5;
+                if (session()->has('tipo_entrega')) {
+                    session(['tipo_entrega' => $tipo_entrega]);
+                } else {
+                    session(['tipo_entrega' => $tipo_entrega]);
+                }
+                //Actualizar 
+                return ['message' => session('tipo_entrega'), 'status' => 1];
+            } catch (\Throwable $th) {
+
+                return ['message' => $th, 'status' => 1];
             }
         }
     }

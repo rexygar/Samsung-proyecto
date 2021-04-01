@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="icon" href="/img/logo_icon.png">
     <title>TecnoBuy</title>
 
@@ -25,7 +26,7 @@
         }
     </style>
 </head>
-<script src="{{ asset('js/lib/jquery.js') }}"></script>
+{{-- <script src="{{ asset('js/lib/jquery.js') }}"></script> --}}
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <style>
@@ -310,6 +311,7 @@
 <script src="{{ asset('js/toastr/toastr.js') }}"></script>
 <script src="{{ asset('js/alpine.js') }} " defer></script>
 <script src="{{ asset('/js/jquery.smartWizard.js') }}"></script>
+
 <script type="text/javascript">
     // Initialize Smart Wizard 
         $('#smartwizard').smartWizard(

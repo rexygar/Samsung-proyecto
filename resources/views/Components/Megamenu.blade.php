@@ -31,7 +31,7 @@
       <!--Hoverable Link-->
       <li class="hoverable hover:bg-black text-black hover:text-white lg:px-6 xl:px-6 2xl:px-6">
         <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
-            hover:bg-black hover:text-white text-black">TELEFONOS</a>
+            hover:bg-black hover:text-white text-black md:p-4">TELEFONOS</a>
         <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
           style="background-color: #eceff1;background-size:cover; height: calc(50vh - 30%);">
           <div class="container w-full flex flex-wrap justify-between mx-2">
@@ -81,7 +81,7 @@
       </li>
       <li class="hoverable hover:bg-black text-black hover:text-white lg:px-6 xl:px-6 2xl:px-6">
         <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
-            hover:bg-black hover:text-white text-black">TABLETS</a>
+            hover:bg-black hover:text-white text-black md:p-4">TABLETS</a>
         <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
           style="background-color: #eceff1;background-size:cover; height: calc(50vh - 30%);">
           <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
@@ -108,7 +108,7 @@
       </li>
       <li class="hoverable hover:bg-black text-black hover:text-white lg:px-6 xl:px-6 2xl:px-6">
         <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
-            hover:bg-black hover:text-white text-black">WEARABLES</a>
+            hover:bg-black hover:text-white text-black md:p-4">WEARABLES</a>
         <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
           style="background-color: #eceff1;background-size:cover; height: calc(50vh - 30%);">
           <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
@@ -154,7 +154,7 @@
       </li>
       <li class="hoverable hover:bg-black text-black hover:text-white lg:px-6 xl:px-6 2xl:px-6">
         <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
-            hover:bg-black hover:text-white text-black">ACCESORIOS</a>
+            hover:bg-black hover:text-white text-black md:p-4">ACCESORIOS</a>
         <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
           style="background-color: #eceff1;background-size:cover; height: calc(85vh - 30%);">
           <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
@@ -332,7 +332,7 @@
       </li>
       <li class="hoverable hover:bg-black text-black hover:text-white lg:px-6 xl:px-6 2xl:px-6">
         <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
-            hover:bg-black hover:text-white text-black">COMPUTADORES</a>
+            hover:bg-black hover:text-white text-black md:p-4">COMPUTADORES</a>
         <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
           style="background-color: #eceff1;background-size:cover; height: calc(50vh - 30%);">
           <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
@@ -389,7 +389,7 @@
       </li>
       <li class="hoverable hover:bg-black text-black hover:text-white lg:px-6 xl:px-6 2xl:px-6">
         <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
-            hover:bg-black hover:text-white text-black">CONSOLAS Y JUEGOS</a>
+            hover:bg-black hover:text-white text-black md:p-4">CONSOLAS Y JUEGOS</a>
         <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
           style="background-color: #eceff1;background-size:cover; height: calc(75vh - 30%);">
           <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">

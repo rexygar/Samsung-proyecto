@@ -123,8 +123,12 @@
             <form action="http://localhost:8000/Search" method="GET">
 
                 <input id="searchfield" type="search" name="search" placeholder="Search..." autofocus="autofocus"
-                    class="w-full text-grey-800 transition focus:outline-none focus:border-transparent p-2 appearance-none leading-normal text-xl lg:text-2xl">
-
+                    class="w-5/6 text-grey-800 transition focus:outline-none focus:border-transparent p-2 appearance-none leading-normal text-xl lg:text-2xl">
+                <button type="button" @click="searchy =  !searchy"
+                    class="text-gray-500 dark:text-gray-200 hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none px-10 focus:text-gray-600 dark:focus:text-gray-400"
+                    aria-label="toggle menu">
+                    <i class="fas fa-times text-2xl"></i>
+                </button>
             </form>
         </div>
 

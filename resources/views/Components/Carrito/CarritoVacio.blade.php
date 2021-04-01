@@ -91,22 +91,19 @@
         height: 0;
     }
 </style>
-
-@include('Components.Header')
-@include('Components.Megamenu')
-
 <body class="bg-gray-100">
     <div class="grid grid-cols-12  ">
         <div class="col-span-12">
             <main class="h-full flex items-center px-6 py-24 lg:px-32 bg-black  relative">
-                  <section class="w-full md:w-9/12 py-8 xl:w-8/12">
+                  <section class="w-full md:w-9/12 py-8 ">
                     <span class="font-bold uppercase tracking-widest bg-yellow-300 ">TECNOBUY</span>
                     <h1 class="text-3xl lg:text-8xl font-bold bg-yellow-300 ">
-                      Su Carrito se encuentra bacio por el momento
+                      Su Carrito se encuentra vacio por el momento
                     </h1>
-                    <p class="font-bold mb-1 bg-yellow-300 ">YA VOLVEMOS...</p>
+                    <p class="font-bold mb-1 bg-yellow-300 ">¿Quieres continuar con tu compra?...</p>
+                    <a href="/"><h1 class="font-bold mb-1 bg-yellow-300  text-3xl lg:text-5xl">ir al inicio</h1></a>
                   </section>
-                  <footer class="absolute right-0 bg-yellow-300  bottom-0 p-6 lg:p-32">
+                  <footer class="absolute right-0 bg-yellow-300  bottom-0 p-6 lg:p-32 ">
                     <p class="font-bold mb-1">Atte.</p>
                     <p>Tecnobuy</p>
                   </footer>

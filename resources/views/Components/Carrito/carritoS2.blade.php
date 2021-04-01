@@ -145,6 +145,8 @@
                             class="cursor-pointer px-5 py-3 text-white text-center inline-block hover:opacity-75 bg-yellow-300 hover:shadow hover:-mb-3 rounded-t">
                             Mi Carrito</h4>
                         <div x-show="selected == 0" class="border py-4 px-2">
+
+                            @foreach ($reserva as $res)
                             <div class="py-1" role="none">
                                 <div class="panel-block" style="background-color: aliceblue">
 
@@ -157,35 +159,15 @@
                                             style="background-color: aliceblue">
                                             <div class="mb-8">
                                                 <p class="text-sm text-gray-600 flex items-center">
-                                                    $149.990
+                                                    ${{ number_format($res->monto, 0,'','.') }}
                                                 </p>
-                                                <div class="text-gray-900 font-bold text-xl mb-2">GALAXY BUDS+</div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
-                            <div class="py-1" role="none">
-                                <div class="panel-block" style="background-color: aliceblue">
-
-                                    <!--Card 1-->
-                                    <div class=" w-full lg:max-w-full lg:flex">
-                                        <div class="h-24 lg:h-24 lg:w-24 flex-none bg-cover bg-center  rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-                                            style="background-image: url({{ url('../uploads/products/1/46mm.jpg') }});">
-                                        </div>
-                                        <div class=" rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
-                                            style="background-color: aliceblue">
-                                            <div class="mb-8">
-                                                <p class="text-sm text-gray-600 flex items-center">
-                                                    $259.990
-                                                </p>
-                                                <div class="text-gray-900 font-bold text-xl mb-2">GALAXY WATCH 46 MM
-                                                </div>
-
+                                                <div class="text-gray-900 font-bold text-xl mb-2">
+                                                    {{ $res->descripcion }}</div>
+                                                <input type="hidden" id="urlQuitar"
+                                                    value="{{ route('carrito.delete') }}">
+                                                <a type="button" id="borrar"
+                                                    class="btn font-semibold hover:text-red-500 text-gray-500 text-xs"
+                                                    onclick="eliminar({{ $res->sku }})">Quitar</a>
                                             </div>
 
                                         </div>
@@ -193,6 +175,7 @@
 
                                 </div>
                             </div>
+                            @endforeach
                         </div>
                     </li>
 
@@ -211,8 +194,10 @@
 
             <div class="panel-block" style="background-color: aliceblue">
                 <h3 class="font-bold pb-4 mt-2 border-b border-gray-100 flex justify-center">
-                    <span class="text-3xl">$410.000</span>
-                </h3>
+                    @foreach ($reserva as $res)
+
+                    <span class="text-3xl">${{number_format($res->Total, 0,'','.')}}</span>
+                    @endforeach</h3>
             </div>
 
 
@@ -249,7 +234,7 @@
             <div class="panel-block" style="background-color: aliceblue">
                 <p class=" tracking-normal py-1 border-b-2 border-opacity-25 
               border-dotted" style="background-color: aliceblue">
-                    Puedes cambiar tus productos en cualquier tienda Paris hasta 30 días después de la fecha de
+                    Puedes cambiar tus productos en cualquier tienda Tecnobuy hasta 30 días después de la fecha de
                     compra.
                 </p>
             </div>

@@ -96,6 +96,8 @@
 @include('Components.Megamenu')
 
 <body class="bg-gray-100">
+
+    @if ($pago != null )
     <div class="container mx-auto mt-10 px-10">
         <div class="flex shadow-md my-10">
             <div class="w-3/4 bg-white px-10 py-10">
@@ -142,7 +144,9 @@
 
                             </div>
                             <input type="hidden" id="urlQuitar" value="{{ route('carrito.delete') }}">
-                            <a type="button" id="borrar" class="btn font-semibold hover:text-red-500 text-gray-500 text-xs" onclick="eliminar({{ $res->sku }})">Quitar</a>
+                            <a type="button" id="borrar"
+                                class="btn font-semibold hover:text-red-500 text-gray-500 text-xs"
+                                onclick="eliminar({{ $res->sku }})">Quitar</a>
                         </div>
                     </div>
                     <div class="flex justify-center w-1/5">
@@ -151,7 +155,8 @@
                                 <path
                                     d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
                             </svg></button>--}}
-                        <input type="number" name="quantity[]" style="width:30%" name="" min="1" value="{{ $res->reserva }}" max="100" disabled />
+                        <input type="number" name="quantity[]" style="width:30%" name="" min="1"
+                            value="{{ $res->reserva }}" max="100" disabled />
                         {{--  
                         <button type="button" id="add" value=" " data-rel="" -rel2=""
                             class="mx-2 border text-center w-8"><svg class="fill-current text-gray-600 w-3" viewBox="0 0 448 512">
@@ -159,11 +164,13 @@
                                     d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" />
                             </svg></button>--}}
 
-                        
+
                     </div>
-                    <span class="text-center w-1/5 font-semibold text-sm">${{ number_format($res->monto, 0,'','.') }}</span>
-                    <span class="text-center w-1/5 font-semibold text-sm" name="precio[]">${{ number_format($res->Total, 0,'','.') }}</span>
-                    
+                    <span
+                        class="text-center w-1/5 font-semibold text-sm">${{ number_format($res->monto, 0,'','.') }}</span>
+                    <span class="text-center w-1/5 font-semibold text-sm"
+                        name="precio[]">${{ number_format($res->Total, 0,'','.') }}</span>
+
                 </div>
                 @endforeach
 
@@ -201,15 +208,20 @@
                         <span class="text-3xl mt-6 mr-1"></span><span class="text-6xl" id="total"></span>
                     </h2>
                     <form action="@if(isset($pago['url'])){{$pago['url']}}@endif" method="POST">
-                        <input type="hidden" name="token_ws" id="token_ws" value="@if(isset($pago['token'])){{$pago['token']}}@endif">
-                        <button type="submit" id="pay" class="uppercase text-center text-sm mt-12 xl:px-24 px-12 sm:px-16 py-2 rounded-md font-bold text-primary-very-light"
-                        style="background-image:linear-gradient(90deg, #a3a8f0 0%, #696fdd 100%);">Pagar</button>
+                        <input type="hidden" name="token_ws" id="token_ws"
+                            value="@if(isset($pago['token'])){{$pago['token']}}@endif">
+                        <button type="submit" id="pay"
+                            class="uppercase text-center text-sm mt-12 xl:px-24 px-12 sm:px-16 py-2 rounded-md font-bold text-primary-very-light"
+                            style="background-image:linear-gradient(90deg, #a3a8f0 0%, #696fdd 100%);">Pagar</button>
                     </form>
                 </article>
             </div>
 
         </div>
     </div>
+    @else
+    @include('Components.Carrito.CarritoVacio')
+    @endif
 </body>
 
 

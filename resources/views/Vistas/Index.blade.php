@@ -122,7 +122,7 @@
 
 
                             </div>
-                            <div class="lg:w-full md:w-full pt-48">
+                            <div class="lg:w-full md:w-full pt-16">
                                 <div class="">
                                     <!-- ... -->
                                     <div class="place-self-center ">
