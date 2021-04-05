@@ -119,8 +119,8 @@
                                 bg-green-500 w-full text-white rounded-lg px-6 py-3 
                                  block shadow-xl hover:text-white hover:bg-black" type="button">Guardar
                                 cambios</button>
-                            <div class="toolbar toolbar-bottom grid grid-cols-12 grid-flow-row auto-rows-max" role="toolbar"
-                                style="text-align: right;">
+                            <div class="toolbar toolbar-bottom grid grid-cols-12 grid-flow-row auto-rows-max"
+                                role="toolbar" style="text-align: right;">
 
                                 <button class="btn col-span-6 sw-btn-prev disabled" type=" button">Volver
                                     al Paso
@@ -141,11 +141,42 @@
     </div>
     <div class="lg:col-span-5 md:col-span-5 xl:col-span-5 2xl:col-span-5 col-span-12 lx:px-8 lg:pl-12 xl:pl-12 2xl:pl-12 md:px-4 xl:px-10 2xl:px-16"
         style="background-color: white">
+
         <article style="background-color: aliceblue" class="panel is-primary  ">
             <div class="px-6">
                 <p class=" tracking-normal py-1 border-b-2 border-opacity-25 
       border-dotted" style="background-color: aliceblue">
-                    Tu carro (2 Productos)
+                    Sub-Total
+                </p>
+            </div>
+
+            <div class="panel-block" style="background-color: aliceblue">
+                <h3 class="font-bold pb-4 mt-2 border-b border-gray-100 flex justify-center">
+                    @php
+                    $total = 0;
+
+                    @endphp
+                    @foreach ($reserva as $res)
+                    @php
+                    $total = $res->Total + $total
+                    @endphp
+                    @endforeach
+                    <span class="text-3xl"> $
+                        @php
+                        echo(number_format($total, 0,'','.'));
+                        @endphp
+                    </span>
+                </h3>
+            </div>
+
+
+        </article>
+
+        <article style="background-color: aliceblue" class="panel is-primary  ">
+            <div class="px-6">
+                <p class=" tracking-normal py-1 border-b-2 border-opacity-25  text-gray-600
+                  border-dotted" style="background-color: aliceblue"><i class="fas fa-expand-alt"></i>
+                    tecnobuy.cl
                 </p>
             </div>
 
@@ -155,8 +186,8 @@
                     <li class="flex align-center flex-col">
                         <h4 @click="selected !== 0 ? selected = 0 : selected = null"
                             class="cursor-pointer px-5 py-3 text-white text-center inline-block hover:opacity-75 bg-yellow-300 hover:shadow hover:-mb-3 rounded-t">
-                            Mi Carrito</h4>
-                        <div x-show="selected == 0" class="border py-4 px-2">
+                            Mi Carrito  ({{ count($reserva) }})</h4>
+                        <div x-show="selected == 0" class="border py-4 px-2 overflow-y-auto h-32">
 
                             @foreach ($reserva as $res)
                             <div class="py-1" role="none">
@@ -196,25 +227,6 @@
 
 
         </article>
-        <article style="background-color: aliceblue" class="panel is-primary  ">
-            <div class="px-6">
-                <p class=" tracking-normal py-1 border-b-2 border-opacity-25 
-      border-dotted" style="background-color: aliceblue">
-                    Sub-Total
-                </p>
-            </div>
-
-            <div class="panel-block" style="background-color: aliceblue">
-                <h3 class="font-bold pb-4 mt-2 border-b border-gray-100 flex justify-center">
-                    @foreach ($reserva as $res)
-
-                    <span class="text-3xl">${{number_format($res->Total, 0,'','.')}}</span>
-                    @endforeach</h3>
-            </div>
-
-
-        </article>
-
         <article style="background-color: aliceblue" class="panel is-primary  ">
             <div class="px-6">
                 <p class=" tracking-normal py-1 border-b-2 border-opacity-25 

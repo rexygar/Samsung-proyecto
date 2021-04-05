@@ -1,6 +1,7 @@
 <div class="grid grid-cols-12  lg:px-6 xl:px-6 2xl:px-6 md:px-2  px-2 2xl:py-8 xl:py-8 lg:py-8 py-8">
     <div class="col-span-1"></div>
-    <div class="lg:col-span-6 md:col-span-6 xl:col-span-6 2xl:col-span-6 col-span-12 lx:pr-6 md:pr-4 xl:pr-6 2xl:pr-6" style="background-color: white">
+    <div class="lg:col-span-6 md:col-span-6 xl:col-span-6 2xl:col-span-6 col-span-12 lx:pr-6 md:pr-4 xl:pr-6 2xl:pr-6"
+        style="background-color: white">
 
         <article style="background-color: aliceblue" class="panel is-primary  ">
             <div class="px-6">
@@ -99,15 +100,15 @@
                     <div class="grid grid-cols-2">
                         <div class="col-span-1 lg:px-2 xl:px-2 2xl:px-4">
                             <div class="text-gray-900 font-bold text-xl mb-2">Ingresa Con tus datos</div>
-                            <form class="mt-8" method="POST" action="{{ route('login') }}">
+                            <form class="mt-8" method="POST" action="{{ route('lgn.usr') }}">
                                 @csrf
                                 <div class="mx-auto max-w-lg">
                                     <div class="py-2">
                                         <span class="px-1 text-sm text-gray-600">{{ __('Correo Electronico') }}</span>
-                                        <input name="email" placeholder="" type="text"
+                                        <input name="correo_lgn" placeholder="" type="text"
                                             class="text-md block px-3 py-2  rounded-lg w-full 
                               bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">
-                                        @error('email')
+                                        @error('correo_lgn')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
@@ -116,13 +117,13 @@
                                     <div class="py-2" x-data="{ show: true }">
                                         <span class="px-1 text-sm text-gray-600">{{ __('Contraseña') }}</span>
                                         <div class="relative">
-                                            <input name="password" placeholder="" type="password" class="text-md block px-3 py-2 rounded-lg w-full 
+                                            <input name="pwd_lgn" placeholder="" type="password" class="text-md block px-3 py-2 rounded-lg w-full 
                               bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
                               focus:placeholder-gray-500
                               focus:bg-white 
                               focus:border-gray-600  
                               focus:outline-none">
-                                            @error('password')
+                                            @error('pwd_lgn')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
                                             </span>
@@ -253,12 +254,13 @@
                                       focus:border-gray-600  
                                       focus:outline-none">
                             </div>
-                            <div class="xl:col-span-5 2xl:col-span-5 lg:col-span-5 col-span-12 md:col-span-12 px-6 pt-3">
+                            <div
+                                class="xl:col-span-5 2xl:col-span-5 lg:col-span-5 col-span-12 md:col-span-12 px-6 pt-3">
                                 <button id="editar" class="text-lg font-semibold 
                                 bg-green-500 w-full text-white rounded-lg px-6 py-3 
                                  block shadow-xl hover:text-white hover:bg-black" type="button">Guardar
                                     cambios</button>
-                                 <input type="hidden" id="url" value="{{ route('usr.create') }}">
+                                <input type="hidden" id="url" value="{{ route('usr.create') }}">
                                 @csrf
 
                             </div>
@@ -295,10 +297,21 @@
 
             <div class="panel-block" style="background-color: aliceblue">
                 <h3 class="font-bold pb-4 mt-2 border-b border-gray-100 flex justify-center">
-                    @foreach ($reserva as $res)
+                    @php
+                    $total = 0;
 
-                    <span class="text-3xl">${{number_format($res->Total, 0,'','.')}}</span>
-                    @endforeach</h3>
+                    @endphp
+                    @foreach ($reserva as $res)
+                    @php
+                    $total = $res->Total + $total
+                    @endphp
+                    @endforeach
+                    <span class="text-3xl"> $
+                        @php
+                        echo(number_format($total, 0,'','.'));
+                        @endphp
+                    </span>
+                </h3>
             </div>
 
 
@@ -311,32 +324,49 @@
                     tecnobuy.cl
                 </p>
             </div>
-            @foreach ($reserva as $res)
             <div class="panel-block" style="background-color: aliceblue">
+                <ul class="block w-11/12 my-4 mx-auto" x-data="{selected:null}">
+                    <li class="flex align-center flex-col">
+                        <h4 @click="selected !== 0 ? selected = 0 : selected = null"
+                            class="cursor-pointer px-5 py-3 text-white text-center inline-block hover:opacity-75 bg-yellow-300 hover:shadow hover:-mb-3 rounded-t">
+                            Mi Carrito</h4>
+                        <div x-show="selected == 0" class="border py-4 px-2 overflow-y-auto h-32">
 
-                <!--Card 1-->
-                <div class=" w-full lg:max-w-full lg:flex">
-                    <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover bg-center  rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-                        style="background-image: url({{ url('../uploads/products/1/buds.jpg') }});">
-                    </div>
-                    <div class=" rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
-                        style="background-color: aliceblue">
-                        <div class="mb-8">
-                            <p class="text-sm text-gray-600 flex items-center">
-                                ${{ number_format($res->monto, 0,'','.') }}
-                            </p>
-                            <div class="text-gray-900 font-bold text-xl mb-2">{{ $res->descripcion }}</div>
-                            <input type="hidden" id="urlQuitar" value="{{ route('carrito.delete') }}">
-                            <a type="button" id="borrar"
-                                class="btn font-semibold hover:text-red-500 text-gray-500 text-xs"
-                                onclick="eliminar({{ $res->sku }})">Quitar</a>
+                            @foreach ($reserva as $res)
+                            <div class="py-1" role="none">
+                                <div class="panel-block" style="background-color: aliceblue">
+
+                                    <!--Card 1-->
+                                    <div class=" w-full lg:max-w-full lg:flex">
+                                        <div class="h-24 lg:h-24 lg:w-24 flex-none bg-cover bg-center  rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+                                            style="background-image: url({{ url('../uploads/products/1/buds.jpg') }});">
+                                        </div>
+                                        <div class=" rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
+                                            style="background-color: aliceblue">
+                                            <div class="mb-8">
+                                                <p class="text-sm text-gray-600 flex items-center">
+                                                    ${{ number_format($res->monto, 0,'','.') }}
+                                                </p>
+                                                <div class="text-gray-900 font-bold text-xl mb-2">
+                                                    {{ $res->descripcion }}</div>
+                                                <input type="hidden" id="urlQuitar"
+                                                    value="{{ route('carrito.delete') }}">
+                                                <a type="button" id="borrar"
+                                                    class="btn font-semibold hover:text-red-500 text-gray-500 text-xs"
+                                                    onclick="eliminar({{ $res->sku }})">Quitar</a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            @endforeach
                         </div>
+                    </li>
 
-                    </div>
-                </div>
-
+                </ul>
             </div>
-            @endforeach
         </article>
 
         <article style="background-color: aliceblue" class="panel is-primary col-start-1 col-end-3">

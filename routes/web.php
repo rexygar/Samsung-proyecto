@@ -32,10 +32,13 @@ Route::get('/Search/{search}',                                                  
 Route::get('/addCarrito',           [App\Http\Controllers\MainController::class, 'addCarrito'])->name('carrito.add');
 Route::get('/deleteCarrito',        [App\Http\Controllers\MainController::class, 'removeCarrito'])->name('carrito.delete');
 Route::any('/addDireccion',        [App\Http\Controllers\MainController::class, 'addDireccion'])->name('direccion.add');
+Route::any('/updteDireccion',        [App\Http\Controllers\MainController::class, 'updteDireccion'])->name('direccion.updte');
 Route::get('/Carrito',              [App\Http\Controllers\MainController::class, 'getCarrito'])->name('carrito');
 Route::get('/Stepper',              [App\Http\Controllers\MainController::class, 'getCarritoStepper'])->name('stepper');
 Route::any('/CambiarTienda', [App\Http\Controllers\MainController::class, 'cmbr_tienda'])->name('tienda.update');
 Route::any('/crearUsr', [App\Http\Controllers\UsuarioController::class, 'crte_usr'])->name('usr.create');
+Route::any('/logon', [App\Http\Controllers\MainController::class, 'login_usr'])->name('lgn.usr');
+
 // Transbank
 Route::get('/checkout',                     [App\Http\Controllers\TransbankController::class, 'initTransaction'])->name('checkout');  
 Route::post('/checkout/webpay/response',    [App\Http\Controllers\TransbankController::class, 'response'])->name('checkout.webpay.response');  

@@ -13,6 +13,7 @@ use App\Models\Direccion;
 use App\Models\EstadoCompra;
 use App\Models\Images;
 use App\Models\Detalle;
+use App\Models\no_usr;
 use App\Models\retiro_local;
 use App\Models\User;
 use DataTables;
@@ -183,8 +184,10 @@ class MainController extends Controller
                 $color = (isset($request->col) && $request->col != null) ? $request->col : '';
                 $monto = (isset($request->monto) && $request->monto != null) ? $request->monto : 0;
                 $descripcion = (isset($request->descripcion) && $request->descripcion != null) ? $request->descripcion : '';
+                $__token = $request->session()->token();
+
                 if ($idPago > 0) {
-                    $reserva = Reserva::where('sku', $sku)->where('Cod_EstiloColor', $color)->first();
+                    $reserva = Reserva::where('sku', $sku)->where('Cod_EstiloColor', $color)->where('__token', $__token)->first();
 
                     if ($reserva !== null) {
 
@@ -201,6 +204,7 @@ class MainController extends Controller
                         $reserva->Total = ($monto * $reserva->reserva);
                         $reserva->descripcion = $descripcion;
                         $reserva->idTransaccion = $idPago;
+                        $reserva->__token = $__token;
                         $reserva->save();
                     }
                 } else {
@@ -209,7 +213,7 @@ class MainController extends Controller
                     session(['idPago' => $pago->id]);
 
                     $reserva = new Reserva();
-
+                    $reserva->__token = $__token;
                     $reserva->sku = $sku;
                     $reserva->reserva = $cant;
                     $reserva->Cod_EstiloColor = $color;
@@ -294,8 +298,11 @@ class MainController extends Controller
         } else {
             session(['tipo_entrega' => $tipo_entrega]);
         }
-
-        return view('Vistas.carritoStepper', ['reserva' => $reserva, 'pago' => $pago, 'tiendas' => $tiendas, 'direccion' => $direccion, 'tipo_entrega' => $tipo_entrega]);
+        if ($pago == null) {
+            return view('Vistas.carritov2', ['reserva' => $reserva, 'pago' => $pago]);
+        } else {
+            return view('Vistas.carritoStepper', ['reserva' => $reserva, 'pago' => $pago, 'tiendas' => $tiendas, 'direccion' => $direccion, 'tipo_entrega' => $tipo_entrega]);
+        }
     }
     public static function getStepper()
     {
@@ -460,37 +467,56 @@ class MainController extends Controller
 
                 $get_tienda = retiro_local::where('idTransaccion_FK', $idPago)->first();
 
-                if ($get_tienda == null) {
-                    /////
-                    $id_tienda = (isset($request->tienda) && $request->tienda != null) ? $request->tienda : '';
-                    $Cmbio_tienda = new retiro_local();
-                    $Cmbio_tienda->idTransaccion_FK = $idPago;
-                    $Cmbio_tienda->Cod_tienda_FK = $id_tienda;
-                    $Cmbio_tienda->save();
+                if (Auth::check()) {
+                    $id = Auth::id();
+                    $get_usr = retiro_local::where('idTransaccion_FK', $idPago)->where('idUsuario_FK', $id)->first();
+                    if ($get_usr == null) {
 
-                    //buscar si la id pertenece a un usuario sin registrar
-                    $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
-                    //buscar si la id pertenece a un usuario logeado
-                    if (Auth::check()) {
-                        $id = Auth::id();
+                        $id_tienda = (isset($request->tienda) && $request->tienda != null) ? $request->tienda : '';
+                        $Cmbio_tienda = new retiro_local();
+                        $Cmbio_tienda->idTransaccion_FK = $idPago;
                         $Cmbio_tienda->idUsuario_FK = $id;
+                        $Cmbio_tienda->Cod_tienda_FK = $id_tienda;
                         $Cmbio_tienda->save();
+                    } else {
+                        $id_tienda = (isset($request->tienda) && $request->tienda != null) ? $request->tienda : '';
+                        $get_usr->Cod_tienda_FK = $id_tienda;
+                        $get_usr->save();
                     }
-                    if ($usr_no_logeado  != null) {
-                        $id = $usr_no_logeado->id;
-                        $Cmbio_tienda->idComprasinlogin_FK = $id;
-                        $Cmbio_tienda->save();
-                    }
-                    $Cmbio_tienda->save();
-
-                    //
-
                 } else {
-                    $id_tienda = (isset($request->tienda) && $request->tienda != null) ? $request->tienda : '';
-                    $get_tienda->Cod_tienda_FK = $id_tienda;
-                    $get_tienda->save();
-                    return response()->json(['success' => 'Se ha actualizado correctamente']);
+                    if ($get_tienda == null) {
+                        /////
+                        $id_tienda = (isset($request->tienda) && $request->tienda != null) ? $request->tienda : '';
+                        $Cmbio_tienda = new retiro_local();
+                        $Cmbio_tienda->idTransaccion_FK = $idPago;
+                        $Cmbio_tienda->Cod_tienda_FK = $id_tienda;
+                        $Cmbio_tienda->save();
+
+                        //buscar si la id pertenece a un usuario sin registrar
+                        $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
+                        //buscar si la id pertenece a un usuario logeado
+                        if (Auth::check()) {
+                            $id = Auth::id();
+                            $Cmbio_tienda->idUsuario_FK = $id;
+                            $Cmbio_tienda->save();
+                        }
+                        if ($usr_no_logeado  != null) {
+                            $id = $usr_no_logeado->id;
+                            $Cmbio_tienda->idComprasinlogin_FK = $id;
+                            $Cmbio_tienda->save();
+                        }
+                        $Cmbio_tienda->save();
+
+                        //
+
+                    } else {
+                        $id_tienda = (isset($request->tienda) && $request->tienda != null) ? $request->tienda : '';
+                        $get_tienda->Cod_tienda_FK = $id_tienda;
+                        $get_tienda->save();
+                        return response()->json(['success' => 'Se ha actualizado correctamente']);
+                    }
                 }
+
                 $tipo_entrega = 5;
                 if (session()->has('tipo_entrega')) {
                     session(['tipo_entrega' => $tipo_entrega]);
@@ -502,6 +528,27 @@ class MainController extends Controller
             } catch (\Throwable $th) {
 
                 return ['message' => $th, 'status' => 1];
+            }
+        }
+    }
+
+    public function login_usr(Request $request)
+    {
+        $validar = $this->validate($request, [
+            'correo_lgn' => 'required|email',
+            'pwd_lgn' => 'required',
+        ]);
+        if ($validar) {
+
+            if (\Auth::attempt([
+                'email' => $request->correo_lgn,
+                'password' => $request->pwd_lgn
+            ], $request->remember == 'on' ? true : false)) {
+                // $request->session()->regenerate();
+                return back();
+            } else {
+
+                return back()->with('errorLog', 'El usuario y/o clave son incorrectas, vuelva a intentarlo.');
             }
         }
     }
@@ -523,6 +570,23 @@ class MainController extends Controller
                     </form>';
                     return $btn;
                 });
+        }
+        return view('dashboard.lista_Producto');
+    }
+    public function cmbr_dir(Request $request)
+    {
+        if ($request->ajax()) {
+            if (Auth::check()) {
+                $idPago = session('idPago');
+                $id = Auth::id();
+                $get_usr = Detalle::where('idTransaccion', $idPago)->where('id_Usuario', $id)->first();
+                if ($get_usr == null) {
+                } else {
+                    $id_dir = (isset($request->direccion) && $request->direccion != null) ? $request->direccion : '';
+                    $get_usr->id_direccion = $id_dir;
+                    $get_usr->save();
+                }
+            }
         }
         return view('dashboard.lista_Producto');
     }

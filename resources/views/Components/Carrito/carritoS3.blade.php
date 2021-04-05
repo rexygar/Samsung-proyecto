@@ -98,21 +98,20 @@
                                                         @click.away="Retiro = false" style="z-index: 9999;">
                                                         <!-- Success alert -->
                                                         <div style="background-color: #F5DF4D"
-                                                            class="flex   py-6 px-6 ">
+                                                            class="flex p-4">
                                                             <div class=" ">
                                                                 <div style="background-color: #F5DF4D"
-                                                                    class="h-10 w-10 text-white  rounded-full flex justify-center items-center">
-                                                                    <i class="material-icons">done</i>
+                                                                    class=" w-24">
+                                                                    <img class="branding__logo img-fluid"
+                                                                        src="http://localhost:8000/img/logo.png"
+                                                                        max-width="95px" alt="">
                                                                 </div>
                                                             </div>
                                                             <div class="flex justify-between w-full">
                                                                 <div class="text-black">
-                                                                    <p class="mb-2 font-bold">
-                                                                        Succes alert
-                                                                    </p>
-                                                                    <p class="text-xs">
-                                                                        description text
-                                                                    </p>
+                                                                    <h2 class="font-bold md:text-2xl text-white">
+                                                                        Seleccionar tienda de retiro
+                                                                    </h2>
                                                                 </div>
 
                                                             </div>
@@ -238,7 +237,36 @@
             <div class="px-6">
                 <p class=" tracking-normal py-1 border-b-2 border-opacity-25 
       border-dotted" style="background-color: aliceblue">
-                    Tu carro (2 Productos)
+                    Sub-Total
+                </p>
+            </div>
+
+            <div class="panel-block" style="background-color: aliceblue">
+                <h3 class="font-bold pb-4 mt-2 border-b border-gray-100 flex justify-center">
+                    @php
+                    $total = 0;
+
+                    @endphp
+                    @foreach ($reserva as $res)
+                    @php
+                    $total = $res->Total + $total
+                    @endphp
+                    @endforeach
+                    <span class="text-3xl"> $
+                        @php
+                        echo(number_format($total, 0,'','.'));
+                        @endphp
+                    </span>
+                </h3>
+            </div>
+
+
+        </article>
+        <article style="background-color: aliceblue" class="panel is-primary  ">
+            <div class="px-6">
+                <p class=" tracking-normal py-1 border-b-2 border-opacity-25  text-gray-600
+                  border-dotted" style="background-color: aliceblue"><i class="fas fa-expand-alt"></i>
+                    tecnobuy.cl
                 </p>
             </div>
 
@@ -248,8 +276,8 @@
                     <li class="flex align-center flex-col">
                         <h4 @click="selected !== 0 ? selected = 0 : selected = null"
                             class="cursor-pointer px-5 py-3 text-white text-center inline-block hover:opacity-75 bg-yellow-300 hover:shadow hover:-mb-3 rounded-t">
-                            Mi Carrito</h4>
-                        <div x-show="selected == 0" class="border py-4 px-2">
+                            Mi Carrito ({{ count($reserva) }})</h4>
+                        <div x-show="selected == 0" class="border py-4 px-2 overflow-y-auto h-32">
 
                             @foreach ($reserva as $res)
                             <div class="py-1" role="none">
@@ -257,7 +285,7 @@
 
                                     <!--Card 1-->
                                     <div class=" w-full lg:max-w-full lg:flex">
-                                        <div class="h-24 lg:h-24 lg:w-24 flex-none bg-cover bg-center  rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+                                        <div class=" lg: lg:w-24 flex-none bg-cover bg-center  rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
                                             style="background-image: url({{ url('../uploads/products/1/buds.jpg') }});">
                                         </div>
                                         <div class=" rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
@@ -289,24 +317,7 @@
 
 
         </article>
-        <article style="background-color: aliceblue" class="panel is-primary  ">
-            <div class="px-6">
-                <p class=" tracking-normal py-1 border-b-2 border-opacity-25 
-      border-dotted" style="background-color: aliceblue">
-                    Sub-Total
-                </p>
-            </div>
 
-            <div class="panel-block" style="background-color: aliceblue">
-                <h3 class="font-bold pb-4 mt-2 border-b border-gray-100 flex justify-center">
-                    @foreach ($reserva as $res)
-
-                    <span class="text-3xl">${{number_format($res->Total, 0,'','.')}}</span>
-                    @endforeach</h3>
-            </div>
-
-
-        </article>
 
         <article style="background-color: aliceblue" class="panel is-primary  ">
             <div class="px-6">
@@ -356,28 +367,24 @@
             style="z-index: 99999;background-color: rgba(0, 0, 0, 0.5);" :class="{' block': open, 'hidden': !open}">
 
             <!-- A basic modal dialog with title, body and one button to close -->
-            <div class="h-auto p-4 mx-2 text-left bg-white rounded shadow-xl md:max-w-xl md:p-0 lg:p-0 md:mx-0 w-full lg:mx-16 2xl:mx-16 xl:mx-16 md:-mt-16 xl:-mt-16 2xl:-mt-16 lg:-mt-16"
+            <div class="h-auto p-4 mx-2 text-left bg-white rounded shadow-xl md:max-w-xl md:p-0 lg:p-0 md:mx-0 w-full lg:mx-16 2xl:mx-16"
                 @click.away="open = false" style="z-index: 9999;">
 
-                <div style="background-color: #F5DF4D" class="flex   py-6 px-6 ">
+                <div style="background-color: #F5DF4D" class="flex p-4">
                     <div class=" ">
                         <div style="background-color: #F5DF4D"
-                            class="h-10 w-10 text-white  rounded-full flex justify-center items-center">
-                            <i class="material-icons">done</i>
+                            class=" w-24">
+                            <img class="branding__logo img-fluid" src="http://localhost:8000/img/logo.png"
+                                max-width="95px" alt="">
                         </div>
                     </div>
                     <div class="flex justify-between w-full">
                         <div class="text-black">
-                            <p class="mb-2 font-bold">
-                                Succes alert
-                            </p>
-                            <p class="text-xs">
-                                description text
-                            </p>
+                            <h2 class="font-bold md:text-2xl text-white">
+                                Agregar informacion de despacho
+                            </h2>
                         </div>
-                        <div class="text-sm text-gray-500">
-                            <span>x</span>
-                        </div>
+
                     </div>
                 </div>
                 {{-- modal body --}}
@@ -493,28 +500,24 @@
             :class="{' block': seleccionar, 'hidden': !seleccionar}">
 
             <!-- A basic modal dialog with title, body and one button to close -->
-            <div class="h-auto p-4 mx-2 text-left bg-white rounded shadow-xl md:max-w-xl md:p-0 lg:p-0 md:mx-0 w-full lg:mx-16 2xl:mx-16 xl:mx-16 md:-mt-16 xl:-mt-16 2xl:-mt-16 lg:-mt-16"
+            <div class="h-auto p-4 mx-2 text-left bg-white rounded shadow-xl md:max-w-xl md:p-0 lg:p-0 md:mx-0 w-full lg:mx-16 2xl:mx-16"
                 @click.away="seleccionar = false" style="z-index: 9999;">
 
-                <div style="background-color: #F5DF4D" class="flex   py-6 px-6 ">
+                <div style="background-color: #F5DF4D" class="flex p-4">
                     <div class=" ">
                         <div style="background-color: #F5DF4D"
-                            class="h-10 w-10 text-white  rounded-full flex justify-center items-center">
-                            <i class="material-icons">done</i>
+                            class=" w-24">
+                            <img class="branding__logo img-fluid" src="http://localhost:8000/img/logo.png"
+                                max-width="95px" alt="">
                         </div>
                     </div>
                     <div class="flex justify-between w-full">
                         <div class="text-black">
-                            <p class="mb-2 font-bold">
-                                Succes alert
-                            </p>
-                            <p class="text-xs">
-                                description text
-                            </p>
+                            <h2 class="font-bold md:text-2xl text-white">
+                                Seleccionar direccion de despacho
+                            </h2>
                         </div>
-                        <div class="text-sm text-gray-500">
-                            <span>x</span>
-                        </div>
+
                     </div>
                 </div>
                 {{-- modal body --}}
@@ -529,7 +532,7 @@
                                 <div
                                     class="bg-white hover:border-green-300 box focus:bg-yellow-300 focus:border-black focus:border-2 border-2">
                                     {{$dir->calle , $dir->numero , $dir->depto}}
-                                    <input type="radio" id="tienda_id" name="tienda_id" value="{{$dir->id}}">
+                                    <input type="radio" id="dir_id" name="dir_id" value="{{$dir->id}}">
 
                                 </div>
                             </label>
@@ -542,8 +545,8 @@
                                         class="bg-white hover:border-green-300 box focus:bg-yellow-300 focus:border-black focus:border-2 border-2">
                                         Por favor ingrese su dirección
                                         <input type="radio" name="Tipo_Entrega" value="1">
-                                        <button x-data @click="$dispatch('toggle-reassign-modal')">Toggle Reassign
-                                            Modal</button>
+                                        {{-- <button x-data @click="$dispatch('toggle-reassign-modal')">Toggle Reassign
+                                            Modal</button> --}}
                                     </div>
                                 </label>
                             </a>
@@ -560,11 +563,11 @@
                 <div class="mt-5 sm:mt-6 pb-6 px-10">
                     <div class="grid-cols-12 grid grid-flow-row auto-rows-auto">
                         <div class="  col-span-6 ">
-                            <button id="GuardarDir" class="  font-bold 
+                            <button id="Seleccionar_Dir" class="  font-bold 
                             bg-yellow-500 w-full    text-white rounded-lg px-6 py-3 
                             block shadow-xl hover:text-white hover:bg-black" type="button">GUARDAR CAMBIOS</button>
                         </div>
-                        <input type="hidden" id="url3" name="url3" value="{{ route('direccion.add') }}">
+                        <input type="hidden" id="url5" name="url5" value="{{ route('direccion.updte') }}">
                         @csrf
 
                         <div class=" col-span-6 ">

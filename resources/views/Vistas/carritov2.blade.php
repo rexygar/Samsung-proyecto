@@ -91,7 +91,11 @@
     }
 </style>
 
-@include('Components.Header')
+<div class=" w-full py-auto relative" style="z-index: 99999">
+    @include('Components.nav-mobile')
+    @include('Components.Header')
+    {{-- @include('Components.Header') --}}
+</div>
 @include('Components.Megamenu')
 
 <body class="bg-gray-100">
@@ -99,14 +103,15 @@
     @if ($pago != null )
     <div class="grid grid-cols-12  lg:px-6 xl:px-6 2xl:px-6 md:px-2  px-2 2xl:py-8 xl:py-8 lg:py-8 py-8">
         <div class="col-span-1"></div>
-        <div class="lg:col-span-6 md:col-span-6 xl:col-span-6 2xl:col-span-6 col-span-12 lx:pr-6 md:pr-4 xl:pr-6 2xl:pr-6" style="background-color: white">
+        <div class="lg:col-span-6 md:col-span-6 xl:col-span-6 2xl:col-span-6 col-span-12 lx:pr-6 md:pr-4 xl:pr-6 2xl:pr-6"
+            style="background-color: white">
 
             <article style="background-color: aliceblue" class="panel is-primary  ">
                 <div class="px-6">
                     <p class=" tracking-normal py-1 " style="background-color: aliceblue">
                         <h3 class="font-bold pb-4 mt-2 border-b border-gray-100 flex justify-center">
                             <span class="text-3xl"><i class="fas fa-shopping-cart"></i> Mis Productos
-                                ({{ $reserva[0]->reserva }})</span>
+                                ({{ count($reserva) }})</span>
                         </h3>
                     </p>
                 </div>
@@ -145,6 +150,9 @@
                                 <a type="button" id="borrar"
                                     class="btn font-semibold hover:text-red-500 text-gray-500 text-xs"
                                     onclick="eliminar({{ $res->sku }})">Quitar</a>
+                                <p class="text-sm text-gray-600 flex items-center">
+                                    Cantidad: {{$res->reserva}}
+                                </p>
                             </div>
 
                         </div>
@@ -185,13 +193,22 @@
 
                 <div class="panel-block" style="background-color: aliceblue">
                     <h3 class="font-bold pb-4 mt-2 border-b border-gray-100 flex justify-center">
+                        @php
+                        $total = 0;
+
+                        @endphp
                         @foreach ($reserva as $res)
+                        @php
+                        $total = $res->Total + $total
+                        @endphp
 
-                        <span class="text-3xl">${{number_format($res->Total, 0,'','.')}}</span>
+
                         @endforeach
-
-
-
+                        <span class="text-3xl"> $
+                            @php
+                            echo(number_format($total, 0,'','.'));
+                            @endphp
+                        </span>
                     </h3>
                 </div>
 
