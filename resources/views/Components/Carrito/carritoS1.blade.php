@@ -179,7 +179,7 @@
                 <!--Card hidden-->
                 <div class=" w-full lg:max-w-full lg:flex" x-cloak :class="{' hidden': isOpen, 'block': !isOpen}">
                     <div class="grid grid-cols-12 w-full lg:max-w-full" style="background-color: aliceblue">
-                        <div class="col-span-12 grid grid-cols-12 px-6">
+                        <div class="col-span-12 grid grid-cols-12 gap-2 px-6">
                             <div class="xl:col-span-6 2xl:col-span-6 lg:col-span-6 col-span-6 md:col-span-12">
                                 <label class="form-check-label" for="NuevoNombre">Nombre de quien recibe la compra:
                                 </label>
@@ -202,7 +202,7 @@
                             </div>
 
                         </div>
-                        <div class="col-span-12 grid grid-cols-12 px-6">
+                        <div class="col-span-12 grid grid-cols-12 gap-2 px-6">
                             <div class="xl:col-span-6 2xl:col-span-6 lg:col-span-6 col-span-6 md:col-span-12">
                                 <label class="form-check-label" for="NuevoEmail">Email:
 
@@ -228,7 +228,7 @@
                             </div>
 
                         </div>
-                        <div class="col-span-12 grid grid-cols-12 px-6 md:grid-flow-row md:auto-rows-max">
+                        <div class="col-span-12 grid grid-cols-12 gap-2 px-6 md:grid-flow-row md:auto-rows-max">
                             <div class="xl:col-span-2 2xl:col-span-2 lg:col-span-2 col-span-4 md:col-span-4">
                                 <label class="form-check-label" for="codigo_nmro">Codigo:
                                 </label>
@@ -267,7 +267,7 @@
 
                         </div>
 
-                        <div class="col-span-12 grid grid-cols-12 px-6 md:mx-auto">
+                        <div class="col-span-12 grid grid-cols-12 gap-2 px-6 md:mx-auto">
                             <div class="toolbar col-span-12 toolbar-bottom" role="toolbar" style="text-align: right;">
                                 <button class="btn sw-btn-next w-full" type="button">ir al siguiente
                                     Paso</button>

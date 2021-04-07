@@ -32,7 +32,7 @@ Route::get('/Search/{search}',                                                  
 Route::get('/addCarrito',           [App\Http\Controllers\MainController::class, 'addCarrito'])->name('carrito.add');
 Route::get('/deleteCarrito',        [App\Http\Controllers\MainController::class, 'removeCarrito'])->name('carrito.delete');
 Route::any('/addDireccion',        [App\Http\Controllers\MainController::class, 'addDireccion'])->name('direccion.add');
-Route::any('/updteDireccion',        [App\Http\Controllers\MainController::class, 'updteDireccion'])->name('direccion.updte');
+Route::any('/updteDireccion',        [App\Http\Controllers\MainController::class, 'cmbr_dir'])->name('direccion.updte');
 Route::get('/Carrito',              [App\Http\Controllers\MainController::class, 'getCarrito'])->name('carrito');
 Route::get('/Stepper',              [App\Http\Controllers\MainController::class, 'getCarritoStepper'])->name('stepper');
 Route::any('/CambiarTienda', [App\Http\Controllers\MainController::class, 'cmbr_tienda'])->name('tienda.update');

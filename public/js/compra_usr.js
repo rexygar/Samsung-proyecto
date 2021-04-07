@@ -42,7 +42,7 @@ $(document).ready(function () {
                 console.log(data);
             },
         })
-    })
+    });
 
     $('#GuardarDir').on('click', function () {
         var url3 = $('#url3').val();
@@ -95,7 +95,7 @@ $(document).ready(function () {
                 console.log(data);
             },
         })
-    })
+    });
 
     $('#Seleccionar_Dir').on('click', function () {
         var url = $('#url5').val();
@@ -128,7 +128,7 @@ $(document).ready(function () {
                 console.log(data);
             },
         })
-    })
+    });
     $('#GuardarTienda').on('click', function () {
         var url = $('#url2').val();
         var token = $("meta[name='csrf-token']").attr("content")
@@ -162,4 +162,4 @@ $(document).ready(function () {
         })
     })
 
-})
+});

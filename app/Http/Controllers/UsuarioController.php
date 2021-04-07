@@ -49,21 +49,24 @@ class UsuarioController extends Controller
         try {
             if ($request->ajax()) {
 
-                $new_no_usr = new no_usr();
-                $rut = (isset($request->rut) && $request->rut != null) ? $request->rut : '';
-                $apel = (isset($request->apel) && $request->apel != null) ? $request->apel : '';
-                $nom = (isset($request->nom) && $request->nom != null) ? $request->nom : '';
-                $num = strval((string) (isset($request->num) && $request->num != null) ? $request->num : '');
-                $email = (isset($request->email) && $request->email != null) ? $request->email : '';
 
-
-                $new_no_usr->nombres = $nom;
-                $new_no_usr->apellidos = $apel;
-                $new_no_usr->correo = $email;
-                $new_no_usr->rut = $rut;
-                $new_no_usr->Telefono = $num;
-                $new_no_usr->id_transaccion_FK                 = session('idPago');
-                $new_no_usr->save();
+                $id_pago  = session('idPago');
+                $get_usr = no_usr::where('id_transaccion_FK', $id_pago)->first();
+                if ($get_usr == false) {
+                    $new_no_usr = new no_usr();
+                    $rut = (isset($request->rut) && $request->rut != null) ? $request->rut : '';
+                    $apel = (isset($request->apel) && $request->apel != null) ? $request->apel : '';
+                    $nom = (isset($request->nom) && $request->nom != null) ? $request->nom : '';
+                    $num = strval((string) (isset($request->num) && $request->num != null) ? $request->num : '');
+                    $email = (isset($request->email) && $request->email != null) ? $request->email : '';
+                    $new_no_usr->nombres = $nom;
+                    $new_no_usr->apellidos = $apel;
+                    $new_no_usr->correo = $email;
+                    $new_no_usr->rut = $rut;
+                    $new_no_usr->Telefono = $num;
+                    $new_no_usr->id_transaccion_FK = session('idPago');
+                    $new_no_usr->save();
+                }
             }
         } catch (\Throwable $th) {
             return $th;

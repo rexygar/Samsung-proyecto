@@ -86,7 +86,7 @@
 
                         <div class=" grid grid-cols-12">
                             <button type="submit" id="pay"
-                                class="uppercase text-center text-sm px-16 py-4 w-full rounded-md font-bold text-primary-very-light col-span-12 bg-gradient-to-r from-yellow-300 to-blue-100">Pagar</button>
+                                class="uppercase text-center text-sm px-16 py-4 w-full rounded-md font-bold text-primary-very-light col-span-12   bg-yellow-300">Pagar</button>
                         </div>
                     </form>
                 </div>

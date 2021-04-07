@@ -5,16 +5,14 @@
         style="background-color: white">
 
         <article style="background-color: aliceblue" class="panel is-primary  ">
-            <div class="grid grid-cols-8">
+            <div class="grid grid-cols-8 lg:py-6">
                 <div class="col-span-6">
-                    <div class="px-6">
+                    <div class="pl-6">
                         <p class=" tracking-normal py-1 " style="background-color: aliceblue">
-                            La comuna seleccionada es: <strong>Las Cruces, Región De Valparaíso</strong>
+                            La comuna seleccionada es: <br><strong class="text-xl"> Las Cruces, Región De
+                                Valparaíso</strong>
                         </p>
 
-                        <p class=" tracking-normal py-1 " style="background-color: aliceblue">
-                            Si no es la ubicación donde quieres recibir tu compra, cámbiala aquí.
-                        </p>
 
                     </div>
                 </div>
@@ -22,23 +20,28 @@
                 <div class="col-span-2">
                     @if (sizeof($direccion) == 0)
                     <a href="#" @click="open = true"
-                        class="sm:text-md text-sm  inline-block px-2 py-2 underline rounded-md  hover:text-yellow-300 "
+                        class="sm:text-md text-sm  inline-block px-2 py-2 font-bold underline rounded-md  hover:text-yellow-300 "
                         rel="noopener noreferrer">Por favor ingrese su dirección</a>
                     @else
                     <a href="#" @click="seleccionar = true"
-                        class="sm:text-md text-sm  inline-block px-2 py-2 underline rounded-md  hover:text-yellow-300 "
-                        rel="noopener noreferrer">Por favor seleecione su dirección</a>
+                        class="sm:text-md text-sm  inline-block px-2 py-2 font-bold underline rounded-md  hover:text-yellow-300 "
+                        rel="noopener noreferrer">Selecciona tu dirección</a>
                     @endif
                 </div>
                 @else
                 <div class="col-span-2">
 
                     <a href="#" @click="open = true"
-                        class="sm:text-md text-sm  inline-block px-2 py-2 underline rounded-md  hover:text-yellow-300 "
+                        class="sm:text-md text-sm  inline-block px-2 py-2 font-bold underline rounded-md  hover:text-yellow-300 "
                         rel="noopener noreferrer">Por favor ingrese su dirección</a>
 
                 </div>
                 @endif
+                <div class="col-span-full">
+                    <p class=" px-6 tracking-normal py-1 text-base font-thin" style="background-color: aliceblue">
+                        Si no es la ubicación donde quieres recibir tu compra, cámbiala aquí.
+                    </p>
+                </div>
             </div>
 
         </article>
@@ -46,7 +49,7 @@
 
         <article style="background-color: aliceblue" class="col-start-1 col-end-3">
 
-            <div class="grid grid-cols-8 lg:pb-6 2xl:pb-6 xl:pb-6 md:pb-6 border-b-2">
+            <div class="grid grid-cols-8 lg:pb-6 2xl:pb-6 xl:pb-6 md:pb-6 border-b-2 lg:pt-5">
                 <div class="col-span-5">
                     <div class="px-6">
                         <p class=" tracking-normal py-1 " style="background-color: aliceblue">
@@ -61,7 +64,7 @@
                 <div class="col-span-3">
                     <!-- Button (blue), duh! -->
                     <a href="#" @click="open = true"
-                        class="sm:text-md text-sm  inline-block px-2 py-2 underline rounded-md  hover:text-yellow-300 "
+                        class="sm:text-md text-sm  inline-block px-2 py-2 font-bold underline rounded-md  hover:text-yellow-300 "
                         rel="noopener noreferrer">Editar dirección de despacho</a>
                 </div>
             </div>
@@ -70,14 +73,15 @@
                     <!--Card 1-->
                     <div class=" w-full lg:max-w-full lg:flex">
                         <div class="grid grid-cols-12 md:pt-6 xl:pt-6 2xl:pt-6 lg:pt-6">
-                            <fieldset class="col-span-12 grid grid-cols-12 ">
+                            <fieldset class="col-span-12 grid grid-cols-12  lg:pt-6">
                                 <div class="col-span-6 p-4 border-r-2">
                                     <article style="background-color: aliceblue"
                                         class="lg:pt-6 xl:pt-6 2xl:pt-6 hover:border-2 hover:border-gray-700  col-span-12"
                                         x-data="{ Retiro: false }">
                                         <div class="px-6">
-                                            <a class="px-6 md:py-16 lg:py-16" href="#" @click="Retiro = true">
-                                                <label class="md:py-16 lg:py-16">
+                                            <a class="px-6 md:py-16 lg:py-16   hover:bg-gray-200" href="#"
+                                                @click="Retiro = true">
+                                                <label class="md:py-16 lg:py-16 font-bold">
                                                     Retiro en tienda Costo:
                                                     $0
                                                     <input type="radio" name="Tipo_Entrega" value="1">
@@ -97,19 +101,18 @@
                                                     <div class="h-auto   mx-2 text-left bg-white rounded shadow-xl md:max-w-xl md:p-0 lg:p-0 md:mx-0 md:pr-0   lg:mx-0 w-full   md:-mt-16 xl:-mt-16 2xl:-mt-16 lg:-mt-16"
                                                         @click.away="Retiro = false" style="z-index: 9999;">
                                                         <!-- Success alert -->
-                                                        <div style="background-color: #F5DF4D"
-                                                            class="flex p-4">
+                                                        <div style="background-color: #000" class="flex p-4">
                                                             <div class=" ">
-                                                                <div style="background-color: #F5DF4D"
-                                                                    class=" w-24">
+                                                                <div style="background-color: #000" class=" w-24">
                                                                     <img class="branding__logo img-fluid"
-                                                                        src="http://localhost:8000/img/logo.png"
+                                                                        src="http://localhost:8000/img/logo_ok.png"
                                                                         max-width="95px" alt="">
                                                                 </div>
                                                             </div>
                                                             <div class="flex justify-between w-full">
                                                                 <div class="text-black">
-                                                                    <h2 class="font-bold md:text-2xl text-white">
+                                                                    <h2
+                                                                        class=" pl-10 font-bold md:text-2xl  text-white">
                                                                         Seleccionar tienda de retiro
                                                                     </h2>
                                                                 </div>
@@ -121,13 +124,23 @@
                                                             class="mt-3 text-center sm:mt-0 sm:mx-10 sm:text-left pt-10">
                                                             <article style="" class=" col-start-1 col-end-3">
 
+                                                                <div class="py-2">
+                                                                    <p class=" tracking-normal py-2 border-b-2 border-opacity-25 font-bolder
+                                                            border-dotted">
+                                                                        <strong class="text-xl"> Elege la tienda de
+                                                                            retiro</strong>
 
+                                                                    </p>
+                                                                </div>
 
                                                                 @foreach ($tiendas as $tienda)
-                                                                <label>
+                                                                <label class="py-2">
                                                                     <div
-                                                                        class="bg-white hover:border-green-300 box focus:bg-yellow-300 focus:border-black focus:border-2 border-2">
-                                                                        {{$tienda->Direccion , $tienda->Comuna , $tienda->Ciudad}}
+                                                                        class="bg-white hover:border-green-300 my-2 box focus:bg-yellow-300 focus:border-black focus:border-2 border-2 font-bolder">
+
+                                                                        <strong
+                                                                            class="text-base">{{$tienda->Direccion , $tienda->Comuna , $tienda->Ciudad}}</strong>
+
                                                                         <input type="radio" id="tienda_id"
                                                                             name="tienda_id"
                                                                             value="{{$tienda->Tienda}}">
@@ -146,7 +159,8 @@
                                                         <!-- One big close button.  --->
                                                         <div class="mt-5 sm:mt-6 pb-6 px-10 ">
 
-                                                            <div class="grid-cols-12 grid grid-flow-row auto-rows-auto">
+                                                            <div
+                                                                class="grid-cols-12 grid grid-flow-row auto-rows-auto gap-2">
                                                                 <div class="text-2xl col-span-6 ">
                                                                     <button id="GuardarTienda"
                                                                         class=" font-bold  bg-yellow-500 w-full  text-white rounded-lg px-6 py-3 
@@ -184,10 +198,11 @@
                                     <article style="background-color: aliceblue"
                                         class="lg:py-6 xl:py-6 2xl:py-6 hover:border-2 col-span-12">
                                         <div class="">
-                                            <a href="#" class="md:py-16 lg:py-16" @click="open = true">
-                                                <label class="md:py-16 lg:py-16">
+                                            <a href="#" class="md:py-16 lg:py-16  hover:bg-gray-200"
+                                                @click="open = true">
+                                                <label class="md:py-16 lg:py-16 font-bold inline">
                                                     Despacho programado Costo:
-                                                    $7.990
+                                                    <strong>$7.990</strong>
                                                     <input type="radio" name="Tipo_Entrega" value="2">
                                                 </label>
 
@@ -196,8 +211,7 @@
                                         </div>
 
                                         <div class="panel-block" style="background-color: aliceblue">
-                                            Fecha de retiro desde el 23 de marzo de 2021
-                                            Que otra persona retire por mi
+                                            Despacho desde el 23 de marzo de 2021
                                         </div>
 
 
@@ -370,17 +384,16 @@
             <div class="h-auto p-4 mx-2 text-left bg-white rounded shadow-xl md:max-w-xl md:p-0 lg:p-0 md:mx-0 w-full lg:mx-16 2xl:mx-16"
                 @click.away="open = false" style="z-index: 9999;">
 
-                <div style="background-color: #F5DF4D" class="flex p-4">
+                <div style="background-color: #000" class="flex p-4">
                     <div class=" ">
-                        <div style="background-color: #F5DF4D"
-                            class=" w-24">
-                            <img class="branding__logo img-fluid" src="http://localhost:8000/img/logo.png"
+                        <div style="background-color: #000" class=" w-24">
+                            <img class="branding__logo img-fluid" src="http://localhost:8000/img/logo_ok.png"
                                 max-width="95px" alt="">
                         </div>
                     </div>
                     <div class="flex justify-between w-full">
                         <div class="text-black">
-                            <h2 class="font-bold md:text-2xl text-white">
+                            <h2 class=" pl-10 font-bold md:text-2xl  text-white">
                                 Agregar informacion de despacho
                             </h2>
                         </div>
@@ -393,10 +406,12 @@
 
                         <div class="col-span-12  ">
 
-                            <p class=" tracking-normal">
-                                Completa tu dirección de despacho
+                            <p class=" tracking-normal py-2 border-b-2 border-opacity-25 font-bolder
+                            border-dotted">
+                                <strong class="text-xl"> Completa tu dirección de despacho</strong>
+
                             </p>
-                            <div class="grid-cols-12 grid grid-flow-row auto-rows-auto">
+                            <div class="grid-cols-12 grid grid-flow-row auto-rows-auto gap-2">
                                 <div class="text-2xl col-span-6 ">
                                     <label class="text-base" for="NombreDireccion">Nombre:</label>
                                     <input type="text" required name="NombreDireccion" class="text-md w-full block px-3 py-2 rounded-lg 
@@ -416,7 +431,7 @@
                                                         focus:outline-none" id="ApellidoDireccion">
                                 </div>
                             </div>
-                            <div class="grid-cols-12 grid grid-flow-row auto-rows-auto">
+                            <div class="grid-cols-12 grid grid-flow-row auto-rows-auto gap-2">
                                 <div class="text-2xl col-span-8 ">
                                     <label class="text-base" for="NuevaDireccion">Direccion:</label>
                                     <input type="text" required name="NuevaDireccion" class="text-md w-full block px-3 py-2 rounded-lg 
@@ -459,7 +474,7 @@
 
                 <!-- One big close button.  --->
                 <div class="mt-5 sm:mt-6 pb-6 px-10">
-                    <div class="grid-cols-12 grid grid-flow-row auto-rows-auto">
+                    <div class="grid-cols-12 grid grid-flow-row auto-rows-auto gap-2">
                         <div class="  col-span-6 ">
                             <button id="GuardarDir" class="  font-bold 
                             bg-yellow-500 w-full    text-white rounded-lg px-6 py-3 
@@ -503,18 +518,17 @@
             <div class="h-auto p-4 mx-2 text-left bg-white rounded shadow-xl md:max-w-xl md:p-0 lg:p-0 md:mx-0 w-full lg:mx-16 2xl:mx-16"
                 @click.away="seleccionar = false" style="z-index: 9999;">
 
-                <div style="background-color: #F5DF4D" class="flex p-4">
+                <div style="background-color: #000" class="flex p-4">
                     <div class=" ">
-                        <div style="background-color: #F5DF4D"
-                            class=" w-24">
-                            <img class="branding__logo img-fluid" src="http://localhost:8000/img/logo.png"
+                        <div style="background-color: #000" class=" w-24">
+                            <img class="branding__logo img-fluid" src="http://localhost:8000/img/logo_ok.png"
                                 max-width="95px" alt="">
                         </div>
                     </div>
                     <div class="flex justify-between w-full">
                         <div class="text-black">
-                            <h2 class="font-bold md:text-2xl text-white">
-                                Seleccionar direccion de despacho
+                            <h2 class=" pl-10 font-bold md:text-2xl  text-white">
+                                Direccion de despacho
                             </h2>
                         </div>
 
@@ -525,13 +539,19 @@
                     <article style="" class=" col-start-1 col-end-3">
                         <article style="" class=" col-start-1 col-end-3">
 
+                            <div class="py-2">
+                                <p class=" tracking-normal py-2 border-b-2 border-opacity-25 font-bolder
+                        border-dotted">
+                                    <strong class="text-xl"> Selecciona tu dirección de despacho</strong>
 
+                                </p>
+                            </div>
 
                             @foreach ($direccion as $dir)
-                            <label>
+                            <label class="py-2">
                                 <div
-                                    class="bg-white hover:border-green-300 box focus:bg-yellow-300 focus:border-black focus:border-2 border-2">
-                                    {{$dir->calle , $dir->numero , $dir->depto}}
+                                    class="bg-white hover:border-green-300 my-2 box focus:bg-yellow-300 focus:border-black focus:border-2 border-2">
+                                    <strong class="text-base"> {{$dir->calle , $dir->numero , $dir->depto}}</strong>
                                     <input type="radio" id="dir_id" name="dir_id" value="{{$dir->id}}">
 
                                 </div>
@@ -542,7 +562,7 @@
                                 rel="noopener noreferrer">
                                 <label>
                                     <div
-                                        class="bg-white hover:border-green-300 box focus:bg-yellow-300 focus:border-black focus:border-2 border-2">
+                                        class="bg-white hover:border-green-300 my-2 box focus:bg-yellow-300 focus:border-black focus:border-2 border-2">
                                         Por favor ingrese su dirección
                                         <input type="radio" name="Tipo_Entrega" value="1">
                                         {{-- <button x-data @click="$dispatch('toggle-reassign-modal')">Toggle Reassign
@@ -561,7 +581,7 @@
 
                 <!-- One big close button.  --->
                 <div class="mt-5 sm:mt-6 pb-6 px-10">
-                    <div class="grid-cols-12 grid grid-flow-row auto-rows-auto">
+                    <div class="grid-cols-12 grid grid-flow-row auto-rows-auto gap-2">
                         <div class="  col-span-6 ">
                             <button id="Seleccionar_Dir" class="  font-bold 
                             bg-yellow-500 w-full    text-white rounded-lg px-6 py-3 
