@@ -564,7 +564,7 @@
                                     <div
                                         class="bg-white hover:border-green-300 my-2 box focus:bg-yellow-300 focus:border-black focus:border-2 border-2">
                                         Por favor ingrese su dirección
-                                        <input type="radio" name="Tipo_Entrega" value="1">
+                                        <input type="radio" onclick="openModal(Tipo_Entrega)" id="Tipo_Entrega" name="Tipo_Entrega" value="1">
                                         {{-- <button x-data @click="$dispatch('toggle-reassign-modal')">Toggle Reassign
                                             Modal</button> --}}
                                     </div>
@@ -609,6 +609,103 @@
             </div>
         </div>
     </div>
+    <style>
+        .animated {
+          -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+          -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+        }
+      
+        .animated.faster {
+          -webkit-animation-duration: 500ms;
+          animation-duration: 500ms;
+        }
+      
+        .fadeIn {
+          -webkit-animation-name: fadeIn;
+          animation-name: fadeIn;
+        }
+      
+        .fadeOut {
+          -webkit-animation-name: fadeOut;
+          animation-name: fadeOut;
+        }
+      
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+      
+          to {
+            opacity: 1;
+          }
+        }
+      
+        @keyframes fadeOut {
+          from {
+            opacity: 1;
+          }
+      
+          to {
+            opacity: 0;
+          }
+        }
+      </style>
+    <div class="main-modal fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster"
+    style="background: rgba(0,0,0,.7);">
+          <div
+              class="border border-teal-500 shadow-lg modal-container bg-white mx-auto rounded z-50 overflow-y-auto">
+              <div class="modal-content py-4 text-left px-6">
+                  <!--Title-->
+                  <div class="flex justify-between items-center pb-3">
+                      <p class="text-2xl font-bold">Cambiar Dirección</p>
+                  </div>
+                  <!--Body-->
+                  <div class="my-5">
+                      <input type="hidden" id="idDelete" value="">
+                        ¿Está seguro que desea Eliminar este registro?
+                  </div>
+                  <!--Footer-->
+                  <div class="flex justify-end pt-2">
+                      <button class="focus:outline-none modal-close px-4 bg-gray-400 p-3 rounded-lg text-black hover:bg-gray-300">Cancelar</button>
+                      <button class="focus:outline-none px-4 bg-green-500 p-3 ml-3 rounded-lg text-white hover:bg-green-400" onclick="eliminar()">Eliminar</button>
+                  </div>
+              </div>
+          </div>
+    </div>
+
+    <script>
+        const modal = document.querySelector('.main-modal');
+              const closeButton = document.querySelectorAll('.modal-close');
+      
+              const modalClose = () => {
+                  modal.classList.remove('fadeIn');
+                  modal.classList.add('fadeOut');
+                  setTimeout(() => {
+                      modal.style.display = 'none';
+                  }, 500);
+              }
+      
+              const openModal = () => {
+                  modal.classList.remove('fadeOut');
+                  modal.classList.add('fadeIn');
+                  modal.style.display = 'flex';
+              }
+      
+              for (let i = 0; i < closeButton.length; i++) {
+      
+                  const elements = closeButton[i];
+      
+                  elements.onclick = (e) => modalClose();
+      
+                  modal.style.display = 'none';
+      
+                  window.onclick = function (event) {
+                      if (event.target == modal) modalClose();
+                  }
+              }
+      </script>
     @endif
     {{-- Seleccionar --}}
 </div>

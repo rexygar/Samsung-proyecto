@@ -109,7 +109,7 @@
                 <div class="px-6">
                     <p class=" tracking-normal py-1 " style="background-color: aliceblue">
                         <h3 class="font-bold pb-4 mt-2 border-b border-gray-100 flex justify-center">
-                            <span class="text-3xl"> Por favor, ingresa tu región y comuna</span>
+                            <span class="text-3xl"> Por favor, ingresa el número de orden</span>
                         </h3>
                     </p>
                 </div>
@@ -133,7 +133,7 @@
                         <div class="grid grid-cols-12 w-full lg:max-w-full" style="background-color: aliceblue">
                             <div class="col-span-12 grid grid-cols-12 px-6">
                                 <div class="xl:col-span-6 2xl:col-span-6 lg:col-span-6 col-span-6 md:col-span-12">
-                                    <label class="form-check-label" for="NuevoNombre">Nombre de quien recibe la compra:
+                                    <label class="form-check-label" for="NuevoNombre">Numero de Orden:
                                     </label>
                                     <input type="text" required name="NuevoNombre" id="NuevoNombre" class="text-md w-full block px-3 py-2 rounded-lg 
                                                         bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
@@ -142,18 +142,6 @@
                                                         focus:border-gray-600  
                                                         focus:outline-none">
                                 </div>
-                                <div class="xl:col-span-6 2xl:col-span-6 lg:col-span-6 col-span-6 md:col-span-12">
-                                    <label class="form-check-label" for="NuevoApellido">Apellido de quien recibe la
-                                        compra:
-                                    </label>
-                                    <input type="text" required name="NuevoApellido" id="NuevoApellido" class="text-md w-full block px-3 py-2 rounded-lg 
-                                                        bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
-                                                        focus:placeholder-gray-500
-                                                        focus:bg-white 
-                                                        focus:border-gray-600  
-                                                        focus:outline-none">
-                                </div>
-
                             </div>
 
                             <div class="col-span-12 grid grid-cols-12 px-6 md:grid-flow-row md:auto-rows-max">
@@ -162,8 +150,7 @@
                                     class="xl:col-span-5 2xl:col-span-5 lg:col-span-5 col-span-12 md:col-span-12 px-6 pt-3">
                                     <button id="editar" class="text-lg font-semibold 
                                 bg-green-500 w-full text-white rounded-lg px-6 py-3 
-                                 block shadow-xl hover:text-white hover:bg-black" type="button">Guardar
-                                        cambios</button>
+                                 block shadow-xl hover:text-white hover:bg-black" type="button">Buscar Orden</button>
                                     <input type="hidden" id="url" value="{{ route('usr.create') }}">
                                     @csrf
 

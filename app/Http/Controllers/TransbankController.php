@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\EstadoCompra;
 use App\Models\Transaccion;
 use Illuminate\Http\Request;
 use Transbank\Webpay\Configuration;
@@ -75,6 +76,13 @@ class TransbankController extends Controller
 
 			// Insertar Detalle
 			// Insertar Estado
+
+			$estado = new EstadoCompra();
+
+			$estado->observacion = "compra ingresada correctamente";
+			$estado->ordenTransporte = $pago->order;
+			$estado->estado = "Pago Validado";
+			$estado->idTransaccion = $pago->id;
 			
 		}else{
 			$pago = Transaccion::where('id', $result->sessionId)->first();

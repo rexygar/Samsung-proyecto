@@ -42,77 +42,11 @@
 
                             Región
 
-                            <select formcontrolname="selectRegion"
-                                class="divide-y divide-gray-100 inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
-                                <option disabled="" value="0: null"> Selecciona una Región </option>
-                                <option value="1"> Región Metropolitana </option>
-                                <option value="2"> Región de Tarapacá </option>
-                                <option value="3"> Región de Antofagasta </option>
-                                <option value="4"> Región de Atacama </option>
-                                <option value="5"> Región de Coquimbo </option>
-                                <option value="6"> Región de Valparaíso </option>
-                                <option value="7"> Región del Libertador Gral. Bernardo
-                                    O’Higgins </option>
-                                <option value="8"> Región del Maule </option>
-                                <option value="9"> Región del Bío Bío </option>
-                                <option value="10"> Región de la Araucanía </option>
-                                <option value="11"> Región de los Lagos </option>
-                                <option value="12"> Región de los Ríos </option>
-                                <option value="13"> Región de Arica y Parinacota
-                                </option>
-                                <option value="14"> Región del Ñuble </option>
-                                <!---->
+                            <select id="regiones" formcontrolname="selectRegion" class="divide-y divide-gray-100 inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
                             </select>
                             <div class="py-5"></div>
-                            <select formcontrolname="selectComuna"
-                                class="divide-y divide-gray-100 inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
-                                <option disabled="" value="0: null"> Selecciona una Comuna </option>
-                                <option value="1"> Algarrobo </option>
-                                <option value="2"> Cabildo </option>
-                                <option value="3"> Calera </option>
-                                <option value="4"> Calle Larga </option>
-                                <option value="5"> Cartagena </option>
-                                <option value="6"> Casablanca </option>
-                                <option value="7"> Catemu </option>
-                                <option value="8"> Concón </option>
-                                <option value="9"> El Quisco </option>
-                                <option value="10"> El Tabo </option>
-                                <option value="11"> Hijuelas </option>
-                                <option value="12"> Horcón </option>
-                                <option value="13"> La Cruz </option>
-                                <option value="14"> La Ligua </option>
-                                <option value="15"> Las Cruces </option>
-                                <option value="16"> Limache </option>
-                                <option value="17"> Llayllay </option>
-                                <option value="18"> Llolleo </option>
-                                <option value="19"> Los Andes </option>
-                                <option value="20"> Nogales </option>
-                                <option value="21"> Olmué </option>
-                                <option value="22"> Panquehue </option>
-                                <option value="23"> Papudo </option>
-                                <option value="24"> Petorca </option>
-                                <option value="25"> Polpaico </option>
-                                <option value="26"> Puchuncaví </option>
-                                <option value="27"> Putaendo </option>
-                                <option value="28"> Quillota </option>
-                                <option value="29"> Quilpué </option>
-                                <option value="30"> Quintay </option>
-                                <option value="31"> Quintero </option>
-                                <option value="32"> Reñaca </option>
-                                <option value="33"> Rinconada </option>
-                                <option value="34"> San Antonio </option>
-                                <option value="35"> San Esteban </option>
-                                <option value="36"> San Felipe </option>
-                                <option value="37"> San Sebastián </option>
-                                <option value="38"> Santa María </option>
-                                <option value="39"> Santo Domingo </option>
-                                <option value="40"> Valparaíso </option>
-                                <option value="41"> Villa Alemana </option>
-                                <option value="42"> Viña Del Mar </option>
-                                <option value="43"> Zapallar </option>
-                                <!---->
-                                <!---->
-                                <!---->
+                            <select id="comunas" formcontrolname="selectComuna" class="divide-y divide-gray-100 inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+                                
                             </select>
                             <div class="py-5"></div>
                             <button id="editar" class="text-lg font-semibold 

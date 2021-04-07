@@ -81,7 +81,9 @@
                             class="sm:text-md text-sm no-underline inline-block px-2 py-2   rounded-md bg-black text-white hover:text-yellow-300 "
                             style="border-color: #F8AF22"> <i
                                 class="lg:text-base sm:text-xl xl:text-2xl md:text-xl px-0  lg:px-6 md:px-2  sm:px-1 fas fa-shopping-cart"></i></a>
-                    </div>
+                        <a href="#" class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
+                        style="border-color: #F8AF22"><strong>{{ __('Seguimiento') }}</strong></a>
+                            </div>
                     @endif
                     {{-- logdein --}}
                     @else
@@ -106,12 +108,12 @@
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
                         </form>
+                        <a href="#" class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
+                            style="border-color: #F8AF22"><strong>{{ __('Seguimiento') }}</strong></a>
                     </div>
                     @endguest
 
                     {{-- end --}}
-
-
                 </div>
             </div>
 
@@ -131,7 +133,6 @@
                 </button>
             </form>
         </div>
-
     </div>
 </div>
 <style>

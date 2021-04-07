@@ -43,26 +43,27 @@
     </div>
     <div class="main-modal fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster"
 		style="background: rgba(0,0,0,.7);">
-		<div
-			class="border border-teal-500 shadow-lg modal-container bg-white mx-auto rounded z-50 overflow-y-auto">
-			<div class="modal-content py-4 text-left px-6">
-				<!--Title-->
-				<div class="flex justify-between items-center pb-3">
-					<p class="text-2xl font-bold">Eliminar Usuario</p>
-				</div>
-				<!--Body-->
-				<div class="my-5">
-					<input type="hidden" id="idDelete" value="">
-          <input type="hidden" id="productos" value="{{ route('delete.user') }}">
-          ¿Está seguro que desea Eliminar este registro?
-				</div>
-				<!--Footer-->
-				<div class="flex justify-end pt-2">
-					<button class="focus:outline-none modal-close px-4 bg-gray-400 p-3 rounded-lg text-black hover:bg-gray-300">Cancelar</button>
-					<button class="focus:outline-none px-4 bg-green-500 p-3 ml-3 rounded-lg text-white hover:bg-green-400" onclick="eliminar()">Eliminar</button>
-				</div>
-			</div>
-		</div>
+		  <div
+		  	class="border border-teal-500 shadow-lg modal-container bg-white mx-auto rounded z-50 overflow-y-auto">
+		  	<div class="modal-content py-4 text-left px-6">
+		  		<!--Title-->
+		  		<div class="flex justify-between items-center pb-3">
+		  			<p class="text-2xl font-bold">Eliminar Usuario</p>
+		  		</div>
+		  		<!--Body-->
+		  		<div class="my-5">
+		  			<input type="hidden" id="idDelete" value="">
+            <input type="hidden" id="productos" value="{{ route('delete.user') }}">
+            ¿Está seguro que desea Eliminar este registro?
+		  		</div>
+		  		<!--Footer-->
+		  		<div class="flex justify-end pt-2">
+		  			<button class="focus:outline-none modal-close px-4 bg-gray-400 p-3 rounded-lg text-black hover:bg-gray-300">Cancelar</button>
+		  			<button class="focus:outline-none px-4 bg-green-500 p-3 ml-3 rounded-lg text-white hover:bg-green-400" onclick="eliminar()">Eliminar</button>
+		  		</div>
+		  	</div>
+		  </div>
+    </div>
 	</div>
 @stop
 

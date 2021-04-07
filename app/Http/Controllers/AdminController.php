@@ -18,7 +18,7 @@ class AdminController extends Controller
 {
 
     public function index(Request $request){
-        if(Auth::user()->rol_id == '2'){
+        if(Auth::user()->rol_id == '2' || Auth::user()->rol_id == '3'){
             $users = User::where('rol_id', 1)->count();
             
             if($request->ajax()){
@@ -39,6 +39,14 @@ class AdminController extends Controller
         }else{
             return view('vistas.index');
         }
+    }
+
+    public function valida(){
+        $valida = false;
+        if(Auth::user()->rol_id == '2'){
+            $valida = true;
+        }
+        return $valida;
     }
 
     public function list_estado(Request $request){
@@ -206,32 +214,37 @@ class AdminController extends Controller
     }
 
     public function list_user(Request $request){
-        if($request->ajax()){
-            $user = User::latest()->where('rol_id', 3)->get();
-            
-            return DataTables::of($user)->addIndexColumn()
-            ->addColumn('action', function ($row) {
-                $url = route('edit.user');
-                $btn = '<form action="' . $url . '" method="GET">
-                        <input type="hidden" name="id" value="' . $row->id . '">
-                        <div class="grid grid-cols-12">
-                            <div class="col-span-6"><button type="submit" 
-                                    class="bg-yellow-500 flex justify-center items-center w-full text-white rounded-md focus:outline-none">
-                                    Ver</button> </div>
-                            <div class="col-span-6">
-                                <button type="button" id="' . $row->id . '"
-                                class="bg-red-700 flex justify-center items-center w-full text-white rounded-md focus:outline-none"
-                                onclick="openModal(' . $row->id . ')">Eliminar</button> </div>
-                        </div>
-                         
-                        </form>';
-                return $btn;
-            })
-            ->rawColumns(['action'])
-            ->make(true);
-        
+
+        if(!$this->valida()){
+            return redirect('/adminPanel');
         }
-        return view('dashboard.list_user');
+
+            if($request->ajax()){
+                $user = User::latest()->where('rol_id', 3)->get();
+                
+                return DataTables::of($user)->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    $url = route('edit.user');
+                    $btn = '<form action="' . $url . '" method="GET">
+                            <input type="hidden" name="id" value="' . $row->id . '">
+                            <div class="grid grid-cols-12">
+                                <div class="col-span-6"><button type="submit" 
+                                        class="bg-yellow-500 flex justify-center items-center w-full text-white rounded-md focus:outline-none">
+                                        Ver</button> </div>
+                                <div class="col-span-6">
+                                    <button type="button" id="' . $row->id . '"
+                                    class="bg-red-700 flex justify-center items-center w-full text-white rounded-md focus:outline-none"
+                                    onclick="openModal(' . $row->id . ')">Eliminar</button> </div>
+                            </div>
+                             
+                            </form>';
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+            
+            }
+            return view('dashboard.list_user');
     }
 
     public function user(Request $request){
