@@ -38,8 +38,9 @@ Route::get('/Stepper',              [App\Http\Controllers\MainController::class,
 Route::any('/CambiarTienda', [App\Http\Controllers\MainController::class, 'cmbr_tienda'])->name('tienda.update');
 Route::any('/crearUsr', [App\Http\Controllers\UsuarioController::class, 'crte_usr'])->name('usr.create');
 Route::any('/logon', [App\Http\Controllers\MainController::class, 'login_usr'])->name('lgn.usr');
-
+Route::POST('/comuna', [App\Http\Controllers\MainController::class, 'mantener_comuna'])->name('comuna');
 // Transbank
+Route::get('/initTransaction',           [App\Http\Controllers\MainController::class, 'getInitPago'])->name('checkout.init');
 Route::get('/checkout',                     [App\Http\Controllers\TransbankController::class, 'initTransaction'])->name('checkout');  
 Route::post('/checkout/webpay/response',    [App\Http\Controllers\TransbankController::class, 'response'])->name('checkout.webpay.response');  
 Route::post('/checkout/webpay/finish',      [App\Http\Controllers\TransbankController::class, 'finish'])->name('checkout.webpay.finish');
@@ -77,7 +78,7 @@ Route::get('/step', function () {
     return view('Vistas.carritoStepper');
 });
 Route::get('/tests', function () {
-    return view('Vistas.tests');
+    return view('prueba');
 });
 Route::get('/categoria', function () {
     return view('Vistas.categoria');

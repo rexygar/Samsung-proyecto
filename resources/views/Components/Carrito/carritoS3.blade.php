@@ -9,8 +9,7 @@
                 <div class="col-span-6">
                     <div class="pl-6">
                         <p class=" tracking-normal py-1 " style="background-color: aliceblue">
-                            La comuna seleccionada es: <br><strong class="text-xl"> Las Cruces, Región De
-                                Valparaíso</strong>
+                            La comuna seleccionada es: <br><strong class="text-xl" id="dirSelect"></strong>
                         </p>
 
 

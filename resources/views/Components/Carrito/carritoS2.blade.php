@@ -49,7 +49,8 @@
                                 
                             </select>
                             <div class="py-5"></div>
-                            <button id="editar" class="text-lg font-semibold 
+                            <input type="hidden" id="urlGuardar" value="{{ route('comuna') }}">
+                            <button id="guardar" class="text-lg font-semibold 
                                 bg-green-500 w-full text-white rounded-lg px-6 py-3 
                                  block shadow-xl hover:text-white hover:bg-black" type="button">Guardar
                                 cambios</button>

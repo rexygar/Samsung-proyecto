@@ -1,27 +1,27 @@
 var RegionesYcomunas = {
 
 	"regiones": [{
-			"NombreRegion": "Arica y Parinacota",
+			"NombreRegion": "Región de Arica y Parinacota",
 			"comunas": ["Arica", "Camarones", "Putre", "General Lagos"]
 	},
 		{
-			"NombreRegion": "Tarapacá",
+			"NombreRegion": "Región de Tarapacá",
 			"comunas": ["Iquique", "Alto Hospicio", "Pozo Almonte", "Camiña", "Colchane", "Huara", "Pica"]
 	},
 		{
-			"NombreRegion": "Antofagasta",
+			"NombreRegion": "Región de Antofagasta",
 			"comunas": ["Antofagasta", "Mejillones", "Sierra Gorda", "Taltal", "Calama", "Ollagüe", "San Pedro de Atacama", "Tocopilla", "María Elena"]
 	},
 		{
-			"NombreRegion": "Atacama",
+			"NombreRegion": "Región de Atacama",
 			"comunas": ["Copiapó", "Caldera", "Tierra Amarilla", "Chañaral", "Diego de Almagro", "Vallenar", "Alto del Carmen", "Freirina", "Huasco"]
 	},
 		{
-			"NombreRegion": "Coquimbo",
+			"NombreRegion": "Región de Coquimbo",
 			"comunas": ["La Serena", "Coquimbo", "Andacollo", "La Higuera", "Paiguano", "Vicuña", "Illapel", "Canela", "Los Vilos", "Salamanca", "Ovalle", "Combarbalá", "Monte Patria", "Punitaqui", "Río Hurtado"]
 	},
 		{
-			"NombreRegion": "Valparaíso",
+			"NombreRegion": "Región de Valparaíso",
 			"comunas": ["Valparaíso", "Casablanca", "Concón", "Juan Fernández", "Puchuncaví", "Quintero", "Viña del Mar", "Isla de Pascua", "Los Andes", "Calle Larga", "Rinconada", "San Esteban", "La Ligua", "Cabildo", "Papudo", "Petorca", "Zapallar", "Quillota", "Calera", "Hijuelas", "La Cruz", "Nogales", "San Antonio", "Algarrobo", "Cartagena", "El Quisco", "El Tabo", "Santo Domingo", "San Felipe", "Catemu", "Llaillay", "Panquehue", "Putaendo", "Santa María", "Quilpué", "Limache", "Olmué", "Villa Alemana"]
 	},
 		{
@@ -104,9 +104,32 @@ jQuery(document).ready(function () {
 		}
 	});
 
-	$('#editar').on('click', function(){
+	$('#guardar').on('click', function(){
 		var reg = $('#regiones').val();
 		var com = $('#comunas').val();
+		var url = $('#urlGuardar').val();
+
+		$('#dirSelect').text( $('#comunas').val() + ', ' + $('#regiones').val());
+
+		$.ajax({
+			url: url,
+			type: 'POST',
+			data: {
+				_token: $("meta[name='csrf-token']").attr("content"),
+				reg: reg,
+				com: com,
+			},
+			success: function(data){
+				if (data["message"] == com) {
+					toastr["info"]("Dirección Guardada");
+					console.log(data.precio);
+				}else{
+					toastr["warning"](
+                        "Ha ocurrido un problema, por favor vuelva a intentarlo"
+                    );
+				}
+			}
+		})
 	})
 })
 

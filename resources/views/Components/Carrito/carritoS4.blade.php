@@ -80,10 +80,7 @@
                     <button class="btn col-span-6 sw-btn-prev disabled" type=" button">Volver
                         al Paso
                         anterior</button>
-                    <form action="@if(isset($pago['url'])){{$pago['url']}}@endif" method="POST" class="col-span-6">
-                        <input type="hidden" name="token_ws" id="token_ws"
-                            value="@if(isset($pago['token'])){{$pago['token']}}@endif">
-
+                    <form action="{{ route('checkout.init') }}" method="get" class="col-span-6">
                         <div class=" grid grid-cols-12">
                             <button type="submit" id="pay"
                                 class="uppercase text-center text-sm px-16 py-4 w-full rounded-md font-bold text-primary-very-light col-span-12   bg-yellow-300">Pagar</button>
@@ -115,7 +112,7 @@
                     @endphp
                     @endforeach
                     @php
-                    $total = $total + 20000;
+                    $total = $total + Session::get('precio_comuna');
                     @endphp
                     <span class="text-3xl"> $
                         @php
@@ -164,7 +161,7 @@
 
             <div class="block" style="background-color: aliceblue">
                 <h3 class="font-bold pb-4 mt-2 border-b border-gray-100 flex justify-center">
-                    <span class="text-3xl">$20.000</span>
+                    <span class="text-3xl">${{ number_format(Session::get('precio_comuna'),0,'','.') }}</span>
                 </h3>
             </div>
 

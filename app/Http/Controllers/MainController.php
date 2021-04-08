@@ -8,6 +8,7 @@ use App\Models\Transaccion;
 use App\Models\Reserva;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\TransbankController;
+use App\Models\Despacho;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Direccion;
 use App\Models\EstadoCompra;
@@ -296,6 +297,38 @@ class MainController extends Controller
         }
         return view('Vistas.carritov2', ['reserva' => $reserva, 'pago' => $pago]);
     }
+
+    public function getInitPago()
+    {
+        $idPago = 0;
+        $pago = [];
+        $this->TransbankController = new TransbankController();
+        if (session()->has('idPago')) {
+            $idPago = session('idPago');
+        } else {
+            session(['idPago' => $idPago]);
+        }
+        $reserva = Reserva::where('idTransaccion', $idPago)->get();
+        if (count($reserva) > 0) {
+            if ($idPago > 0) {
+                $monto = Reserva::where('idTransaccion', $idPago)->sum('Total');
+
+                $monto += intval(session('precio_comuna'));
+                
+                $s = strval($idPago);
+                $order = $s;
+                for ($i=10; $i > strlen($s); $i--) { 
+                    $order = "0".$order;
+                }
+                
+                $pago = $this->TransbankController->initTransaction($monto, $order, $idPago);
+            }
+        } else {
+            $pago = null;
+        }
+        return view('prueba', ['pago' => $pago]);
+    }
+
     public function getCarritoStepper()
     {
         $idPago = 0;
@@ -510,7 +543,6 @@ class MainController extends Controller
 
                                 $detalle->id_CSL = $id_usr_csl;
                                 $detalle->id_usuario = null;
-                                $detalle->id_direccion = null;
                                 $detalle->tipo_entrega = "Despacho a domicilio";
                                 $detalle->id_direccion =  null;
                                 $detalle->Cod_Tienda = null;
@@ -639,6 +671,32 @@ class MainController extends Controller
 
                 return ['message' => $th, 'status' => 1];
             }
+        }
+    }
+
+    public function mantener_comuna(Request $request){
+        try {
+            if($request->ajax()){
+                $reg = (isset($request->reg) && $request->reg != null) ? $request->reg : '';
+                $com = (isset($request->com) && $request->com != null) ? $request->com : '';
+
+                $comuna = Despacho::where('comuna', $com)->first();
+                $idPago = session('idPago');
+
+
+                // session('precio_comuna')
+
+                if(session()->has('precio_comuna')){
+                    session(['precio_comuna' => $comuna->precio]);
+                } else {
+                    session(['precio_comuna' => $comuna->precio]);
+                }
+
+                return ['message' => $comuna->comuna, 'precio' => session('precio_comuna')];
+
+            }
+        } catch (\Throwable $th) {
+            //throw $th;
         }
     }
 
