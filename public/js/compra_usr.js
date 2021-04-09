@@ -47,6 +47,9 @@ $(document).ready(function () {
     $('#GuardarDir').on('click', function () {
         var url3 = $('#url3').val();
         var direccion = $('#NuevaDireccion').val();
+        var reg = $('#regiones').val();
+        var com = $('#comunas').val();
+
         var nom = $('#NombreDireccion').val()
         var apel = $('#ApellidoDireccion').val()
         var detalle_1 = $('#detalle_1').val()
@@ -76,6 +79,8 @@ $(document).ready(function () {
                 apel: apel,
                 direccion: direccion,
                 apel: apel,
+                reg: reg,
+                com: com,
                 detalle_1: detalle_1,
                 detalle_2: detalle_2,
 

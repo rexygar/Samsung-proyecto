@@ -22,42 +22,42 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     {{-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" /> --}}
 
- 
-
-    <style>
-        body {
-            font-family: 'Nunito';
-        }
-    </style>
-    <style>
-        .swiper-container {
-            width: 100%;
-            height: auto;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .swiper-slide {
-            background-size: cover;
-            background-position: center;
-        }
-
-        .gallery-thumbs {
-            height: 20%;
-            box-sizing: border-box;
-            padding: 10px 0;
-        }
-
-        .gallery-thumbs .swiper-slide {
-            height: 100%;
-            opacity: 0.4;
-        }
-
-        .gallery-thumbs .swiper-slide-thumb-active {
-            opacity: 1;
-        }
-    </style>
 </head>
+
+
+<style>
+    body {
+        font-family: 'Nunito';
+    }
+</style>
+{{-- <style>
+    .swiper-container {
+        width: 100%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .swiper-slide {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .gallery-thumbs {
+        height: 20%;
+        box-sizing: border-box;
+        padding: 10px 0;
+    }
+
+    .gallery-thumbs .swiper-slide {
+        height: 100%;
+        opacity: 0.4;
+    }
+
+    .gallery-thumbs .swiper-slide-thumb-active {
+        opacity: 1;
+    }
+</style> --}}
 <style>
     label.error {
         color: #a94442;
@@ -99,13 +99,18 @@
 
 
 
+<div class=" w-full py-auto relative" style="z-index: 99999">
+    @include('Components.nav-mobile')
+    @include('Components.Header')
+    {{-- @include('Components.Header') --}}
+</div>
+@include('Components.Megamenu')
+
 <body>
 
     <!-- SECTION -->
     <!-- container -->
 
-    @include('Components.Header')
-    @include('Components.Megamenu')
     @include('Components.producto-item')
     {{-- <div class="w-full">
             <div class="relative flex-grow max-w-full flex-1 px-4">
@@ -155,6 +160,11 @@
 
             </div>
         </div> --}}
+
+
+        @include('Components.CTA')
+
+
         <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 ">
             <div class="lg:px-6">
                 <div class="flex flex-wrap justify-center">
@@ -179,6 +189,10 @@
             </div>
         </div>
     </section>
+
+
+
+
     <div style="height:50px;background-color:#250a0a"></div>
 
     <!--JQUERY Validation-->

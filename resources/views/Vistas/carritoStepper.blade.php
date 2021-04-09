@@ -91,23 +91,44 @@
     }
 </style>
 
-@include('Components.Header')
-{{-- @include('Components.Megamenu') --}}
+<div class=" w-full py-auto relative" style="z-index: 99999">
+    @include('Components.nav-mobile')
+    @include('Components.Header')
+    {{-- @include('Components.Header') --}}
+</div>
+@include('Components.Megamenu')
 
 <body class="bg-white">
     <div class="grid grid-cols-12  ">
         @if (Auth::user())
 
         <div id="smartwizard" class="sw sw-justified sw-theme-default  col-span-12 grid grid-cols-12 ">
-            <ul class="nav nav-tabs col-span-12 grid grid-cols-12">
-                <li class="nav-item col-span-4 active"><a href="#step-1" class="nav-link">Paso 1<br><small>Direccion
-                        </small></a></li>
-                <li class="nav-item col-span-4 active"><a href="#step-2" class="nav-link">Paso 2<br><small>Tipo Entrega
-                        </small></a></li>
-                <li class="nav-item col-span-4 done"><a href="#step-3" class="nav-link">Paso 3<br><small>
-                            Pago</small></a></li>
+            <div class="show sm:hidden">
+                <ul class="nav nav-tabs col-span-12 grid grid-cols-12">
+                    <li class="nav-item col-span-4 active"><a href="#step-1" class="nav-link">Paso 1<br><small>Direccion
+                            </small></a></li>
+                    <li class="nav-item col-span-4 active"><a href="#step-2" class="nav-link">Paso 2<br><small>Tipo
+                                Entrega
+                            </small></a></li>
+                    <li class="nav-item col-span-4 done"><a href="#step-3" class="nav-link">Paso 3<br><small>
+                                Pago</small></a></li>
 
-            </ul>
+                </ul>
+            </div>
+            <div class="md:show hidden">
+                <ul class="nav nav-tabs col-span-12 grid grid-cols-12">
+                    <li class="nav-item col-span-4 sm:hidden active"><a href="#step-1" class="nav-link">Paso
+                            1<br><small>Direccion
+                            </small></a></li>
+                    <li class="nav-item col-span-4 sm:hidden active"><a href="#step-2" class="nav-link">Paso
+                            2<br><small>Tipo
+                                Entrega
+                            </small></a></li>
+                    <li class="nav-item col-span-4 sm:hidden done"><a href="#step-3" class="nav-link">Paso 3<br><small>
+                                Pago</small></a></li>
+
+                </ul>
+            </div>
 
             <div class="sw-container tab-content col-span-12 grid grid-cols-12 h-full">
                 <div id="step-1" class="tab-pane step-content col-span-12" style="display: block;">
@@ -125,17 +146,51 @@
         @else
 
         <div id="smartwizard" class="sw sw-justified sw-theme-default  col-span-12 grid grid-cols-12 ">
-            <ul class="nav nav-tabs col-span-12 grid grid-cols-12">
-                <li class="nav-item col-span-3 active"><a href="#step-1" class="nav-link">Paso 1<br><small> Datos
-                            personales
-                        </small></a></li>
-                <li class="nav-item col-span-3 active"><a href="#step-2" class="nav-link">Paso 2<br><small> Direccion
-                        </small></a></li>
-                <li class="nav-item col-span-3 done"><a href="#step-3" class="nav-link">Paso 3<br><small>
-                            Tipo Entrega</small></a></li>
-                <li class="nav-item col-span-3 done"><a href="#step-4" class="nav-link">Paso 4<br><small> Pago
-                        </small></a></li>
+
+            <ul class="nav nav-tabs col-span-12 sm:grid grid-cols-12  ">
+                <div class="col-span-4">
+
+                    <li class="nav-item col-span-12  hidden active"><a href="#step-1" class="nav-link">Paso 1<br><small> Datos
+                                personales
+                            </small></a></li>
+                    <li class="nav-item col-span-12  hidden active"><a href="#step-2" class="nav-link">Paso 2<br><small>
+                                Direccion
+                            </small></a></li>
+                    <li class="nav-item col-span-12  hidden done"><a href="#step-3" class="nav-link">Paso 3<br><small>
+                                Tipo Entrega</small></a></li>
+                    <li class="nav-item col-span-12  hidden done"><a href="#step-4" class="nav-link">Paso 4<br><small> Pago
+                            </small></a></li>
+
+                </div>
             </ul>
+
+            <ul class="nav nav-tabs col-span-12 grid grid-cols-12 grid-flow-row auto-rows-max   sm:hidden">
+                <div class="w-full grid-flow-row auto-rows-min  ">
+
+                    <li class="nav-item w-1/4 active relative  float-left" style="
+    z-index: 999;
+"><a href="#step-1" class="nav-link inactive  active">Paso 1<br><small> Datos
+                                personales
+                            </small></a></li>
+                    <li class="nav-item w-1/4 float-left relative  active" style="
+    z-index: 9999;
+"><a href="#step-2" class="nav-link inactive" style="
+    z-index: 99999;
+">Paso 2<br><small>
+                                Direccion
+                            </small></a></li>
+                    <li class="nav-item w-1/4  float-left relative  done" style="
+    z-index: 99999;
+"><a href="#step-3" class="nav-link inactive">Paso 3<br><small>
+                                Tipo Entrega</small></a></li>
+                    <li class="nav-item  w-1/4 relative  float-left done" style="
+    z-index: 9999;
+"><a href="#step-4" class="nav-link inactive">Paso 4<br><small> Pago
+                            </small></a></li>
+
+                </div>
+            </ul>
+
 
             <div class="sw-container tab-content col-span-12 grid grid-cols-12 h-full">
                 <div id="step-1" class="tab-pane step-content col-span-12" style="display: block;">

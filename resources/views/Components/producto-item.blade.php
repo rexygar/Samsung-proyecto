@@ -1,3 +1,4 @@
+
 @for ($i = 0; $i < 1; $i++) <main class="profile-page">
 
     <section class="relative  bg-gray-300 pt-60 top-auto">
@@ -40,24 +41,24 @@
                                             <div
                                                 class="w-full md:w-full col-span-6 md:col-span-3 lg:col-span-3 md:col-start-1 md:row-span-2 lg:row-span-2 lg:col-start-1  md:px-4 lg:px-4 px-0 lg:-mt-16 md:-mt-16 -mt-16">
                                                 <img alt="..." class="max-w-full rounded-lg"
-                                                    src="../uploads/products/1/1.jpg" />
+                                                    src="/uploads/products/1/1.jpg" />
                                             </div>
 
                                             <div
                                                 class="w-full md:min-w-full md:col-span-3 md:float-right lg:float-right md:row-span-1 lg:row-span-1 lg:col-span-3 col-span-6  lg:px-4 md:px-0">
-                                                <div class="md:pr-6 lg:pr-16 ">
+                                                <div class="md:pr-6 lg:pr-16  md:bg-transparent lg:bg-transparent bg-gray-400 ">
 
                                                     <p
                                                         class=" text-lg leading-relaxed text-center sm:text-left text-gray-50">
                                                         {{ $product->SKU }}
                                                     </p>
                                                     <p id="stockdisponible"
-                                                        class=" text-xl leading-relaxed text-center sm:text-left md:w-2/4 lg:w-1/4 w-full font-bold bg-yellow-500 text-white">
+                                                        class=" text-xl leading-relaxed text-center sm:text-left md:w-2/4 lg:w-1/4  py-3 md:py-0 lg:py-0 xl:py-0 2xl:py-0  w-full font-bold bg-yellow-500  text-white">
                                                         STOCK
                                                         DISPONIBLE
                                                     </p>
-                                                    <div class="md:container md:mx-auto text-center sm:text-left -mb-10 md:mb-0"
-                                                        style="z-index: 99;background: transparent;">
+                                                    <div class="md:container md:mx-auto text-center sm:text-left  md:bg-transparent lg:bg-transparent bg-gray-400 md:mb-0"
+                                                        style="z-index: 99;">
                                                         <span class="material-icons text-xl text-yellow-300">
                                                             grade
                                                         </span>
@@ -94,29 +95,38 @@
                                                     <input type="hidden" id="precio" value="{{ $product->Precio }}">
                                                     <div class="flex flex-wrap md:pt-44 lg:pt-44 xl:pt-44">
                                                         {{ csrf_field() }}
-                                                        <div class="md:w-1/2 lg:w-1/3 w-full md:px-6 px-6 flex py-6 justify-center "
+                                                        <div class="md:w-1/2 lg:w-1/3 xl:w-1/3 2xl:w-1/3  w-1/3 md:px-6 px-6 flex py-6 justify-center "
                                                             style="background: white;">
                                                             @php
                                                             $ff = 0;
                                                             @endphp
                                                             @foreach ($StockColor as $colorstock)
                                                             @if ($colorstock->stock > 0)
-                                                            <div id="radio"
-                                                                class="justify-items-auto md:w-full md:px-3 px-6 "
-                                                                style="height:25px;width:25px;
+
+                                                            <label class="text-base py-0 text-center"
+                                                                style="z-index: 9999" for="color_group{{ $ff }}">
+
+                                                                <div id="radio"
+                                                                    class="justify-items-auto md:w-full md:px-3 px-6 "
+                                                                    style="height:25px;width:25px;
                                                                     margin:5px;display:inline-block;border-width: 1px;
                                                                                 border-style: solid;
                                                                                 border-color: black;
                                                                                 background-color: {{ $colorstock->color }}">
-                                                                <input type="radio" id="color_group{{ $ff++ }}"
-                                                                    name="color_group"
-                                                                    value="{{ $colorstock->Cod_EstiloColor }}"
-                                                                    data-stock="{{ $colorstock->stock }}">
-                                                                <label class="text-base py-4 absolute text-center"
-                                                                    style="z-index: 9999" for="color_group{{ $ff }}">
-                                                                    {{ $colorstock->stock }}</label>
 
-                                                            </div>
+                                                                    <p class="inline-block"> {{ $colorstock->stock }}
+                                                                    </p>
+
+                                                                    <input type="radio" id="color_group{{ $ff++ }}"
+                                                                        name="color_group"
+                                                                        value="{{ $colorstock->Cod_EstiloColor }}"
+                                                                        data-stock="{{ $colorstock->stock }}">
+
+                                                                </div>
+
+                                                            </label>
+
+
                                                             @endif
                                                             {{-- <input type="text" class=" " id="stock"
                                                                                                                     name="stock"
@@ -130,7 +140,7 @@
                                                         <!-- /// -->
 
                                                         <div
-                                                            class="md:w-1/2 lg:w-1/2 w-full lg:px-6 md:px-0 py-6 md:py-6 ">
+                                                            class="md:w-1/2 lg:w-1/3 xl:w-1/3 2xl:w-1/3  w-1/3lg:px-6 md:px-0 py-6 md:py-6 ">
                                                             <p
                                                                 class="md:pl-2 text-base md:text-sm leading-relaxed md:w-full md:pb-4 md:text-gray-50 lg:text-gray-50 text-gray-600 md:text-left lg:text-left text-center">
                                                                 COLORES DISPONIBLES
@@ -145,13 +155,13 @@
                                                 class=" col-span-6 md:col-span-3  lg:col-span-6   lg:col-start-4  md:col-start-4 py-8 lg:py-0 md:py-0">
                                                 <div class="md:flex md:flex-wrap  flex flex-wrap">
 
-                                                    <div class="md:w-1/2 lg:w-1/3 w-full ">
+                                                    <div class="md:w-1/2 lg:w-1/3 xl:w-1/3 2xl:w-1/3 w-1/2 ">
                                                         <img class="relative" src="/img/despacho.PNG" alt="">
                                                     </div>
                                                     <div class="lg:w-1/6">
 
                                                     </div>
-                                                    <div class="md:w-1/2 lg:w-1/3 w-full ">
+                                                    <div class="md:w-1/2 lg:w-1/3 xl:w-1/3 2xl:w-1/3 w-1/2 ">
                                                         <img class="relative" src="/img/retiro.PNG" alt="">
                                                     </div>
                                                 </div>
@@ -160,9 +170,11 @@
                                             <div class=" col-span-6 md:col-span-3 md:col-start-4 lg:col-start-4">
 
                                                 <div class="grid grid-cols-2">
-                                                    <div class="md:px-0 md:py-0 col-span-1 lg:px-2 bg-gray-300 lg:py-2 px-6 py-6 grid grid-cols-2  ">
+                                                    <div
+                                                        class="md:px-0 md:py-0 col-span-1 lg:px-2 bg-gray-300 lg:py-2 px-6 py-6 grid grid-cols-2  ">
                                                         <div class="inline-block align-middle ">
-                                                            <p class="pt-3 inline-block align-middle lg:text-base font-bold md:text-sm leading-relaxed    text-black">
+                                                            <p
+                                                                class="pt-3 inline-block align-middle lg:text-base font-bold md:text-sm leading-relaxed    text-black">
                                                                 CANTIDAD
                                                             </p>
                                                         </div>

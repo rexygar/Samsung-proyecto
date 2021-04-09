@@ -431,6 +431,22 @@
                                 </div>
                             </div>
                             <div class="grid-cols-12 grid grid-flow-row auto-rows-auto gap-2">
+                                <div class="text-2xl col-span-6 ">
+                                    <label class="text-base" for="regiones">Regiones:</label>
+
+                                    <select id="regiones" name="regiones" formcontrolname="selectRegion"
+                                        class="divide-y divide-gray-100 inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+                                    </select>
+
+                                </div>
+                                <div class="text-2xl col-span-6 ">
+                                    <label class="text-base" for="comunas">Comunas:</label>
+                                    <select id="comunas" name="comunas" formcontrolname="selectComuna"
+                                        class="divide-y divide-gray-100 inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="grid-cols-12 grid grid-flow-row auto-rows-auto gap-2">
                                 <div class="text-2xl col-span-8 ">
                                     <label class="text-base" for="NuevaDireccion">Direccion:</label>
                                     <input type="text" required name="NuevaDireccion" class="text-md w-full block px-3 py-2 rounded-lg 
@@ -563,7 +579,8 @@
                                     <div
                                         class="bg-white hover:border-green-300 my-2 box focus:bg-yellow-300 focus:border-black focus:border-2 border-2">
                                         Por favor ingrese su dirección
-                                        <input type="radio" onclick="openModal(Tipo_Entrega)" id="Tipo_Entrega" name="Tipo_Entrega" value="1">
+                                        <input type="radio" onclick="openModal(Tipo_Entrega)" id="Tipo_Entrega"
+                                            name="Tipo_Entrega" value="1">
                                         {{-- <button x-data @click="$dispatch('toggle-reassign-modal')">Toggle Reassign
                                             Modal</button> --}}
                                     </div>
@@ -610,68 +627,70 @@
     </div>
     <style>
         .animated {
-          -webkit-animation-duration: 1s;
-          animation-duration: 1s;
-          -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
+            -webkit-animation-duration: 1s;
+            animation-duration: 1s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
         }
-      
+
         .animated.faster {
-          -webkit-animation-duration: 500ms;
-          animation-duration: 500ms;
+            -webkit-animation-duration: 500ms;
+            animation-duration: 500ms;
         }
-      
+
         .fadeIn {
-          -webkit-animation-name: fadeIn;
-          animation-name: fadeIn;
+            -webkit-animation-name: fadeIn;
+            animation-name: fadeIn;
         }
-      
+
         .fadeOut {
-          -webkit-animation-name: fadeOut;
-          animation-name: fadeOut;
+            -webkit-animation-name: fadeOut;
+            animation-name: fadeOut;
         }
-      
+
         @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-      
-          to {
-            opacity: 1;
-          }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
-      
+
         @keyframes fadeOut {
-          from {
-            opacity: 1;
-          }
-      
-          to {
-            opacity: 0;
-          }
+            from {
+                opacity: 1;
+            }
+
+            to {
+                opacity: 0;
+            }
         }
-      </style>
+    </style>
     <div class="main-modal fixed w-full h-100 inset-0 z-50 overflow-hidden flex justify-center items-center animated fadeIn faster"
-    style="background: rgba(0,0,0,.7);">
-          <div
-              class="border border-teal-500 shadow-lg modal-container bg-white mx-auto rounded z-50 overflow-y-auto">
-              <div class="modal-content py-4 text-left px-6">
-                  <!--Title-->
-                  <div class="flex justify-between items-center pb-3">
-                      <p class="text-2xl font-bold">Cambiar Dirección</p>
-                  </div>
-                  <!--Body-->
-                  <div class="my-5">
-                      <input type="hidden" id="idDelete" value="">
-                        ¿Está seguro que desea Eliminar este registro?
-                  </div>
-                  <!--Footer-->
-                  <div class="flex justify-end pt-2">
-                      <button class="focus:outline-none modal-close px-4 bg-gray-400 p-3 rounded-lg text-black hover:bg-gray-300">Cancelar</button>
-                      <button class="focus:outline-none px-4 bg-green-500 p-3 ml-3 rounded-lg text-white hover:bg-green-400" onclick="eliminar()">Eliminar</button>
-                  </div>
-              </div>
-          </div>
+        style="background: rgba(0,0,0,.7);">
+        <div class="border border-teal-500 shadow-lg modal-container bg-white mx-auto rounded z-50 overflow-y-auto">
+            <div class="modal-content py-4 text-left px-6">
+                <!--Title-->
+                <div class="flex justify-between items-center pb-3">
+                    <p class="text-2xl font-bold">Cambiar Dirección</p>
+                </div>
+                <!--Body-->
+                <div class="my-5">
+                    <input type="hidden" id="idDelete" value="">
+                    ¿Está seguro que desea Eliminar este registro?
+                </div>
+                <!--Footer-->
+                <div class="flex justify-end pt-2">
+                    <button
+                        class="focus:outline-none modal-close px-4 bg-gray-400 p-3 rounded-lg text-black hover:bg-gray-300">Cancelar</button>
+                    <button
+                        class="focus:outline-none px-4 bg-green-500 p-3 ml-3 rounded-lg text-white hover:bg-green-400"
+                        onclick="eliminar()">Eliminar</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -704,7 +723,7 @@
                       if (event.target == modal) modalClose();
                   }
               }
-      </script>
+    </script>
     @endif
     {{-- Seleccionar --}}
 </div>

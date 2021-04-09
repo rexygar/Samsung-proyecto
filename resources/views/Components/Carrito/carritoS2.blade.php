@@ -42,12 +42,12 @@
 
                             Región
 
-                            <select id="regiones" formcontrolname="selectRegion" class="divide-y divide-gray-100 inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+                            {{-- <select id="regiones" formcontrolname="selectRegion" class="divide-y divide-gray-100 inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
                             </select>
                             <div class="py-5"></div>
                             <select id="comunas" formcontrolname="selectComuna" class="divide-y divide-gray-100 inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
                                 
-                            </select>
+                            </select> --}}
                             <div class="py-5"></div>
                             <input type="hidden" id="urlGuardar" value="{{ route('comuna') }}">
                             <button id="guardar" class="text-lg font-semibold 
@@ -130,8 +130,8 @@
 
                                     <!--Card 1-->
                                     <div class=" w-full lg:max-w-full lg:flex">
-                                        <div class="h-24 lg:h-24 lg:w-24 flex-none bg-cover bg-center  rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-                                            style="background-image: url({{ url('../uploads/products/1/buds.jpg') }});">
+                                        <div class="h-24 lg:h-24 lg:w-24 flex-none rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+                                            style="background-image: url({{ url('../uploads/products/1/buds.jpg') }});background-repeat: no-repeat;background-size: contain;">
                                         </div>
                                         <div class=" rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
                                             style="background-color: aliceblue">
