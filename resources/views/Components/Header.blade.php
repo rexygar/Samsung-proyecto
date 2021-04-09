@@ -78,7 +78,7 @@
                         style="border-color: #F8AF22"><strong>{{ __('Registrarse') }}</strong></a>
 
 
-                    <a href="#"
+                    <a href="{{ route('seguimiento') }}"
                         class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
                         style="border-color: #F8AF22"><strong>{{ __('Seguimiento') }}</strong></a>
 
@@ -104,7 +104,7 @@
                     </a><a href="{{route('carrito')}}"
                         class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
                         style="border-color: #F8AF22"><i class="fas fa-shopping-cart"></i></a>
-                    <a href="#"
+                    <a href="{{ route('seguimiento') }}"
                         class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
                         style="border-color: #F8AF22"><strong>{{ __('Seguimiento') }}</strong></a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">

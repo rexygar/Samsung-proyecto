@@ -50,6 +50,11 @@ Route::post('/perfileditar', [App\Http\Controllers\UsuarioController::class, 'up
 
 Route::get('/Paguina-Mantencion',  [App\Http\Controllers\ApiController::class, 'Mantencion'])->name('Mantencion');
 
+Route::get('/Seguimiento', function(){
+    return view('Tracing.seguimiento');
+})->name('seguimiento');
+Route::POST('/orden', [App\Http\Controllers\MainController::class, 'seguimiento'])->name('orden.seguimiento');
+
 Route::get('/ej', function () {
     return view('welcome');
 });

@@ -769,4 +769,19 @@ class MainController extends Controller
         }
         return view('dashboard.lista_Producto');
     }
+
+    public function seguimiento(Request $request){
+        try {
+            if($request->ajax()){
+                $ord = (isset($request->ord) && $request->ord != null) ? $request->ord : '';
+
+                $despacho = Despacho::where('Ordentransporte', $ord)->get();
+
+                return ['message' => 1, 'despacho' => $despacho];
+
+            }
+        } catch (\Throwable $th) {
+            return $th;
+        }
+    }
 }

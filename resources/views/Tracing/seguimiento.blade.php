@@ -129,13 +129,14 @@
 
 
                     <!--Card hidden-->
+                    <input type="hidden" id="url" value="{{ route('orden.seguimiento') }}">
                     <div class=" w-full lg:max-w-full lg:flex">
                         <div class="grid grid-cols-12 w-full lg:max-w-full" style="background-color: aliceblue">
                             <div class="col-span-12 grid grid-cols-12 px-6">
                                 <div class="xl:col-span-6 2xl:col-span-6 lg:col-span-6 col-span-6 md:col-span-12">
                                     <label class="form-check-label" for="NuevoNombre">Numero de Orden:
                                     </label>
-                                    <input type="text" required name="NuevoNombre" id="NuevoNombre" class="text-md w-full block px-3 py-2 rounded-lg 
+                                    <input type="text" required name="orden" id="orden" class="text-md w-full block px-3 py-2 rounded-lg 
                                                         bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
                                                         focus:placeholder-gray-500
                                                         focus:bg-white 
@@ -164,7 +165,76 @@
 
 
             </article>
+            <article style="background-color: aliceblue" class="panel is-primary col-start-1 col-end-3" hidden>
+
+                <div class="panel-block" style="background-color: aliceblue">
+
+
+                    <!--Card hidden-->
+                    <div class=" w-full lg:max-w-full lg:flex">
+                        <div class="grid grid-cols-12 w-full lg:max-w-full" style="background-color: aliceblue">
+                            <div class="col-span-12 grid grid-cols-12 px-6">
+                                <div class="xl:col-span-6 2xl:col-span-6 lg:col-span-6 col-span-6 md:col-span-12">
+                                    <label class="form-check-label" for="NuevoNombre">Numero de Orden: XXXXXXXX
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class=" w-full lg:max-w-full lg:flex">
+                        <div class="grid grid-cols-12 w-full lg:max-w-full" style="background-color: aliceblue">
+                            <div class="col-span-12 grid grid-cols-12 px-6">
+                                <div class="xl:col-span-6 2xl:col-span-6 lg:col-span-6 col-span-6 md:col-span-12">
+                                    <label class="form-check-label" for="NuevoNombre">ESTADO DE LA ORDEN:
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" w-full lg:max-w-full lg:flex py-5 px-3">
+                    <div class="grid grid-cols-12 w-full lg:max-w-full" style="background-color: aliceblue">
+                        <div class="col-span-12 grid grid-cols-12 px-6">
+                            <div class="xl:col-span-6 2xl:col-span-6 lg:col-span-6 col-span-6 md:col-span-12">
+                                <label class="form-check-label" for="NuevoNombre">Observación de la Compra:
+                                </label>
+                                
+                            <div class="xl:col-span-6 2xl:col-span-6 lg:col-span-6 col-span-6 md:col-span-12 bg-gray-200">
+                                <label class="form-check-label" for="NuevoNombre">
+                                </label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class=" w-full lg:max-w-full lg:flex py-5 px-3">
+                    <div class="grid grid-cols-12 w-full lg:max-w-full" style="background-color: aliceblue">
+                        <div class="col-span-12 grid grid-cols-12 px-6">
+                            <div class="xl:col-span-6 2xl:col-span-6 lg:col-span-6 col-span-6 md:col-span-12">
+                                <label class="form-check-label" for="NuevoNombre">Productos:
+                                </label>
+                                
+                            <div class="xl:col-span-6 2xl:col-span-6 lg:col-span-6 col-span-6 md:col-span-12 bg-gray-200">
+                                <label class="form-check-label" for="NuevoNombre">
+                                </label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </article>  
+            <article style="background-color: aliceblue" class="panel is-primary col-start-1 col-end-3" hidden>
+
+                <div class="px-6">
+                    <p class=" tracking-normal py-1 border-b-2 border-opacity-25  text-gray-600
+                    border-dotted" style="background-color: aliceblue"><i class="fas fa-expand-alt"></i>
+                        NO SE ENCONTRÓ SEGUIMIENTO CON EL NÚMERO INGRESADO
+                    </p>
+                </div>
+            </article>  
         </div>
     </div>
-
+<script src="js/seguimiento.js"></script>
 </body><!-- /SECTION -->
