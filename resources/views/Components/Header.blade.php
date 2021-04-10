@@ -95,18 +95,21 @@
                     <a id="navbarDropdown"
                         class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
                         style="border-color: #F8AF22" href="{{ route('perfiles') }}">
-                        Mi Perfil
+                        <strong>Mi Perfil</strong>
                     </a>
                     <a class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
                         style="border-color: #F8AF22" href="{{ route('logout') }}" onclick="event.preventDefault();
                                            document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a><a href="{{route('carrito')}}"
-                        class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
-                        style="border-color: #F8AF22"><i class="fas fa-shopping-cart"></i></a>
+                        <strong>Cerrar sesión</strong>
+                    </a>
                     <a href="{{ route('seguimiento') }}"
                         class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
                         style="border-color: #F8AF22"><strong>{{ __('Seguimiento') }}</strong></a>
+                    <a href="{{route('carrito')}}"
+                        class="sm:text-md text-sm no-underline inline-block px-2 py-2   rounded-md bg-black text-white hover:text-yellow-300 "
+                        style="border-color: #F8AF22"> <i
+                            class="lg:text-base sm:text-xl xl:text-2xl md:text-xl px-0  lg:px-6 md:px-2  sm:px-1 fas fa-shopping-cart"></i></a>
+
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>

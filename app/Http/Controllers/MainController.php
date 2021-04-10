@@ -187,23 +187,34 @@ class MainController extends Controller
                 $descripcion = (isset($request->descripcion) && $request->descripcion != null) ? $request->descripcion : '';
                 $__token = $request->session()->token();
 
-                if ($idPago > 0) {
+                if ($idPago > 0) { //si id_pago mayor que 0
                     $reserva = Reserva::where('sku', $sku)->where('Cod_EstiloColor', $color)->where('__token', $__token)->first();
 
-                    if ($reserva !== null) {
-
+                    if ($reserva !== null) { //y reserva es distinto de nulo
+                        //update reserva
                         $reserva->reserva = $cant + $reserva->reserva;
                         $reserva->monto = $monto;
                         $reserva->Total = ($monto * $reserva->reserva);
                         $reserva->save();
+                        $idTransaccion = $reserva->idTransaccion;
 
-                        $get_detalle = Detalle::where('sku', $sku)->where('Cod_estiloColor', $color)->where('idTransaccion', $idPago)->first();
+                        //update detalle
+                        $get_detalle = Detalle::where('sku', $sku)->where('Cod_estiloColor', $color)->where('idTransaccion', $idTransaccion)->first();
                         if ($get_detalle !== null) {
                             $get_detalle->monto_uni = $monto;
+                            if (Auth::check()) {
+                                $id_usr = Auth::id();
+
+                                $get_detalle->id_Usuario = $id_usr;
+                            } else {
+                                $get_detalle->id_CSL = null;
+                            }
                             $get_detalle->total = ($monto * $reserva->reserva);
                             $get_detalle->Cantidad = $reserva->reserva;
                             $get_detalle->save();
                         }
+
+                        return ['triggerer' => $get_detalle, 'id' => 1];
                     } else {
                         //crear reserva
                         $reserva = new Reserva();
@@ -216,17 +227,26 @@ class MainController extends Controller
                         $reserva->idTransaccion = $idPago;
                         $reserva->__token = $__token;
                         $reserva->save();
-
+                        $idTransaccion = $reserva->idTransaccion;
 
                         //crear detalle
                         $detalle = new Detalle();
                         $detalle->sku = $sku;
                         $detalle->monto_uni = $monto;
                         $detalle->total = ($monto * $reserva->reserva);
+                        if (Auth::check()) {
+                            $id_usr = Auth::id();
+
+                            $detalle->id_Usuario = $id_usr;
+                        } else {
+                            $detalle->id_CSL = null;
+                        }
                         $detalle->Cod_EstiloColor = $color;
                         $detalle->Cantidad = $reserva->reserva;
-                        $detalle->idTransaccion = $idPago;
+                        $detalle->idTransaccion = $idTransaccion;
                         $detalle->save();
+
+                        return ['triggerer' => $detalle, 'id' => 2];
                     }
                 } else {
                     $pago = new Transaccion();
@@ -248,10 +268,18 @@ class MainController extends Controller
                     //crear detalle
                     $detalle = new Detalle();
                     $detalle->sku = $sku;
+                    if (Auth::check()) {
+                        $id_usr = Auth::id();
+
+                        $detalle->id_Usuario = $id_usr;
+                    } else {
+                        $detalle->id_CSL = null;
+                    }
                     $detalle->monto_uni = $monto;
                     $detalle->total = ($monto * $reserva->reserva);
-                    $detalle->Cantidad = $color;
-                    $detalle->idTransaccion = $pago->id;
+                    $detalle->Cod_EstiloColor = $color;
+                    $detalle->Cantidad = $reserva->reserva;
+                    $detalle->idTransaccion = $idPago;
                     $detalle->save();
                 }
 
@@ -290,11 +318,7 @@ class MainController extends Controller
             $id = Auth::id();
             $direccion = Direccion::where('user_id', $id)->get();
         }
-        $tipo_entrega = 0;
-        if (session()->has('tipo_entrega')) {
-        } else {
-            session(['tipo_entrega' => $tipo_entrega]);
-        }
+
         return view('Vistas.carritov2', ['reserva' => $reserva, 'pago' => $pago]);
     }
 
@@ -314,13 +338,13 @@ class MainController extends Controller
                 $monto = Reserva::where('idTransaccion', $idPago)->sum('Total');
 
                 $monto += intval(session('precio_comuna'));
-                
+
                 $s = strval($idPago);
                 $order = $s;
-                for ($i=10; $i > strlen($s); $i--) { 
-                    $order = "0".$order;
+                for ($i = 10; $i > strlen($s); $i--) {
+                    $order = "0" . $order;
                 }
-                
+
                 $pago = $this->TransbankController->initTransaction($monto, $order, $idPago);
             }
         } else {
@@ -355,15 +379,19 @@ class MainController extends Controller
             $id = Auth::id();
             $direccion = Direccion::where('user_id', $id)->get();
         }
-        $tipo_entrega = 0;
-        if (session()->has('tipo_entrega')) {
+        $precioDespacho = 0;
+
+        if (session()->has('precio_comuna')) {
+
+            $precioDespacho = session('precio_comuna');
         } else {
-            session(['tipo_entrega' => $tipo_entrega]);
+            session(['precio_comuna' => $precioDespacho]);
         }
+
         if ($pago == null) {
             return view('Vistas.carritov2', ['reserva' => $reserva, 'pago' => $pago]);
         } else {
-            return view('Vistas.carritoStepper', ['reserva' => $reserva, 'pago' => $pago, 'tiendas' => $tiendas, 'direccion' => $direccion, 'tipo_entrega' => $tipo_entrega]);
+            return view('Vistas.carritoStepper', ['reserva' => $reserva, 'pago' => $pago, 'tiendas' => $tiendas, 'direccion' => $direccion,   'precio_comuna' => $precioDespacho]);
         }
     }
     public static function getStepper()
@@ -435,18 +463,28 @@ class MainController extends Controller
 
                 $idPago = session('idPago');
 
+                $direccion = (isset($request->direccion) && $request->direccion != null) ? $request->direccion : '';
+                $nom = (isset($request->nom) && $request->nom != null) ? $request->nom : '';
+                $apel = (isset($request->apel) && $request->apel != null) ? $request->apel : '';
+                $detalle_1 = $request->detalle_1;
+                $detalle_2 = $request->detalle_2;
+                $reg = (isset($request->reg) && $request->reg != null) ? $request->reg : '';
+                $com = (isset($request->com) && $request->com != null) ? $request->com : '';
+
+
                 if (Auth::check()) {
                     $id = Auth::id();
                     // $get_dir = Direccion::where('user_id', $id)->first();
 
-                    $dir = new Direccion();
-                    $direccion = (isset($request->direccion) && $request->direccion != null) ? $request->direccion : '';
-                    $nom = (isset($request->nom) && $request->nom != null) ? $request->nom : '';
-                    $apel = (isset($request->apel) && $request->apel != null) ? $request->apel : '';
+                    $dir = new Direccion(); //crea direccion (n) del usuario
+
+
                     $detalle_1 = $request->detalle_1;
                     $detalle_2 = $request->detalle_2;
 
                     $dir->calle = $direccion;
+                    $dir->region = $reg;
+                    $dir->comuna = $com;
                     $dir->numero = $detalle_1;
                     $dir->depto = $detalle_2;
                     $dir->user_id = $id;
@@ -454,10 +492,26 @@ class MainController extends Controller
                     $dir->nombre_despacho = $nom;
                     $dir->apellido_despacho = $apel;
                     $dir->save();
-                    $id_dir = $dir->id;
-                    $tipo_entrega = 1;
+                    $id_dir = $dir->id; //obtiene la direccion (n) del usuario
+
+
+
+
                     $get_detalle = Detalle::where('idTransaccion', $idPago)->first(); //busca los detalles con la id de pago
+
                     if ($get_detalle !== null) { //si no es nulo
+                        $comuna = Despacho::where('comuna', $com)->first(); //busca si existe la comuna seleccionada
+                        if ($comuna !== null) {
+                            $p_Despacho = $comuna->precio; //si existe, le asigna el precio
+                        } else {
+                            $p_Despacho = session('precio_comuna');  // 0 por default
+                        }
+                        if (session()->has('precio_comuna')) {
+
+                            session(['precio_comuna' => $p_Despacho]);
+                        } else {
+                            session(['precio_comuna' => $p_Despacho]);
+                        }
                         // $get_detalle->id_CSL = $color;
                         $udpte_detalle = Detalle::where('idTransaccion', $idPago)->get();
                         // $updte_detalle = Detalle::whereIn('idTransaccion', $idPago)->where('id_Usuario', $id_usr)->get(); //busca los detalles con la id de pago
@@ -465,99 +519,123 @@ class MainController extends Controller
 
                         foreach ($udpte_detalle as $detalle) {
                             $detalle->id_CSL = null;
-                            $detalle->id_usuario = $id;
+                            $detalle->id_Usuario = $id;
                             $detalle->tipo_entrega = "Despacho a domicilio";
                             $detalle->id_direccion =  $id_dir;
+                            $detalle->valor_despacho =  $p_Despacho;
                             $detalle->Cod_Tienda = null;
                             $detalle->id_retiro_local = null;
                             $detalle->save();
                         }
-                        return ['message' => $udpte_detalle, 'triggerer' => $get_detalle];
-                    }
-
-
-                    if (session()->has('tipo_entrega')) {
-                        session(['tipo_entrega' => $tipo_entrega]);
-                    } else {
-                        session(['tipo_entrega' => $tipo_entrega]);
+                        return ['message' => $udpte_detalle, 'triggerer' => $get_detalle, 'id' => 1, 'precio_comuna' => $p_Despacho, 'direccion' => $dir];
                     }
                 } else {
                     $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
-                    if ($usr_no_logeado == null) {
-                        /////
+                    if ($usr_no_logeado === null) {
+                        /////crear
 
-                        $direccion = (isset($request->direccion) && $request->direccion != null) ? $request->direccion : '';
-                        $nom = (isset($request->nom) && $request->nom != null) ? $request->nom : '';
-                        $apel = (isset($request->apel) && $request->apel != null) ? $request->apel : '';
-                        $detalle_1 = $request->detalle_1;
-                        $detalle_2 = $request->detalle_2;
                         $usr_no_logeado = new no_usr();
                         $usr_no_logeado->direccion = $direccion;
                         $usr_no_logeado->numero = $detalle_1;
                         $usr_no_logeado->detalle = $detalle_2;
                         $usr_no_logeado->nombre_despacho = $nom;
                         $usr_no_logeado->apellido_despacho = $apel;
+                        $usr_no_logeado->region = $reg;
+                        $usr_no_logeado->comuna = $com;
                         $usr_no_logeado->tipo_entrega = "Despacho a domicilio";
-                        $tipo_entrega = 1;
-                        if (session()->has('tipo_entrega')) {
-                            session(['tipo_entrega' => $tipo_entrega]);
-                        } else {
-                            session(['tipo_entrega' => $tipo_entrega]);
-                        }
-
                         $usr_no_logeado->save();
                         $id_usr_csl = $usr_no_logeado->id;
-                        //
 
+                        $get_detalle = Detalle::where('idTransaccion', $idPago)->first(); //busca los detalles con la id de pago
+                        $comuna = Despacho::where('comuna', $com)->first();
+                        if ($comuna !== null) {
+                            $p_Despacho = $comuna->precio; //si existe, le asigna el precio
+                        } else {
+                            $p_Despacho = session('precio_comuna'); // 0 por default
+                        }
+                        if (session()->has('precio_comuna')) {
+
+                            session(['precio_comuna' => $p_Despacho]);
+                        } else {
+                            session(['precio_comuna' => $p_Despacho]);
+                        }
+                        if ($get_detalle !== null) { //si no es nulo
+                            $udpte_detalle = Detalle::where('idTransaccion', $idPago)->get();
+                            $id_dir = (isset($request->direccion) && $request->direccion != null) ? $request->direccion : '';
+                            foreach ($udpte_detalle as $detalle) {
+
+                                $detalle->id_CSL = $id_usr_csl;
+                                $detalle->id_Usuario = null;
+                                $detalle->tipo_entrega = "Despacho a domicilio";
+                                $detalle->id_direccion =  null;
+                                $detalle->valor_despacho =  $p_Despacho;
+                                $detalle->Cod_Tienda = null;
+                                $detalle->region = $usr_no_logeado->region;
+                                $detalle->comuna = $usr_no_logeado->comuna;
+
+                                $detalle->id_retiro_local = null;
+                                $detalle->save();
+                            }
+                        }
+                        return ['message' => $udpte_detalle, 'triggerer' => $get_detalle, 'id' => 2, 'precio_comuna' => $p_Despacho];
                     } else {
 
                         $direccion = (isset($request->direccion) && $request->direccion != null) ? $request->direccion : '';
                         $nom = (isset($request->nom) && $request->nom != null) ? $request->nom : '';
                         $apel = (isset($request->apel) && $request->apel != null) ? $request->apel : '';
+                        $reg = (isset($request->reg) && $request->reg != null) ? $request->reg : '';
+                        $com = (isset($request->com) && $request->com != null) ? $request->com : '';
+                        //update
                         $detalle_1 = $request->detalle_1;
                         $detalle_2 = $request->detalle_2;
                         $usr_no_logeado->direccion = $direccion;
                         $usr_no_logeado->numero = $detalle_1;
                         $usr_no_logeado->detalle = $detalle_2;
                         $usr_no_logeado->nombre_despacho = $nom;
+                        $usr_no_logeado->region = $reg;
+                        $usr_no_logeado->comuna = $com;
                         $usr_no_logeado->apellido_despacho = $apel;
                         $usr_no_logeado->tipo_entrega = "Despacho a domicilio";
-                        $tipo_entrega = 1;
-                        if (session()->has('tipo_entrega')) {
-                            session(['tipo_entrega' => $tipo_entrega]);
-                        } else {
-                            session(['tipo_entrega' => $tipo_entrega]);
-                        }
                         $usr_no_logeado->save();
                         $id_usr_csl = $usr_no_logeado->id;
 
 
                         $get_detalle = Detalle::where('idTransaccion', $idPago)->first(); //busca los detalles con la id de pago
+                        $comuna = Despacho::where('comuna', $com)->first();
+                        if ($comuna !== null) {
+                            $p_Despacho = $comuna->precio; //si existe, le asigna el precio
+                        } else {
+                            $p_Despacho = session('precio_comuna');  // 0 por default
+                        }
+                        if (session()->has('precio_comuna')) {
+
+                            session(['precio_comuna' => $p_Despacho]);
+                        } else {
+                            session(['precio_comuna' => $p_Despacho]);
+                        }
                         if ($get_detalle !== null) { //si no es nulo
-                            // $get_detalle->id_CSL = $color;
                             $udpte_detalle = Detalle::where('idTransaccion', $idPago)->get();
-                            // $updte_detalle = Detalle::whereIn('idTransaccion', $idPago)->where('id_Usuario', $id_usr)->get(); //busca los detalles con la id de pago
-                            // $updte_detalle->id_CSL = $color;
-                            $id_dir = (isset($request->direccion) && $request->direccion != null) ? $request->direccion : '';
+
                             foreach ($udpte_detalle as $detalle) {
 
                                 $detalle->id_CSL = $id_usr_csl;
-                                $detalle->id_usuario = null;
+                                $detalle->id_Usuario = null;
                                 $detalle->tipo_entrega = "Despacho a domicilio";
                                 $detalle->id_direccion =  null;
+                                $detalle->valor_despacho =  $comuna->precio;
                                 $detalle->Cod_Tienda = null;
                                 $detalle->id_retiro_local = null;
                                 $detalle->save();
                             }
-                            return ['message' => $udpte_detalle, 'triggerer' => $get_detalle];
                         }
+                        return ['message' => $udpte_detalle, 'triggerer' => $get_detalle, 'id' => 3, 'precio_comuna' => $p_Despacho];
                     }
                 }
                 $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
                 // $get_detalle = no_usr::where('id_Usuario', $id)->first();
 
 
-                return ['message' => session('tipo_entrega'), 'status' => 0];
+                return ['status' => 0];
             } catch (\Throwable $th) {
                 return ['status' => $th];
             }
@@ -570,9 +648,6 @@ class MainController extends Controller
                 $idPago = session('idPago');
                 // return "estado 0";
                 //crear
-
-
-
                 if (Auth::check()) { //si el usr esta logeado
                     $id_usr = Auth::id(); //obten la id
                     $get_tienda = retiro_local::where('idTransaccion_FK', $idPago)->where('idUsuario_FK', $id_usr)->first(); //busca un retiro en tienda con el usuario
@@ -592,41 +667,53 @@ class MainController extends Controller
                         $id_retiro = $get_tienda->id; //y obten la ultima id
                     }
 
-                    $get_detalle = Detalle::where('idTransaccion', $idPago)->where('id_Usuario', $id_usr)->first();
+                    $p_Despacho = 0;
+                    if (session()->has('precio_comuna')) {
+
+                        session(['precio_comuna' => $p_Despacho]);
+                    } else {
+                        session(['precio_comuna' => $p_Despacho]);
+                    }
+
+                    $get_detalle = Detalle::where('idTransaccion', $idPago)->first();
+
+
                     if ($get_detalle !== null) { //si no es nulo
-                        $updte_detalle = Detalle::where('idTransaccion', $idPago)->where('id_Usuario', $id_usr)->get(); //busca los detalles con la id de pago
-                        // $updte_detalle->id_CSL = $color;
+                        $updte_detalle = Detalle::where('idTransaccion', $idPago)->get(); //busca los detalles con la id de pago
+
                         foreach ($updte_detalle as $detalle) {
                             $detalle->id_CSL = null;
-                            $detalle->id_usuario = $id_usr;
+                            $detalle->id_Usuario = $id_usr;
                             $detalle->tipo_entrega = "Retiro en tienda";
+                            $detalle->valor_despacho =  $p_Despacho;
                             $detalle->id_direccion = null;
                             $detalle->Cod_Tienda = $id_tienda;
                             $detalle->id_retiro_local = $id_retiro;
                             $detalle->save();
                         }
-                        return dd($updte_detalle);
-                        // $updte_detalle->update(['id_usuario' => $id_usr]);
-                        // $updte_detalle->update(['tipo_entrega' => "Retiro en tienda"]);
-                        // $updte_detalle->update(['id_direccion' => null]);
-                        // $updte_detalle->update(['id_CSL' => null]);
-                        // $updte_detalle->update(['id_retiro_local' => $id_retiro]);
-                        // $updte_detalle->save(); //actualiza los valores (id_usuario,tipo_entrega,id_direccion,id_CSL,Cod_Tienda) y guarda
-
                     }
+                    return ['triggerer' => $updte_detalle, 'id' => $p_Despacho];
+                    // return response()->json(array('msg' => $p_Despacho), 200);
                 } else {
                     $get_tienda = retiro_local::where('idTransaccion_FK', $idPago)->first();
 
                     if ($get_tienda == null) { //si el usr no esta logeado
-                        /////
+
                         $id_tienda = (isset($request->tienda) && $request->tienda != null) ? $request->tienda : '';
                         $get_tienda = new retiro_local();
                         $get_tienda->idTransaccion_FK = $idPago;
+
+                        $get_tienda->idTransaccion_FK = $idPago;
                         $get_tienda->Cod_tienda_FK = $id_tienda;
                         $get_tienda->save();
-                        $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
+                        $usr_no_logeado = no_usr::where('id_transaccion_FK', $get_tienda->idTransaccion_FK)->first();
                         if ($usr_no_logeado  !== null) {
                             $id_usr_no_logeado = $usr_no_logeado->id;
+                            $usr_no_logeado->direccion = null;
+                            $usr_no_logeado->comuna = null;
+                            $usr_no_logeado->region = null;
+                            $usr_no_logeado->numero = null;
+                            $usr_no_logeado->detalle = null;
                             $get_tienda->idComprasinlogin_FK = $id_usr_no_logeado;
                             $get_tienda->save();
                             $id_retiro = $get_tienda->id;
@@ -635,70 +722,94 @@ class MainController extends Controller
                         $id_tienda = (isset($request->tienda) && $request->tienda != null) ? $request->tienda : '';
                         $get_tienda->Cod_tienda_FK = $id_tienda;
                         $get_tienda->save();
-                        // return response()->json(['success' => 'Se ha actualizado correctamente']);
                         $id_retiro = $get_tienda->id;
+
+                        $usr_no_logeado = no_usr::where('id_transaccion_FK', $get_tienda->idTransaccion_FK)->first();
+                        if ($usr_no_logeado  !== null) {
+
+                            $usr_no_logeado->direccion = null;
+                            $usr_no_logeado->comuna = null;
+                            $usr_no_logeado->region = null;
+                            $usr_no_logeado->numero = null;
+                            $usr_no_logeado->tipo_entrega = "Retiro en tienda";
+                            $usr_no_logeado->detalle = null;
+                            $usr_no_logeado->save();
+                        }
+
+                        // return response()->json(['success' => 'Se ha actualizado correctamente']);
+
+
                     }
                     $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
                     $get_detalle = Detalle::where('idTransaccion', $idPago)->first();
                     if ($get_detalle != null) {
 
                         if ($usr_no_logeado != null) {
-                            // $updte_detalle->id_CSL = $color;
-                            // $updte_detalle = Detalle::whereIn('idTransaccion', $idPago)->get();
                             $id_usr_no_logeado = $usr_no_logeado->id;
+                            $usr_no_logeado->direccion = null;
+                            $usr_no_logeado->comuna = null;
+                            $usr_no_logeado->region = null;
+                            $usr_no_logeado->numero = null;
+                            $usr_no_logeado->detalle = null;
+                            $usr_no_logeado->tipo_entrega = "Retiro en tienda";
+                            $usr_no_logeado->save();    
+                            $p_Despacho = 0;
+                            if (session()->has('precio_comuna')) {
+
+                                session(['precio_comuna' => $p_Despacho]);
+                            } else {
+                                session(['precio_comuna' => $p_Despacho]);
+                            }
                             $updte_detalle = Detalle::where('idTransaccion', $idPago)->get();
 
                             foreach ($updte_detalle as $detalle) {
                                 $detalle->id_CSL = $id_usr_no_logeado;
-                                $detalle->id_usuario = null;
+                                $detalle->id_Usuario = null;
                                 $detalle->tipo_entrega = "Retiro en tienda";
                                 $detalle->id_direccion = null;
+                                $detalle->valor_despacho =  $p_Despacho;
                                 $detalle->Cod_Tienda = $id_tienda;
                                 $detalle->id_retiro_local = $id_retiro;
                                 $detalle->save();
                             }
                         }
                     }
+                    return ['triggerer' => $updte_detalle, 'id' => $p_Despacho];
+                    // return response()->json(array('msg' => $p_Despacho), 200);
                 }
-                $tipo_entrega = 5;
-                if (session()->has('tipo_entrega')) {
-                    session(['tipo_entrega' => $tipo_entrega]);
-                } else {
-                    session(['tipo_entrega' => $tipo_entrega]);
-                }
-                return ['message' => session('tipo_entrega'), 'status' => 1];
+
+                return ['status' => 0];
             } catch (\Throwable $th) {
-
-                return ['message' => $th, 'status' => 1];
+                return ['status' => $th];
             }
         }
     }
 
-    public function mantener_comuna(Request $request){
-        try {
-            if($request->ajax()){
-                $reg = (isset($request->reg) && $request->reg != null) ? $request->reg : '';
-                $com = (isset($request->com) && $request->com != null) ? $request->com : '';
+    // public function mantener_comuna(Request $request) metodo ya no usado; ver add direccion para encontrar el #'precio' => #session('precio_comuna')];
+    // {
+    //     try {
+    //         if ($request->ajax()) {
+    //             $reg = (isset($request->reg) && $request->reg != null) ? $request->reg : '';
+    //             $com = (isset($request->com) && $request->com != null) ? $request->com : '';
 
-                $comuna = Despacho::where('comuna', $com)->first();
-                $idPago = session('idPago');
+    //             $comuna = Despacho::where('comuna', $com)->first();
+    //             $idPago = session('idPago');
 
 
-                // session('precio_comuna')
+    //             // session('precio_comuna')
 
-                if(session()->has('precio_comuna')){
-                    session(['precio_comuna' => $comuna->precio]);
-                } else {
-                    session(['precio_comuna' => $comuna->precio]);
-                }
+    //             if (session()->has('precio_comuna')) {
+    //                 session(['precio_comuna' => $comuna->precio]);
+    //             } else {
+    //                 session(['precio_comuna' => $comuna->precio]);
+    //             }
 
-                return ['message' => $comuna->comuna, 'precio' => session('precio_comuna')];
-
-            }
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
-    }
+    //             return ['message' => $comuna->comuna, 'precio' => session('precio_comuna')];
+    //         }
+    //     } catch (\Throwable $th) {
+    //         //throw $th;
+    //     }
+    // }
 
     public function login_usr(Request $request)
     {
@@ -750,35 +861,40 @@ class MainController extends Controller
                 $get_detalle = Detalle::where('idTransaccion', $idPago)->first(); //busca los detalles con la id de pago
                 if ($get_detalle !== null) { //si no es nulo
                     // $get_detalle->id_CSL = $color;
+                    $dir_com = $get_detalle->valor_despacho;
                     $udpte_detalle = Detalle::where('idTransaccion', $idPago)->get();
+                    $comuna = Despacho::where('comuna', $dir_com)->first();
+
                     // $updte_detalle = Detalle::whereIn('idTransaccion', $idPago)->where('id_Usuario', $id_usr)->get(); //busca los detalles con la id de pago
                     // $updte_detalle->id_CSL = $color;
                     $id_dir = (isset($request->direccion) && $request->direccion != null) ? $request->direccion : '';
+                    $p_Despacho = $comuna->precio;
                     foreach ($udpte_detalle as $detalle) {
                         $detalle->id_CSL = null;
-                        $detalle->id_usuario = $id_usr;
+                        $detalle->id_Usuario = $id_usr;
                         $detalle->tipo_entrega = "Despacho a domicilio";
                         $detalle->id_direccion =  $id_dir;
+                        $detalle->valor_despacho =  $p_Despacho;
                         $detalle->Cod_Tienda = null;
                         $detalle->id_retiro_local = null;
                         $detalle->save();
                     }
-                    return dd($udpte_detalle);
                 }
+                return response()->json(array('msg' => $p_Despacho), 200);
             }
         }
         return view('dashboard.lista_Producto');
     }
 
-    public function seguimiento(Request $request){
+    public function seguimiento(Request $request)
+    {
         try {
-            if($request->ajax()){
+            if ($request->ajax()) {
                 $ord = (isset($request->ord) && $request->ord != null) ? $request->ord : '';
 
                 $despacho = Despacho::where('Ordentransporte', $ord)->get();
 
                 return ['message' => 1, 'despacho' => $despacho];
-
             }
         } catch (\Throwable $th) {
             return $th;

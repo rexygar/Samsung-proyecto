@@ -298,8 +298,8 @@
 
                                     <!--Card 1-->
                                     <div class=" w-full lg:max-w-full lg:flex">
-                                        <div class=" lg: lg:w-24 flex-none bg-cover bg-center  rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-                                            style="background-image: url({{ url('../uploads/products/1/buds.jpg') }});">
+                                        <div class=" lg: lg:w-24 flex-none   rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+                                            style="background-image: url({{ url('../uploads/products/1/buds.jpg') }});background-repeat: no-repeat;background-size: contain;">
                                         </div>
                                         <div class=" rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
                                             style="background-color: aliceblue">
@@ -413,7 +413,7 @@
                             <div class="grid-cols-12 grid grid-flow-row auto-rows-auto gap-2">
                                 <div class="text-2xl col-span-6 ">
                                     <label class="text-base" for="NombreDireccion">Nombre:</label>
-                                    <input type="text" required name="NombreDireccion" class="text-md w-full block px-3 py-2 rounded-lg 
+                                    <input type="text" required name="NombreDireccion" class="text-sm w-full block px-3 py-2 rounded-lg 
                                                         bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
                                                         focus:placeholder-gray-500
                                                         focus:bg-white 
@@ -422,7 +422,7 @@
                                 </div>
                                 <div class="text-2xl col-span-6 ">
                                     <label class="text-base" for="ApellidoDireccion">Apellido</label>
-                                    <input type="text" required name="ApellidoDireccion" class="text-md w-full block px-3 py-2 rounded-lg 
+                                    <input type="text" required name="ApellidoDireccion" class="text-sm w-full block px-3 py-2 rounded-lg 
                                                         bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
                                                         focus:placeholder-gray-500
                                                         focus:bg-white 
@@ -434,22 +434,30 @@
                                 <div class="text-2xl col-span-6 ">
                                     <label class="text-base" for="regiones">Regiones:</label>
 
-                                    <select id="regiones" name="regiones" formcontrolname="selectRegion"
-                                        class="divide-y divide-gray-100 inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+                                    <select id="regiones" name="regiones" formcontrolname="selectRegion" class="text-sm w-full block px-3 py-2 rounded-lg 
+                                        bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
+                                        focus:placeholder-gray-500
+                                        focus:bg-white 
+                                        focus:border-gray-600  
+                                        focus:outline-none">
                                     </select>
 
                                 </div>
                                 <div class="text-2xl col-span-6 ">
                                     <label class="text-base" for="comunas">Comunas:</label>
-                                    <select id="comunas" name="comunas" formcontrolname="selectComuna"
-                                        class="divide-y divide-gray-100 inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500">
+                                    <select id="comunas" name="comunas" formcontrolname="selectComuna" class="text-sm w-full block px-3 py-2 rounded-lg 
+                                        bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
+                                        focus:placeholder-gray-500
+                                        focus:bg-white 
+                                        focus:border-gray-600  
+                                        focus:outline-none">
                                     </select>
                                 </div>
                             </div>
                             <div class="grid-cols-12 grid grid-flow-row auto-rows-auto gap-2">
                                 <div class="text-2xl col-span-8 ">
                                     <label class="text-base" for="NuevaDireccion">Direccion:</label>
-                                    <input type="text" required name="NuevaDireccion" class="text-md w-full block px-3 py-2 rounded-lg 
+                                    <input type="text" required name="NuevaDireccion" class="text-sm w-full block px-3 py-2 rounded-lg 
                                                             bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
                                                             focus:placeholder-gray-500
                                                             focus:bg-white 
@@ -458,7 +466,7 @@
                                 </div>
                                 <div class="text-2xl col-span-4 ">
                                     <label class="text-base" for="detalle_1">numero:</label>
-                                    <input type="text" name="detalle_1" class="text-md w-full block px-3 py-2 rounded-lg 
+                                    <input type="text" name="detalle_1" class="text-sm w-full block px-3 py-2 rounded-lg 
                                                             bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
                                                             focus:placeholder-gray-500
                                                             focus:bg-white 
@@ -472,7 +480,7 @@
                             </p>
 
                             <label class="text-base" for="detalle_2">Casa / Depto:</label>
-                            <input type="text" name="detalle_2" class="text-md w-full block px-3 py-2 rounded-lg 
+                            <input type="text" name="detalle_2" class="text-sm w-full block px-3 py-2 rounded-lg 
                                                         bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md
                                                         focus:placeholder-gray-500
                                                         focus:bg-white 
@@ -562,16 +570,19 @@
                                 </p>
                             </div>
 
-                            @foreach ($direccion as $dir)
-                            <label class="py-2">
-                                <div
-                                    class="bg-white hover:border-green-300 my-2 box focus:bg-yellow-300 focus:border-black focus:border-2 border-2">
-                                    <strong class="text-base"> {{$dir->calle , $dir->numero , $dir->depto}}</strong>
-                                    <input type="radio" id="dir_id" name="dir_id" value="{{$dir->id}}">
+                            <div class="overflow-y-auto h-60">
+                                @foreach ($direccion as $dir)
+                                <label class="py-2">
+                                    <div
+                                        class="bg-white hover:border-green-300 my-2 box focus:bg-yellow-300 focus:border-black focus:border-2 border-2">
+                                        <strong class="text-base"> {{$dir->calle , $dir->numero , $dir->depto}}</strong>
+                                        <input type="radio" id="dir_id" name="dir_id" value="{{$dir->id}}">
 
-                                </div>
-                            </label>
-                            @endforeach
+                                    </div>
+                                </label>
+                                @endforeach
+                            </div>
+
                             <a href="#" @click="seleccionar = false" @click="open = true"
                                 class="sm:text-md text-sm  inline-block px-2 py-2 underline rounded-md  hover:text-yellow-300 "
                                 rel="noopener noreferrer">

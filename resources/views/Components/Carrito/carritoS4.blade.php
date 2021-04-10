@@ -34,7 +34,7 @@
 
                 <!--Card 1-->
                 <div class=" w-full lg:max-w-full lg:flex">
-                    <div class="h-48 lg:h-auto lg:w-48 flex-none rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+                    <div class="h-24 lg:h-24 lg:w-24 flex-none rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
                         style="background-image: url({{ url('../uploads/products/1/buds.jpg') }});background-repeat: no-repeat;background-size: contain;">
                     </div>
                     <div class=" rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
@@ -161,7 +161,7 @@
 
             <div class="block" style="background-color: aliceblue">
                 <h3 class="font-bold pb-4 mt-2 border-b border-gray-100 flex justify-center">
-                    <span class="text-3xl">${{ number_format(Session::get('precio_comuna'),0,'','.') }}</span>
+                    <span class="text-3xl" id = 'msg'>${{ number_format(Session::get('precio_comuna'),0,'','.') }}</span>
                 </h3>
             </div>
 
@@ -187,3 +187,16 @@
     </div>
 
 </div>
+
+<script>
+    function getMessage() {
+       $.ajax({
+          type:'POST',
+          url:'/getmsg',
+          data:'_token = <?php echo csrf_token() ?>',
+          success:function(data) {
+             $("#msg").html(data.msg);
+          }
+       });
+    }
+ </script>

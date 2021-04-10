@@ -56,7 +56,7 @@ $(document).ready(function () {
         var detalle_2 = $('#detalle_2').val()
 
         var token = $("meta[name='csrf-token']").attr("content")
-
+        $('#dirSelect').text($('#comunas').val() + ', ' + $('#regiones').val());
         if (nom == "") {
             toastr["warning"]("Por favor ingrese su Nombre");
             return false;
