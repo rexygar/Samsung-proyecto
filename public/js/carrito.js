@@ -164,7 +164,7 @@ $(document).ready(function(){
         n = $(numero[i]).text()
         suma += parseInt(n.replace(/[$.]/g,''))
     }
-
+	
 
     const formatterPeso = new Intl.NumberFormat('es-CO', {
         style: 'currency',

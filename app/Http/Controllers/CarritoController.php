@@ -306,7 +306,7 @@ class CarritoController extends Controller
                             $detalle->id_retiro_local = null;
                             $detalle->save();
                         }
-                        return ['message' => $udpte_detalle, 'triggerer' => $get_detalle, 'id' => 1, 'precio_comuna' => $p_Despacho, 'direccion' => $dir];
+                        return ['message' => 'Successful', 'triggerer' => $get_detalle, 'id' => 1, 'precio_comuna' => $p_Despacho, 'direccion' => $dir];
                     }
                 } else {
                     $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
@@ -360,7 +360,7 @@ class CarritoController extends Controller
                             }
                         }
 
-                        return ['message' => $udpte_detalle, 'triggerer' => $get_detalle, 'id' => 2, 'precio_comuna' => $p_Despacho];
+                        return ['message' => 'Successful', 'triggerer' => $get_detalle, 'id' => 2, 'precio_comuna' => $p_Despacho];
 
                     } else {
 
@@ -417,13 +417,13 @@ class CarritoController extends Controller
                             }
                         }
 
-                        return ['message' => $udpte_detalle, 'triggerer' => $get_detalle, 'id' => 3, 'precio_comuna' => $p_Despacho];
+                        return ['message' => 'Successful', 'triggerer' => $get_detalle, 'id' => 3, 'precio_comuna' => $p_Despacho];
                     }
                 }
 
                 $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
 
-                return ['status' => 0];
+                return ['message' => 'Successful'];
             } catch (\Throwable $th) {
                 return ['status' => $th];
             }
@@ -612,7 +612,7 @@ class CarritoController extends Controller
                     }
                 }
 
-                return response()->json(array('msg' => $p_Despacho), 200);
+                return ['message' => 'Successful'];
             }
         }
         return view('dashboard.lista_Producto');

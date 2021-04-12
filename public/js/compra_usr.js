@@ -1,4 +1,17 @@
 $(document).ready(function () {
+
+    var Tipo_Entrega = $('[name="Tipo_Entrega"]:checked').val();
+
+    $('#Tipo_Entrega[value="1"]').on('click', function(){
+        if (!$('input[name="tienda_id"]').checked) {
+            $('#Tipo_Entrega[value="1"]').checked = false;
+        }
+    })
+
+    $('input[name="tienda_id"]').on('click', function(){
+        $('#Tipo_Entrega[value="1"]').checked = true;
+    })
+
     $('#editar').on('click', function () {
         var url = $('#url').val();
         var rut = $('#NuevoRut').val();
@@ -57,6 +70,7 @@ $(document).ready(function () {
 
         var token = $("meta[name='csrf-token']").attr("content")
         $('#dirSelect').text($('#comunas').val() + ', ' + $('#regiones').val());
+        $('#dirSelect1').text($('#comunas').val() + ', ' + $('#regiones').val());
         if (nom == "") {
             toastr["warning"]("Por favor ingrese su Nombre");
             return false;

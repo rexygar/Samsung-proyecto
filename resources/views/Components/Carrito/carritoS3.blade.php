@@ -54,8 +54,7 @@
                         <p class=" tracking-normal py-1 " style="background-color: aliceblue">
                             <strong>Entrega 1 de 1 :</strong>Despacho a domicilio
                         </p>
-                        <p class=" tracking-normal py-1 " style="background-color: aliceblue">
-                            Calera, Región De Valparaíso
+                        <p class=" tracking-normal py-1 " style="background-color: aliceblue" id="dirSelect1">
                         </p>
 
                     </div>
@@ -83,7 +82,7 @@
                                                 <label class="md:py-16 lg:py-16 font-bold">
                                                     Retiro en tienda Costo:
                                                     $0
-                                                    <input type="radio" name="Tipo_Entrega" value="1">
+                                                    <input type="radio" id="Tipo_Entrega" name="Tipo_Entrega" value="1">
                                                 </label>
 
                                             </a>
@@ -126,7 +125,7 @@
                                                                 <div class="py-2">
                                                                     <p class=" tracking-normal py-2 border-b-2 border-opacity-25 font-bolder
                                                             border-dotted">
-                                                                        <strong class="text-xl"> Elege la tienda de
+                                                                        <strong class="text-xl"> Elige la tienda de
                                                                             retiro</strong>
 
                                                                     </p>
@@ -404,7 +403,6 @@
                     <article style="" class=" col-start-1 col-end-3">
 
                         <div class="col-span-12  ">
-
                             <p class=" tracking-normal py-2 border-b-2 border-opacity-25 font-bolder
                             border-dotted">
                                 <strong class="text-xl"> Completa tu dirección de despacho</strong>
