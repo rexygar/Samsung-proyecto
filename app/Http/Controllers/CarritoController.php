@@ -12,21 +12,18 @@ use App\Http\Controllers\TransbankController;
 use App\Models\Despacho;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Direccion;
-use App\Models\EstadoCompra;
-use App\Models\Images;
 use App\Models\Detalle;
 use App\Models\no_usr;
 use App\Models\retiro_local;
-use App\Models\User;
-use DataTables;
 
 class CarritoController extends Controller
 {
-    public function addCarrito(Request $request)
-    {
+
+    public function addCarrito(Request $request){
         if ($request->ajax()) {
             try {
                 $idPago = 0;
+                
                 if (session()->has('idPago')) {
                     $idPago = session('idPago');
                 }
@@ -38,10 +35,12 @@ class CarritoController extends Controller
                 $descripcion = (isset($request->descripcion) && $request->descripcion != null) ? $request->descripcion : '';
                 $__token = $request->session()->token();
 
-                if ($idPago > 0) { //si id_pago mayor que 0
+                if ($idPago > 0) {
+
                     $reserva = Reserva::where('sku', $sku)->where('Cod_EstiloColor', $color)->where('__token', $__token)->first();
 
-                    if ($reserva !== null) { //y reserva es distinto de nulo
+                    if ($reserva !== null) {
+
                         //update reserva
                         $reserva->reserva = $cant + $reserva->reserva;
                         $reserva->monto = $monto;
@@ -51,21 +50,22 @@ class CarritoController extends Controller
 
                         //update detalle
                         $get_detalle = Detalle::where('sku', $sku)->where('Cod_estiloColor', $color)->where('idTransaccion', $idTransaccion)->first();
+
                         if ($get_detalle !== null) {
                             $get_detalle->monto_uni = $monto;
+
+                            //Autentificacion de usuario
                             if (Auth::check()) {
                                 $id_usr = Auth::id();
-
                                 $get_detalle->id_Usuario = $id_usr;
                             } else {
                                 $get_detalle->id_CSL = null;
                             }
+
                             $get_detalle->total = ($monto * $reserva->reserva);
                             $get_detalle->Cantidad = $reserva->reserva;
                             $get_detalle->save();
                         }
-
-                        return ['triggerer' => $get_detalle, 'id' => 1];
                     } else {
                         //crear reserva
                         $reserva = new Reserva();
@@ -78,6 +78,8 @@ class CarritoController extends Controller
                         $reserva->idTransaccion = $idPago;
                         $reserva->__token = $__token;
                         $reserva->save();
+
+
                         $idTransaccion = $reserva->idTransaccion;
 
                         //crear detalle
@@ -85,6 +87,7 @@ class CarritoController extends Controller
                         $detalle->sku = $sku;
                         $detalle->monto_uni = $monto;
                         $detalle->total = ($monto * $reserva->reserva);
+                        //Autentificacion de usuario
                         if (Auth::check()) {
                             $id_usr = Auth::id();
 
@@ -92,17 +95,20 @@ class CarritoController extends Controller
                         } else {
                             $detalle->id_CSL = null;
                         }
+
                         $detalle->Cod_EstiloColor = $color;
                         $detalle->Cantidad = $reserva->reserva;
                         $detalle->idTransaccion = $idTransaccion;
-                        $detalle->save();
-
-                         
+                        $detalle->save(); 
                     }
                 } else {
+                    // Registro de nueva session de Pago (idPago)
+                    
                     $pago = new Transaccion();
                     $pago->save();
+
                     session(['idPago' => $pago->id]);
+
                     //crear reserva
                     $reserva = new Reserva();
                     $reserva->__token = $__token;
@@ -113,15 +119,15 @@ class CarritoController extends Controller
                     $reserva->Total = ($monto * $reserva->reserva);
                     $reserva->descripcion = $descripcion;
                     $reserva->idTransaccion = $pago->id;
-
                     $reserva->save();
 
                     //crear detalle
                     $detalle = new Detalle();
                     $detalle->sku = $sku;
+
+                    //Autentificacion de usuario
                     if (Auth::check()) {
                         $id_usr = Auth::id();
-
                         $detalle->id_Usuario = $id_usr;
                     } else {
                         $detalle->id_CSL = null;
@@ -131,11 +137,12 @@ class CarritoController extends Controller
                     $detalle->Cod_EstiloColor = $color;
                     $detalle->Cantidad = $reserva->reserva;
                     $detalle->idTransaccion = $pago->id;
-
                     $detalle->save();
                 }
 
+                // Actualiza BD para crear nuevo comprometido
                 $d = DB::select("CALL Ges_Eco_addCarrito('" . $reserva->sku . "','" . $reserva->Cod_EstiloColor . "'," . $reserva->reserva . ")");
+
                 return ['status' => 0];
             } catch (\Throwable $th) {
                 return ['status' => $th];
@@ -143,110 +150,95 @@ class CarritoController extends Controller
         }
     }
 
-    public function getCarrito()
-    {
+    public function getCarrito(){
         $idPago = 0;
         $pago = [];
-        $this->TransbankController = new TransbankController();
+        
+        // Rescatar session de Pago
         if (session()->has('idPago')) {
             $idPago = session('idPago');
         } else {
             session(['idPago' => $idPago]);
         }
-        $reserva = Reserva::where('idTransaccion', $idPago)->get();
-        if (count($reserva) > 0) {
-            if ($idPago > 0) {
-                $monto = Reserva::where('idTransaccion', $idPago)->sum('Total');
 
-                $order = '54879644';
-                $pago = $this->TransbankController->initTransaction($monto, $order, $idPago);
-            }
-        } else {
-            $pago = null;
-        }
+        // Rescatar Productos reservados por session de Pago
+        $reserva = Reserva::where('idTransaccion', $idPago)->get();
+
         $tiendas = DB::select("CALL Ges_getTiendas()");
         $direccion = null;
+
+        // Rescatar direccion de Usuario Autentificado
         if (Auth::check()) {
             $id = Auth::id();
             $direccion = Direccion::where('user_id', $id)->get();
         }
 
-        return view('Vistas.carritov2', ['reserva' => $reserva, 'pago' => $pago]);
+        return view('Vistas.carritov2', ['reserva' => $reserva]);
     }
 
-    public function getCarritoStepper()
-    {
+    public function getCarritoStepper(){
         $idPago = 0;
-        $pago = [];
-        $this->TransbankController = new TransbankController();
+        
+        // Rescatar Session de Pago
         if (session()->has('idPago')) {
             $idPago = session('idPago');
         } else {
             session(['idPago' => $idPago]);
         }
+
+        // Rescatar Productos en reserva
         $reserva = Reserva::where('idTransaccion', $idPago)->get();
-        if (count($reserva) > 0) {
-            if ($idPago > 0) {
-                $monto = Reserva::where('idTransaccion', $idPago)->sum('Total');
-                $order = '54879644';
-                $pago = $this->TransbankController->initTransaction($monto, $order, $idPago);
-            }
-        } else {
-            $pago = null;
-        }
+
         $tiendas = DB::select("CALL Ges_getTiendas()");
         $direccion = null;
+
+        // Rescatar direccion de Usuario Autentificado
         if (Auth::check()) {
             $id = Auth::id();
             $direccion = Direccion::where('user_id', $id)->get();
         }
+
         $precioDespacho = 0;
 
         if (session()->has('precio_comuna')) {
-
             $precioDespacho = session('precio_comuna');
         } else {
             session(['precio_comuna' => $precioDespacho]);
         }
 
-        if ($pago == null) {
-            return view('Vistas.carritov2', ['reserva' => $reserva, 'pago' => $pago]);
-        } else {
-            return view('Vistas.carritoStepper', ['reserva' => $reserva, 'pago' => $pago, 'tiendas' => $tiendas, 'direccion' => $direccion,   'precio_comuna' => $precioDespacho]);
-        }
+        return view('Vistas.carritoStepper', [  'reserva'       => $reserva,
+                                                'tiendas'       => $tiendas,
+                                                'direccion'     => $direccion,
+                                                'precio_comuna' => $precioDespacho]);
+        
     }
 
-    public function removeCarrito(Request $request)
-    {
+    public function removeCarrito(Request $request){
         if ($request->ajax()) {
             try {
+                // Rescatar session de Pago
                 $idPago = session('idPago');
 
                 $sku = (isset($request->sku) && $request->sku != null) ? $request->sku : '';
 
                 $reserva = Reserva::where('idTransaccion', $idPago)->where('sku', $sku)->first();
+
                 $estiloColor = $reserva->Cod_EstiloColor;
                 $cant = $reserva->reserva;
+
                 $reserva->delete();
 
-                $monto = Reserva::where('idTransaccion', $idPago)->sum('monto');
-
-                $tt = Transaccion::where('id', $idPago)->first();
-                if ($monto > 0) {
-                    $pago = $this->TransbankController->initTransaction($monto, $tt->order, $idPago);
-                } else {
-                    $pago = null;
-                }
-
+                // remover Comprometido
                 $d = DB::select("CALL Ges_Eco_restCarrito('" . $request->sku . "','" . $estiloColor . "'," . $cant . ")");
-                return ['status' => 0, 'Pago' => $pago];
+
+                return ['status' => 0];
             } catch (\Throwable $th) {
                 return ['status' => 1];
             }
         }
     }
-    public function addDireccion(Request $request)
-    {
+
+    public function addDireccion(Request $request){
         if ($request->ajax()) {
             try {
 
@@ -260,11 +252,9 @@ class CarritoController extends Controller
                 $reg = (isset($request->reg) && $request->reg != null) ? $request->reg : '';
                 $com = (isset($request->com) && $request->com != null) ? $request->com : '';
 
-
+                // Authentificaion de usuario
                 if (Auth::check()) {
                     $id = Auth::id();
-                    // $get_dir = Direccion::where('user_id', $id)->first();
-
                     $dir = new Direccion(); //crea direccion (n) del usuario
 
 
@@ -321,8 +311,8 @@ class CarritoController extends Controller
                 } else {
                     $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
                     if ($usr_no_logeado === null) {
-                        /////crear
-
+                        
+                        // Crear usuario Invitado
                         $usr_no_logeado = new no_usr();
                         $usr_no_logeado->direccion = $direccion;
                         $usr_no_logeado->numero = $detalle_1;
@@ -337,17 +327,20 @@ class CarritoController extends Controller
 
                         $get_detalle = Detalle::where('idTransaccion', $idPago)->first(); //busca los detalles con la id de pago
                         $comuna = Despacho::where('comuna', $com)->first();
+                        
                         if ($comuna !== null) {
                             $p_Despacho = $comuna->precio; //si existe, le asigna el precio
                         } else {
                             $p_Despacho = session('precio_comuna'); // 0 por default
                         }
+
                         if (session()->has('precio_comuna')) {
 
                             session(['precio_comuna' => $p_Despacho]);
                         } else {
                             session(['precio_comuna' => $p_Despacho]);
                         }
+
                         if ($get_detalle !== null) { //si no es nulo
                             $udpte_detalle = Detalle::where('idTransaccion', $idPago)->get();
                             $id_dir = (isset($request->direccion) && $request->direccion != null) ? $request->direccion : '';
@@ -366,7 +359,9 @@ class CarritoController extends Controller
                                 $detalle->save();
                             }
                         }
+
                         return ['message' => $udpte_detalle, 'triggerer' => $get_detalle, 'id' => 2, 'precio_comuna' => $p_Despacho];
+
                     } else {
 
                         $direccion = (isset($request->direccion) && $request->direccion != null) ? $request->direccion : '';
@@ -374,6 +369,7 @@ class CarritoController extends Controller
                         $apel = (isset($request->apel) && $request->apel != null) ? $request->apel : '';
                         $reg = (isset($request->reg) && $request->reg != null) ? $request->reg : '';
                         $com = (isset($request->com) && $request->com != null) ? $request->com : '';
+
                         //update
                         $detalle_1 = $request->detalle_1;
                         $detalle_2 = $request->detalle_2;
@@ -391,17 +387,20 @@ class CarritoController extends Controller
 
                         $get_detalle = Detalle::where('idTransaccion', $idPago)->first(); //busca los detalles con la id de pago
                         $comuna = Despacho::where('comuna', $com)->first();
+                        
                         if ($comuna !== null) {
                             $p_Despacho = $comuna->precio; //si existe, le asigna el precio
                         } else {
                             $p_Despacho = session('precio_comuna');  // 0 por default
                         }
+
                         if (session()->has('precio_comuna')) {
 
                             session(['precio_comuna' => $p_Despacho]);
                         } else {
                             session(['precio_comuna' => $p_Despacho]);
                         }
+
                         if ($get_detalle !== null) { //si no es nulo
                             $udpte_detalle = Detalle::where('idTransaccion', $idPago)->get();
 
@@ -417,12 +416,12 @@ class CarritoController extends Controller
                                 $detalle->save();
                             }
                         }
+
                         return ['message' => $udpte_detalle, 'triggerer' => $get_detalle, 'id' => 3, 'precio_comuna' => $p_Despacho];
                     }
                 }
-                $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
-                // $get_detalle = no_usr::where('id_Usuario', $id)->first();
 
+                $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
 
                 return ['status' => 0];
             } catch (\Throwable $th) {
@@ -430,16 +429,17 @@ class CarritoController extends Controller
             }
         }
     }
-    public function cmbr_tienda(Request $request)
-    {
+
+    public function cmbr_tienda(Request $request){
         if ($request->ajax()) {
             try {
                 $idPago = session('idPago');
-                // return "estado 0";
+
                 //crear
                 if (Auth::check()) { //si el usr esta logeado
                     $id_usr = Auth::id(); //obten la id
                     $get_tienda = retiro_local::where('idTransaccion_FK', $idPago)->where('idUsuario_FK', $id_usr)->first(); //busca un retiro en tienda con el usuario
+                    
                     if ($get_tienda == null) { // y si retiro_local es null
 
                         $id_tienda = (isset($request->tienda) && $request->tienda != null) ? $request->tienda : '';
@@ -449,14 +449,18 @@ class CarritoController extends Controller
                         $get_tienda->Cod_tienda_FK = $id_tienda;
                         $get_tienda->save(); //guardalo
                         $id_retiro = $get_tienda->id; //y obten la ultima id
+
                     } else { //si no
+
                         $id_tienda = (isset($request->tienda) && $request->tienda != null) ? $request->tienda : '';
                         $get_tienda->Cod_tienda_FK = $id_tienda; //actualiza la id de tienda en la que se retirara
                         $get_tienda->save();
                         $id_retiro = $get_tienda->id; //y obten la ultima id
+
                     }
 
                     $p_Despacho = 0;
+
                     if (session()->has('precio_comuna')) {
 
                         session(['precio_comuna' => $p_Despacho]);
@@ -481,8 +485,9 @@ class CarritoController extends Controller
                             $detalle->save();
                         }
                     }
+
                     return ['triggerer' => $updte_detalle, 'id' => $p_Despacho];
-                    // return response()->json(array('msg' => $p_Despacho), 200);
+
                 } else {
                     $get_tienda = retiro_local::where('idTransaccion_FK', $idPago)->first();
 
@@ -496,6 +501,7 @@ class CarritoController extends Controller
                         $get_tienda->Cod_tienda_FK = $id_tienda;
                         $get_tienda->save();
                         $usr_no_logeado = no_usr::where('id_transaccion_FK', $get_tienda->idTransaccion_FK)->first();
+
                         if ($usr_no_logeado  !== null) {
                             $id_usr_no_logeado = $usr_no_logeado->id;
                             $usr_no_logeado->direccion = null;
@@ -507,6 +513,7 @@ class CarritoController extends Controller
                             $get_tienda->save();
                             $id_retiro = $get_tienda->id;
                         }
+
                     } else {
                         $id_tienda = (isset($request->tienda) && $request->tienda != null) ? $request->tienda : '';
                         $get_tienda->Cod_tienda_FK = $id_tienda;
@@ -514,6 +521,7 @@ class CarritoController extends Controller
                         $id_retiro = $get_tienda->id;
 
                         $usr_no_logeado = no_usr::where('id_transaccion_FK', $get_tienda->idTransaccion_FK)->first();
+
                         if ($usr_no_logeado  !== null) {
 
                             $usr_no_logeado->direccion = null;
@@ -525,12 +533,11 @@ class CarritoController extends Controller
                             $usr_no_logeado->save();
                         }
 
-                        // return response()->json(['success' => 'Se ha actualizado correctamente']);
-
-
                     }
+
                     $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
                     $get_detalle = Detalle::where('idTransaccion', $idPago)->first();
+
                     if ($get_detalle != null) {
 
                         if ($usr_no_logeado != null) {
@@ -543,12 +550,14 @@ class CarritoController extends Controller
                             $usr_no_logeado->tipo_entrega = "Retiro en tienda";
                             $usr_no_logeado->save();
                             $p_Despacho = 0;
+
                             if (session()->has('precio_comuna')) {
 
                                 session(['precio_comuna' => $p_Despacho]);
                             } else {
                                 session(['precio_comuna' => $p_Despacho]);
                             }
+
                             $updte_detalle = Detalle::where('idTransaccion', $idPago)->get();
 
                             foreach ($updte_detalle as $detalle) {
@@ -564,7 +573,7 @@ class CarritoController extends Controller
                         }
                     }
                     return ['triggerer' => $updte_detalle, 'id' => $p_Despacho];
-                    // return response()->json(array('msg' => $p_Despacho), 200);
+                    
                 }
 
                 return ['status' => 0];
@@ -574,21 +583,21 @@ class CarritoController extends Controller
         }
     }
 
-    public function cmbr_dir(Request $request)
-    {
+    public function cmbr_dir(Request $request){
+
         if ($request->ajax()) {
+
             if (Auth::check()) {
                 $idPago = session('idPago');
                 $id_usr = Auth::id();
                 $get_detalle = Detalle::where('idTransaccion', $idPago)->first(); //busca los detalles con la id de pago
+
                 if ($get_detalle !== null) { //si no es nulo
-                    // $get_detalle->id_CSL = $color;
+                   
                     $dir_com = $get_detalle->valor_despacho;
                     $udpte_detalle = Detalle::where('idTransaccion', $idPago)->get();
                     $comuna = Despacho::where('comuna', $dir_com)->first();
 
-                    // $updte_detalle = Detalle::whereIn('idTransaccion', $idPago)->where('id_Usuario', $id_usr)->get(); //busca los detalles con la id de pago
-                    // $updte_detalle->id_CSL = $color;
                     $id_dir = (isset($request->direccion) && $request->direccion != null) ? $request->direccion : '';
                     $p_Despacho = $comuna->precio;
                     foreach ($udpte_detalle as $detalle) {
@@ -602,30 +611,27 @@ class CarritoController extends Controller
                         $detalle->save();
                     }
                 }
+
                 return response()->json(array('msg' => $p_Despacho), 200);
             }
         }
         return view('dashboard.lista_Producto');
     }
 
+    public function login_usr(Request $request){
 
-
-    public function login_usr(Request $request)
-    {
         $validar = $this->validate($request, [
             'correo_lgn' => 'required|email',
             'pwd_lgn' => 'required',
         ]);
-        if ($validar) {
 
+        if ($validar) {
             if (\Auth::attempt([
                 'email' => $request->correo_lgn,
                 'password' => $request->pwd_lgn
             ], $request->remember == 'on' ? true : false)) {
-                // $request->session()->regenerate();
                 return back();
             } else {
-
                 return back()->with('errorLog', 'El usuario y/o clave son incorrectas, vuelva a intentarlo.');
             }
         }

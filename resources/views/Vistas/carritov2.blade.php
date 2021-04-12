@@ -99,7 +99,7 @@
 
 <body class="bg-gray-100">
 
-    @if ($pago != null )
+    @if (count($reserva) > 0 )
     <div class="grid grid-cols-12  lg:px-6 xl:px-6 2xl:px-6 md:px-2  px-2 2xl:py-8 xl:py-8 lg:py-8 py-8">
         <div class="col-span-1"></div>
         <div class="lg:col-span-6 md:col-span-6 xl:col-span-6 2xl:col-span-6 col-span-12 lx:pr-6 md:pr-4 xl:pr-6 2xl:pr-6"
