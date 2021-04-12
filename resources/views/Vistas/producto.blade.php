@@ -16,7 +16,7 @@
     <link href="{{ asset('css/Style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/componentes.css') }}" rel="stylesheet">
     <link href="{{ asset('css/layouts.css') }}" rel="stylesheet">
-    
+
     <link href="{{ asset('css/Megamenu.css') }}" rel="stylesheet">
     <link href="{{ asset('css/swiper-bundle.min.css') }}" rel="stylesheet">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -133,9 +133,9 @@
 
     <!-- /container -->
     <section class="relative bg-gray-300 lg:-mb-32 ">
-        {{-- {{ html_entity_decode() }} --}}
-        {!! html_entity_decode($product->FlixMedia) !!}
-        {{-- <div class="relative flex flex-col min-w-0 break-words bg-white w-full ">
+        {{--      
+        {!! html_entity_decode($product->FlixMedia) !!} --}}
+        <div class="relative flex flex-col min-w-0 break-words bg-white w-full ">
             <div class="px-6">
                 <div class="flex flex-wrap justify-center">
 
@@ -159,31 +159,30 @@
                 </div>
 
             </div>
-        </div> --}}
+        </div>
 
 
         @include('Components.CTA')
 
 
-        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 ">
-            <div class="lg:px-6">
-                <div class="flex flex-wrap justify-center">
-
-                    <div class="w-full lg:w-full px-4 lg:order-1">
-                        <div class="justify-items-start md:justify-items-center  lg:pt-4 pt-8">
-
-                            <section class="relative py-20">
-                                {{-- producto card --}}
-                                <div class="place-self-center">
-                                    @include('Components.producto-index')
-                                </div>
-                                {{-- end producto card --}}
-
-
-
-                            </section>
+        <div class="flex flex-col min-w-0 break-words bg-white w-full mb-6 ">
+            <div class="lg:px-6 md:px-4 pb-32">
+                <div class="container mx-auto lg:w-full md:w-full animate__fadeInUp animate__animated wow">
+                    <div class="grid grid-cols-1 lg:grid-cols-1 gap-4 lg:gap-8">
+                        <!-- ... -->
+                        <div class="place-self-center ">
+                            @include('Components.loMvendido')
                         </div>
                     </div>
+                </div>
+                <div
+                    class="container mx-auto sm:container sm:mx-auto md:px-0 sm:px-6 animate__fadeInUp animate__animated wow">
+
+                    <!-- ... -->
+                    <div class="place-self-center  ">
+                        @include('Components.producto-Destacados', ['destacados' => $destacados])
+                    </div>
+
                 </div>
 
             </div>

@@ -163,12 +163,14 @@ class MainController extends Controller
 
         $product = DB::select("CALL Ges_Eco_getProducto2('" . $super . "', '" . $cate . "', '" . $subCate . "', '" . $subsub . "', '" . $nom . "')");
 
+        $destacados = DB::select("CALL Ges_Eco_rescatarDestacados()");
 
         $product = $product[0];
 
         $StockColor = DB::select("CALL `Ges_Eco_getStock`('" . $product->SKU . "')");
         $tiendaStock = DB::select("CALL `Ges_Eco_getTiendaStock`('" . $product->SKU . "')");
-        return view('Vistas.producto', compact('product', 'StockColor'));
+        
+        return view('Vistas.producto', compact('product', 'StockColor', 'destacados'));
     }
 
     // REQUEST =  sku - cantidad (in aJAX)
@@ -205,7 +207,8 @@ class MainController extends Controller
         return view('prueba', ['pago' => $pago]);
     }
 
-    public function getSeguimiento(){
+    public function getSeguimiento()
+    {
         return view('Tracing.seguimiento');
     }
 
