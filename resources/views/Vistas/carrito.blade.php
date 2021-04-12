@@ -16,7 +16,7 @@
     <link href="{{ asset('css/Style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/componentes.css') }}" rel="stylesheet">
     <link href="{{ asset('css/layouts.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/hero-backgrounds.css') }}" rel="stylesheet">
+    
     <link href="{{ asset('css/Megamenu.css') }}" rel="stylesheet">
 
     <style>

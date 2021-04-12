@@ -167,8 +167,8 @@
 
 .sw-theme-default .toolbar > .btn {
     color: #fff;
-    background-color: #fed154 ;
-    border: 1px solid #fed154 ;
+    background-color: #2473b6;
+    border: 1px solid #2473b6;
     padding: .375rem .75rem;
     border-radius: .25rem;
     font-weight: 400;
@@ -201,22 +201,22 @@
 }
 
 .sw-theme-default > .nav .nav-link.active {
-    color: #fed154  !important;
+    color: #2473b6 !important;
     cursor: pointer;
 }
 
 .sw-theme-default > .nav .nav-link.active::after {
-    background: #fed154  !important;
+    background: #2473b6 !important;
     width: 100%;
 }
 
 .sw-theme-default > .nav .nav-link.done {
-    color: #f5a302 !important;
+    color: #308fcb !important;
     cursor: pointer;
 }
 
 .sw-theme-default > .nav .nav-link.done::after {
-    background: #f5a302;
+    background: #308fcb;
     width: 100%;
 }
 

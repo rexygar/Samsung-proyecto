@@ -15,7 +15,7 @@
     <link href="{{ asset('css/Style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/componentes.css') }}" rel="stylesheet">
     <link href="{{ asset('css/layouts.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/hero-backgrounds.css') }}" rel="stylesheet">
+    
     <link href="{{ asset('css/Megamenu.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"

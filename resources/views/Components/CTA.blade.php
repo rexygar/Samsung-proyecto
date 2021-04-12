@@ -1,7 +1,7 @@
 {{-- @extends('Layouts.Contenido')
 @section('content') --}}
 
-<div class="lg:pt-6 md:pt-0 place-content-center relative block">
+<div class=" bg-black place-content-center relative block">
     <section class="">
         <!-- Hero head: will stick at the top -->
         {{-- Contenido --}}

@@ -436,7 +436,8 @@
 
 @include('Components.trade-in-cat')
 
-<script data-require="jquery@3.1.1" data-semver="3.1.1"
+<script  defer data-require="jquery@3.1.1" data-semver="3.1.1"
     src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet">
 
 @endsection

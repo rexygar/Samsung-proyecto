@@ -29,16 +29,16 @@ Route::get('/Search',                                                           
 Route::get('/Search/{search}',                                                  [App\Http\Controllers\MainController::class, 'search2']);
 
 // Carrito
-Route::get('/addCarrito',           [App\Http\Controllers\MainController::class, 'addCarrito'])->name('carrito.add');
-Route::get('/deleteCarrito',        [App\Http\Controllers\MainController::class, 'removeCarrito'])->name('carrito.delete');
-Route::any('/addDireccion',        [App\Http\Controllers\MainController::class, 'addDireccion'])->name('direccion.add');
-Route::any('/updteDireccion',        [App\Http\Controllers\MainController::class, 'cmbr_dir'])->name('direccion.updte');
-Route::get('/Carrito',              [App\Http\Controllers\MainController::class, 'getCarrito'])->name('carrito');
-Route::get('/Stepper',              [App\Http\Controllers\MainController::class, 'getCarritoStepper'])->name('stepper');
-Route::any('/CambiarTienda', [App\Http\Controllers\MainController::class, 'cmbr_tienda'])->name('tienda.update');
+Route::get('/addCarrito',           [App\Http\Controllers\CarrtioController::class, 'addCarrito'])->name('carrito.add');
+Route::get('/deleteCarrito',        [App\Http\Controllers\CarrtioController::class, 'removeCarrito'])->name('carrito.delete');
+Route::any('/addDireccion',        [App\Http\Controllers\CarrtioController::class, 'addDireccion'])->name('direccion.add');
+Route::any('/updteDireccion',        [App\Http\Controllers\CarrtioController::class, 'cmbr_dir'])->name('direccion.updte');
+Route::get('/Carrito',              [App\Http\Controllers\CarrtioController::class, 'getCarrito'])->name('carrito');
+Route::get('/Stepper',              [App\Http\Controllers\CarrtioController::class, 'getCarritoStepper'])->name('stepper');
+Route::any('/CambiarTienda', [App\Http\Controllers\CarrtioController::class, 'cmbr_tienda'])->name('tienda.update');
 Route::any('/crearUsr', [App\Http\Controllers\UsuarioController::class, 'crte_usr'])->name('usr.create');
-Route::any('/logon', [App\Http\Controllers\MainController::class, 'login_usr'])->name('lgn.usr');
-Route::POST('/comuna', [App\Http\Controllers\MainController::class, 'mantener_comuna'])->name('comuna');
+Route::any('/logon', [App\Http\Controllers\CarrtioController::class, 'login_usr'])->name('lgn.usr');
+// Route::POST('/comuna', [App\Http\Controllers\CarrtioController::class, 'mantener_comuna'])->name('comuna');
 // Transbank
 Route::get('/initTransaction',           [App\Http\Controllers\MainController::class, 'getInitPago'])->name('checkout.init');
 Route::get('/checkout',                     [App\Http\Controllers\TransbankController::class, 'initTransaction'])->name('checkout');  
