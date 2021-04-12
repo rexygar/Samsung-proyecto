@@ -411,9 +411,6 @@
 
                                                 @include('Components.producto-card', ['Productos' =>
                                                 $productos])
-
-                                                @include('Components.producto-card', ['Productos' =>
-                                                $productos])
                                             </div>
                                         </section>
                                     </div>
