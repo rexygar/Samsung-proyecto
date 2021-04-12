@@ -20,7 +20,7 @@ use App\Models\retiro_local;
 use App\Models\User;
 use DataTables;
 
-class CarrtioController extends Controller
+class CarritoController extends Controller
 {
     public function addCarrito(Request $request)
     {

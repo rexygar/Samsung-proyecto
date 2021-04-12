@@ -204,7 +204,10 @@ class MainController extends Controller
         return view('prueba', ['pago' => $pago]);
     }
 
-    
+    public function getSeguimiento(){
+        return view('Tracing.seguimiento');
+    }
+
     public static function getStepper()
     {
         // $idPago = 0;
