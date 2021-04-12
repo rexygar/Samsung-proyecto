@@ -168,7 +168,7 @@ class MainController extends Controller
 
         $StockColor = DB::select("CALL `Ges_Eco_getStock`('" . $product->SKU . "')");
         $tiendaStock = DB::select("CALL `Ges_Eco_getTiendaStock`('" . $product->SKU . "')");
-        return view('Vistas.producto', compact('product', 'StockColor'));
+        return view('Vistas.producto', compact('product', 'StockColor','tiendaStock'));
     }
 
     // REQUEST =  sku - cantidad (in aJAX)
