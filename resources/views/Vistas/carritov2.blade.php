@@ -24,9 +24,9 @@
         }
     </style>
 </head>
- 
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
+{{-- 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> --}}
 
 <style>
     label.error {

@@ -20,7 +20,7 @@
     <link href="{{ asset('css/Megamenu.css') }}" rel="stylesheet">
     <link href="{{ asset('css/swiper-bundle.min.css') }}" rel="stylesheet">
     {{-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" /> --}}
-
+    <script src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
 </head>
 
 
@@ -194,7 +194,6 @@
     <div style="height:50px;background-color:#250a0a"></div>
 
     <!--JQUERY Validation-->
-    <script type="text/javascript" src="{{ URL::asset('js/jquery.min.js') }}"></script>
     {{-- <script type="text/javascript" src="{{ URL::asset('js/swiper-bundle.min.js') }}"></script> --}}
     {{-- <script src="{{ asset('js/lib/jquery.js') }}"></script>
     <script src="{{ asset('js/dist/jquery.validate.js') }}"></script>
@@ -276,4 +275,5 @@
     <!--/JQUERY Validation-->
     <!-- /SECTION -->
 </body>
+
 @include('layouts.Footer')
