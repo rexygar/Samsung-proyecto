@@ -67,6 +67,7 @@ class UsuarioController extends Controller
                     $new_no_usr->id_transaccion_FK = session('idPago');
                     $new_no_usr->save();
                 }
+                return ["message" => "Successful"];
             }
         } catch (\Throwable $th) {
             return $th;

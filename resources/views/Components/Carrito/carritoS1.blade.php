@@ -269,7 +269,7 @@
 
                         <div class="col-span-12 grid grid-cols-12 gap-2 px-6 md:mx-auto">
                             <div class="toolbar col-span-12 toolbar-bottom" role="toolbar" style="text-align: right;">
-                                <button class="btn sw-btn-next w-full" type="button">ir al siguiente
+                                <button class="btn sw-btn-next w-full" type="button" id="buttonSig">ir al siguiente
                                     Paso</button>
                             </div>
                         </div>
@@ -396,3 +396,9 @@
 </div>
 
 <script src="{{ asset('js/compra_usr.js') }}"></script>
+<script src="{{ asset('js/util/jquery.rut.chileno.min.js') }}"></script>
+<script>
+    jQuery(document).ready(function($){
+		$('#NuevoRut').rut();
+	});
+</script>

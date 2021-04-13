@@ -235,7 +235,7 @@
                     <button class="btn col-span-6 sw-btn-prev disabled" type=" button">Volver
                         al Paso
                         anterior</button>
-                    <button class="btn col-span-6 sw-btn-next " type=" button">Ir al
+                    <button class="btn col-span-6 sw-btn-next " type="button" id="siguienteButton">Ir al
                         siguiente
                         Paso</button>
                 </div>
