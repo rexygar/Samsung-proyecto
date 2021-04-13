@@ -1,3 +1,29 @@
+<style>
+    input[type="radio"],
+    input[type="checkbox"] {
+        position: relative;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        appearance: none;
+        outline: none;
+    }
+
+    input[type="checkbox"]+span:before {
+        width: 16px;
+        height: 16px;
+        border: 1px solid #000;
+        content: "\2714";
+        color: transparent;
+        display: inline-block;
+        font-size: 13px;
+        margin-right: 5px;
+        text-align: center;
+        /* new code notice me! */
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
 
 @for ($i = 0; $i < 1; $i++) <main class="profile-page">
 
@@ -46,7 +72,8 @@
 
                                             <div
                                                 class="w-full md:min-w-full md:col-span-3 md:float-right lg:float-right md:row-span-1 lg:row-span-1 lg:col-span-3 col-span-6  lg:px-4 md:px-0">
-                                                <div class="md:pr-6 lg:pr-16  md:bg-transparent lg:bg-transparent bg-gray-400 ">
+                                                <div
+                                                    class="md:pr-6 lg:pr-16  md:bg-transparent lg:bg-transparent bg-gray-400 ">
 
                                                     <p
                                                         class=" text-lg leading-relaxed text-center sm:text-left text-gray-50">
@@ -103,28 +130,22 @@
                                                             @foreach ($StockColor as $colorstock)
                                                             @if ($colorstock->stock > 0)
 
-                                                            <label class="text-base py-0 text-center"
-                                                                style="z-index: 9999" for="color_group{{ $ff }}">
+                                                            <div>
+                                                                <label id="radio"
+                                                                    class="rounded-full h-12 w-12 flex items-center justify-center border-2 border-dotted border-gray-500"
+                                                                    style="z-index: 9999;
+                                                                        background-color: {{ $colorstock->color }}"
+                                                                    for="color_group{{ $ff }}">
 
-                                                                <div id="radio"
-                                                                    class="justify-items-auto md:w-full md:px-3 px-6 "
-                                                                    style="height:25px;width:25px;
-                                                                    margin:5px;display:inline-block;border-width: 1px;
-                                                                                border-style: solid;
-                                                                                border-color: black;
-                                                                                background-color: {{ $colorstock->color }}">
-
-                                                                    <p class="inline-block"> {{ $colorstock->stock }}
-                                                                    </p>
-
+                                                                    {{ $colorstock->stock }}
                                                                     <input type="radio" id="color_group{{ $ff++ }}"
-                                                                        name="color_group"
+                                                                        name="color_group" style="appearance: none"
                                                                         value="{{ $colorstock->Cod_EstiloColor }}"
                                                                         data-stock="{{ $colorstock->stock }}">
 
-                                                                </div>
 
-                                                            </label>
+                                                                </label>
+                                                            </div>
 
 
                                                             @endif
@@ -142,7 +163,7 @@
                                                         <div
                                                             class="md:w-1/2 lg:w-1/3 xl:w-1/3 2xl:w-1/3  w-1/3lg:px-6 md:px-0 py-6 md:py-6 ">
                                                             <p
-                                                                class="md:pl-2 text-base md:text-sm leading-relaxed md:w-full md:pb-4 md:text-gray-50 lg:text-gray-50 text-gray-600 md:text-left lg:text-left text-center">
+                                                                class="md:pl-2 text-base md:text-base leading-relaxed md:w-full md:pb-4 md:text-gray-50 lg:text-gray-50 text-gray-600 md:text-left lg:text-left text-center">
                                                                 COLORES DISPONIBLES
                                                             </p>
                                                         </div>
@@ -155,15 +176,262 @@
                                                 class=" col-span-6 md:col-span-3  lg:col-span-6   lg:col-start-4  md:col-start-4 py-8 lg:py-0 md:py-0">
                                                 <div class="md:flex md:flex-wrap  flex flex-wrap">
 
-                                                    <div class="md:w-1/2 lg:w-1/3 xl:w-1/3 2xl:w-1/3 w-1/2 ">
-                                                        <img class="relative" src="/img/despacho.PNG" alt="">
-                                                    </div>
-                                                    <div class="lg:w-1/6">
+                                                    {{-- modal Despacho --}}
+                                                    <div class="md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2 w-1/2 "
+                                                        x-data="{ Despacho: false }">
+                                                        <a class=" " href="#" @click="Despacho = true">
+                                                            <label class="md:py-16 lg:py-16 font-bold">
+                                                                <div class="">
+                                                                    <button type="button"
+                                                                        class="sm:text-md text-sm no-underline inline-block uppercase px-12 py-5  font-bold max-w-max shadow-sm hover:shadow-lg rounded-md bg-black text-white hover:text-yellow-300 "
+                                                                        style="border-color: #F5DF4D">
+                                                                        COSTOS DE DESPACHO
+                                                                        <i class="fas fa-truck text-5xl"
+                                                                            style="font-size: 16px"></i></button>
+                                                                </div>
+                                                            </label>
 
+                                                        </a>
+                                                        {{--  --}}
+
+                                                        <!-- modal div -->
+                                                        <div class="mt-6"
+                                                            :class="{' block': Despacho, 'hidden': !Despacho}">
+
+                                                            <!-- Button (blue), duh! -->
+                                                            <!-- Dialog (full screen) -->
+                                                            <div class="absolute top-0 left-0 flex items-center justify-center w-full h-1/2 md:h-full lg:h-full xl:h-full 2xl:h-full"
+                                                                style="z-index: 99999;">
+
+                                                                <!-- A basic modal dialog with title, body and one button to close -->
+                                                                <div class="h-auto   mx-2 text-left bg-white rounded shadow-xl md:max-w-xl md:p-0 lg:p-0 md:mx-0 md:pr-0   lg:mx-0 w-full   md:-mt-16 xl:-mt-16 2xl:-mt-16 lg:-mt-16"
+                                                                    @click.away="Despacho = false"
+                                                                    style="z-index: 9999;">
+                                                                    <!-- Success alert -->
+                                                                    <div style="background-color: #000"
+                                                                        class="flex p-4">
+                                                                        <div class=" ">
+                                                                            <div style="background-color: #000"
+                                                                                class=" w-24">
+                                                                                <img class="branding__logo img-fluid"
+                                                                                    src="http://localhost:8000/img/logo_ok.png"
+                                                                                    max-width="95px" alt="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="flex justify-between w-full">
+                                                                            <div class="text-black">
+                                                                                <h2
+                                                                                    class=" pl-10 font-bold md:text-2xl  text-white">
+                                                                                    Disponibilidad en
+                                                                                    tiendas
+                                                                                </h2>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    {{-- modal body --}}
+                                                                    <div
+                                                                        class="mt-3 text-center sm:mt-0 sm:mx-10 sm:text-left  ">
+                                                                        <article style=""
+                                                                            class=" col-start-1 col-end-3">
+                                                                            <label class="py-2">
+                                                                                <!--Card 1-->
+                                                                                <div class=" w-full  lg:flex">
+
+                                                                                    <div
+                                                                                        class=" rounded-b lg:rounded-b-none  w-full lg:rounded-r p-4 leading-normal">
+                                                                                        <div class="mb-8">
+                                                                                            <div
+                                                                                                class="py-4 font-bold font-xl uppercase">
+                                                                                                <h2><span>Selecciona la
+                                                                                                        Región de
+                                                                                                        despacho</span>
+                                                                                                </h2>
+                                                                                            </div>
+
+                                                                                            <select id="regiones"
+                                                                                                formcontrolname="selectRegion"
+                                                                                                class="text-sm w-full block px-3 py-2 rounded-lg bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white  focus:border-gray-600  focus:outline-none">
+                                                                                            </select>
+                                                                                            <div class="py-2"></div>
+                                                                                            <select id="comunas"
+                                                                                                formcontrolname="selectComuna"
+                                                                                                class="text-sm w-full block px-3 py-2 rounded-lg bg-white border-2 border-gray-300 placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white  focus:border-gray-600  focus:outline-none">
+
+                                                                                            </select>
+                                                                                            <div class="py-2">
+                                                                                                <p
+                                                                                                    class=" tracking-normal py-1 ">
+                                                                                                    El valor de despacho
+                                                                                                    para la comuna
+                                                                                                    seleccionada es:
+                                                                                                    <br><strong
+                                                                                                        class="text-xl"
+                                                                                                        id="RegionSlected"></strong>
+                                                                                                    <br>
+                                                                                                    <strong
+                                                                                                        class="text-xl"
+                                                                                                        id="ComunaSlected"></strong>
+                                                                                                    <br>
+                                                                                                    <strong
+                                                                                                        class="text-xl"
+                                                                                                        id="pre_despacho"></strong>
+                                                                                                </p>
+
+
+
+                                                                                            </div>
+                                                                                            {{-- <input type="hidden"
+                                                                                                id="urlGuardar"
+                                                                                                value="{{ route('comuna') }}">
+                                                                                            --}}
+
+                                                                                            <div
+                                                                                                class="text-2xl col-span-12 ">
+
+                                                                                                <span
+                                                                                                    class="flex w-full rounded-md shadow-sm py-3">
+                                                                                                    <button
+                                                                                                        @click="Despacho = false"
+                                                                                                        class="inline-flex justify-center font-boldpx-6 py-3 text-white bg-blue-700 w-full rounded hover:bg-black">
+                                                                                                        Cerrar
+                                                                                                    </button>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </label>
+                                                                        </article>
+                                                                    </div>
+
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        {{--  --}}
                                                     </div>
-                                                    <div class="md:w-1/2 lg:w-1/3 xl:w-1/3 2xl:w-1/3 w-1/2 ">
-                                                        <img class="relative" src="/img/retiro.PNG" alt="">
+
+                                                    {{-- end modal --}}
+
+                                                    {{-- modal retiro --}}
+                                                    <div class="md:w-1/2 lg:w-1/2 xl:w-1/2 2xl:w-1/2 w-1/2 "
+                                                        x-data="{ Retiro: false }">
+                                                        <a class=" " href="#" @click="Retiro = true">
+                                                            <label class="md:py-16 lg:py-16 font-bold">
+
+                                                                <div class="">
+                                                                    <button type="button"
+                                                                        class="sm:text-md text-sm no-underline inline-block uppercase px-12 py-5  font-bold max-w-max shadow-sm hover:shadow-lg rounded-md bg-black text-white hover:text-yellow-300 "
+                                                                        style="border-color: #F5DF4D">
+                                                                        DISPONIBILIDAD EN TIENDAS
+                                                                        <i class="fa fa-map-marker text-5xl"
+                                                                            aria-hidden="true"
+                                                                            style="font-size: 16px"></i></button>
+                                                                </div>
+                                                            </label>
+
+                                                        </a>
+                                                        {{--  --}}
+
+                                                        <!-- modal div -->
+                                                        <div class="mt-6"
+                                                            :class="{' block': Retiro, 'hidden': !Retiro}">
+
+                                                            <!-- Button (blue), duh! -->
+                                                            <!-- Dialog (full screen) -->
+                                                            <div class="absolute top-0 left-0 flex items-center justify-center w-full h-1/2 md:h-full lg:h-full xl:h-full 2xl:h-full"
+                                                                style="z-index: 99999;">
+
+                                                                <!-- A basic modal dialog with title, body and one button to close -->
+                                                                <div class="h-auto   mx-2 text-left bg-white rounded shadow-xl md:max-w-xl md:p-0 lg:p-0 md:mx-0 md:pr-0   lg:mx-0 w-full   md:-mt-16 xl:-mt-16 2xl:-mt-16 lg:-mt-16"
+                                                                    @click.away="Retiro = false" style="z-index: 9999;">
+                                                                    <!-- Success alert -->
+                                                                    <div style="background-color: #000"
+                                                                        class="flex p-4">
+                                                                        <div class=" ">
+                                                                            <div style="background-color: #000"
+                                                                                class=" w-24">
+                                                                                <img class="branding__logo img-fluid"
+                                                                                    src="http://localhost:8000/img/logo_ok.png"
+                                                                                    max-width="95px" alt="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="flex justify-between w-full">
+                                                                            <div class="text-black">
+                                                                                <h2
+                                                                                    class=" pl-10 font-bold md:text-2xl  text-white">
+                                                                                    Disponibilidad en
+                                                                                    tiendas
+                                                                                </h2>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    {{-- modal body --}}
+                                                                    <div
+                                                                        class="mt-3 text-center sm:mt-0 sm:mx-10 sm:text-left ">
+                                                                        <article style=""
+                                                                            class=" col-start-1 col-end-3">
+
+                                                                            @foreach ($tiendaStock as $tienda)
+                                                                            <label class="py-2">
+                                                                                <div
+                                                                                    class="bg-white hover:border-green-300 my-2 box focus:bg-yellow-300 focus:border-black focus:border-2 border-2 font-bolder">
+
+                                                                                    <strong
+                                                                                        class="text-base">{{$tienda->Tienda}}</strong>
+                                                                                    <br>
+                                                                                    <strong class="text-base"> Unidades
+                                                                                        Disponibles:
+                                                                                        {{$tienda->stock}}</strong>
+
+
+
+                                                                                </div>
+                                                                            </label>
+                                                                            @endforeach
+
+
+
+
+
+                                                                        </article>
+                                                                    </div>
+
+                                                                    <!-- One big close button.  --->
+                                                                    <div class="mt-5 sm:mt-6 pb-6 px-10 ">
+
+                                                                        <div
+                                                                            class="grid-cols-12 grid grid-flow-row auto-rows-auto gap-2">
+                                                                            <div class="text-2xl col-span-12 ">
+
+                                                                                <span
+                                                                                    class="flex w-full rounded-md shadow-sm">
+                                                                                    <button @click="Retiro = false"
+                                                                                        class="inline-flex justify-center font-boldpx-6 py-3 text-white bg-blue-700 w-full rounded hover:bg-black">
+                                                                                        Cerrar
+                                                                                    </button>
+                                                                                </span>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+                                                        {{--  --}}
                                                     </div>
+
+                                                    {{-- end modal --}}
+
                                                 </div>
                                             </div>
 
@@ -172,13 +440,17 @@
                                                 <div class="grid grid-cols-2">
                                                     <div
                                                         class="md:px-0 md:py-0 col-span-1 lg:px-2 bg-gray-300 lg:py-2 px-6 py-6 grid grid-cols-2  ">
-                                                        <div class="inline-block align-middle ">
+                                                        <div
+                                                            class="inline-block md:col-span-2 lg:col-span-1 align-middle ">
                                                             <p
                                                                 class="pt-3 inline-block align-middle lg:text-base font-bold md:text-sm leading-relaxed    text-black">
                                                                 CANTIDAD
                                                             </p>
                                                         </div>
-                                                        <div class="inline-block align-middle ">
+                                                        <div
+                                                            class="inline-block md:col-span-2 lg:col-span-1 align-middle ">
+                                                            <input type="hidden" name="Cod_Tienda"
+                                                                value="{{$tiendaStock[0]->Cod_Tienda}}" id="Cod_Tienda">
                                                             <input type="number" id="cantidad"
                                                                 style="outline:none;appearance: none;" min="1" value=""
                                                                 class="text-md w-5/6 inline-block align-middle  rounded-lg md:p-2 bg-white border-2 border-gray-300  placeholder-gray-600 shadow-md focus:placeholder-gray-500 focus:bg-white focus:border-gray-600 focus:outline-none">
@@ -188,7 +460,7 @@
                                                         <button id="carrito" type="button"
                                                             style="background: rgb(19,124,117);
                                                                                                     background: linear-gradient(90deg, rgba(19,124,117,1) 14%, rgba(10,82,109,1) 54%, rgba(14,69,114,1) 100%);"
-                                                            class="uppercase px-2 py-5 bg-blue-500 font-bold text-white max-w-max shadow-sm hover:shadow-lg"><i
+                                                            class="uppercase px-2 py-5  font-bold text-white max-w-max shadow-sm hover:shadow-lg   bg-gradient-to-r hover:from-green-400 hover:to-blue-500"><i
                                                                 class="fas fa-shopping-cart"></i> AGREGAR A MIS
                                                             COMPRAS</button>
                                                     </div>

@@ -19,11 +19,12 @@ use App\Models\retiro_local;
 class CarritoController extends Controller
 {
 
-    public function addCarrito(Request $request){
+    public function addCarrito(Request $request)
+    {
         if ($request->ajax()) {
             try {
                 $idPago = 0;
-                
+
                 if (session()->has('idPago')) {
                     $idPago = session('idPago');
                 }
@@ -31,6 +32,7 @@ class CarritoController extends Controller
                 $sku = (isset($request->sku) && $request->sku != null) ? $request->sku : '';
                 $cant = (isset($request->cant) && $request->cant != null) ? $request->cant : 0;
                 $color = (isset($request->col) && $request->col != null) ? $request->col : '';
+                $Cod_Tienda = (isset($request->Cod_Tienda) && $request->Cod_Tienda != null) ? $request->Cod_Tienda : 0;
                 $monto = (isset($request->monto) && $request->monto != null) ? $request->monto : 0;
                 $descripcion = (isset($request->descripcion) && $request->descripcion != null) ? $request->descripcion : '';
                 $__token = $request->session()->token();
@@ -44,6 +46,7 @@ class CarritoController extends Controller
                         //update reserva
                         $reserva->reserva = $cant + $reserva->reserva;
                         $reserva->monto = $monto;
+                        $reserva->Cod_Tienda = $Cod_Tienda;
                         $reserva->Total = ($monto * $reserva->reserva);
                         $reserva->save();
                         $idTransaccion = $reserva->idTransaccion;
@@ -73,6 +76,7 @@ class CarritoController extends Controller
                         $reserva->reserva = $cant;
                         $reserva->Cod_EstiloColor = $color;
                         $reserva->monto = $monto;
+                        $reserva->Cod_Tienda = $Cod_Tienda;
                         $reserva->Total = ($monto * $reserva->reserva);
                         $reserva->descripcion = $descripcion;
                         $reserva->idTransaccion = $idPago;
@@ -99,11 +103,11 @@ class CarritoController extends Controller
                         $detalle->Cod_EstiloColor = $color;
                         $detalle->Cantidad = $reserva->reserva;
                         $detalle->idTransaccion = $idTransaccion;
-                        $detalle->save(); 
+                        $detalle->save();
                     }
                 } else {
                     // Registro de nueva session de Pago (idPago)
-                    
+
                     $pago = new Transaccion();
                     $pago->save();
 
@@ -116,6 +120,7 @@ class CarritoController extends Controller
                     $reserva->reserva = $cant;
                     $reserva->Cod_EstiloColor = $color;
                     $reserva->monto = $monto;
+                    $reserva->Cod_Tienda = $Cod_Tienda;
                     $reserva->Total = ($monto * $reserva->reserva);
                     $reserva->descripcion = $descripcion;
                     $reserva->idTransaccion = $pago->id;
@@ -150,10 +155,11 @@ class CarritoController extends Controller
         }
     }
 
-    public function getCarrito(){
+    public function getCarrito()
+    {
         $idPago = 0;
         $pago = [];
-        
+
         // Rescatar session de Pago
         if (session()->has('idPago')) {
             $idPago = session('idPago');
@@ -176,9 +182,10 @@ class CarritoController extends Controller
         return view('Vistas.carritov2', ['reserva' => $reserva]);
     }
 
-    public function getCarritoStepper(){
+    public function getCarritoStepper()
+    {
         $idPago = 0;
-        
+
         // Rescatar Session de Pago
         if (session()->has('idPago')) {
             $idPago = session('idPago');
@@ -206,14 +213,16 @@ class CarritoController extends Controller
             session(['precio_comuna' => $precioDespacho]);
         }
 
-        return view('Vistas.carritoStepper', [  'reserva'       => $reserva,
-                                                'tiendas'       => $tiendas,
-                                                'direccion'     => $direccion,
-                                                'precio_comuna' => $precioDespacho]);
-        
+        return view('Vistas.carritoStepper', [
+            'reserva'       => $reserva,
+            'tiendas'       => $tiendas,
+            'direccion'     => $direccion,
+            'precio_comuna' => $precioDespacho
+        ]);
     }
 
-    public function removeCarrito(Request $request){
+    public function removeCarrito(Request $request)
+    {
         if ($request->ajax()) {
             try {
                 // Rescatar session de Pago
@@ -238,7 +247,8 @@ class CarritoController extends Controller
         }
     }
 
-    public function addDireccion(Request $request){
+    public function addDireccion(Request $request)
+    {
         if ($request->ajax()) {
             try {
 
@@ -311,7 +321,7 @@ class CarritoController extends Controller
                 } else {
                     $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
                     if ($usr_no_logeado === null) {
-                        
+
                         // Crear usuario Invitado
                         $usr_no_logeado = new no_usr();
                         $usr_no_logeado->direccion = $direccion;
@@ -327,7 +337,7 @@ class CarritoController extends Controller
 
                         $get_detalle = Detalle::where('idTransaccion', $idPago)->first(); //busca los detalles con la id de pago
                         $comuna = Despacho::where('comuna', $com)->first();
-                        
+
                         if ($comuna !== null) {
                             $p_Despacho = $comuna->precio; //si existe, le asigna el precio
                         } else {
@@ -361,7 +371,6 @@ class CarritoController extends Controller
                         }
 
                         return ['message' => 'Successful', 'triggerer' => $get_detalle, 'id' => 2, 'precio_comuna' => $p_Despacho];
-
                     } else {
 
                         $direccion = (isset($request->direccion) && $request->direccion != null) ? $request->direccion : '';
@@ -387,7 +396,7 @@ class CarritoController extends Controller
 
                         $get_detalle = Detalle::where('idTransaccion', $idPago)->first(); //busca los detalles con la id de pago
                         $comuna = Despacho::where('comuna', $com)->first();
-                        
+
                         if ($comuna !== null) {
                             $p_Despacho = $comuna->precio; //si existe, le asigna el precio
                         } else {
@@ -430,7 +439,8 @@ class CarritoController extends Controller
         }
     }
 
-    public function cmbr_tienda(Request $request){
+    public function cmbr_tienda(Request $request)
+    {
         if ($request->ajax()) {
             try {
                 $idPago = session('idPago');
@@ -439,7 +449,7 @@ class CarritoController extends Controller
                 if (Auth::check()) { //si el usr esta logeado
                     $id_usr = Auth::id(); //obten la id
                     $get_tienda = retiro_local::where('idTransaccion_FK', $idPago)->where('idUsuario_FK', $id_usr)->first(); //busca un retiro en tienda con el usuario
-                    
+
                     if ($get_tienda == null) { // y si retiro_local es null
 
                         $id_tienda = (isset($request->tienda) && $request->tienda != null) ? $request->tienda : '';
@@ -487,7 +497,6 @@ class CarritoController extends Controller
                     }
 
                     return ['triggerer' => $updte_detalle, 'id' => $p_Despacho];
-
                 } else {
                     $get_tienda = retiro_local::where('idTransaccion_FK', $idPago)->first();
 
@@ -513,7 +522,6 @@ class CarritoController extends Controller
                             $get_tienda->save();
                             $id_retiro = $get_tienda->id;
                         }
-
                     } else {
                         $id_tienda = (isset($request->tienda) && $request->tienda != null) ? $request->tienda : '';
                         $get_tienda->Cod_tienda_FK = $id_tienda;
@@ -532,7 +540,6 @@ class CarritoController extends Controller
                             $usr_no_logeado->detalle = null;
                             $usr_no_logeado->save();
                         }
-
                     }
 
                     $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
@@ -573,7 +580,6 @@ class CarritoController extends Controller
                         }
                     }
                     return ['triggerer' => $updte_detalle, 'id' => $p_Despacho];
-                    
                 }
 
                 return ['status' => 0];
@@ -583,7 +589,8 @@ class CarritoController extends Controller
         }
     }
 
-    public function cmbr_dir(Request $request){
+    public function cmbr_dir(Request $request)
+    {
 
         if ($request->ajax()) {
 
@@ -593,7 +600,7 @@ class CarritoController extends Controller
                 $get_detalle = Detalle::where('idTransaccion', $idPago)->first(); //busca los detalles con la id de pago
 
                 if ($get_detalle !== null) { //si no es nulo
-                   
+
                     $dir_com = $get_detalle->valor_despacho;
                     $udpte_detalle = Detalle::where('idTransaccion', $idPago)->get();
                     $comuna = Despacho::where('comuna', $dir_com)->first();
@@ -618,7 +625,8 @@ class CarritoController extends Controller
         return view('dashboard.lista_Producto');
     }
 
-    public function login_usr(Request $request){
+    public function login_usr(Request $request)
+    {
 
         $validar = $this->validate($request, [
             'correo_lgn' => 'required|email',
