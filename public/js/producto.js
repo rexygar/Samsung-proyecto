@@ -2,93 +2,93 @@ var RegionesYcomunas = {
 
     "regiones": [{
         "NombreRegion": "Región de Arica y Parinacota",
-        "precio_despacho_R": "$25000",
+        "precio_despacho_R": "$12000",
         "id_region": "1",
         "comunas": ["Arica", "Camarones", "Putre", "General Lagos"]
     },
     {
         "NombreRegion": "Región de Tarapacá",
-        "precio_despacho_R": "$15000",
+        "precio_despacho_R": "$12500",
         "id_region": "2",
         "comunas": ["Iquique", "Alto Hospicio", "Pozo Almonte", "Camiña", "Colchane", "Huara", "Pica"]
     },
     {
         "NombreRegion": "Región de Antofagasta",
-        "precio_despacho_R": "$35000",
+        "precio_despacho_R": "$10000",
         "id_region": "3",
         "comunas": ["Antofagasta", "Mejillones", "Sierra Gorda", "Taltal", "Calama", "Ollagüe", "San Pedro de Atacama", "Tocopilla", "María Elena"]
     },
     {
         "NombreRegion": "Región de Atacama",
-        "precio_despacho_R": "$500000",
+        "precio_despacho_R": "$12500",
         "id_region": "4",
         "comunas": ["Copiapó", "Caldera", "Tierra Amarilla", "Chañaral", "Diego de Almagro", "Vallenar", "Alto del Carmen", "Freirina", "Huasco"]
     },
     {
         "NombreRegion": "Región de Coquimbo",
-        "precio_despacho_R": "$55000",
+        "precio_despacho_R": "$10000",
         "id_region": "5",
         "comunas": ["La Serena", "Coquimbo", "Andacollo", "La Higuera", "Paiguano", "Vicuña", "Illapel", "Canela", "Los Vilos", "Salamanca", "Ovalle", "Combarbalá", "Monte Patria", "Punitaqui", "Río Hurtado"]
     },
     {
         "NombreRegion": "Región de Valparaíso",
-        "precio_despacho_R": "$1000",
+        "precio_despacho_R": "$7000",
         "id_region": "6",
         "comunas": ["Valparaíso", "Casablanca", "Concón", "Juan Fernández", "Puchuncaví", "Quintero", "Viña del Mar", "Isla de Pascua", "Los Andes", "Calle Larga", "Rinconada", "San Esteban", "La Ligua", "Cabildo", "Papudo", "Petorca", "Zapallar", "Quillota", "Calera", "Hijuelas", "La Cruz", "Nogales", "San Antonio", "Algarrobo", "Cartagena", "El Quisco", "El Tabo", "Santo Domingo", "San Felipe", "Catemu", "Llaillay", "Panquehue", "Putaendo", "Santa María", "Quilpué", "Limache", "Olmué", "Villa Alemana"]
     },
     {
-        "NombreRegion": "Región del Libertador Gral. Bernardo O’Higgins",
-        "precio_despacho_R": "$75000",
+        "NombreRegion": "Región Metropolitana de Santiago",
+        "precio_despacho_R": "$6500",
         "id_region": "7",
+        "comunas": ["Cerrillos", "Cerro Navia", "Conchalí", "El Bosque", "Estación Central", "Huechuraba", "Independencia", "La Cisterna", "La Florida", "La Granja", "La Pintana", "La Reina", "Las Condes", "Lo Barnechea", "Lo Espejo", "Lo Prado", "Macul", "Maipú", "Ñuñoa", "Pedro Aguirre Cerda", "Peñalolén", "Providencia", "Pudahuel", "Quilicura", "Quinta Normal", "Recoleta", "Renca", "San Joaquín", "San Miguel", "San Ramón", "Vitacura", "Puente Alto", "Pirque", "San José de Maipo", "Colina", "Lampa", "TilVl", "San Bernardo", "Buin", "Calera de Tango", "Paine", "Melipilla", "Alhué", "Curacaví", "María Pinto", "San Pedro", "Talagante", "El Monte", "Isla de Maipo", "Padre Hurtado", "Peñaflor"]
+    },
+    {
+        "NombreRegion": "Región del Libertador Gral. Bernardo O’Higgins",
+        "precio_despacho_R": "$10000",
+        "id_region": "8",
         "comunas": ["Rancagua", "Codegua", "Coinco", "Coltauco", "Doñihue", "Graneros", "Las Cabras", "Machalí", "Malloa", "Mostazal", "Olivar", "Peumo", "Pichidegua", "Quinta de Tilcoco", "Rengo", "Requínoa", "San Vicente", "Pichilemu", "La Estrella", "Litueche", "Marchihue", "Navidad", "Paredones", "San Fernando", "Chépica", "Chimbarongo", "Lolol", "Nancagua", "Palmilla", "Peralillo", "Placilla", "Pumanque", "Santa Cruz"]
     },
     {
         "NombreRegion": "Región del Maule",
-        "precio_despacho_R": "$85000",
-        "id_region": "8",
+        "precio_despacho_R": "$7000",
+        "id_region": "9",
         "comunas": ["Talca", "ConsVtución", "Curepto", "Empedrado", "Maule", "Pelarco", "Pencahue", "Río Claro", "San Clemente", "San Rafael", "Cauquenes", "Chanco", "Pelluhue", "Curicó", "Hualañé", "Licantén", "Molina", "Rauco", "Romeral", "Sagrada Familia", "Teno", "Vichuquén", "Linares", "Colbún", "Longaví", "Parral", "ReVro", "San Javier", "Villa Alegre", "Yerbas Buenas"]
     },
     {
         "NombreRegion": "Región del Biobío",
-        "precio_despacho_R": "$95000",
-        "id_region": "9",
+        "precio_despacho_R": "$12500",
+        "id_region": "10",
         "comunas": ["Concepción", "Coronel", "Chiguayante", "Florida", "Hualqui", "Lota", "Penco", "San Pedro de la Paz", "Santa Juana", "Talcahuano", "Tomé", "Hualpén", "Lebu", "Arauco", "Cañete", "Contulmo", "Curanilahue", "Los Álamos", "Tirúa", "Los Ángeles", "Antuco", "Cabrero", "Laja", "Mulchén", "Nacimiento", "Negrete", "Quilaco", "Quilleco", "San Rosendo", "Santa Bárbara", "Tucapel", "Yumbel", "Alto Biobío", "Chillán", "Bulnes", "Cobquecura", "Coelemu", "Coihueco", "Chillán Viejo", "El Carmen", "Ninhue", "Ñiquén", "Pemuco", "Pinto", "Portezuelo", "Quillón", "Quirihue", "Ránquil", "San Carlos", "San Fabián", "San Ignacio", "San Nicolás", "Treguaco", "Yungay"]
     },
     {
         "NombreRegion": "Región de la Araucanía",
-        "precio_despacho_R": "$50000",
-        "id_region": "10",
+        "precio_despacho_R": "$7000",
+        "id_region": "11",
         "comunas": ["Temuco", "Carahue", "Cunco", "Curarrehue", "Freire", "Galvarino", "Gorbea", "Lautaro", "Loncoche", "Melipeuco", "Nueva Imperial", "Padre las Casas", "Perquenco", "Pitrufquén", "Pucón", "Saavedra", "Teodoro Schmidt", "Toltén", "Vilcún", "Villarrica", "Cholchol", "Angol", "Collipulli", "Curacautín", "Ercilla", "Lonquimay", "Los Sauces", "Lumaco", "Purén", "Renaico", "Traiguén", "Victoria",]
     },
     {
         "NombreRegion": "Región de Los Ríos",
-        "precio_despacho_R": "$53000",
-        "id_region": "11",
+        "precio_despacho_R": "$10000",
+        "id_region": "12",
         "comunas": ["Valdivia", "Corral", "Lanco", "Los Lagos", "Máfil", "Mariquina", "Paillaco", "Panguipulli", "La Unión", "Futrono", "Lago Ranco", "Río Bueno"]
     },
     {
         "NombreRegion": "Región de Los Lagos",
-        "precio_despacho_R": "$51000",
-        "id_region": "12",
+        "precio_despacho_R": "$12500",
+        "id_region": "13",
         "comunas": ["Puerto Montt", "Calbuco", "Cochamó", "Fresia", "FruVllar", "Los Muermos", "Llanquihue", "Maullín", "Puerto Varas", "Castro", "Ancud", "Chonchi", "Curaco de Vélez", "Dalcahue", "Puqueldón", "Queilén", "Quellón", "Quemchi", "Quinchao", "Osorno", "Puerto Octay", "Purranque", "Puyehue", "Río Negro", "San Juan de la Costa", "San Pablo", "Chaitén", "Futaleufú", "Hualaihué", "Palena"]
     },
     {
         "NombreRegion": "Región Aisén del Gral. Carlos Ibáñez del Campo",
-        "precio_despacho_R": "$52000",
-        "id_region": "13",
+        "precio_despacho_R": "$12500",
+        "id_region": "14",
         "comunas": ["Coihaique", "Lago Verde", "Aisén", "Cisnes", "Guaitecas", "Cochrane", "O’Higgins", "Tortel", "Chile Chico", "Río Ibáñez"]
     },
     {
         "NombreRegion": "Región de Magallanes y de la Antártida Chilena",
-        "precio_despacho_R": "$50200",
-        "id_region": "14",
-        "comunas": ["Punta Arenas", "Laguna Blanca", "Río Verde", "San Gregorio", "Cabo de Hornos (Ex Navarino)", "AntárVca", "Porvenir", "Primavera", "Timaukel", "Natales", "Torres del Paine"]
-    },
-    {
-        "NombreRegion": "Región Metropolitana de Santiago",
-        "precio_despacho_R": "$51000",
+        "precio_despacho_R": "$12500",
         "id_region": "15",
-        "comunas": ["Cerrillos", "Cerro Navia", "Conchalí", "El Bosque", "Estación Central", "Huechuraba", "Independencia", "La Cisterna", "La Florida", "La Granja", "La Pintana", "La Reina", "Las Condes", "Lo Barnechea", "Lo Espejo", "Lo Prado", "Macul", "Maipú", "Ñuñoa", "Pedro Aguirre Cerda", "Peñalolén", "Providencia", "Pudahuel", "Quilicura", "Quinta Normal", "Recoleta", "Renca", "San Joaquín", "San Miguel", "San Ramón", "Vitacura", "Puente Alto", "Pirque", "San José de Maipo", "Colina", "Lampa", "TilVl", "San Bernardo", "Buin", "Calera de Tango", "Paine", "Melipilla", "Alhué", "Curacaví", "María Pinto", "San Pedro", "Talagante", "El Monte", "Isla de Maipo", "Padre Hurtado", "Peñaflor"]
+        "comunas": ["Punta Arenas", "Laguna Blanca", "Río Verde", "San Gregorio", "Cabo de Hornos (Ex Navarino)", "AntárVca", "Porvenir", "Primavera", "Timaukel", "Natales", "Torres del Paine"]
     }]
 }
 

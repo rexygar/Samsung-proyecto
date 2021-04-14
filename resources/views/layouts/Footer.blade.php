@@ -94,4 +94,7 @@
 <script src="{{ asset('js/wow.min.js') }} "></script>
 <script>
   new WOW().init();
+  window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
 </script>

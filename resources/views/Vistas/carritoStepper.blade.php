@@ -103,32 +103,46 @@
         @if (Auth::user())
 
         <div id="smartwizard" class="sw sw-justified sw-theme-default  col-span-12 grid grid-cols-12 ">
-            <ul class="nav nav-tabs col-span-12 sm:grid grid-cols-12  ">
-                <div class="col-span-4">
-                    <li class="nav-item col-span-12  hidden done"><a href="#step-1" class="nav-link">Paso 1<br><small>
+            {{--  --}}
+            <ul class="nav nav-tabs col-span-12 grid grid-cols-12">
+                <div class="grid grid-flow-row md:grid-flow-col  w-full  grid-cols-12 grid-rows-1">
+
+
+                    <li
+                        class="nav-item col-span-6 md:col-span-6 pt-3 md:pt-2 lg:col-span-6 xl:col-span-6 2xl:col-span-6">
+                        <a href="#step-1" class="nav-link">Paso 1<br><small>
                                 Tipo Entrega</small></a></li>
-                    <li class="nav-item col-span-12  hidden done"><a href="#step-2" class="nav-link">Paso 2<br><small>
+                    <li
+                        class="nav-item col-span-6 md:col-span-6 pt-3 md:pt-2 lg:col-span-6 xl:col-span-6 2xl:col-span-6">
+                        <a href="#step-2" class="nav-link">Paso 2<br>
+                            <small>
                                 Pago
-                            </small></a></li>
-
+                            </small>
+                        </a>
+                    </li>
                 </div>
             </ul>
-
-            <ul class="nav nav-tabs col-span-12 grid grid-cols-12 grid-flow-row auto-rows-max   sm:hidden">
-                <div class="w-full grid-flow-row auto-rows-min  ">
-
-
-
-                    <li class="nav-item w-1/2  float-left relative  done" style="z-index: 99999;"><a href="#step-1"
-                            class="nav-link inactive">Paso 1<br><small>
-                                Tipo Entrega</small></a></li>
-                    <li class="nav-item  w-1/2 relative  float-left done" style="z-index: 9999;"><a href="#step-2"
-                            class="nav-link inactive">Paso 2<br><small> Pago
-                            </small></a></li>
-
+            {{--  --}}
+            {{-- <ul class="nav nav-tabs col-span-12 grid grid-cols-12 grid-flow-row auto-rows-max   sm:hidden">
+                <div class="w-full grid-flow-row auto-rows-min">
+                    <li class="nav-item w-1/2  float-left relative  done" style="z-index: 99999;">
+                        <a href="#step-1" class="nav-link inactive">Paso 1
+                            <br>
+                            <small>
+                                Tipo Entrega</small>
+                        </a>
+                    </li>
+                    <li class="nav-item  w-1/2 relative  float-left done" style="z-index: 9999;">
+                        <a href="#step-2" class="nav-link inactive">Paso 2
+                            <br>
+                            <small>
+                                Pago
+                            </small>
+                        </a>
+                    </li>
                 </div>
-            </ul>
-
+            </ul> --}}
+            {{--  --}}
             <div class="sw-container tab-content col-span-12 grid grid-cols-12 h-full">
                 {{-- <div id="step-1" class="tab-pane step-content col-span-12" style="display: block;">
                     @include('Components.Carrito.carritoS2')
@@ -146,24 +160,34 @@
 
         <div id="smartwizard" class="sw sw-justified sw-theme-default  col-span-12 grid grid-cols-12 ">
 
-            <ul class="nav nav-tabs col-span-12 sm:grid grid-cols-12  ">
-                <div class="col-span-4">
+            <ul class="nav nav-tabs col-span-12 grid grid-cols-12">
+                <div class="grid grid-flow-row md:grid-flow-col  w-full  grid-cols-12 grid-rows-1">
 
-                    <li class="nav-item col-span-12  hidden active"><a href="#step-1" class="nav-link">Paso 1<br><small>
+
+                    <li
+                        class="nav-item col-span-4 md:col-span-4 pt-3 md:pt-2 lg:col-span-4 xl:col-span-4 2xl:col-span-4">
+                        <a href="#step-1" class="nav-link">Paso
+                            1<br><small>
                                 Datos
                                 personales
                             </small></a></li>
 
-                    <li class="nav-item col-span-12  hidden done"><a href="#step-2" class="nav-link">Paso 2<br><small>
+                    <li
+                        class="nav-item col-span-4 md:col-span-4 pt-3 md:pt-2 lg:col-span-4 xl:col-span-4 2xl:col-span-4">
+                        <a href="#step-2" class="nav-link">Paso
+                            2<br><small>
                                 Tipo Entrega</small></a></li>
-                    <li class="nav-item col-span-12  hidden done"><a href="#step-3" class="nav-link">Paso 3<br><small>
+                    <li
+                        class="nav-item col-span-4 md:col-span-4 pt-3 md:pt-2 lg:col-span-4 xl:col-span-4 2xl:col-span-4">
+                        <a href="#step-3" class="nav-link">Paso
+                            3<br><small>
                                 Pago
                             </small></a></li>
 
                 </div>
             </ul>
 
-            <ul class="nav nav-tabs col-span-12 grid grid-cols-12 grid-flow-row auto-rows-max   sm:hidden">
+            {{-- <ul class="nav nav-tabs col-span-12 grid grid-cols-12 grid-flow-row auto-rows-max   sm:hidden">
                 <div class="w-full grid-flow-row auto-rows-min  ">
 
                     <li class="nav-item w-1/3 active relative  float-left" style="z-index: 999;"><a href="#step-1"
@@ -179,7 +203,7 @@
                             </small></a></li>
 
                 </div>
-            </ul>
+            </ul> --}}
 
 
             <div class="sw-container tab-content col-span-12 grid grid-cols-12 h-full">
