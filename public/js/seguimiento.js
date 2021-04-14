@@ -12,6 +12,7 @@ $(document).ready(function(){
             success: function(data){
 				if (data["message"] == "1") {
                     $('#seguimiento').attr('hidden', false);
+                    $('#noExiste').attr('hidden', true);
                     $('#ordenSeg').text(data.despacho[0].Ordentransporte);
                     $('#estado').text(data.despacho[0].Estado);
                     $('#observacion').text(data.despacho[0].Observacion);

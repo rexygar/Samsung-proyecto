@@ -301,10 +301,11 @@ class MainController extends Controller
                 $ord = (isset($request->ord) && $request->ord != null) ? $request->ord : '';
 
                 $despacho = EstadoCompra::where('Ordentransporte', $ord)->get();
-                if(!isset($despacho)){
-                    return ['message' => 1, 'despacho' => $despacho];
-                } else {
+
+                if($despacho->isEmpty()){
                     return false;
+                } else {
+                    return ['message' => 1, 'despacho' => $despacho];
                 }
             }
         } catch (\Throwable $th) {
