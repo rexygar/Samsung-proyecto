@@ -300,9 +300,12 @@ class MainController extends Controller
             if ($request->ajax()) {
                 $ord = (isset($request->ord) && $request->ord != null) ? $request->ord : '';
 
-                $despacho = Despacho::where('Ordentransporte', $ord)->get();
-
-                return ['message' => 1, 'despacho' => $despacho];
+                $despacho = EstadoCompra::where('Ordentransporte', $ord)->get();
+                if(!isset($despacho)){
+                    return ['message' => 1, 'despacho' => $despacho];
+                } else {
+                    return false;
+                }
             }
         } catch (\Throwable $th) {
             return $th;

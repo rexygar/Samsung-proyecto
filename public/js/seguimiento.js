@@ -10,10 +10,15 @@ $(document).ready(function(){
                 ord: ord,
             },
             success: function(data){
-				if (data["message"] == 1) {
-					console.log(data.despacho);
+				if (data["message"] == "1") {
+                    $('#seguimiento').attr('hidden', false);
+                    $('#ordenSeg').text(data.despacho[0].Ordentransporte);
+                    $('#estado').text(data.despacho[0].Estado);
+                    $('#observacion').text(data.despacho[0].Observacion);
 				}else{
 					console.log(data.despacho);
+                    $('#seguimiento').attr('hidden', true);
+                    $('#noExiste').attr('hidden', false);
 				}
 			}
         })

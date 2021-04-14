@@ -165,7 +165,7 @@
 
 
             </article>
-            <article style="background-color: aliceblue" class="panel is-primary col-start-1 col-end-3" hidden>
+            <article style="background-color: aliceblue" class="panel is-primary col-start-1 col-end-3" id="seguimiento" hidden>
 
                 <div class="panel-block" style="background-color: aliceblue">
 
@@ -175,7 +175,7 @@
                         <div class="grid grid-cols-12 w-full lg:max-w-full" style="background-color: aliceblue">
                             <div class="col-span-12 grid grid-cols-12 px-6">
                                 <div class="xl:col-span-6 2xl:col-span-6 lg:col-span-6 col-span-6 md:col-span-12">
-                                    <label class="form-check-label" for="NuevoNombre">Numero de Orden: XXXXXXXX
+                                    <label class="form-check-label" for="NuevoNombre">Numero de Orden: <label class="form-check-label" id="ordenSeg"></label>
                                     </label>
                                 </div>
                             </div>
@@ -185,7 +185,7 @@
                         <div class="grid grid-cols-12 w-full lg:max-w-full" style="background-color: aliceblue">
                             <div class="col-span-12 grid grid-cols-12 px-6">
                                 <div class="xl:col-span-6 2xl:col-span-6 lg:col-span-6 col-span-6 md:col-span-12">
-                                    <label class="form-check-label" for="NuevoNombre">ESTADO DE LA ORDEN:
+                                    <label class="form-check-label" for="NuevoNombre">ESTADO DE LA ORDEN: <label class="form-check-label" id="estado"></label>
                                     </label>
                                 </div>
                             </div>
@@ -200,7 +200,7 @@
                                 </label>
                                 
                             <div class="xl:col-span-6 2xl:col-span-6 lg:col-span-6 col-span-6 md:col-span-12 bg-gray-200">
-                                <label class="form-check-label" for="NuevoNombre">
+                                <label class="form-check-label" for="NuevoNombre" id="observacion">
                                 </label>
                             </div>
                             </div>
@@ -225,7 +225,7 @@
 
 
             </article>  
-            <article style="background-color: aliceblue" class="panel is-primary col-start-1 col-end-3" hidden>
+            <article style="background-color: aliceblue" class="panel is-primary col-start-1 col-end-3" id="noExiste" hidden>
 
                 <div class="px-6">
                     <p class=" tracking-normal py-1 border-b-2 border-opacity-25  text-gray-600
