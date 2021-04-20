@@ -190,6 +190,9 @@ class MainController extends Controller
         if (count($reserva) > 0) {
             if ($idPago > 0) {
                 $monto = Reserva::where('idTransaccion', $idPago)->sum('Total');
+                
+                // Reservas quedan Pendientes a pago
+                $rese = Reserva::where('idTransaccion', $idPago)->update(['Pendiente' => 1]);
 
                 $monto += intval(session('precio_comuna'));
 
@@ -204,7 +207,7 @@ class MainController extends Controller
         } else {
             $pago = null;
         }
-        return view('prueba', ['pago' => $pago]);
+        return view('transbank.prueba', ['pago' => $pago]);
     }
 
     public function getSeguimiento()
@@ -214,24 +217,6 @@ class MainController extends Controller
 
     public static function getStepper()
     {
-        // $idPago = 0;
-        // $pago = [];
-        // $this->TransbankController = new TransbankController();
-        // if(session()->has('idPago')){
-        //     $idPago = session('idPago');
-        // }else{
-        //     session(['idPago' => $idPago]);
-        // }
-        // $reserva = Reserva::where('idTransaccion', $idPago)->get();
-        // if(count($reserva) > 0){
-        //     if($idPago > 0){
-        //         $monto = Reserva::where('idTransaccion', $idPago)->sum('Total');
-        //         $order = '54879644';
-        //         $pago = $this->TransbankController->initTransaction($monto,$order, $idPago);
-        //     }
-        // }else{
-        //     $pago = null;
-        // }
         $tiendas = DB::select("CALL Ges_getTiendas()");
 
         $direccion = null;
@@ -240,39 +225,8 @@ class MainController extends Controller
             $direccion = Direccion::where('user_id', $id)->get();
         }
 
-        // return view('Vistas.carritoStepper', ['reserva' => $reserva, 'pago' => $pago, 'tiendas' => $tiendas, 'direccion' => $direccion]);
         return view('Vistas.carritoStepper', ['tiendas' => $tiendas, 'direccion' => $direccion]);
     }
-
-    // REQUEST =  sku (in aJAX)
-
-    // public function mantener_comuna(Request $request) metodo ya no usado; ver add direccion para encontrar el #'precio' => #session('precio_comuna')];
-    // {
-    //     try {
-    //         if ($request->ajax()) {
-    //             $reg = (isset($request->reg) && $request->reg != null) ? $request->reg : '';
-    //             $com = (isset($request->com) && $request->com != null) ? $request->com : '';
-
-    //             $comuna = Despacho::where('comuna', $com)->first();
-    //             $idPago = session('idPago');
-
-
-    //             // session('precio_comuna')
-
-    //             if (session()->has('precio_comuna')) {
-    //                 session(['precio_comuna' => $comuna->precio]);
-    //             } else {
-    //                 session(['precio_comuna' => $comuna->precio]);
-    //             }
-
-    //             return ['message' => $comuna->comuna, 'precio' => session('precio_comuna')];
-    //         }
-    //     } catch (\Throwable $th) {
-    //         //throw $th;
-    //     }
-    // }
-
-
 
     public function listProduct(Request $request)
     {

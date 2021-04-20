@@ -8,6 +8,7 @@ use App\Models\Transaccion;
 use Illuminate\Http\Request;
 use Transbank\Webpay\Configuration;
 use Transbank\Webpay\Webpay;
+use App\Models\Detalle;
 
 class TransbankController extends Controller
 {
@@ -83,12 +84,14 @@ class TransbankController extends Controller
 			$estado->ordenTransporte = $pago->order;
 			$estado->estado = "Pago Validado";
 			$estado->idTransaccion = $pago->id;
+
+			Detalle::where('idTransaccion', $result->sessionId)->update(['estado' => 1]);
 			
 		}else{
 			$pago = Transaccion::where('id', $result->sessionId)->first();
 			$pago->estado = 'Rechazado';
 			$pago->save();
-
+			
 		}
 
 		return view('transbank.response', compact('token', 'url'));
@@ -96,6 +99,6 @@ class TransbankController extends Controller
 	}
 
 	public function finish(){
-        return Transaccion::last()->first();
+        return redirect('Seguimiento');
 	}
 }
