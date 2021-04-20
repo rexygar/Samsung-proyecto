@@ -1,6 +1,7 @@
 $(document).ready(function(){
     $('#editar').on('click', function(){
         var url = $('#url').val();
+        var usr = $('#id_user').val();
         var rut = $('#rut').val();
         var nom = $('#nombre').val();
         var apel = $('#apellido').val();
@@ -21,6 +22,7 @@ $(document).ready(function(){
                 nom : nom,
                 apel : apel,
                 tel : tel,
+                usr: usr,
             },
             success: function(data){
                 if(data["message"] == "Successful"){

@@ -14,7 +14,7 @@
                             <h3>Perfil</h3>
                         </div>
                         <input type="hidden" id="url" value="{{ route('perfil.update') }}">
-                        <input type="hidden" id="id_perfil" value="@if (isset($perfil->id)) {{ $perfil->id }} @endif">
+                        <input type="hidden" id="id_user" value="@if (isset( Auth::user()->id )) {{ Auth::user()->id }} @endif">
 
                         <div class="pb-6 w-full col-span-12">
                             <label for="rut" class="font-semibold text-gray-700 block pb-1">RUT</label>

@@ -24,23 +24,18 @@ class UsuarioController extends Controller
                 $rut = (isset($request->rut) && $request->rut != null) ? $request->rut : '';
                 $nom = (isset($request->nom) && $request->nom != null) ? $request->nom : '';
                 $apel = (isset($request->apel) && $request->apel != null) ? $request->apel : '';
-                $id_usr = Auth::id(); //obten la id
-                $perfil = Perfil::where('user_id', $id_usr)->first();
-                if ($perfil == null) {
-                    $new_perfil = new Perfil();
-                    $new_perfil->telefono             = $tel;
-                    $new_perfil->nombres            = $nom;
-                    $new_perfil->apellidos          = $apel;
-                    $new_perfil->rut                 = $rut;
-                    $new_perfil->user_id            = $id_usr;
-                    $new_perfil->save();
-                } else {
-                    $perfil->rut                 = $rut;
+                $usr = (isset($request->usr) && $request->usr != null) ? $request->usr : '';
+                $perfil = Perfil::where('user_id', $usr)->first();
+                if ($perfil == null || !isset($perfil->id)) {
+                    $perfil = new Perfil();
+                }
                     $perfil->telefono             = $tel;
                     $perfil->nombres            = $nom;
                     $perfil->apellidos          = $apel;
+                    $perfil->rut                 = $rut;
+                    $perfil->user_id            = $usr;
                     $perfil->save();
-                }
+                    
                 return ['message' => "Successful"];
             }
         } catch (\Throwable $th) {
