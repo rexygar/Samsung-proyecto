@@ -84,7 +84,7 @@ class TransbankController extends Controller
 			$estado->ordenTransporte = $pago->order;
 			$estado->estado = "Pago Validado";
 			$estado->idTransaccion = $pago->id;
-
+			$estado->save();
 			Detalle::where('idTransaccion', $result->sessionId)->update(['estado' => 1]);
 			
 		}else{

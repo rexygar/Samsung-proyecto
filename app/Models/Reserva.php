@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Reserva extends Model
 {
     use HasFactory;
-    public $table = "reserva";
+    public $table = "reserva_stk";
     protected $connection = 'mysql';
 }
