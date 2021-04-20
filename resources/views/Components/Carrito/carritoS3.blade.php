@@ -581,7 +581,7 @@
                                 @endforeach
                             </div>
 
-                            <a href="#" @click="seleccionar = false" @click="open = true"
+                            {{-- <a href="#" @click="seleccionar = false" @click="open = true"
                                 class="sm:text-md text-sm  inline-block px-2 py-2 underline rounded-md  hover:text-yellow-300 "
                                 rel="noopener noreferrer">
                                 <label>
@@ -590,11 +590,11 @@
                                         Por favor ingrese su dirección
                                         <input type="radio" onclick="openModal(Tipo_Entrega)" id="Tipo_Entrega"
                                             name="Tipo_Entrega" value="1">
-                                        {{-- <button x-data @click="$dispatch('toggle-reassign-modal')">Toggle Reassign
-                                            Modal</button> --}}
+                                        <button x-data @click="$dispatch('toggle-reassign-modal')">Toggle Reassign
+                                            Modal</button>
                                     </div>
                                 </label>
-                            </a>
+                            </a> --}}
 
 
 

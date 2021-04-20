@@ -179,7 +179,7 @@
             <div class="panel-block" style="background-color: aliceblue">
                 <p class=" tracking-normal py-1 border-b-2 border-opacity-25 
                 border-dotted" style="background-color: aliceblue">
-                    Puedes cambiar tus productos en cualquier tienda Paris hasta 30 días después de la fecha de
+                    Puedes cambiar tus productos en cualquier tienda TecnoBuy hasta 30 días después de la fecha de
                     compra.
                 </p>
             </div>

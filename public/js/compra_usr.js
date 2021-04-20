@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     var Tipo_Entrega = $('[name="Tipo_Entrega"]:checked').val();
 
-    $('#Tipo_Entrega[value="1"]').on('click', function(){
+    $('#Tipo_Entrega[value="1"]').on('click', function () {
         if (!$('input[name="tienda_id"]').checked) {
             $('#Tipo_Entrega[value="1"]').checked = false;
         }
@@ -14,17 +14,17 @@ $(document).ready(function () {
 
     $('#buttonSig').attr('disabled', true);
 
-    $('input[name="tienda_id"]').on('click', function(){
+    $('input[name="tienda_id"]').on('click', function () {
         $('#Tipo_Entrega[value="1"]').checked = true;
     })
 
-    $('#buttonSig').on('click', function(){
+    $('#buttonSig').on('click', function () {
         var rut = $('#NuevoRut').val();
         var nom = $('#NuevoNombre').val()
         var email = $('#NuevoEmail').val()
         var apel = $('#NuevoApellido').val()
         var tel = $('#Nuevo_nmro').val()
-        if (nom == "" && apel == "" && rut == "" && tel == "" && email == "" ) {
+        if (nom == "" && apel == "" && rut == "" && tel == "" && email == "") {
             toastr["warning"]("Por favor Rellene los campos");
             return false;
         }
@@ -170,7 +170,9 @@ $(document).ready(function () {
             success: function (data) {
                 if (data["message"] == "Successful") {
                     toastr["info"]("Se ha actualizado su direccion de despacho correctamente");
-                    console.log('data')
+                    console.log('data');
+                    $('#dirSelect').text(data.direccion[0].region + ', ' + data.direccion[0].comuna);
+                    $('#siguienteButton').attr('disabled', false);
                 } else {
                     toastr["warning"]("Ha ocurrido un problema, por favor vuelva a intentarlo");
                     console.log(data);

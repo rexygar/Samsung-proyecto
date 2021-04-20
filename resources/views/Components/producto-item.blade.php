@@ -183,7 +183,7 @@
                                                             <label class="md:py-16 lg:py-16 font-bold">
                                                                 <div class="">
                                                                     <button type="button"
-                                                                        class="sm:text-md text-sm no-underline inline-block uppercase px-12 py-5  font-bold max-w-max shadow-sm hover:shadow-lg rounded-md bg-black text-white hover:text-yellow-300 "
+                                                                        class="sm:text-md text-sm no-underline inline-block uppercase md:px-12 lg:px-12 xl:px-12 2xl:px-12 py-5 px-3  font-bold max-w-max shadow-sm hover:shadow-lg rounded-md bg-black text-white hover:text-yellow-300 "
                                                                         style="border-color: #F5DF4D">
                                                                         COSTOS DE DESPACHO
                                                                         <i class="fas fa-truck text-5xl"
@@ -200,7 +200,7 @@
 
                                                             <!-- Button (blue), duh! -->
                                                             <!-- Dialog (full screen) -->
-                                                            <div class="absolute top-0 left-0 flex items-center justify-center w-full h-1/2 md:h-full lg:h-full xl:h-full 2xl:h-full"
+                                                            <div class="absolute top-0 left-0 flex items-center  pt-40 md:pt-16 justify-center w-full h-1/2 md:h-full lg:h-full xl:h-full 2xl:h-full"
                                                                 style="z-index: 99999;">
 
                                                                 <!-- A basic modal dialog with title, body and one button to close -->
@@ -326,7 +326,7 @@
 
                                                                 <div class="">
                                                                     <button type="button"
-                                                                        class="sm:text-md text-sm no-underline inline-block uppercase px-12 py-5  font-bold max-w-max shadow-sm hover:shadow-lg rounded-md bg-black text-white hover:text-yellow-300 "
+                                                                        class="sm:text-md text-sm no-underline inline-block uppercase md:px-12 lg:px-12 xl:px-12 2xl:px-12 py-5 px-3  font-bold max-w-max shadow-sm hover:shadow-lg rounded-md bg-black text-white hover:text-yellow-300 "
                                                                         style="border-color: #F5DF4D">
                                                                         DISPONIBILIDAD EN TIENDAS
                                                                         <i class="fa fa-map-marker text-5xl"
@@ -344,7 +344,7 @@
 
                                                             <!-- Button (blue), duh! -->
                                                             <!-- Dialog (full screen) -->
-                                                            <div class="absolute top-0 left-0 flex items-center justify-center w-full h-1/2 md:h-full lg:h-full xl:h-full 2xl:h-full"
+                                                            <div class="absolute top-0 left-0 flex items-center justify-center pt-36 md:pt-16 w-full h-1/2 md:h-full lg:h-full xl:h-full 2xl:h-full"
                                                                 style="z-index: 99999;">
 
                                                                 <!-- A basic modal dialog with title, body and one button to close -->

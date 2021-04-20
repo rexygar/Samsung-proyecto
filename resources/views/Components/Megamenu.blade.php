@@ -12,8 +12,17 @@
     font-family: 'Inter UI', sans-serif !important;
   }
 
-  @media screen and (min-width: 0px) and (max-width: 650px) {
+  @media screen and (min-width: 0px) and (max-width:1024px) {
   .no_mostrar { display: none !important; }  /* show it on small screens */
+}
+  @media screen and (min-width: 0px) and (max-width: 1024px) {
+  .mostrar { display: block !important; }  /* show it on small screens */
+}
+  @media screen  and (min-width: 1024px){
+  .mostrar_xl { display: block !important; }  /* show it on small screens */
+}
+  @media screen and (min-width: 1024px){
+  .no_mostrar_xl { display: none !important; }  /* show it on small screens */
 }
 
 
@@ -29,7 +38,7 @@
       Categorias</div>
     <ul class="md:flex lg:flex lg:pr -12 xl:pr-12 2xl:pr-12">
       <!--Hoverable Link-->
-      <li class="hoverable hover:bg-black text-black hover:text-white lg:px-6 xl:px-6 2xl:px-6">
+      <li class="hoverable hover:bg-black text-black hover:text-white lg:px-4 xl:px-6 2xl:px-6">
         <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
             hover:bg-black hover:text-white text-black md:p-4">TELEFONOS</a>
         <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
@@ -79,7 +88,7 @@
           </div>
         </div>
       </li>
-      <li class="hoverable hover:bg-black text-black hover:text-white lg:px-6 xl:px-6 2xl:px-6">
+      <li class="hoverable hover:bg-black text-black hover:text-white lg:px-4 xl:px-6 2xl:px-6">
         <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
             hover:bg-black hover:text-white text-black md:p-4">TABLETS</a>
         <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
@@ -106,7 +115,7 @@
           </div>
         </div>
       </li>
-      <li class="hoverable hover:bg-black text-black hover:text-white lg:px-6 xl:px-6 2xl:px-6">
+      <li class="hoverable hover:bg-black text-black hover:text-white lg:px-4 xl:px-6 2xl:px-6">
         <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
             hover:bg-black hover:text-white text-black md:p-4">WEARABLES</a>
         <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
@@ -152,7 +161,7 @@
           </div>
         </div>
       </li>
-      <li class="hoverable hover:bg-black text-black hover:text-white lg:px-6 xl:px-6 2xl:px-6">
+      <li class="hoverable hover:bg-black text-black hover:text-white lg:px-4 xl:px-6 2xl:px-6">
         <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
             hover:bg-black hover:text-white text-black md:p-4">ACCESORIOS</a>
         <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
@@ -330,7 +339,7 @@
           </div>
         </div>
       </li>
-      <li class="hoverable hover:bg-black text-black hover:text-white lg:px-6 xl:px-6 2xl:px-6">
+      <li class="hoverable hover:bg-black text-black hover:text-white lg:px-4 xl:px-6 2xl:px-6">
         <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
             hover:bg-black hover:text-white text-black md:p-4">COMPUTADORES</a>
         <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
@@ -387,7 +396,7 @@
           </div>
         </div>
       </li>
-      <li class="hoverable hover:bg-black text-black hover:text-white lg:px-6 xl:px-6 2xl:px-6">
+      <li class="hoverable hover:bg-black text-black hover:text-white lg:px-4 xl:px-6 2xl:px-6">
         <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
             hover:bg-black hover:text-white text-black md:p-4">CONSOLAS Y JUEGOS</a>
         <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"

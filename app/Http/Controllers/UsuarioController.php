@@ -20,25 +20,28 @@ class UsuarioController extends Controller
     {
         try {
             if ($request->ajax()) {
-
-                if (isset($request->id) && $request->id != '') {
-                    $perfil = Perfil::where('id', $request->id)->first();
-                } else {
-                    $perfil = new Perfil();
-                }
-
                 $tel = (isset($request->tel) && $request->tel != null) ? $request->tel : '';
                 $rut = (isset($request->rut) && $request->rut != null) ? $request->rut : '';
-                $nom = (isset($request->pass) && $request->pass != null) ? $request->pass : '';
-                $apel = (isset($request->pass) && $request->pass != null) ? $request->pass : '';
-
-                $perfil->telefono             = $tel;
-                $perfil->nombres            = $nom;
-                $perfil->apellidos          = $apel;
-                $perfil->rut                 = $rut;
-                $perfil->user_id            = Auth::user()->id;
-                $perfil->save();
-                return ['message' => "Successful", 'id' => $perfil->id];
+                $nom = (isset($request->nom) && $request->nom != null) ? $request->nom : '';
+                $apel = (isset($request->apel) && $request->apel != null) ? $request->apel : '';
+                $id_usr = Auth::id(); //obten la id
+                $perfil = Perfil::where('user_id', $id_usr)->first();
+                if ($perfil == null) {
+                    $new_perfil = new Perfil();
+                    $new_perfil->telefono             = $tel;
+                    $new_perfil->nombres            = $nom;
+                    $new_perfil->apellidos          = $apel;
+                    $new_perfil->rut                 = $rut;
+                    $new_perfil->user_id            = $id_usr;
+                    $new_perfil->save();
+                } else {
+                    $perfil->rut                 = $rut;
+                    $perfil->telefono             = $tel;
+                    $perfil->nombres            = $nom;
+                    $perfil->apellidos          = $apel;
+                    $perfil->save();
+                }
+                return ['message' => "Successful"];
             }
         } catch (\Throwable $th) {
             //throw $th;

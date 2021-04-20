@@ -91,183 +91,28 @@
         height: 0;
     }
 </style>
+
 <body class="bg-gray-100">
     <div class="grid grid-cols-12  ">
         <div class="col-span-12">
             <main class="h-full flex items-center px-6 py-24 lg:px-32 bg-black  relative">
-                  <section class="w-full md:w-9/12 py-8 ">
+                <section class="w-full md:w-10/12 lg:w-11/12 py-8 ">
                     <span class="font-bold uppercase tracking-widest bg-yellow-300 ">TECNOBUY</span>
                     <h1 class="text-3xl lg:text-8xl font-bold bg-yellow-300 ">
-                      Su Carrito se encuentra vacio por el momento
+                        Su Carrito se encuentra vacio por el momento
                     </h1>
                     <p class="font-bold mb-1 bg-yellow-300 ">¿Quieres continuar con tu compra?...</p>
-                    <a href="/"><h1 class="font-bold mb-1 bg-yellow-300  text-3xl lg:text-5xl">ir al inicio</h1></a>
-                  </section>
-                  <footer class="absolute right-0 bg-yellow-300  bottom-0 p-6 lg:p-32 ">
+                    <a href="/">
+                        <h1 class="font-bold mb-1 bg-yellow-300  text-3xl lg:text-5xl">ir al inicio</h1>
+                    </a>
+                </section>
+                <footer class="absolute right-0 bg-yellow-300  bottom-0 p-6 lg:p-32 ">
                     <p class="font-bold mb-1">Atte.</p>
                     <p>Tecnobuy</p>
-                  </footer>
-                </main>
+                </footer>
+            </main>
 
         </div>
-        
+
     </div>
 </body>
-
-
-
-
-
-<!-- /SECTION -->
-
-<script>
-    //TO DO: ajax will take place
-
-    $('.add').click(function () {
-
-        var product_id = $(this).val();
-        $(this).prev().val(+$(this).prev().val() + 1);
-        var x = $(this).prev().val();
-        var token = $("input[name=_token]").val();
-        var order_serial = this.getAttribute('data-rel');
-        var product_price = this.getAttribute('data-rel2');
-
-
-        $.ajax({
-            type: 'post',
-            url: url,
-            dataType: "JSON",
-            async: false,
-            data: {
-                pid: product_id,
-                newQ: x,
-                oSerial: order_serial,
-                _token: token
-            },
-            success: function (msg) {
-                document.getElementById("individualPrice_" + order_serial).innerHTML = x *
-                    product_price + " TK";
-                document.getElementById("totalCost").innerHTML = msg[2] + " TK";
-            }
-        });
-
-
-    });
-    $('.sub').click(function () {
-
-       
-        var product_id = $(this).val();
-        var order_serial = this.getAttribute('data-rel');
-        var product_price = this.getAttribute('data-rel2');
-        if ($(this).next().val() > 1) {
-            $(this).next().val(+$(this).next().val() - 1);
-            var x = $(this).next().val();
-            var token = $("input[name=_token]").val();
-
-
-            $.ajax({
-                type: 'post',
-                url: url,
-                dataType: "JSON",
-                async: false,
-                data: {
-                    pid: product_id,
-                    newQ: x,
-                    oSerial: order_serial,
-                    _token: token
-                },
-                success: function (msg) {
-                    document.getElementById("individualPrice_" + order_serial).innerHTML =
-                        x * product_price + " TK";
-                    document.getElementById("totalCost").innerHTML = msg[2] + " TK";
-
-                }
-            });
-
-
-        }
-    });
-
-    $('.delete_item').click(function () {
-        
-        var serial = $(this).val(); //serial is the forth element of sale coloumn
-        var token = $("input[name=_token]").val();
-        var id_holder = "deleteItem_" + serial;
-        $.ajax({
-            type: 'post',
-            url: url,
-            dataType: "JSON",
-            async: false,
-            data: {
-                serial: serial,
-                _token: token
-            },
-            success: function (msg) {
-                if (msg == "Empty") {
-                    document.getElementById("order_summary").innerHTML =
-                        "<div class='order-col'><h1>Your Cart is Empty</h1></div>";
-                    document.getElementById("confirm_order").style.visibility = "hidden";
-                }
-
-                //$("#deleteItem_".$p->id").load(location.href+" #refresh_div","");
-                document.getElementById(id_holder).innerHTML = "";
-                document.getElementById("totalCost").innerHTML = msg[2];
-            }
-        });
-
-
-    });
-
-
-    //validation
-
-    $(document).ready(function () {
-        // validate the comment form when it is submitted
-        //$("#commentForm").validate();
-
-        // validate signup form on keyup and submit
-        
-
-
-    });
-
-</script>
-<script>
-    function myFunction() {
-        //var token={{ csrf_token() }};
-        var email = $("#email").val();
-        var token = $("input[name=_token]").val();
-   
-
-
-        $.ajax({
-            type: 'post',
-            url: url,
-            dataType: "JSON",
-            async: false,
-            data: {
-                email: email,
-                _token: token
-            },
-            success: function (msg) {
-
-
-                if (msg == "1") {
-                    document.getElementById("for_duplicate-email").innerHTML =
-                        "<label class='error'>This Email Address is Already taken</label>";
-
-
-                } else {
-                    document.getElementById("for_duplicate-email").innerHTML = "";
-
-                }
-            }
-        });
-
-    }
-
-</script>
-
-<script src="{{ asset('js/carrito.js') }}"></script>
-<link rel="stylesheet" href="{{ asset('js/toastr/toastr.min.css') }}">
-<script src="{{ asset('js/toastr/toastr.js') }}"></script>

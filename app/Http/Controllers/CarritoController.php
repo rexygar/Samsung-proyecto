@@ -316,7 +316,7 @@ class CarritoController extends Controller
                             $detalle->id_retiro_local = null;
                             $detalle->save();
                         }
-                        return ['message' => 'Successful', 'triggerer' => $get_detalle, 'id' => 1, 'precio_comuna' => $p_Despacho, 'direccion' => $dir];
+                        return ['message' => 'Successful',  'precio_comuna' => $p_Despacho, 'direccion' => $dir];
                     }
                 } else {
                     $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
@@ -496,7 +496,7 @@ class CarritoController extends Controller
                         }
                     }
 
-                    return ['triggerer' => $updte_detalle, 'id' => $p_Despacho];
+                    // return ['triggerer' => $updte_detalle, 'id' => $p_Despacho];
                 } else {
                     $get_tienda = retiro_local::where('idTransaccion_FK', $idPago)->first();
 
@@ -579,10 +579,10 @@ class CarritoController extends Controller
                             }
                         }
                     }
-                    return ['triggerer' => $updte_detalle, 'id' => $p_Despacho];
+                    // return ['triggerer' => $updte_detalle, 'id' => $p_Despacho];
                 }
 
-                return ['status' => 0];
+                return ['message' => 'Successful'];
             } catch (\Throwable $th) {
                 return ['status' => $th];
             }
@@ -603,10 +603,11 @@ class CarritoController extends Controller
 
                     $dir_com = $get_detalle->valor_despacho;
                     $udpte_detalle = Detalle::where('idTransaccion', $idPago)->get();
-                    $comuna = Despacho::where('comuna', $dir_com)->first();
+                    // $comuna = Despacho::where('comuna', $dir_com)->first();
 
                     $id_dir = (isset($request->direccion) && $request->direccion != null) ? $request->direccion : '';
-                    $p_Despacho = $comuna->precio;
+                    // $p_Despacho = $comuna->precio;
+                     $p_Despacho = 1000;
                     foreach ($udpte_detalle as $detalle) {
                         $detalle->id_CSL = null;
                         $detalle->id_Usuario = $id_usr;
@@ -617,6 +618,9 @@ class CarritoController extends Controller
                         $detalle->id_retiro_local = null;
                         $detalle->save();
                     }
+
+                    $direccion = Direccion::where('id', $id_dir)->get();
+                    return ['message' => 'Successful', 'triggerer' => $get_detalle, 'id' => 1, 'precio_comuna' => $p_Despacho, 'direccion' => $direccion];
                 }
 
                 return ['message' => 'Successful'];

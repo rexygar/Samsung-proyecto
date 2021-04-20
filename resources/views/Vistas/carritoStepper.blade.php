@@ -162,8 +162,6 @@
 
             <ul class="nav nav-tabs col-span-12 grid grid-cols-12">
                 <div class="grid grid-flow-row md:grid-flow-col  w-full  grid-cols-12 grid-rows-1">
-
-
                     <li
                         class="nav-item col-span-4 md:col-span-4 pt-3 md:pt-2 lg:col-span-4 xl:col-span-4 2xl:col-span-4">
                         <a href="#step-1" class="nav-link">Paso

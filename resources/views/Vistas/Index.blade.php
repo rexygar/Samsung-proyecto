@@ -15,7 +15,7 @@
     <link href="{{ asset('css/Style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/componentes.css') }}" rel="stylesheet">
     <link href="{{ asset('css/layouts.css') }}" rel="stylesheet">
-    
+
     <link href="{{ asset('css/Megamenu.css') }}" rel="stylesheet">
     <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
@@ -38,8 +38,8 @@
 <div class=" w-full py-auto relative" style="z-index: 99999">
 
     @include('Components.brandHeader')
-    @include('Components.nav-mobile')
     @include('Components.Header')
+    @include('Components.nav-mobile')
     {{-- @include('Components.Header') --}}
 </div>
 @include('Components.Megamenu')
@@ -105,6 +105,14 @@
                                     </div>
                                 </div>
                             </div>
+                            {{-- <div class="container mx-auto animate__fadeInUp animate__animated wow">
+
+
+                                @include('Components.Producto_Estrella')
+
+
+                            </div> --}}
+
                             <div class="container mx-auto animate__fadeInUp animate__animated wow">
                                 <div class="grid grid-cols-1 lg:grid-cols-1 gap-4 lg:gap-8">
                                     <div class="place-self-center ">
@@ -122,7 +130,7 @@
 
 
                             </div>
-                            <div class="lg:w-full md:w-full pt-16">
+                            <div class="lg:w-full md:w-full pt-6 sm:pt-16">
                                 <div class="">
                                     <!-- ... -->
                                     <div class="place-self-center ">
@@ -149,12 +157,12 @@
 
                             </div>
                             <!-- ... -->
-
+                            {{-- 
                             <div class=" px-16 py-16">
 
                                 <hr class="self-center border-hr border-gray-600 bg-gray-600 w-5/5">
 
-                            </div>
+                            </div> --}}
                             <div class="animate__fadeInUp animate__animated wow">
 
                                 {{-- producto card --}}

@@ -42,40 +42,40 @@
 <div class="carousel relative bg-white block">
     <div class="carousel-inner relative overflow-hidden w-full ">
         @php
-            $x = 0;
+        $x = 0;
         @endphp
         @foreach ($imageSup as $img)
-            @if ($img->tipo == "sliderSup")
-                <input class="carousel-open" type="radio" id="carousel-{{ $x = $x + 1 }}" name="carousel" aria-hidden="true" hidden=""
-                checked="checked">
-                <div class="carousel-item absolute md:pt-10 lg:pt-11 pt-10 opacity-0 border-t-2 border-black">
-                    <div class="block h-full w-full py-20 lg:py-60 md:py-36   bg-cover  bg-center  text-white text-5xl text-center"
-                        style="background-image: url({{asset('storage/'.$img->imagen)}});">
-                        <div class="lg:w-full md:w-full overflow-hidden pr-10">
-                        </div>
-                    </div>
+        @if ($img->tipo == "sliderSup")
+        <input class="carousel-open" type="radio" id="carousel-{{ $x = $x + 1 }}" name="carousel" aria-hidden="true"
+            hidden="" checked="checked">
+        <div class="carousel-item absolute md:pt-10 lg:pt-11 pt-10 opacity-0 border-t-2 border-black">
+            <div class="block h-full w-full py-20 lg:py-60 md:py-36 bg-contain lg:bg-cover lg:bg-center xl:bg-cover sm:bg-cover sm:bg-center 2xl:bg-cover xl:bg-center 2xl:bg-center text-white text-5xl text-center"
+                style="background-image: url({{asset('storage/'.$img->imagen)}});background-repeat: no-repeat;">
+                <div class="lg:w-full md:w-full overflow-hidden pr-10">
                 </div>
-                @if ($x == 1)
-                    <label for="carousel-3"
-                    class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
-                    <label for="carousel-2"
-                    class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label> 
-                @endif
-                @if ($x == 2)
-                    <label for="carousel-1"
-                    class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
-                    <label for="carousel-3"
-                    class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
-                @endif
-                @if ($x == 3)
-                    <label for="carousel-2"
-                    class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
-                    <label for="carousel-1"
-                    class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
-                @endif
-            @endif
+            </div>
+        </div>
+        @if ($x == 1)
+        <label for="carousel-3"
+            class="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+        <label for="carousel-2"
+            class="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+        @endif
+        @if ($x == 2)
+        <label for="carousel-1"
+            class="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+        <label for="carousel-3"
+            class="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+        @endif
+        @if ($x == 3)
+        <label for="carousel-2"
+            class="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 left-0 my-auto">‹</label>
+        <label for="carousel-1"
+            class="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-blue-700 leading-tight text-center z-10 inset-y-0 right-0 my-auto">›</label>
+        @endif
+        @endif
         @endforeach
-        
+
 
 
         <ol class="carousel-indicators">

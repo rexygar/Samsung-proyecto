@@ -3,15 +3,15 @@
     <nav
         class="font-sans grid  text-center content-center sm:flex-row sm:text-left sm:justify-between py-2 px-6 bg-black shadow sm:items-baseline w-full">
         <div class="grid grid-cols-12 md:grip-cols-10 lg:py-2 ">
-            <div class="md:col-span-2 col-span-2 xl:col-span-2 2xl:col-span-2  lg:col-span-2  ">
+            <div class="md:col-span-2 col-span-2 xl:col-span-2 2xl:col-span-2  lg:col-span-2  lg:-mx-16 ">
                 <a class="navbar-brand lg:w-1/3 lg:mx-auto md:w-5/6" href=" {{ __('/') }}">
                     <img class="branding__logo img-fluid" src=" {{asset('/img/logo.png')}}" max-width="95px" alt="">
                 </a>
             </div>
-            <div
-                class="md:col-span-5 lg:col-span-6 sm:col-span-7 xl:col-span-6 col-span-6 2xl:col-span-6 md:-ml-10  xl:-ml-36  2xl:-ml-36 sm:hidden md:block">
+            <div class="md:col-span-5 lg:col-span-6 sm:col-span-7 xl:col-span-6 col-span-6 lg:-ml-24
+                2xl:col-span-6 md:-ml-10  xl:-ml-36  2xl:-ml-36 sm:hidden md:block">
                 <form action="{{route('search')}}" method="GET">
-                    <div class="grid grid-cols-1 gap-6 md:gap-0">
+                    <div class="grid grid-cols-1 gap-6  md:mr-20 lg:-mr-0 xl:-mr-0 2xl:-mr-0 md:gap-0">
 
                         <div id="search-container"
                             class="hidden pt-3 md:pt-0 sm:block w-full md:w-full max-w-md mx-auto md:ml-auto order-3">
@@ -24,8 +24,7 @@
                                         </path>
                                     </svg>
                                 </div>
-                                <input id="search-toggle" type="search" name="search"
-                                    placeholder="Encuentra lo que necesites"
+                                <input id="search-toggle" type="search" name="search" placeholder="Buscar Productos"
                                     class="block w-full bg-brand-white focus:outline-none focus:bg-white focus:shadow text-gray-700 font-bold rounded-lg pl-12 pr-4 py-3">
                             </div>
                         </div>
@@ -43,8 +42,8 @@
             </div>
 
             <div
-                class="md:col-span-4 lg:col-span-4  sm:col-span-6 col-span-3 col-start-9 sm:col-start-5 xl:col-span-3 2xl:col-span-3  md:col-start-9  2xl:col-start-9 xl:col-start-9  lg:col-start-9  grid grid-cols-2 md:-ml-16 lg:-ml-36">
-                <div class="col-span-2">
+                class="md:col-span-4 lg:col-span-4  sm:col-span-6 col-span-3 col-start-9 sm:col-start-5 xl:col-span-3 2xl:col-span-3  md:col-start-9  2xl:col-start-9 xl:col-start-9  lg:col-start-9  grid grid-cols-2 md:-ml-36 lg:-ml-20  xl:-ml-36 sm:ml-2 2xl:-ml-36 xl:-mr-6  sm:-mr-16 md:-mr-0 lg:-mr-0">
+                <div class="col-span-2  lg:-mr-6 md:-mr-6 sm:-mr-6">
 
                     {{-- <div class="md:col-span-2 lg:col-span-2 inline-block relative sm:col-span-2  xl:col-span-2">
                         <!-- <div class="h-10" style="display: table-cell, vertical-align: middle;"> -->
@@ -70,20 +69,22 @@
                     @if (Route::has('login'))
                     <a href="{{ route('login') }}"
                         class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
-                        style="border-color: #F5DF4D"><strong>{{ __('Iniciar Sesión') }}</strong></a>
+                        style="border-color: #F5DF4D"><strong >Ingresar</strong><i
+                            class="fa fa-sign-in" aria-hidden="true"></i></a>
                     @endif
                     @if (Route::has('register'))
                     <a href="{{ route('register') }}"
                         class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
-                        style="border-color: #F5DF4D"><strong>{{ __('Registrarse') }}</strong></a>
+                        style="border-color: #F5DF4D"><strong >Registrarse</strong></a>
 
 
                     <a href="{{ route('seguimiento') }}"
                         class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
-                        style="border-color: #F5DF4D"><strong>{{ __('Seguimiento') }}</strong></a>
+                        style="border-color: #F5DF4D"><strong >Seguimiento</strong><i
+                            class="fas fa-shipping-fast"></i></a>
 
                     <a href="{{route('carrito')}}"
-                        class="sm:text-md text-sm no-underline inline-block px-2 py-2   rounded-md bg-black text-white hover:text-yellow-300 "
+                        class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
                         style="border-color: #F5DF4D"> <i
                             class="lg:text-base sm:text-xl xl:text-2xl md:text-xl px-0  lg:px-6 md:px-2  sm:px-1 fas fa-shopping-cart"></i></a>
 
@@ -104,11 +105,12 @@
                     </a>
                     <a href="{{ route('seguimiento') }}"
                         class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
-                        style="border-color: #F5DF4D"><strong>{{ __('Seguimiento') }}</strong></a>
+                        style="border-color: #F5DF4D"><strong>Seguimiento</strong><i
+                            class="fas fa-shipping-fast"></i></a>
                     <a href="{{route('carrito')}}"
-                        class="sm:text-md text-sm no-underline inline-block px-2 py-2   rounded-md bg-black text-white hover:text-yellow-300 "
+                        class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
                         style="border-color: #F5DF4D"> <i
-                            class="lg:text-base sm:text-xl xl:text-2xl md:text-xl px-0  lg:px-6 md:px-2  sm:px-1 fas fa-shopping-cart"></i></a>
+                            class="fas fa-shopping-cart"></i></a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
@@ -152,7 +154,7 @@
     <nav
         class="font-sans grid  text-center content-center sm:flex-row sm:text-left sm:justify-between py-2 px-6 bg-black shadow sm:items-baseline w-full">
         <div class="grid grid-cols-12 md:grip-cols-10 grip-cols-12 lg:py-2 ">
-            <div class="md:col-span-2 col-span-2">
+            <div class="md:col-span-2 col-span-2 -mr-10">
                 <a class="navbar-brand lg:w-1/3 lg:mx-auto md:w-5/6" href=" {{ __('/') }}">
                     <img class="branding__logo img-fluid" src=" {{asset('/img/logo.png')}}" max-width="95px" alt="">
                 </a>
@@ -191,45 +193,42 @@
                 <!-- <div class="h-10" style="display: table-cell, vertical-align: middle;"> -->
                 @guest
                 <div class="md:col-span-2 lg:col-span-2 inline-block relative sm:col-span-2  xl:col-span-2">
-                    @if (Route::has('login'))
+                    {{-- @if (Route::has('login'))
                     <a href="{{ route('login') }}"
-                        class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
-                        style="border-color: #F5DF4D"><strong>{{ __('Iniciar Sesión') }}</strong></a>
-                    @endif
-                    @if (Route::has('register'))
+                    class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md
+                    bg-black text-white hover:text-yellow-300 "
+                    style="border-color: #F5DF4D"><strong>Iniciar Sesión</strong><i class="fa fa-sign-in"
+                        aria-hidden="true"></i></a>
+                    @endif --}}
+                    {{-- @if (Route::has('register'))
                     <a href="{{ route('register') }}"
-                        class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
-                        style="border-color: #F5DF4D"><strong>{{ __('Registrarse') }}</strong></a>
+                    class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md
+                    bg-black text-white hover:text-yellow-300 "
+                    style="border-color: #F5DF4D"><strong>{{ __('Registrarse') }}</strong></a>
 
+                    @endif --}}
                     <a href="{{route('carrito')}}"
-                        class="sm:text-md text-sm no-underline inline-block px-2 py-2   rounded-md bg-black text-white hover:text-yellow-300 "
+                        class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
                         style="border-color: #F5DF4D"> <i
-                            class="lg:text-base sm:text-xl xl:text-2xl md:text-xl px-0  lg:px-6 md:px-2  sm:px-1 fas fa-shopping-cart"></i></a>
+                            class="fas fa-shopping-cart"></i></a>
+
+                    <a href="{{ route('seguimiento') }}"
+                        class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
+                        style="border-color: #F5DF4D"><strong></strong><i class="fas fa-shipping-fast"></i></a>
                 </div>
-                @endif
                 {{-- logdein --}}
                 @else
                 <div class="md:col-span-2 lg:col-span-2 inline-block relative sm:col-span-2  xl:col-span-2">
-                    <a id="navbarDropdown"
-                        class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
-                        style="border-color: #F5DF4D" href="{{ route('perfiles') }}">
-                        Mi Perfil
-                    </a>
-                    <a class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
-                        style="border-color: #F5DF4D" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                           document.getElementById('logout-form').submit();">
-                        {{ __('Logout') }}
-                    </a>
-
-
-
                     <a href="{{route('carrito')}}"
-                        class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
-                        style="border-color: #F5DF4D"><i class="fas fa-shopping-cart"></i></a>
+                    class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
+                    style="border-color: #F5DF4D"> <i
+                        class="fas fa-shopping-cart"></i></a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
+                <a href="{{ route('seguimiento') }}"
+                    class="sm:text-md text-sm no-underline inline-block px-2 py-2 border-gray-50 border-2 rounded-md bg-black text-white hover:text-yellow-300 "
+                    style="border-color: #F5DF4D"><strong></strong><i class="fas fa-shipping-fast"></i></a>
+
+                   
                 </div>
                 @endguest
 
