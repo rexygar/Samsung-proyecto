@@ -1,6 +1,13 @@
 {{-- @extends('Layouts.Contenido')
 @section('content') --}}
 
+<style>
+.carousel-indicators{
+    background-color: black;
+}
+
+</style>
+
 <div class=" bg-black place-content-center relative block">
     <section class="">
         <!-- Hero head: will stick at the top -->

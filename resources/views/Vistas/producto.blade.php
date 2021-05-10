@@ -170,7 +170,7 @@
                     <div class="grid grid-cols-1 lg:grid-cols-1 gap-4 lg:gap-8">
                         <!-- ... -->
                         <div class="place-self-center ">
-                            @include('Components.loMvendido')
+                            @include('Components.los+vendido_prod')
                         </div>
                     </div>
                 </div>

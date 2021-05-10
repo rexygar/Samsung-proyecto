@@ -105,13 +105,13 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- <div class="container mx-auto animate__fadeInUp animate__animated wow">
+                            <div class="container mx-auto animate__fadeInUp animate__animated wow">
 
 
                                 @include('Components.Producto_Estrella')
 
 
-                            </div> --}}
+                            </div>
 
                             <div class="container mx-auto animate__fadeInUp animate__animated wow">
                                 <div class="grid grid-cols-1 lg:grid-cols-1 gap-4 lg:gap-8">

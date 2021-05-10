@@ -395,10 +395,3 @@
 
 </div>
 
-<script src="{{ asset('js/compra_usr.js') }}"></script>
-<script src="{{ asset('js/util/jquery.rut.chileno.min.js') }}"></script>
-<script>
-    jQuery(document).ready(function($){
-		$('#NuevoRut').rut();
-	});
-</script>

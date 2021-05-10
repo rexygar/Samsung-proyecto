@@ -292,7 +292,7 @@
                                                                                                 <span
                                                                                                     class="flex w-full rounded-md shadow-sm py-3">
                                                                                                     <button
-                                                                                                        @click="Despacho = false"
+                                                                                                        @click="Despacho = false" 
                                                                                                         class="inline-flex justify-center font-boldpx-6 py-3 text-white bg-blue-700 w-full rounded hover:bg-black">
                                                                                                         Cerrar
                                                                                                     </button>

@@ -1,7 +1,7 @@
 {{-- @extends('Layouts.Contenido')
 @section('content') --}}
 
-<div class="lg:pt-16 md:pt-0 place-content-center  md:px-6 lg:px-8 relative col-span-3  block">
+<div class="lg:pt-16 md:pt-0 place-content-center  md:px-6 lg:px-36 xl:px-36 2xl:px-36 relative col-span-3  block">
 
     <div class="mt-8 no_mostrar mostrar_xl">
         <div class="mx-auto container col-span-12 col-start-2 px-4">
@@ -31,16 +31,17 @@
 
         </div>
     </div>
-    <div class="-mt-3  mostrar no_mostrar_xl">
+    <div class="-mt-8 lg:mt-6 md:mt-6 xl:mt-6 2xl:mt-6  mostrar no_mostrar_xl">
 
-        <div class="col-span-12 col-start-1 text-left py-4 px-6 bg-black text-white">
+        <div class="col-span-12 col-start-1 text-3xl  py-6 px-6 text-center bg-black text-white">
             <h2><strong class="uppercase">PRODUCTOS DESTACADOS</strong></h2>
         </div>
     </div>
     <div class=" lg:w-full md:w-full">
-        <div class="grid md:grid-cols-9 grid-cols-4 lg:grid-cols-9 gap-4 lg:gap-3">
+        <div class="grid md:grid-cols-12 grid-cols-4 lg:grid-cols-12 xl:grid-cols-12 2xl:grid-cols-12 gap-4 lg:gap-3">
             <!-- ... -->
-            <div class="py-6 col-span-10 md:col-span-10 lg:pl-24" style="border-color: gray">
+            <div class="py-6 col-span-10 md:col-span-12 lg:col-span-12 xl:col-span-12 2xl:col-span-12 lg:px-12"
+                style="border-color: gray">
 
                 <div class="grid grid-cols-12 gap-4 lg:gap-4 ">
                     <div class="w-full h-full col-start-1 relative col-span-12 md:col-span-4  lg:col-span-4  xl:col-span-4  2xl:col-span-4 mx-auto "

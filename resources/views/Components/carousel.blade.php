@@ -49,7 +49,7 @@
         <input class="carousel-open" type="radio" id="carousel-{{ $x = $x + 1 }}" name="carousel" aria-hidden="true"
             hidden="" checked="checked">
         <div class="carousel-item absolute md:pt-10 lg:pt-11 pt-10 opacity-0 border-t-2 border-black">
-            <div class="block h-full w-full py-20 lg:py-60 md:py-36 bg-contain lg:bg-cover lg:bg-center xl:bg-cover sm:bg-cover sm:bg-center 2xl:bg-cover xl:bg-center 2xl:bg-center text-white text-5xl text-center"
+            <div class="block h-full w-full py-20 lg:py-60 md:py-36 sm:py-32 bg-contain lg:bg-cover lg:bg-center xl:bg-cover sm:bg-cover sm:bg-center 2xl:bg-cover xl:bg-center 2xl:bg-center text-white text-5xl text-center"
                 style="background-image: url({{asset('storage/'.$img->imagen)}});background-repeat: no-repeat;">
                 <div class="lg:w-full md:w-full overflow-hidden pr-10">
                 </div>

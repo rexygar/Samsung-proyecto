@@ -76,9 +76,9 @@
                                     <article style="background-color: aliceblue"
                                         class="lg:pt-6 xl:pt-6 2xl:pt-6 hover:border-2 hover:border-gray-700  col-span-12"
                                         x-data="{ Retiro: false }">
-                                        <div class="px-6">
-                                            <a class="px-6 md:py-16 lg:py-16   hover:bg-gray-200" href="#"
-                                                @click="Retiro = true">
+                                        <div class="md:px-6 lg:px-6 xl:px-6 2xl:px-6">
+                                            <a class="md:px-6 lg:px-6 xl:px-6 2xl:px-6 md:py-6 lg:py-10 2xl:py-10 xl:py-10 hover:bg-gray-200 block"
+                                                href="#" @click="Retiro = true">
                                                 <label class="md:py-16 lg:py-16 font-bold">
                                                     Retiro en tienda Costo:
                                                     $0
@@ -92,7 +92,7 @@
 
                                                 <!-- Button (blue), duh! -->
                                                 <!-- Dialog (full screen) -->
-                                                <div class="absolute top-0 left-0 flex items-center justify-center w-full h-1/2 md:h-full lg:h-full xl:h-full 2xl:h-full"
+                                                <div class="absolute top-0  md:fixed lg:fixed  left-0 flex items-center justify-center w-full h-1/2 md:h-full lg:h-full xl:h-full 2xl:h-full"
                                                     style="z-index: 99999;background-color: rgba(0, 0, 0, 0.5);">
 
                                                     <!-- A basic modal dialog with title, body and one button to close -->
@@ -159,7 +159,8 @@
 
                                                             <div
                                                                 class="grid-cols-12 grid grid-flow-row auto-rows-auto gap-2">
-                                                                <div class="text-2xl col-span-6 ">
+                                                                <div
+                                                                    class="text-2xl col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-6 2xl:col-span-6 ">
                                                                     <button id="GuardarTienda"
                                                                         class=" font-bold  bg-yellow-500 w-full  text-white rounded-lg px-6 py-3 
                                                                                     block shadow-xl hover:text-white hover:bg-black"
@@ -169,10 +170,12 @@
                                                                         value="{{ route('tienda.update') }}">
                                                                     @csrf
                                                                 </div>
-                                                                <div class="text-2xl col-span-6 ">
+                                                                <div
+                                                                    class="text-2xl col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-6 2xl:col-span-6 ">
 
                                                                     <span class="flex w-full rounded-md shadow-sm">
                                                                         <button @click="Retiro = false"
+                                                                            id="cerrar_Retiro_tienda"
                                                                             class="inline-flex justify-center font-boldpx-6 py-3 text-white bg-blue-700 w-full rounded hover:bg-black">
                                                                             Cerrar
                                                                         </button>
@@ -196,12 +199,14 @@
                                     <article style="background-color: aliceblue"
                                         class="lg:py-6 xl:py-6 2xl:py-6 hover:border-2 col-span-12">
                                         <div class="">
-                                            <a href="#" class="md:py-16 lg:py-16  hover:bg-gray-200"
+                                            <a href="#"
+                                                class="md:py-6 lg:py-10 2xl:py-10 xl:py-10 hover:bg-gray-200 block"
                                                 @click="open = true">
-                                                <label class="md:py-16 lg:py-16 font-bold inline">
-                                                    Despacho programado Costo:
-                                                    <strong>$7.990</strong>
-                                                    <input type="radio" name="Tipo_Entrega" value="2">
+                                                <label class="md:py-16 lg:py-16 px-6 font-bold inline">
+                                                    Valor Despacho: <span class="text-base"
+                                                        id='vlor_despacho'>${{ number_format(Session::get('precio_comuna'),0,'','.') }}</span>
+                                                    <input type="radio" name="Tipo_Entrega" value="2"
+                                                        class="md:w-full lg:w-full">
                                                 </label>
 
                                             </a>
@@ -228,7 +233,7 @@
 
         </article>
         <article style="background-color: aliceblue" class="panel is-primary  ">
-            <div class="px-6">
+            <div class="px-0 md:px-0 lg:px-6 xl:px-6 2xl:px-6">
                 <div class="toolbar toolbar-bottom grid grid-cols-12 grid-flow-row auto-rows-max" role="toolbar"
                     style="text-align: right;">
 
@@ -243,7 +248,7 @@
 
         </article>
     </div>
-    <div class="lg:col-span-5 md:col-span-5 xl:col-span-5 2xl:col-span-5 col-span-12 lx:px-8 lg:pl-12 xl:pl-12 2xl:pl-12 md:px-4 xl:px-10 2xl:px-16"
+    <div class="lg:col-span-5 md:col-span-5 xl:col-span-5 2xl:col-span-5 col-span-12 lx:px-8 lg:pl-12 xl:pl-12 2xl:pl-12 md:px-4 xl:px-10 2xl:px-16 py-6 lg:py-0 xl:py-0 2xl:py-0"
         style="background-color: white">
         <article style="background-color: aliceblue" class="panel is-primary  ">
             <div class="px-6">
@@ -375,7 +380,7 @@
 
         <!-- Button (blue), duh! -->
         <!-- Dialog (full screen) -->
-        <div class="absolute top-0 left-0 flex items-center justify-center w-full h-1/2 md:h-full lg:h-full xl:h-full 2xl:h-full"
+        <div class="absolute top-0  md:fixed lg:fixed  left-0 flex items-center justify-center w-full h-1/2 md:h-full lg:h-full xl:h-full 2xl:h-full"
             style="z-index: 99999;background-color: rgba(0, 0, 0, 0.5);" :class="{' block': open, 'hidden': !open}">
 
             <!-- A basic modal dialog with title, body and one button to close -->
@@ -496,7 +501,7 @@
                 <!-- One big close button.  --->
                 <div class="mt-5 sm:mt-6 pb-6 px-10">
                     <div class="grid-cols-12 grid grid-flow-row auto-rows-auto gap-2">
-                        <div class="  col-span-6 ">
+                        <div class="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-6 2xl:col-span-6">
                             <button id="GuardarDir" class="  font-bold 
                             bg-yellow-500 w-full    text-white rounded-lg px-6 py-3 
                             block shadow-xl hover:text-white hover:bg-black" type="button">GUARDAR CAMBIOS</button>
@@ -504,10 +509,10 @@
                         <input type="hidden" id="url3" name="url3" value="{{ route('direccion.add') }}">
                         @csrf
 
-                        <div class=" col-span-6 ">
+                        <div class="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-6 2xl:col-span-6">
 
                             <span class="flex w-full rounded-md shadow-sm">
-                                <button @click="open = false"
+                                <button @click="open = false" id="cerrar_n_direccion"
                                     class="inline-flex justify-center font-bold px-6 py-3 text-white bg-blue-700 w-full rounded hover:bg-black">
                                     VOLVER ATRAS
                                 </button>
@@ -531,7 +536,7 @@
 
         <!-- Button (blue), duh! -->
         <!-- Dialog (full screen) -->
-        <div class="absolute top-0 left-0 flex items-center justify-center w-full h-1/2 md:h-full lg:h-full xl:h-full 2xl:h-full"
+        <div class="absolute top-0  md:fixed lg:fixed  left-0 flex items-center justify-center w-full h-1/2 md:h-full lg:h-full xl:h-full 2xl:h-full"
             style="z-index: 99999;background-color: rgba(0, 0, 0, 0.5);"
             :class="{' block': seleccionar, 'hidden': !seleccionar}">
 
@@ -607,7 +612,7 @@
                 <!-- One big close button.  --->
                 <div class="mt-5 sm:mt-6 pb-6 px-10">
                     <div class="grid-cols-12 grid grid-flow-row auto-rows-auto gap-2">
-                        <div class="  col-span-6 ">
+                        <div class="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-6 2xl:col-span-6">
                             <button id="Seleccionar_Dir" class="  font-bold 
                             bg-yellow-500 w-full    text-white rounded-lg px-6 py-3 
                             block shadow-xl hover:text-white hover:bg-black" type="button">GUARDAR CAMBIOS</button>
@@ -615,10 +620,10 @@
                         <input type="hidden" id="url5" name="url5" value="{{ route('direccion.updte') }}">
                         @csrf
 
-                        <div class=" col-span-6 ">
+                        <div class="col-span-12 md:col-span-6 lg:col-span-6 xl:col-span-6 2xl:col-span-6">
 
                             <span class="flex w-full rounded-md shadow-sm">
-                                <button @click="seleccionar = false"
+                                <button @click="seleccionar = false" id="cerrar_s_direccion"
                                     class="inline-flex justify-center font-bold px-6 py-3 text-white bg-blue-700 w-full rounded hover:bg-black">
                                     VOLVER ATRAS
                                 </button>

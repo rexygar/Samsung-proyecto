@@ -92,7 +92,7 @@ var RegionesYcomunas = {
     }]
 }
 
-jQuery(document).ready(function () {
+$(function () {
     var iRegion = 0;
     var id_region = 0;
     var precio_despacho = 0;
@@ -147,8 +147,7 @@ jQuery(document).ready(function () {
 })
 
 
-
-$(document).ready(function () {
+$(function () {
 
 
 

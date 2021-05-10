@@ -292,8 +292,10 @@ class CarritoController extends Controller
                         $comuna = Despacho::where('comuna', $com)->first(); //busca si existe la comuna seleccionada
                         if ($comuna !== null) {
                             $p_Despacho = $comuna->precio; //si existe, le asigna el precio
+                            $p_Despacho = number_format($p_Despacho, 0, '', '.');
                         } else {
-                            $p_Despacho = session('precio_comuna');  // 0 por default
+                            $p_Despacho = 1000;  // 0 por default
+                            $p_Despacho = number_format($p_Despacho, 0, '', '.');
                         }
                         if (session()->has('precio_comuna')) {
 
@@ -316,11 +318,13 @@ class CarritoController extends Controller
                             $detalle->id_retiro_local = null;
                             $detalle->save();
                         }
-                        return ['message' => 'Successful',  'precio_comuna' => $p_Despacho, 'direccion' => $dir];
+                        $p_total = $get_detalle->Total;
+                        $p_total =number_format($p_total, 0,'','.');
+                        return ['message' => 'Successful',  'precio_comuna' => $p_Despacho, 'precio_total' => $p_total, 'direccion' => $dir];
                     }
                 } else {
                     $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
-                    if ($usr_no_logeado === null) {
+                    if ($usr_no_logeado == null) {
 
                         // Crear usuario Invitado
                         $usr_no_logeado = new no_usr();
@@ -337,11 +341,13 @@ class CarritoController extends Controller
 
                         $get_detalle = Detalle::where('idTransaccion', $idPago)->first(); //busca los detalles con la id de pago
                         $comuna = Despacho::where('comuna', $com)->first();
-
+                        return ['message' => 'Successful',  'comuna' => $comuna, 'id' => 1];
                         if ($comuna !== null) {
                             $p_Despacho = $comuna->precio; //si existe, le asigna el precio
+                            $p_Despacho = number_format($p_Despacho, 0, '', '.');
                         } else {
-                            $p_Despacho = session('precio_comuna'); // 0 por default
+                            $p_Despacho = 1000;  // 0 por default
+                            $p_Despacho = number_format($p_Despacho, 0, '', '.');
                         }
 
                         if (session()->has('precio_comuna')) {
@@ -369,8 +375,6 @@ class CarritoController extends Controller
                                 $detalle->save();
                             }
                         }
-
-                        return ['message' => 'Successful', 'triggerer' => $get_detalle, 'id' => 2, 'precio_comuna' => $p_Despacho];
                     } else {
 
                         $direccion = (isset($request->direccion) && $request->direccion != null) ? $request->direccion : '';
@@ -397,10 +401,12 @@ class CarritoController extends Controller
                         $get_detalle = Detalle::where('idTransaccion', $idPago)->first(); //busca los detalles con la id de pago
                         $comuna = Despacho::where('comuna', $com)->first();
 
-                        if ($comuna !== null) {
+                       if ($comuna !== null) {
                             $p_Despacho = $comuna->precio; //si existe, le asigna el precio
+                            $p_Despacho = number_format($p_Despacho, 0, '', '.');
                         } else {
-                            $p_Despacho = session('precio_comuna');  // 0 por default
+                            $p_Despacho = 1000;  // 0 por default
+                            $p_Despacho = number_format($p_Despacho, 0, '', '.');
                         }
 
                         if (session()->has('precio_comuna')) {
@@ -419,20 +425,21 @@ class CarritoController extends Controller
                                 $detalle->id_Usuario = null;
                                 $detalle->tipo_entrega = "Despacho a domicilio";
                                 $detalle->id_direccion =  null;
-                                $detalle->valor_despacho =  $comuna->precio;
+                                $detalle->valor_despacho =  $p_Despacho;
                                 $detalle->Cod_Tienda = null;
                                 $detalle->id_retiro_local = null;
                                 $detalle->save();
                             }
+                            $p_total = $get_detalle->Total;
+                            $p_total =number_format($p_total, 0,'','.');
                         }
-
-                        return ['message' => 'Successful', 'triggerer' => $get_detalle, 'id' => 3, 'precio_comuna' => $p_Despacho];
                     }
                 }
-
+                $reg = (isset($request->reg) && $request->reg != null) ? $request->reg : '';
+                $com = (isset($request->com) && $request->com != null) ? $request->com : '';
                 $usr_no_logeado = no_usr::where('id_transaccion_FK', $idPago)->first();
 
-                return ['message' => 'Successful'];
+                return ['message' => 'Successful',  'precio_comuna' => $p_Despacho, 'precio_total' => $p_total, 'com' => $com, 'reg' => $reg];
             } catch (\Throwable $th) {
                 return ['status' => $th];
             }
@@ -494,6 +501,9 @@ class CarritoController extends Controller
                             $detalle->id_retiro_local = $id_retiro;
                             $detalle->save();
                         }
+
+                        $p_total = $get_detalle->Total;
+                        $p_total =number_format($p_total, 0,'','.');
                     }
 
                     // return ['triggerer' => $updte_detalle, 'id' => $p_Despacho];
@@ -577,17 +587,72 @@ class CarritoController extends Controller
                                 $detalle->id_retiro_local = $id_retiro;
                                 $detalle->save();
                             }
+                            $p_total = $get_detalle->Total;
+                            $p_total =number_format($p_total, 0,'','.');
                         }
                     }
                     // return ['triggerer' => $updte_detalle, 'id' => $p_Despacho];
                 }
 
-                return ['message' => 'Successful'];
+                return ['message' => 'Successful', 'precio_comuna' => $p_Despacho, 'precio_total' => $p_total];
             } catch (\Throwable $th) {
                 return ['status' => $th];
             }
         }
     }
+
+    //
+    // public function cmbr_dir(Request $request)
+    // {
+
+    //     if ($request->ajax()) {
+
+    //         if (Auth::check()) {
+    //             $idPago = session('idPago');
+    //             $id_usr = Auth::id();
+    //             $get_detalle = Detalle::where('idTransaccion', $idPago)->first(); //busca los detalles con la id de pago
+
+    //             if ($get_detalle !== null) { //si no es nulo
+    //                 $id_dir = (isset($request->direccion) && $request->direccion != null) ? $request->direccion : '';
+    //                 $dir_com = Direccion::where('id', $id_dir)->get();
+
+    //                 $usr_comuna = $dir_com->comuna;
+    //                 return ['message' => 'Successful', 'comuna' => $usr_comuna ];
+    //                 $comuna = Despacho::where('comuna', $usr_comuna)->first();
+    //                 if ($comuna !== null) {
+    //                     $p_Despacho = $comuna->precio; //si existe, le asigna el precio
+    //                 } else {
+    //                     $p_Despacho = 1000;  // 0 por default
+    //                 }
+
+    //                 if (session()->has('precio_comuna')) {
+
+    //                     session(['precio_comuna' => $p_Despacho]);
+    //                 } else {
+    //                     session(['precio_comuna' => $p_Despacho]);
+    //                 }
+    //                 $udpte_detalle = Detalle::where('idTransaccion', $idPago)->get();
+    //                 foreach ($udpte_detalle as $detalle) {
+    //                     $detalle->id_CSL = null;
+    //                     $detalle->id_Usuario = $id_usr;
+    //                     $detalle->tipo_entrega = "Despacho a domicilio";
+    //                     $detalle->id_direccion =  $id_dir;
+    //                     $detalle->valor_despacho =  $p_Despacho;
+    //                     $detalle->Cod_Tienda = null;
+    //                     $detalle->id_retiro_local = null;
+    //                     $detalle->save();
+    //                 }
+
+    //                 $direccion = Direccion::where('id', $id_dir)->get();
+    //                 return ['message' => 'Successful', 'precio_comuna' => $p_Despacho,'precio_total' => $p_total, 'direccion' => $direccion];
+    //             }
+    //         }
+    //     }
+    //     return view('dashboard.lista_Producto');
+    // }
+    //
+
+
 
     public function cmbr_dir(Request $request)
     {
@@ -607,7 +672,8 @@ class CarritoController extends Controller
 
                     $id_dir = (isset($request->direccion) && $request->direccion != null) ? $request->direccion : '';
                     // $p_Despacho = $comuna->precio;
-                     $p_Despacho = 1000;
+                    $p_Despacho = 1000;
+                    $p_Despacho =number_format($p_Despacho, 0,'','.');
                     foreach ($udpte_detalle as $detalle) {
                         $detalle->id_CSL = null;
                         $detalle->id_Usuario = $id_usr;
@@ -618,12 +684,11 @@ class CarritoController extends Controller
                         $detalle->id_retiro_local = null;
                         $detalle->save();
                     }
-
+                    $p_total = $get_detalle->Total;
+                    $p_total =number_format($p_total, 0,'','.');
                     $direccion = Direccion::where('id', $id_dir)->get();
-                    return ['message' => 'Successful', 'triggerer' => $get_detalle, 'id' => 1, 'precio_comuna' => $p_Despacho, 'direccion' => $direccion];
+                    return ['message' => 'Successful', 'precio_comuna' => $p_Despacho, 'precio_total' => $p_total, 'direccion' => $direccion];
                 }
-
-                return ['message' => 'Successful'];
             }
         }
         return view('dashboard.lista_Producto');

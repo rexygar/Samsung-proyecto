@@ -227,6 +227,7 @@
 
 </body>
 
+<script defer src="{{ asset('js/compra_usr.js') }}"></script>
 
 <script src="{{ asset('js/carrito.js') }}"></script>
 <link rel="stylesheet" href="{{ asset('js/toastr/toastr.min.css') }}">
@@ -237,7 +238,9 @@
 <script type="text/javascript">
     // Initialize Smart Wizard 
         $('#smartwizard').smartWizard(
-    {  keyNavigation: false
+    { keyboardSettings: {
+      keyNavigation: false, // Enable/Disable keyboard navigation(left and right keys are used if enabled)
+  }
            }
         );
         $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection) {

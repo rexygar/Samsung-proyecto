@@ -1,8 +1,8 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
     var Tipo_Entrega = $('[name="Tipo_Entrega"]:checked').val();
 
-    $('#Tipo_Entrega[value="1"]').on('click', function () {
+    $('#Tipo_Entrega[value="1"]').on('click', function() {
         if (!$('input[name="tienda_id"]').checked) {
             $('#Tipo_Entrega[value="1"]').checked = false;
         }
@@ -14,11 +14,11 @@ $(document).ready(function () {
 
     $('#buttonSig').attr('disabled', true);
 
-    $('input[name="tienda_id"]').on('click', function () {
+    $('input[name="tienda_id"]').on('click', function() {
         $('#Tipo_Entrega[value="1"]').checked = true;
     })
 
-    $('#buttonSig').on('click', function () {
+    $('#buttonSig').on('click', function() {
         var rut = $('#NuevoRut').val();
         var nom = $('#NuevoNombre').val()
         var email = $('#NuevoEmail').val()
@@ -30,7 +30,7 @@ $(document).ready(function () {
         }
     })
 
-    $('#editar').on('click', function () {
+    $('#editar').on('click', function() {
         var url = $('#url').val();
         var rut = $('#NuevoRut').val();
         var nom = $('#NuevoNombre').val()
@@ -74,16 +74,21 @@ $(document).ready(function () {
                 num: num,
 
             },
-            success: function (data) {
+            success: function(data) {
                 if (data["message"] == "Successful") {
                     toastr["info"]("Su informacion ha sido guardada correctamente");
                     console.log('data')
+
+                    //
+                    $('#msg').text(data.precio_comuna);
+                    //
+
                     $('#buttonSig').attr('disabled', false);
                 } else {
                     toastr["warning"]("Ha ocurrido un problema, por favor vuelva a intentarlo");
                 }
             },
-            error: function (data) {
+            error: function(data) {
                 toastr["warning"](
                     "Ha ocurrido un problema, por favor vuelva a intentarlo"
                 )
@@ -92,7 +97,7 @@ $(document).ready(function () {
         })
     });
 
-    $('#GuardarDir').on('click', function () {
+    $('#GuardarDir').on('click', function() {
         var url3 = $('#url3').val();
         var direccion = $('#NuevaDireccion').val();
         var reg = $('#regiones').val();
@@ -134,16 +139,25 @@ $(document).ready(function () {
                 detalle_2: detalle_2,
 
             },
-            success: function (data) {
+            success: function(data) {
                 if (data["message"] == "Successful") {
                     toastr["info"]("Su informacion ha sido guardada correctamente");
                     console.log('data')
+
+                    //
+                    $('#msg').text(data.precio_comuna);
+                    $('#vlor_despacho').text(data.precio_comuna);
+                    var xx = data.precio_total.replace('.', '')
+                    var xy = data.precio_comuna.replace('.', '')
+                    $('#total_total').text(new Intl.NumberFormat("es-CL").format(new Number(xy) + new Number(xx)));
+                    //
+
                     $('#siguienteButton').attr('disabled', false);
                 } else {
                     toastr["warning"]("Ha ocurrido un problema, por favor vuelva a intentarlo");
                 }
             },
-            error: function (data) {
+            error: function(data) {
                 toastr["warning"](
                     "Ha ocurrido un problema, por favor vuelva a intentarlo"
                 )
@@ -152,7 +166,7 @@ $(document).ready(function () {
         })
     });
 
-    $('#Seleccionar_Dir').on('click', function () {
+    $('#Seleccionar_Dir').on('click', function() {
         var url = $('#url5').val();
         var token = $("meta[name='csrf-token']").attr("content")
         var direccion = $('[name="dir_id"]:checked').val();
@@ -167,18 +181,31 @@ $(document).ready(function () {
                 _token: token,
                 direccion: direccion,
             },
-            success: function (data) {
+            success: function(data) {
                 if (data["message"] == "Successful") {
                     toastr["info"]("Se ha actualizado su direccion de despacho correctamente");
                     console.log('data');
-                    $('#dirSelect').text(data.direccion[0].region + ', ' + data.direccion[0].comuna);
+
+                    //
+                    $('#msg').text(data.precio_comuna);
+                    $('#vlor_despacho').text(data.precio_comuna);
+                    var xx = data.precio_total.replace('.', '')
+                    var xy = data.precio_comuna.replace('.', '')
+                    $('#total_total').text(new Intl.NumberFormat("es-CL").format(new Number(xy) + new Number(xx)));
+                    //
+
+                    if (data.direccion != null) {
+                        $('#dirSelect').text(data.direccion[0].region + ', ' + data.direccion[0].comuna);
+                    } else {
+                        $('#dirSelect').text(data.reg + ', ' + data.com);
+                    }
                     $('#siguienteButton').attr('disabled', false);
                 } else {
                     toastr["warning"]("Ha ocurrido un problema, por favor vuelva a intentarlo");
                     console.log(data);
                 }
             },
-            error: function (data) {
+            error: function(data) {
                 toastr["warning"](
                     "Ha ocurrido un problema, por favor vuelva a intentarlo"
                 )
@@ -186,7 +213,7 @@ $(document).ready(function () {
             },
         })
     });
-    $('#GuardarTienda').on('click', function () {
+    $('#GuardarTienda').on('click', function() {
         var url = $('#url2').val();
         var token = $("meta[name='csrf-token']").attr("content")
         var tienda = $('[name="tienda_id"]:checked').val();
@@ -201,17 +228,23 @@ $(document).ready(function () {
                 _token: token,
                 tienda: tienda,
             },
-            success: function (data) {
+            success: function(data) {
                 if (data["message"] == "Successful") {
                     toastr["info"]("Su informacion ha sido guardada correctamente");
                     console.log('data')
+
+                    //
+                    $('#msg').text(data.precio_comuna);
+                    $('#vlor_despacho').text("$0");
+                    //
+
                     $('#siguienteButton').attr('disabled', false);
                 } else {
                     toastr["warning"]("Ha ocurrido un problema, por favor vuelva a intentarlo");
                     console.log(data);
                 }
             },
-            error: function (data) {
+            error: function(data) {
                 toastr["warning"](
                     "Ha ocurrido un problema, por favor vuelva a intentarlo"
                 )
