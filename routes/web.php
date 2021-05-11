@@ -125,3 +125,5 @@ Route::get('/eliminarUsuario',      [App\Http\Controllers\AdminController::class
 Route::get('/editarEstado',         [App\Http\Controllers\AdminController::class, 'edit_estado'     ])->name('edit.estado');
 Route::POST('/estadoEditado',       [App\Http\Controllers\AdminController::class, 'update_estado'   ])->name('update.estado');
 Route::get('/listaEstado',          [App\Http\Controllers\AdminController::class, 'list_estado'     ])->name('list.estado');
+Route::get('/cuentaDepositar',      [App\Http\Controllers\AdminController::class, 'cuenta_depositar'])->name('cuenta.depositar');
+Route::POST('/deposito',             [App\Http\Controllers\AdminController::class, 'editCuenta'])->name('add.deposito');

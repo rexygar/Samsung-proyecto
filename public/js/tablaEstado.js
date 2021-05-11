@@ -6,9 +6,9 @@ $(document).ready(function() {
         ajax: ruta,
         columns: [
             {data: 'id', name: 'id'},
-            {data: 'observacion', name: 'observacion'},
-            {data: 'ordenTransporte', name: 'ordenTransporte'},
-            {data: 'estado', name: 'estado'},
+            {data: 'Observacion', name: 'observacion'},
+            {data: 'Ordentransporte', name: 'ordenTransporte'},
+            {data: 'Estado', name: 'estado'},
             {data: 'action', orderable:false, searchable:false},
         ],
         rowCallback: function(row, data){

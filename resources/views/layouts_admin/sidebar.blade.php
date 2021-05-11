@@ -1,4 +1,4 @@
-      <nav class="col-span-2 col-start-1 bg-black  h-screen px-4 text-gray-900 border border-yellow-500">
+      <nav class="col-span-2 col-start-1 bg-black h-full px-4 text-gray-900 border border-yellow-500">
         <div class="flex flex-wrap mt-4">
             <div class="w-4/6 mx-auto">
               <a href="{{ route('admin.index') }}">
@@ -78,6 +78,10 @@
             @if (Auth::user()->rol_id == '2')
               <li class="mb-2 px-4 py-4 text-gray-100 flex flex-row  border-gray-300 hover:text-white   hover:bg-yellow-500  hover:font-bold rounded rounded-lg">
                 <a href="{{ route('list.user') }}"><i class="fas fa-user"></i><span class="ml-2 font-bold">Lista de Usuarios</span>
+                </a>
+              </li>
+              <li class="mb-2 px-4 py-4 text-gray-100 flex flex-row  border-gray-300 hover:text-white   hover:bg-yellow-500  hover:font-bold rounded rounded-lg">
+                <a href="{{ route('cuenta.depositar') }}"><i class="fas fa-user"></i><span class="ml-2 font-bold">Cuenta de Deposito</span>
                 </a>
               </li>
             @endif
