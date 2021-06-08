@@ -96,7 +96,7 @@
             <div class="panel-block" x-data="{ isOpen : true}" style="background-color: aliceblue">
 
                 <!--Card 1-->
-                <div class=" w-full lg:max-w-full lg:flex" :class="{' block': isOpen, 'hidden': !isOpen}">
+                <div class="w-full flex lg:max-w-full lg:flex" :class="{' block': isOpen, 'hidden': !isOpen}">
                     <div class="grid grid-cols-2">
                         <div class="col-span-1 lg:px-2 xl:px-2 2xl:px-4">
                             <div class="text-gray-900 font-bold text-xl mb-2">Ingresa Con tus datos</div>
@@ -177,7 +177,7 @@
                 </div>
 
                 <!--Card hidden-->
-                <div class=" w-full lg:max-w-full lg:flex" x-cloak :class="{' hidden': isOpen, 'block': !isOpen}">
+                <div class="w-full flex lg:max-w-full lg:flex" x-cloak :class="{' hidden': isOpen, 'block': !isOpen}">
                     <div class="grid grid-cols-12 w-full lg:max-w-full" style="background-color: aliceblue">
                         <div class="col-span-12 grid grid-cols-12 gap-2 px-6">
                             <div class="xl:col-span-6 2xl:col-span-6 lg:col-span-6 col-span-6 md:col-span-12">
@@ -337,9 +337,9 @@
                                 <div class="panel-block" style="background-color: aliceblue">
 
                                     <!--Card 1-->
-                                    <div class=" w-full lg:max-w-full lg:flex">
-                                        <div class="h-24 lg:h-24 lg:w-24 flex-none  rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-                                            style="background-image: url({{ url('../uploads/products/1/buds.jpg') }});background-repeat: no-repeat;background-size: contain;">
+                                    <div class="w-full flex lg:max-w-full lg:flex">
+                                        <div class="h-24 lg:h-24 lg:w-24 w-24 flex-none  rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+                                            style="background-image: url({{ url('/uploads/products/1/buds.jpg') }});background-repeat: no-repeat;background-size: contain;">
                                         </div>
                                         <div class=" rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
                                             style="background-color: aliceblue">
@@ -381,7 +381,7 @@
             <div class="panel-block" style="background-color: aliceblue">
 
                 <!--Card 1-->
-                <div class=" w-full lg:max-w-full lg:flex">
+                <div class="w-full flex lg:max-w-full lg:flex">
                     <img src="../img/seguro.png" alt="" srcset="">
 
                 </div>

@@ -78,7 +78,7 @@
       <ul class="col-span-2">
         <!--Hoverable Link-->
         <li class="block text-white" x-data="{ isTELEFONOS : true}">
-          <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold 
+          <a href="###" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold 
             hover:bg-black hover:text-white" @click="isTELEFONOS = !isTELEFONOS">TELEFONOS</a>
           <div :class="{' hidden': isTELEFONOS, 'block': !isTELEFONOS}" role="toggle"
             class="sm:mb-0 shadow-xl bg-black">
@@ -141,7 +141,7 @@
           </div>
         </li>
         <li class="block text-white" x-data="{ isTABLETS : true}">
-          <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm font-bold 
+          <a href="###" class="relative block py-6 px-4 lg:p-6 text-sm font-bold 
             hover:bg-black hover:text-white" @click="isTABLETS = !isTABLETS">TABLETS</a>
           <div :class="{' hidden': isTABLETS, 'block': !isTABLETS}" role="toggle" class="sm:mb-0 shadow-xl bg-black">
             <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
@@ -167,7 +167,7 @@
           </div>
         </li>
         <li class="block text-white" x-data="{ isWEARABLES : true}">
-          <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold 
+          <a href="###" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold 
             hover:bg-black hover:text-white" @click="isWEARABLES = !isWEARABLES">WEARABLES</a>
           <div :class="{' hidden': isWEARABLES, 'block': !isWEARABLES}" role="toggle"
             class="sm:mb-0 shadow-xl bg-black">
@@ -247,7 +247,7 @@
           </div>
         </li>
         <li class="block text-white" x-data="{ isACCESORIOS : true}">
-          <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold 
+          <a href="###" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold 
             hover:bg-black hover:text-white" @click="isACCESORIOS = !isACCESORIOS">ACCESORIOS</a>
           <div :class="{' hidden': isACCESORIOS, 'block': !isACCESORIOS}" role="toggle"
             class="p-6  sm:mb-0 shadow-xl bg-black">
@@ -533,7 +533,7 @@
           </div>
         </li>
         <li class="block text-white" x-data="{ isCOMPUTADORES : true}">
-          <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold 
+          <a href="###" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold 
             hover:bg-black hover:text-white" @click="isCOMPUTADORES = !isCOMPUTADORES">COMPUTADORES</a>
           <div :class="{' hidden': isCOMPUTADORES, 'block': !isCOMPUTADORES}" role="toggle"
             class="sm:mb-0 shadow-xl bg-black">
@@ -620,7 +620,7 @@
           </div>
         </li>
         <li class="block text-white" x-data="{ isCONSOLAS : true}">
-          <a href="#" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold 
+          <a href="###" class="relative block py-6 px-4 lg:p-6 text-sm lg:text-base font-bold 
             hover:bg-black hover:text-white" @click="isCONSOLAS = !isCONSOLAS">CONSOLAS Y JUEGOS</a>
           <div :class="{' hidden': isCONSOLAS, 'block': !isCONSOLAS}" role="toggle" class="sm:mb-0 shadow-xl bg-black">
             <div class="container mx-auto w-full flex flex-wrap justify-between mx-2">
@@ -640,7 +640,7 @@
 
         <!-- ## Hoverable Link Template ##
       
-          <li class="block text-white" ><a href="#" class="relative block">x</a><div class="mega-menu">
+          <li class="block text-white" ><a href="###" class="relative block">x</a><div class="mega-menu">
             Add your mega menu content
             </div></li>
           

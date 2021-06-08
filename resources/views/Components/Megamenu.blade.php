@@ -66,7 +66,7 @@
     <ul class="md:flex lg:flex lg:pr -12 xl:pr-12 2xl:pr-12">
       <!--Hoverable Link-->
       <li class="hoverable hover:bg-black text-black hover:text-white lg:px-4 xl:px-6 2xl:px-6">
-        <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
+        <a href="##" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
             hover:bg-black hover:text-white text-black md:p-4">TELEFONOS</a>
         <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
           style="background-color: darkgray;background-size:cover; height: calc(50vh - 30%);">
@@ -116,7 +116,7 @@
         </div>
       </li>
       <li class="hoverable hover:bg-black text-black hover:text-white lg:px-4 xl:px-6 2xl:px-6">
-        <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
+        <a href="##" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
             hover:bg-black hover:text-white text-black md:p-4">TABLETS</a>
         <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
           style="background-color: darkgray;background-size:cover; height: calc(50vh - 30%);">
@@ -143,7 +143,7 @@
         </div>
       </li>
       <li class="hoverable hover:bg-black text-black hover:text-white lg:px-4 xl:px-6 2xl:px-6">
-        <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
+        <a href="##" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
             hover:bg-black hover:text-white text-black md:p-4">WEARABLES</a>
         <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
           style="background-color: darkgray;background-size:cover; height: calc(50vh - 30%);">
@@ -189,7 +189,7 @@
         </div>
       </li>
       <li class="hoverable hover:bg-black text-black hover:text-white lg:px-4 xl:px-6 2xl:px-6">
-        <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
+        <a href="##" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
             hover:bg-black hover:text-white text-black md:p-4">ACCESORIOS</a>
         <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
           style="background-color: darkgray;background-size:cover; height: calc(85vh - 30%);">
@@ -367,7 +367,7 @@
         </div>
       </li>
       <li class="hoverable hover:bg-black text-black hover:text-white lg:px-4 xl:px-6 2xl:px-6">
-        <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
+        <a href="##" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
             hover:bg-black hover:text-white text-black md:p-4">COMPUTADORES</a>
         <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
           style="background-color: darkgray;background-size:cover; height: calc(50vh - 30%);">
@@ -425,7 +425,7 @@
         </div>
       </li>
       <li class="hoverable hover:bg-black text-black hover:text-white lg:px-4 xl:px-6 2xl:px-6">
-        <a href="#" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
+        <a href="##" class="relative block px-2 pt-2 pb-1 text-sm lg:text-base md:text-xs font-bold 
             hover:bg-black hover:text-white text-black md:p-4">CONSOLAS Y JUEGOS</a>
         <div role="toggle" class="p-6 mega-menu mb-16 sm:mb-0 shadow-xl bg-black"
           style="background-color: darkgray;background-size:cover; height: calc(75vh - 30%);">
@@ -448,7 +448,7 @@
 
       <!-- ## Hoverable Link Template ##
       
-          <li class="hoverable hover:bg-black hover:text-white"><a href="#" class="relative block">x</a><div class="mega-menu">
+          <li class="hoverable hover:bg-black hover:text-white"><a href="##" class="relative block">x</a><div class="mega-menu">
             Add your mega menu content
             </div></li>
           

@@ -226,14 +226,18 @@
     </div>
 
 </body>
-
-<script defer src="{{ asset('js/compra_usr.js') }}"></script>
-
-<script src="{{ asset('js/carrito.js') }}"></script>
 <link rel="stylesheet" href="{{ asset('js/toastr/toastr.min.css') }}">
-<script src="{{ asset('js/toastr/toastr.js') }}"></script>
 <script src="{{ asset('js/alpine.js') }} " defer></script>
+<script src="{{ asset('js/toastr/toastr.js') }}"></script>
 <script src="{{ asset('/js/jquery.smartWizard.js') }}"></script>
+
+<script defer src="{{ asset('js/carrito/carrito_util.js') }}"></script>
+<script defer src="{{ asset('js/carrito/cto_crear_usr.js') }}"></script>
+<script defer src="{{ asset('js/carrito/cto_new_direccion.js') }}"></script>
+<script defer src="{{ asset('js/carrito/cto_slect_direccion.js') }}"></script>
+<script defer src="{{ asset('js/carrito/cto_slect_tienda.js') }}"></script>
+
+ 
 
 <script type="text/javascript">
     // Initialize Smart Wizard 

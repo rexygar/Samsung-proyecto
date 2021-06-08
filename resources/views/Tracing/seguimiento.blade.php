@@ -16,14 +16,11 @@
     <link href="{{ asset('css/Style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/componentes.css') }}" rel="stylesheet">
     <link href="{{ asset('css/layouts.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/hero-backgrounds.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/Megamenu.css') }}" rel="stylesheet">
 
-    <style>
-        body {
-            font-family: 'Nunito';
-        }
-    </style>
+    <link href="{{ asset('css/Megamenu.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
 <script src="{{ asset('js/lib/jquery.js') }}"></script>
 
@@ -90,17 +87,17 @@
         height: 0;
     }
 </style>
+<div class=" w-full py-auto relative" style="z-index: 99999">
 
-@include('Components.Header')
+    @include('Components.brandHeader')
+    @include('Components.Header')
+    @include('Components.nav-mobile')
+    {{-- @include('Components.Header') --}}
+</div>
 @include('Components.Megamenu')
 
-<body class="bg-gray-100">
-    <style>
-        [x-cloak] {
-            display: none !important;
-        }
-    </style>
-
+<body class="leading-normal tracking-normal text-gray-900 antialiased">
+   
     <div class="grid grid-cols-12  lg:px-6 xl:px-6 2xl:px-6 md:px-2  px-2 2xl:py-8 xl:py-8 lg:py-8 py-8">
         <div class="col-span-1"></div>
         <div class="lg:col-span-12 md:col-span-12 xl:col-span-12 2xl:col-span-12 col-span-12 lx:pr-6 md:pr-4 xl:pr-6 2xl:pr-6"

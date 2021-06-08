@@ -69,7 +69,7 @@
             <div class="grid grid-cols-12 grid-flow-row">
                 <div class="col-span-12">
                     <!--Card 1-->
-                    <div class=" w-full lg:max-w-full lg:flex">
+                    <div class="w-full flex lg:max-w-full lg:flex">
                         <div class="grid grid-cols-12 md:pt-6 xl:pt-6 2xl:pt-6 lg:pt-6">
                             <fieldset class="col-span-12 grid grid-cols-12  lg:pt-6">
                                 <div class="col-span-6 p-4 border-r-2">
@@ -92,8 +92,8 @@
 
                                                 <!-- Button (blue), duh! -->
                                                 <!-- Dialog (full screen) -->
-                                                <div class="absolute top-0  md:fixed lg:fixed  left-0 flex items-center justify-center w-full h-1/2 md:h-full lg:h-full xl:h-full 2xl:h-full"
-                                                    style="z-index: 99999;background-color: rgba(0, 0, 0, 0.5);">
+                                                <div class="absolute top-0 fixed md:fixed lg:fixed  left-0 flex items-center justify-center w-full h-full md:h-full lg:h-full xl:h-full 2xl:h-full"
+                                                    style="z-index: 9999999999999999;background-color: rgba(0, 0, 0, 0.5);">
 
                                                     <!-- A basic modal dialog with title, body and one button to close -->
                                                     <div class="h-auto   mx-2 text-left bg-white rounded shadow-xl md:max-w-xl md:p-0 lg:p-0 md:mx-0 md:pr-0   lg:mx-0 w-full   md:-mt-16 xl:-mt-16 2xl:-mt-16 lg:-mt-16"
@@ -301,9 +301,9 @@
                                 <div class="panel-block" style="background-color: aliceblue">
 
                                     <!--Card 1-->
-                                    <div class=" w-full lg:max-w-full lg:flex">
-                                        <div class=" lg: lg:w-24 flex-none   rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-                                            style="background-image: url({{ url('../uploads/products/1/buds.jpg') }});background-repeat: no-repeat;background-size: contain;">
+                                    <div class="w-full flex lg:max-w-full lg:flex">
+                                        <div class="h-24 lg:h-24 lg:w-24 w-24 flex-none rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+                                            style="background-image: url({{ url('/uploads/products/1/buds.jpg') }});background-repeat: no-repeat;background-size: contain;">
                                         </div>
                                         <div class=" rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal"
                                             style="background-color: aliceblue">
@@ -376,14 +376,14 @@
     </div>
     {{--  --}}
 
-    <div class="mt-6">
+    <div class="mt-60 px-2">
 
         <!-- Button (blue), duh! -->
         <!-- Dialog (full screen) -->
-        <div class="absolute top-0  md:fixed lg:fixed  left-0 flex items-center justify-center w-full h-1/2 md:h-full lg:h-full xl:h-full 2xl:h-full"
-            style="z-index: 99999;background-color: rgba(0, 0, 0, 0.5);" :class="{' block': open, 'hidden': !open}">
+        <div class="absolute top-0 fixed md:fixed lg:fixed left-0 flex items-center justify-center w-full h-full md:h-full lg:h-full xl:h-full 2xl:h-full"
+            style="z-index: 9999999999999999;background-color: rgba(0, 0, 0, 0.5);" :class="{' block': open, 'hidden': !open}">
 
-            <!-- A basic modal dialog with title, body and one button to close -->
+            <!-- A basic modal dialog with title, body and one button to close --> 
             <div class="h-auto p-4 mx-2 text-left bg-white rounded shadow-xl md:max-w-xl md:p-0 lg:p-0 md:mx-0 w-full lg:mx-16 2xl:mx-16"
                 @click.away="open = false" style="z-index: 9999;">
 
@@ -536,8 +536,8 @@
 
         <!-- Button (blue), duh! -->
         <!-- Dialog (full screen) -->
-        <div class="absolute top-0  md:fixed lg:fixed  left-0 flex items-center justify-center w-full h-1/2 md:h-full lg:h-full xl:h-full 2xl:h-full"
-            style="z-index: 99999;background-color: rgba(0, 0, 0, 0.5);"
+        <div class="absolute top-0 fixed md:fixed lg:fixed  left-0 flex items-center justify-center w-full h-full md:h-full lg:h-full xl:h-full 2xl:h-full"
+            style="z-index: 9999999999999999;background-color: rgba(0, 0, 0, 0.5);"
             :class="{' block': seleccionar, 'hidden': !seleccionar}">
 
             <!-- A basic modal dialog with title, body and one button to close -->
